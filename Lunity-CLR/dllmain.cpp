@@ -2,6 +2,8 @@
 #include "pch.h"
 #include <metahost.h>
 #pragma comment(lib, "mscoree.lib")
+#include <iostream>
+#include <fstream>
 
 DWORD WINAPI startClr(LPVOID lpParam)
 {

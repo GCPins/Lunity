@@ -1,4 +1,6 @@
-﻿namespace Lunity_Injectable
+﻿using System.Windows.Forms;
+
+namespace Lunity_Injectable
 {
     public class EntryClass
     {
@@ -7,6 +9,7 @@
             //TcpClient client = new TcpClient("127.0.0.1", 600);
             //FileInfo fInfo = new FileInfo(Environment.CurrentDirectory+"/tgedn.txt");
             //fInfo.Create();
+            MessageBox.Show("Test!");
         }
     }
 }

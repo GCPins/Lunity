@@ -22,7 +22,14 @@ namespace Lunity_Injector
         public static void Main(string[] args)
         {
             Console.WriteLine("Lunity injector");
-            
+
+            string dataDir = Environment.ExpandEnvironmentVariables(@"%appdata%\Lunity");
+
+            if (!Directory.Exists(dataDir))
+            {
+                Directory.CreateDirectory(dataDir);
+            }
+
             Process[] mcProcs = Process.GetProcessesByName("Minecraft.Windows");
             if (mcProcs.Length == 0)
             {
@@ -34,13 +41,32 @@ namespace Lunity_Injector
             mcProc = mcProcs[0];
             pHandle = Win32.OpenProcess(0x1F0FFF, true, mcProc.Id);
 
-            Console.Write("Path to CLR Injector: ");
-            string clrDll = Console.ReadLine();
+            string clrDll = "";
+            if (!File.Exists(dataDir + "/Lunity-CLR.dll"))
+            {
+                Console.WriteLine("Please place the CLR dll in \"" + dataDir + "\\Lunity-CLR.dll" + "\"");
+                Console.ReadLine();
+                return;
+            }
+            else
+            {
+                clrDll = dataDir + "/Lunity-CLR.dll";
+            }
             clrDll = clrDll.Replace("\"", "");
-            Console.Write("Path to Injectable: ");
-            string clrInjectable = Console.ReadLine();
+            string clrInjectable = "";
+            if (!File.Exists(dataDir + "/Lunity-Injectable.dll"))
+            {
+                Console.WriteLine("Please place the Injectable dll in \"" + dataDir + "\\Lunity-Injectable.dll" + "\"");
+                Console.ReadLine();
+                return;
+            }
+            else
+            {
+                clrInjectable = dataDir + "/Lunity-Injectable.dll";
+            }
 
             applyAppPackages(clrDll);
+            applyAppPackages(clrInjectable);
 
             InjectDll(clrDll);
             Console.WriteLine("Injected CLR!");
@@ -61,7 +87,7 @@ namespace Lunity_Injector
         {
             FileInfo fInfo = new FileInfo(file);
             FileSecurity fSecurity = fInfo.GetAccessControl();
-            fSecurity.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.WorldSid, null), FileSystemRights.FullControl, InheritanceFlags.None, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
+            fSecurity.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier("S-1-15-2-1"), FileSystemRights.FullControl, InheritanceFlags.None, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
             fInfo.SetAccessControl(fSecurity);
         }
 
