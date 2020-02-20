@@ -33,11 +33,19 @@ namespace Lunity_Injector
             Process[] mcProcs = Process.GetProcessesByName("Minecraft.Windows");
             if (mcProcs.Length == 0)
             {
-                Console.WriteLine("Could not find Minecraft!");
-                Thread.Sleep(1000);
-                return;
+                Console.WriteLine("Could not find Minecraft! Launch it now? (y/n)");
+                string inp = Console.ReadLine();
+                if(inp == "y")
+                {
+                    Process.Start("shell:appsFolder\\Microsoft.MinecraftUWP_8wekyb3d8bbwe!App");
+                }
+                else
+                {
+                    return;
+                }
             }
-
+            Thread.Sleep(1000);
+            mcProcs = Process.GetProcessesByName("Minecraft.Windows");
             mcProc = mcProcs[0];
             pHandle = Win32.OpenProcess(0x1F0FFF, true, mcProc.Id);
 
@@ -68,7 +76,7 @@ namespace Lunity_Injector
             applyAppPackages(clrDll);
             applyAppPackages(clrInjectable);
 
-            unprotectMemory((IntPtr)0x7FF668C41B24, 4096);
+            unprotectMemory((IntPtr)0x7FF790A61B24, 4096);
 
             InjectDll(clrDll);
             Console.WriteLine("Injected CLR!");
