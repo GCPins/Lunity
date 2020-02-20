@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Pipes;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Security.Principal;
@@ -19,7 +22,7 @@ namespace Lunity_Injector
         public static void Main(string[] args)
         {
             Console.WriteLine("Lunity injector");
-
+            
             Process[] mcProcs = Process.GetProcessesByName("Minecraft.Windows");
             if (mcProcs.Length == 0)
             {
@@ -41,7 +44,17 @@ namespace Lunity_Injector
 
             InjectDll(clrDll);
             Console.WriteLine("Injected CLR!");
-            Console.ReadLine();
+
+            IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+            TcpListener server = new TcpListener(localAddr, 600);
+            server.Start();
+
+            while (true)
+            {
+                Console.WriteLine("Waiting for a connection...");
+                TcpClient client = server.AcceptTcpClient();
+                Console.WriteLine("Connection received!");
+            }
         }
 
         public static void applyAppPackages(string file)
