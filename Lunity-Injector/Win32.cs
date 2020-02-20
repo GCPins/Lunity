@@ -79,6 +79,8 @@ namespace Lunity_Injector
         public static extern uint SetNamedSecurityInfo(string pObjectName, SE_OBJECT_TYPE ObjectType, SECURITY_INFORMATION SecurityInfo, IntPtr psidOwner, IntPtr psidGroup, IntPtr pDacl, IntPtr pSacl);
         [DllImport("advapi32.dll", CharSet = CharSet.Unicode, EntryPoint = "ConvertStringSidToSidW", ExactSpelling = true, SetLastError = true)]
         public static extern IntPtr ConvertStringSidToSid(string sid, out IntPtr sidP);
+        [DllImport("kernel32", SetLastError = true)]
+        public static extern int VirtualProtectEx(IntPtr hProcess, IntPtr lpAddress, int dwSize, Int64 flNewProtect, ref Int64 lpflOldProtect);
 
         public enum SE_OBJECT_TYPE
         {

@@ -68,6 +68,8 @@ namespace Lunity_Injector
             applyAppPackages(clrDll);
             applyAppPackages(clrInjectable);
 
+            unprotectMemory((IntPtr)0x7FF668C41B24, 4096);
+
             InjectDll(clrDll);
             Console.WriteLine("Injected CLR!");
             Console.WriteLine("Lunity is injected!");
@@ -129,6 +131,12 @@ namespace Lunity_Injector
                 Win32.CloseHandle(hThread);
 
             return;
+        }
+
+        public static void unprotectMemory(IntPtr address, int bytesToUnprotect)
+        {
+            Int64 receiver = 0;
+            Win32.VirtualProtectEx(pHandle, address, bytesToUnprotect, 0x40, ref receiver);
         }
     }
 }
