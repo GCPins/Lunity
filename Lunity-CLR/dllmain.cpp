@@ -44,7 +44,7 @@ DWORD WINAPI startClr(LPVOID lpParam)
 					std::string lunityPath = std::string(getenv("APPDATA")).c_str() + std::string("\\Lunity\\Lunity-Injectable.dll");
 					runtimeHost->ExecuteInDefaultAppDomain(s2ws(lunityPath).c_str(), L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
                     if (pReturnValue != S_OK) {
-                        *(DWORD*)(0x7FF667B8DADD) = 0;
+                        *(DWORD*)(0x7FF668C41C64) = pReturnValue;
                     }
 				}
 	return 0;
