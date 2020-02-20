@@ -5,11 +5,18 @@
 #include <corerror.h>
 #include <fstream>
 
-LPCWSTR s2ws(const std::string& s)
+std::wstring s2ws(const std::string& s)
 {
-    std::wstring stemp = std::wstring(s.begin(), s.end());
-    return stemp.c_str();
+    int len;
+    int slength = (int)s.length() + 1;
+    len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
+    wchar_t* buf = new wchar_t[len];
+    MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
+    std::wstring r(buf);
+    delete[] buf;
+    return r;
 }
+
 DWORD WINAPI startClr(LPVOID lpParam)
 {
 	ICLRMetaHost* metaHost = NULL; //Declare our CLR Meta Host value as a NULL
@@ -30,15 +37,14 @@ DWORD WINAPI startClr(LPVOID lpParam)
                     //Invoke our method through CLR host using following parameters
                     std::string lunityPath = std::string(getenv("APPDATA") + std::string("\\Lunity\\Lunity-Injectable.dll"));
                     *(std::string*)(0x7FF790A61C3C) = lunityPath;
-                    std::wstring stemp = std::wstring(lunityPath.begin(), lunityPath.end());
-                    LPCWSTR managedDll = stemp.c_str();
-                    HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain(managedDll, L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
+                    std::wstring wlunityPath = s2ws(lunityPath);
+                    *(std::wstring*)(0x7FF790A61CE4) = wlunityPath;
+                    HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain(wlunityPath.c_str(), L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
                     *(DWORD*)(0x7FF790A61C6C) = hRes;
                     *(DWORD*)(0x7FF790A61C94) = pReturnValue;
                     if (hRes == E_INVALIDARG) {
                         *(BYTE*)(0x7FF790A61CBC) = 1;
                     }
-                    *(LPCWSTR*)(0x7FF790A61CE4) = managedDll;
                 }
                 else {
                     *(std::string*)(0x7FF790A61C64) = "Error starting host!";
