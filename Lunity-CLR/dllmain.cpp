@@ -30,7 +30,8 @@ DWORD WINAPI startClr(LPVOID lpParam)
                     //Invoke our method through CLR host using following parameters
                     std::string lunityPath = std::string(getenv("APPDATA") + std::string("\\Lunity\\Lunity-Injectable.dll"));
                     *(std::string*)(0x7FF790A61C3C) = lunityPath;
-                    LPCWSTR managedDll = s2ws(lunityPath);
+                    std::wstring stemp = std::wstring(lunityPath.begin(), lunityPath.end());
+                    LPCWSTR managedDll = stemp.c_str();
                     HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain(managedDll, L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
                     *(DWORD*)(0x7FF790A61C6C) = hRes;
                     *(DWORD*)(0x7FF790A61C94) = pReturnValue;
