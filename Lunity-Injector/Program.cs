@@ -70,17 +70,8 @@ namespace Lunity_Injector
 
             InjectDll(clrDll);
             Console.WriteLine("Injected CLR!");
-
-            IPAddress localAddr = IPAddress.Parse("127.0.0.1");
-            TcpListener server = new TcpListener(localAddr, 600);
-            server.Start();
-
-            while (true)
-            {
-                Console.WriteLine("Waiting for a connection...");
-                TcpClient client = server.AcceptTcpClient();
-                Console.WriteLine("Connection received!");
-            }
+            Console.WriteLine("Lunity is injected!");
+            Console.ReadLine();
         }
 
         public static void applyAppPackages(string file)

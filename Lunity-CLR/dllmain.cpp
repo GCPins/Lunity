@@ -5,6 +5,18 @@
 #include <iostream>
 #include <fstream>
 
+std::wstring s2ws(const std::string& s)
+{
+    int len;
+    int slength = (int)s.length() + 1;
+    len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
+    wchar_t* buf = new wchar_t[len];
+    MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
+    std::wstring r(buf);
+    delete[] buf;
+    return r;
+}
+
 DWORD WINAPI startClr(LPVOID lpParam)
 {
 	ICLRMetaHost* metaHost = NULL; //Declare our CLR Meta Host value as a NULL
@@ -19,12 +31,10 @@ DWORD WINAPI startClr(LPVOID lpParam)
 					DWORD pReturnValue; //Declare our return value as a DWORD
 
 					//Invoke our method through CLR host using following parameters
-					runtimeHost->ExecuteInDefaultAppDomain(L"A:\\Desktop Files\\Minecraft Stuff\\Bedrock Modding\\Lunity\\Lunity-Injectable\\bin\\Debug\\Lunity-Injectable.dll", L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
+					std::string lunityPath = std::string(getenv("APPDATA")).c_str() + std::string("\\Lunity\\Lunity-Injectable.dll");
+					//runtimeHost->ExecuteInDefaultAppDomain(s2ws(lunityPath).c_str(), L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
+					runtimeHost->ExecuteInDefaultAppDomain(L"C:\\Users\\Mike\\AppData\\Roaming\\Lunity\\Lunity-Injectable.dll", L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
 
-					//OPTIONAL: You can keep the CLR Opened depending on your needs
-					runtimeInfo->Release();
-					metaHost->Release();
-					runtimeHost->Release();
 				}
 	return 0;
 }
