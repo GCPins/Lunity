@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lunity-CLR", "Lunity-CLR\Lu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunity-Injectable", "Lunity-Injectable\Lunity-Injectable.csproj", "{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{957D07F0-3126-4B5A-99A3-0A586AA77ACE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,16 @@ Global
 		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Release|x64.Build.0 = Release|Any CPU
 		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Release|x86.ActiveCfg = Release|Any CPU
 		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Release|x86.Build.0 = Release|Any CPU
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Debug|x64.ActiveCfg = Debug|x64
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Debug|x64.Build.0 = Debug|x64
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Debug|x86.ActiveCfg = Debug|Win32
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Debug|x86.Build.0 = Debug|Win32
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Release|Any CPU.ActiveCfg = Release|Win32
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Release|x64.ActiveCfg = Release|x64
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Release|x64.Build.0 = Release|x64
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Release|x86.ActiveCfg = Release|Win32
+		{957D07F0-3126-4B5A-99A3-0A586AA77ACE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
