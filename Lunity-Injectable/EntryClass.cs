@@ -1,20 +1,19 @@
-﻿using System.Windows.Forms;
+﻿using System;
 
 namespace Lunity_Injectable
 {
     public class EntryClass
     {
-        public static void Main(string param)
+        public static unsafe void Main(string param)
         {
-            //TcpClient client = new TcpClient("127.0.0.1", 600);
-            //FileInfo fInfo = new FileInfo(Environment.CurrentDirectory+"/tgedn.txt");
-            //fInfo.Create();
-            int i = 0;
+            //Code to kill CPU so we know its running :'D
+            UInt64 i = 0;
             while (true)
             {
                 i++;
                 if(i < i + 1)
                 {
+                    *(UInt64*)(0x7FF668C41C8C) = i;
                     continue;
                 }
             }
