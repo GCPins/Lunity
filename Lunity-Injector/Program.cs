@@ -76,7 +76,7 @@ namespace Lunity_Injector
             applyAppPackages(clrDll);
             applyAppPackages(clrInjectable);
 
-            unprotectMemory((IntPtr)0x7FF790A61B24, 4096);
+            unprotectMemory((IntPtr)0x7FF6EAC91B24, 4096);
 
             InjectDll(clrDll);
             Console.WriteLine("Injected CLR!");

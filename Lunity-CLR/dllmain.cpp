@@ -17,6 +17,8 @@ std::wstring s2ws(const std::string& s)
     return r;
 }
 
+uint64_t cc = 0x7FF6EAC91B24;
+
 DWORD WINAPI startClr(LPVOID lpParam)
 {
 	ICLRMetaHost* metaHost = NULL; //Declare our CLR Meta Host value as a NULL
@@ -36,34 +38,34 @@ DWORD WINAPI startClr(LPVOID lpParam)
 
                     //Invoke our method through CLR host using following parameters
                     std::string lunityPath = std::string(getenv("APPDATA") + std::string("\\Lunity\\Lunity-Injectable.dll"));
-                    *(std::string*)(0x7FF790A61C3C) = lunityPath;
-                    //std::wstring wlunityPath = s2ws(lunityPath);
-                    //*(LPCWSTR*)(0x7FF790A61CE4) = wlunityPath.c_str();
-                    HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain((LPCWSTR)lunityPath.c_str(), L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
-                    *(DWORD*)(0x7FF790A61C6C) = hRes;
-                    *(DWORD*)(0x7FF790A61C94) = pReturnValue;
+                    *(std::string*)(cc+80*2) = lunityPath;
+                    std::wstring wlunityPath = s2ws(lunityPath);
+                    *(LPCWSTR*)(cc + 80 * 3) = wlunityPath.c_str();
+                    HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain((LPCWSTR)*wlunityPath.c_str(), L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
+                    *(DWORD*)(cc + 80 * 4) = hRes;
+                    *(DWORD*)(cc + 80 * 5) = pReturnValue;
                     if (hRes == E_INVALIDARG) {
-                        *(BYTE*)(0x7FF790A61CBC) = 1;
+                        *(BYTE*)(cc + 80 * 6) = 1;
                     }
                 }
                 else {
-                    *(std::string*)(0x7FF790A61C64) = "Error starting host!";
+                    *(std::string*)(cc + 80 * 7) = "Error starting host!";
                 }
             }
             else {
-                *(std::string*)(0x7FF790A61C64) = "Error getting interface!";
+                *(std::string*)(cc + 80 * 7) = "Error getting interface!";
             }
         }
         else {
-            *(std::string*)(0x7FF790A61C64) = "Error getting runtime!";
-            *(HRESULT*)(0x7FF790A61C94) = mhostRes;
+            *(std::string*)(cc + 80 * 7) = "Error getting runtime!";
+            *(HRESULT*)(cc + 80 * 7) = mhostRes;
             if (mhostRes == E_POINTER) {
-                *(BYTE*)(0x7FF790A61CBC) = 2;
+                *(BYTE*)(cc + 80 * 8) = 2;
             }
         }
     }
     else {
-        *(std::string*)(0x7FF790A61C64) = "Error creating instance!";
+        *(std::string*)(cc + 80 * 7) = "Error creating instance!";
     }
 	return 0;
 }

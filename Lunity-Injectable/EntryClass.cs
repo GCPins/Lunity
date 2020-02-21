@@ -17,7 +17,7 @@
                 i++;
                 if (i < i + 1)
                 {
-                    *(ulong*)(0x7FF790A61CBC) = i;
+                    *(ulong*)(0x7FF6EAC91CDC) = i;
                     continue;
                 }
             }
