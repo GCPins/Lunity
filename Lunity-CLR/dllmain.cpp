@@ -41,31 +41,32 @@ DWORD WINAPI startClr(LPVOID lpParam)
                     *(std::string*)(cc+80*2) = lunityPath;
                     std::wstring wlunityPath = s2ws(lunityPath);
                     *(LPCWSTR*)(cc + 80 * 3) = wlunityPath.c_str();
-                    HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain((LPCWSTR)*wlunityPath.c_str(), L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
-                    *(DWORD*)(cc + 80 * 4) = hRes;
-                    *(DWORD*)(cc + 80 * 5) = pReturnValue;
+                    *(std::wstring*)(cc + 80 * 4) = wlunityPath;
+                    HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain(wlunityPath.c_str(), L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
+                    *(DWORD*)(cc + 80 * 5) = hRes;
+                    *(DWORD*)(cc + 80 * 6) = pReturnValue;
                     if (hRes == E_INVALIDARG) {
-                        *(BYTE*)(cc + 80 * 6) = 1;
+                        *(BYTE*)(cc + 80 * 7) = 1;
                     }
                 }
                 else {
-                    *(std::string*)(cc + 80 * 7) = "Error starting host!";
+                    *(std::string*)(cc + 80 * 8) = "Error starting host!";
                 }
             }
             else {
-                *(std::string*)(cc + 80 * 7) = "Error getting interface!";
+                *(std::string*)(cc + 80 * 8) = "Error getting interface!";
             }
         }
         else {
-            *(std::string*)(cc + 80 * 7) = "Error getting runtime!";
-            *(HRESULT*)(cc + 80 * 7) = mhostRes;
+            *(std::string*)(cc + 80 * 8) = "Error getting runtime!";
+            *(HRESULT*)(cc + 80 * 8) = mhostRes;
             if (mhostRes == E_POINTER) {
-                *(BYTE*)(cc + 80 * 8) = 2;
+                *(BYTE*)(cc + 80 * 9) = 2;
             }
         }
     }
     else {
-        *(std::string*)(cc + 80 * 7) = "Error creating instance!";
+        *(std::string*)(cc + 80 * 8) = "Error creating instance!";
     }
 	return 0;
 }
