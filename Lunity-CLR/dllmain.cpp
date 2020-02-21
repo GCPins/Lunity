@@ -38,35 +38,32 @@ DWORD WINAPI startClr(LPVOID lpParam)
 
                     //Invoke our method through CLR host using following parameters
                     std::string lunityPath = std::string(getenv("APPDATA") + std::string("\\Lunity\\Lunity-Injectable.dll"));
-                    *(std::string*)(cc+80*2) = lunityPath;
                     std::wstring wlunityPath = s2ws(lunityPath);
-                    *(LPCWSTR*)(cc + 80 * 3) = wlunityPath.c_str();
-                    *(std::wstring*)(cc + 80 * 4) = wlunityPath;
-                    HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain(wlunityPath.c_str(), L"Lunity_Injectable.EntryClass", L"Main", L"Hello!", &pReturnValue);
-                    *(DWORD*)(cc + 80 * 5) = hRes;
-                    *(DWORD*)(cc + 80 * 6) = pReturnValue;
+                    HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain(wlunityPath.c_str(), L"Injectable.EntryClass", L"Main", L"A", &pReturnValue);
+                    *(DWORD*)(cc + 80 * 6) = hRes;
+                    *(DWORD*)(cc + 80 * 7) = pReturnValue;
                     if (hRes == E_INVALIDARG) {
-                        *(BYTE*)(cc + 80 * 7) = 1;
+                        *(BYTE*)(cc + 80 * 8) = 1;
                     }
                 }
                 else {
-                    *(std::string*)(cc + 80 * 8) = "Error starting host!";
+                    *(std::string*)(cc + 80 * 9) = "Error starting host!";
                 }
             }
             else {
-                *(std::string*)(cc + 80 * 8) = "Error getting interface!";
+                *(std::string*)(cc + 80 * 9) = "Error getting interface!";
             }
         }
         else {
-            *(std::string*)(cc + 80 * 8) = "Error getting runtime!";
-            *(HRESULT*)(cc + 80 * 8) = mhostRes;
+            *(std::string*)(cc + 80 * 9) = "Error getting runtime!";
+            *(HRESULT*)(cc + 80 * 9) = mhostRes;
             if (mhostRes == E_POINTER) {
-                *(BYTE*)(cc + 80 * 9) = 2;
+                *(BYTE*)(cc + 80 * 10) = 2;
             }
         }
     }
     else {
-        *(std::string*)(cc + 80 * 8) = "Error creating instance!";
+        *(std::string*)(cc + 80 * 9) = "Error creating instance!";
     }
 	return 0;
 }
