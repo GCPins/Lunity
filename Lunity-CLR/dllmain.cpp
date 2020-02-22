@@ -34,10 +34,10 @@ DWORD WINAPI startClr(LPVOID lpParam)
             {
                 if (runtimeHost->Start() == S_OK) //Start the CLR (If it is successful)
                 {
-                    DWORD pReturnValue; //Declare our return value as a DWORD
+                    DWORD pReturnValue = 0; //Declare our return value as a DWORD
 
                     //Invoke our method through CLR host using following parameters
-                    std::string lunityPath = std::string(getenv("APPDATA") + std::string("\\Lunity\\Lunity-Injectable.dll"));
+                    std::string lunityPath = std::string(getenv("APPDATA") + std::string("\\..\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\RoamingState\\Lunity-Injectable.dll"));
                     std::wstring wlunityPath = s2ws(lunityPath);
                     HRESULT hRes = runtimeHost->ExecuteInDefaultAppDomain(wlunityPath.c_str(), L"Injectable.EntryClass", L"Main", L"A", &pReturnValue);
                     *(DWORD*)(cc + 80 * 6) = hRes;

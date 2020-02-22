@@ -48,6 +48,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(SolutionDir)Lunity-Injectable\bin\Debug\Lunity-Injectable.dll" "$(AppData)\Lunity\Lunity-Injectable.dll"</PostBuildEvent>
+    <PostBuildEvent>copy "$(SolutionDir)Lunity-Injectable\bin\Debug\Lunity-Injectable.dll" "$(AppData)\..\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\RoamingState\Lunity-Injectable.dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>
