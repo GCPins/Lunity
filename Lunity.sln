@@ -5,13 +5,7 @@ VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunity-Injector", "Lunity-Injector\Lunity-Injector.csproj", "{7D4605AD-2C57-42FC-BB6F-3AECB766628F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lunity-Client", "Lunity-CLR\Lunity-CLR.vcxproj", "{89153BAA-2716-43E2-BCB8-B3BE095688A6}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test Victim", "Test Victim\Test Victim.vcxproj", "{D2437AAD-C7EE-40C8-B57C-276C12D6497F}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test-CLR", "Test-CLR\Test-CLR.vcxproj", "{8F61DBAB-153C-4379-A39E-74FC5C82727A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test-Injectable", "Test-Injectable\Test-Injectable.csproj", "{469A2018-9D10-4324-80A9-01CD93222921}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lunity-Client", "Lunity-Client\Lunity-Client.vcxproj", "{89153BAA-2716-43E2-BCB8-B3BE095688A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,38 +40,6 @@ Global
 		{89153BAA-2716-43E2-BCB8-B3BE095688A6}.Release|x64.Build.0 = Release|x64
 		{89153BAA-2716-43E2-BCB8-B3BE095688A6}.Release|x86.ActiveCfg = Release|Win32
 		{89153BAA-2716-43E2-BCB8-B3BE095688A6}.Release|x86.Build.0 = Release|Win32
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Debug|x64.ActiveCfg = Debug|x64
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Debug|x64.Build.0 = Debug|x64
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Debug|x86.ActiveCfg = Debug|Win32
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Debug|x86.Build.0 = Debug|Win32
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Release|Any CPU.ActiveCfg = Release|Win32
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Release|x64.ActiveCfg = Release|x64
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Release|x64.Build.0 = Release|x64
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Release|x86.ActiveCfg = Release|Win32
-		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Release|x86.Build.0 = Release|Win32
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Debug|x64.ActiveCfg = Debug|x64
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Debug|x64.Build.0 = Debug|x64
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Debug|x86.ActiveCfg = Debug|Win32
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Debug|x86.Build.0 = Debug|Win32
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Release|Any CPU.ActiveCfg = Release|Win32
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Release|x64.ActiveCfg = Release|x64
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Release|x64.Build.0 = Release|x64
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Release|x86.ActiveCfg = Release|Win32
-		{8F61DBAB-153C-4379-A39E-74FC5C82727A}.Release|x86.Build.0 = Release|Win32
-		{469A2018-9D10-4324-80A9-01CD93222921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Debug|x64.Build.0 = Debug|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Debug|x86.Build.0 = Debug|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Release|Any CPU.Build.0 = Release|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Release|x64.ActiveCfg = Release|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Release|x64.Build.0 = Release|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Release|x86.ActiveCfg = Release|Any CPU
-		{469A2018-9D10-4324-80A9-01CD93222921}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,11 +1,6 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
-#include <metahost.h>
-#pragma comment(lib, "mscoree.lib")
-#include <corerror.h>
-#include <fstream>
 #include "ClientBase/SDK/McSDK.h"
 #include "ClientBase/CheatHandler.h"
-#include <iostream>
 #include "ClientBase/SDK/Logger.h"
 
 DWORD WINAPI startLunity(LPVOID lpParam)
