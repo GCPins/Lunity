@@ -33,16 +33,7 @@ namespace Lunity_Injector
             Process[] mcProcs = Process.GetProcessesByName("Minecraft.Windows");
             if (mcProcs.Length == 0)
             {
-                Console.WriteLine("Could not find Minecraft! Launch it now? (y/n)");
-                string inp = Console.ReadLine();
-                if(inp == "y")
-                {
-                    Process.Start("shell:appsFolder\\Microsoft.MinecraftUWP_8wekyb3d8bbwe!App");
-                }
-                else
-                {
-                    return;
-                }
+                Process.Start("shell:appsFolder\\Microsoft.MinecraftUWP_8wekyb3d8bbwe!App");
             }
             Thread.Sleep(1000);
             mcProcs = Process.GetProcessesByName("Minecraft.Windows");
@@ -51,24 +42,24 @@ namespace Lunity_Injector
 
             Win32.SuspendProcess(mcProc.Id);
 
-            string clrDll = "";
+            string clientDll = "";
             if (!File.Exists(dataDir + "/Lunity-Client.dll"))
             {
-                Console.WriteLine("Please place the CLR dll in \"" + dataDir + "\\Lunity-Client.dll" + "\"");
+                Console.WriteLine("Please place the Client dll in \"" + dataDir + "\\Lunity-Client.dll" + "\"");
                 Console.ReadLine();
                 return;
             }
             else
             {
-                clrDll = dataDir + "/Lunity-Client.dll";
+                clientDll = dataDir + "/Lunity-Client.dll";
             }
-            clrDll = clrDll.Replace("\"", "");
+            clientDll = clientDll.Replace("\"", "");
 
-            applyAppPackages(clrDll);
+            applyAppPackages(clientDll);
 
             //unprotectMemory((IntPtr)0x7FF6EAC91B24, 4096);
 
-            InjectDll(clrDll);
+            InjectDll(clientDll);
 
             Console.WriteLine("Injected Client!");
             Console.WriteLine("Lunity is injected!");
