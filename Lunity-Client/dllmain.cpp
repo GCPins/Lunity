@@ -14,9 +14,7 @@ DWORD WINAPI startLunity(LPVOID lpParam)
         updateSDK();
         if (localPlayer.address != 0) {
             //*localPlayer.onGround = 1;
-            std::stringstream stream;
-            stream << "Airjump addr!" << std::hex << (ulong)localPlayer.onGroundAddress;
-            log(stream.str());
+            log("Airjump addr!" + localPlayer.onGroundAddress);
         }
     }
     return 0;
