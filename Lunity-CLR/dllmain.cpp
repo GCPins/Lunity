@@ -5,11 +5,11 @@
 #include <corerror.h>
 #include <fstream>
 
-uint64_t cc = 0x7FF6EAC91B24;
-
+HMODULE gameBase;
 DWORD WINAPI startLunity(LPVOID lpParam)
 {
-	
+    gameBase = GetModuleHandle(NULL);
+
 }
 
 BOOL __stdcall DllMain( HMODULE hModule,

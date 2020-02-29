@@ -5,9 +5,7 @@ VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunity-Injector", "Lunity-Injector\Lunity-Injector.csproj", "{7D4605AD-2C57-42FC-BB6F-3AECB766628F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lunity-CLR", "Lunity-CLR\Lunity-CLR.vcxproj", "{89153BAA-2716-43E2-BCB8-B3BE095688A6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunity-Injectable", "Lunity-Injectable\Lunity-Injectable.csproj", "{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lunity-Client", "Lunity-CLR\Lunity-CLR.vcxproj", "{89153BAA-2716-43E2-BCB8-B3BE095688A6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test Victim", "Test Victim\Test Victim.vcxproj", "{D2437AAD-C7EE-40C8-B57C-276C12D6497F}"
 EndProject
@@ -48,18 +46,6 @@ Global
 		{89153BAA-2716-43E2-BCB8-B3BE095688A6}.Release|x64.Build.0 = Release|x64
 		{89153BAA-2716-43E2-BCB8-B3BE095688A6}.Release|x86.ActiveCfg = Release|Win32
 		{89153BAA-2716-43E2-BCB8-B3BE095688A6}.Release|x86.Build.0 = Release|Win32
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Debug|x64.Build.0 = Debug|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Debug|x86.Build.0 = Debug|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Release|x64.ActiveCfg = Release|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Release|x64.Build.0 = Release|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Release|x86.ActiveCfg = Release|Any CPU
-		{90FACC2A-A70E-421A-AC7E-D799C3A4B75F}.Release|x86.Build.0 = Release|Any CPU
 		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Debug|x64.ActiveCfg = Debug|x64
 		{D2437AAD-C7EE-40C8-B57C-276C12D6497F}.Debug|x64.Build.0 = Debug|x64

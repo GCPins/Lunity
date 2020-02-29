@@ -49,38 +49,30 @@ namespace Lunity_Injector
             mcProc = mcProcs[0];
             pHandle = Win32.OpenProcess(0x1F0FFF, true, mcProc.Id);
 
+            Win32.SuspendProcess(mcProc.Id);
+
             string clrDll = "";
-            if (!File.Exists(dataDir + "/Lunity-CLR.dll"))
+            if (!File.Exists(dataDir + "/Lunity-Client.dll"))
             {
-                Console.WriteLine("Please place the CLR dll in \"" + dataDir + "\\Lunity-CLR.dll" + "\"");
+                Console.WriteLine("Please place the CLR dll in \"" + dataDir + "\\Lunity-Client.dll" + "\"");
                 Console.ReadLine();
                 return;
             }
             else
             {
-                clrDll = dataDir + "/Lunity-CLR.dll";
+                clrDll = dataDir + "/Lunity-Client.dll";
             }
             clrDll = clrDll.Replace("\"", "");
-            string clrInjectable = "";
-            if (!File.Exists(dataDir + "/Lunity-Injectable.dll"))
-            {
-                Console.WriteLine("Please place the Injectable dll in \"" + dataDir + "\\Lunity-Injectable.dll" + "\"");
-                Console.ReadLine();
-                return;
-            }
-            else
-            {
-                clrInjectable = dataDir + "/Lunity-Injectable.dll";
-            }
 
             applyAppPackages(clrDll);
-            applyAppPackages(clrInjectable);
 
             unprotectMemory((IntPtr)0x7FF6EAC91B24, 4096);
 
             InjectDll(clrDll);
-            Console.WriteLine("Injected CLR!");
+
+            Console.WriteLine("Injected Client!");
             Console.WriteLine("Lunity is injected!");
+            Win32.ResumeProcess(mcProc.Id);
             Console.ReadLine();
         }
 
@@ -90,13 +82,6 @@ namespace Lunity_Injector
             FileSecurity fSecurity = fInfo.GetAccessControl();
             fSecurity.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier("S-1-15-2-1"), FileSystemRights.FullControl, InheritanceFlags.None, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
             fInfo.SetAccessControl(fSecurity);
-        }
-
-        public static String GetStringResource(IntPtr hModuleInstance, uint uiStringID)
-        {
-            StringBuilder sb = new StringBuilder(255);
-            Win32.LoadString(hModuleInstance, uiStringID, sb, sb.Capacity + 1);
-            return sb.ToString();
         }
 
         //Code from https://github.com/erfg12/memory.dll/blob/master/Memory/memory.cs
