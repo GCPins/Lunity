@@ -1,13 +1,15 @@
 #pragma once
 #include <stdint.h>
+#include "McSDK.h"
 #define ulong uint64_t
+
 class Player
 {
-	ulong* address;
 public:
-	Player(ulong* address) {
+	ulong address;
+	Player(ulong address) {
 		this->address = address;
 	}
-	bool* onGround = (bool*)(address + 0x178);
+	byte* onGround = (byte*)(address + 0x178);
 };
 

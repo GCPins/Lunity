@@ -33,8 +33,8 @@ namespace Lunity_Injector
             Process[] mcProcs = Process.GetProcessesByName("Minecraft.Windows");
             if (mcProcs.Length == 0)
             {
-                Console.WriteLine("Could not find Minecraft! Launch it now? (y/n)");
-                string inp = Console.ReadLine();
+                //Console.WriteLine("Could not find Minecraft! Launch it now? (y/n)");
+                string inp = "y"; //Console.ReadLine();
                 if(inp == "y")
                 {
                     Process.Start("shell:appsFolder\\Microsoft.MinecraftUWP_8wekyb3d8bbwe!App");
@@ -73,7 +73,8 @@ namespace Lunity_Injector
             Console.WriteLine("Injected Client!");
             Console.WriteLine("Lunity is injected!");
             Win32.ResumeProcess(mcProc.Id);
-            Console.ReadLine();
+            //Console.ReadLine();
+            Thread.Sleep(1000);
         }
 
         public static void applyAppPackages(string file)

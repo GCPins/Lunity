@@ -2,6 +2,8 @@
 #include <string>
 #include <Windows.h>
 #include <fstream>
+#include <iomanip>
+#include <sstream>
 
 static void log(std::string log) {
 	std::string debugPath = std::string(getenv("APPDATA") + std::string("\\..\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\RoamingState\\debug.txt"));

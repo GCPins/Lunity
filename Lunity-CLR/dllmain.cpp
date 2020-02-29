@@ -16,6 +16,10 @@ DWORD WINAPI startLunity(LPVOID lpParam)
     loadCheats();
     while (1) {
         tickCheats();
+        updateSDK();
+        if (localPlayer.address != 0) {
+            *localPlayer.onGround = 1;
+        }
     }
     return 0;
 }
