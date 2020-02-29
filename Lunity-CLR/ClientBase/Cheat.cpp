@@ -2,9 +2,11 @@
 
 bool wasEnabled = false;
 
-Cheat::Cheat()
+Cheat::Cheat(std::string name, bool enabled, char keybind)
 {
-
+    this->name = name;
+    this->enabled = enabled;
+    this->keybind = keybind;
 }
 
 void Cheat::onLoop()

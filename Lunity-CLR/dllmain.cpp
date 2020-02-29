@@ -1,15 +1,23 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
-#include "pch.h"
 #include <metahost.h>
 #pragma comment(lib, "mscoree.lib")
 #include <corerror.h>
 #include <fstream>
+#include "ClientBase/SDK/McSDK.h"
+#include "ClientBase/CheatHandler.h"
+#include <iostream>
+#include "ClientBase/SDK/Logger.h"
 
-HMODULE gameBase;
 DWORD WINAPI startLunity(LPVOID lpParam)
 {
-    gameBase = GetModuleHandle(NULL);
-
+    log("Starting lunity...");
+    initSDK();
+    log("SDK started!");
+    loadCheats();
+    while (1) {
+        tickCheats();
+    }
+    return 0;
 }
 
 BOOL __stdcall DllMain( HMODULE hModule,
