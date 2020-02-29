@@ -10,6 +10,7 @@
 
 DWORD WINAPI startLunity(LPVOID lpParam)
 {
+    while(1){}
     log("Starting lunity...");
     initSDK();
     log("SDK started!");
@@ -18,7 +19,10 @@ DWORD WINAPI startLunity(LPVOID lpParam)
         tickCheats();
         updateSDK();
         if (localPlayer.address != 0) {
-            *localPlayer.onGround = 1;
+            //*localPlayer.onGround = 1;
+            std::stringstream stream;
+            stream << "Airjump addr!" << std::hex << (ulong)localPlayer.onGroundAddress;
+            log(stream.str());
         }
     }
     return 0;
