@@ -5,7 +5,6 @@
 
 DWORD WINAPI startLunity(LPVOID lpParam)
 {
-    while(1){}
     log("Starting lunity...");
     initSDK();
     log("SDK started!");
