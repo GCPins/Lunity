@@ -1,23 +1,10 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
-#include "ClientBase/SDK/McSDK.h"
-#include "ClientBase/CheatHandler.h"
-#include "ClientBase/SDK/Logger.h"
+#include <Windows.h>
 
 DWORD WINAPI startLunity(LPVOID lpParam)
 {
-    log("Starting lunity...");
-    initSDK();
-    log("SDK started!");
-    loadCheats();
     while (1) {
-        tickCheats();
-        updateSDK();
-        if (localPlayer.address != 0) {
-            //*localPlayer.onGround = 1;
-            std::stringstream stream;
-            stream << "Airjump addr!" << std::hex << (ulong)localPlayer.onGroundAddress;
-            log(stream.str());
-        }
+
     }
     return 0;
 }
