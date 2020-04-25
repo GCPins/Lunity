@@ -5,9 +5,9 @@
 #ifndef POLYHOOK_2_0_IDISASSEMBLER_HPP
 #define POLYHOOK_2_0_IDISASSEMBLER_HPP
 
-#include "polyhook2/ErrorLog.hpp"
-#include "polyhook2/Instruction.hpp"
-#include "polyhook2/Enums.hpp"
+#include "ErrorLog.hpp"
+#include "Instruction.hpp"
+#include "Enums.hpp"
 
 #include <vector>
 #include <unordered_map>

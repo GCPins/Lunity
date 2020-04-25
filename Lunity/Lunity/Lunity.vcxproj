@@ -90,11 +90,13 @@
       <PreprocessorDefinitions>_DEBUG;LUNITY_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\MinHook;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>$(ProjectDir)MinHook\MinHook.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)x64\Debug\Lunity.dll" "$(AppData)\Lunity\Lunity.dll"</Command>
@@ -154,6 +156,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="capstone\arm.h" />
+    <ClInclude Include="capstone\arm64.h" />
+    <ClInclude Include="capstone\capstone.h" />
+    <ClInclude Include="capstone\evm.h" />
+    <ClInclude Include="capstone\m680x.h" />
+    <ClInclude Include="capstone\m68k.h" />
+    <ClInclude Include="capstone\mips.h" />
+    <ClInclude Include="capstone\platform.h" />
+    <ClInclude Include="capstone\ppc.h" />
+    <ClInclude Include="capstone\sparc.h" />
+    <ClInclude Include="capstone\systemz.h" />
+    <ClInclude Include="capstone\tms320c64x.h" />
+    <ClInclude Include="capstone\x86.h" />
+    <ClInclude Include="capstone\xcore.h" />
     <ClInclude Include="Client\Cheats\AirJump.h" />
     <ClInclude Include="BigHead.h" />
     <ClInclude Include="Client\CheatManager.h" />
@@ -161,7 +177,32 @@
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\pch.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Client\KeyHook.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="polyhook2\ADisassembler.hpp" />
+    <ClInclude Include="polyhook2\CapstoneDisassembler.hpp" />
+    <ClInclude Include="polyhook2\Detour\ADetour.hpp" />
+    <ClInclude Include="polyhook2\Detour\ILCallback.hpp" />
+    <ClInclude Include="polyhook2\Detour\x64Detour.hpp" />
+    <ClInclude Include="polyhook2\Detour\x86Detour.hpp" />
+    <ClInclude Include="polyhook2\Enums.hpp" />
+    <ClInclude Include="polyhook2\ErrorLog.hpp" />
+    <ClInclude Include="polyhook2\Exceptions\AVehHook.hpp" />
+    <ClInclude Include="polyhook2\Exceptions\BreakPointHook.hpp" />
+    <ClInclude Include="polyhook2\Exceptions\HWBreakPointHook.hpp" />
+    <ClInclude Include="polyhook2\IHook.hpp" />
+    <ClInclude Include="polyhook2\Instruction.hpp" />
+    <ClInclude Include="polyhook2\MemProtector.hpp" />
+    <ClInclude Include="polyhook2\Misc.hpp" />
+    <ClInclude Include="polyhook2\PageAllocator.hpp" />
+    <ClInclude Include="polyhook2\PE\EatHook.hpp" />
+    <ClInclude Include="polyhook2\PE\IatHook.hpp" />
+    <ClInclude Include="polyhook2\PE\PEB.hpp" />
+    <ClInclude Include="polyhook2\Tests\TestEffectTracker.hpp" />
+    <ClInclude Include="polyhook2\UID.hpp" />
+    <ClInclude Include="polyhook2\Virtuals\VFuncSwapHook.hpp" />
+    <ClInclude Include="polyhook2\Virtuals\VTableSwapHook.hpp" />
+    <ClInclude Include="polyhook2\ZydisDisassembler.hpp" />
     <ClInclude Include="SDK\LunMC.h" />
     <ClInclude Include="SDK\LunMem.h" />
     <ClInclude Include="pch.h" />
@@ -171,6 +212,7 @@
     <ClCompile Include="Client\Cheat.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Client\KeyHook.cpp" />
     <ClCompile Include="SDK\LunMem.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -178,6 +220,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="PolyHook\capstone_dll.lib" />
+    <Library Include="PolyHook\PolyHook_2.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

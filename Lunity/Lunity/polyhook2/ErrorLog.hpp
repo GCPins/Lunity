@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include "polyhook2/Enums.hpp"
+#include "Enums.hpp"
 
 namespace PLH {
 

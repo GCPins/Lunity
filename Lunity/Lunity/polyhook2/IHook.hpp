@@ -6,8 +6,8 @@
 #define POLYHOOK_2_0_IHOOK_HPP
 
 
-#include "polyhook2/ADisassembler.hpp"
-#include "polyhook2/Enums.hpp"
+#include "ADisassembler.hpp"
+#include "Enums.hpp"
 
 #if defined(__clang__)
 

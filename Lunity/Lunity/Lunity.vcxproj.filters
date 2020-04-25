@@ -51,6 +51,123 @@
     <ClInclude Include="Client\Cheats\pch.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\KeyHook.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Detour\ADetour.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Detour\ILCallback.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Detour\x64Detour.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Detour\x86Detour.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Exceptions\AVehHook.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Exceptions\BreakPointHook.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Exceptions\HWBreakPointHook.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\PE\EatHook.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\PE\IatHook.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\PE\PEB.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Tests\TestEffectTracker.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Virtuals\VFuncSwapHook.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Virtuals\VTableSwapHook.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\ADisassembler.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\CapstoneDisassembler.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Enums.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\ErrorLog.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\IHook.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Instruction.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\MemProtector.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\Misc.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\PageAllocator.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\UID.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="polyhook2\ZydisDisassembler.hpp">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\arm.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\arm64.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\capstone.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\evm.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\m68k.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\m680x.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\mips.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\platform.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\ppc.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\sparc.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\systemz.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\tms320c64x.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\x86.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="capstone\xcore.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -68,5 +185,12 @@
     <ClCompile Include="Client\Cheats\AirJump.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="Client\KeyHook.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="PolyHook\PolyHook_2.lib" />
+    <Library Include="PolyHook\capstone_dll.lib" />
   </ItemGroup>
 </Project>

@@ -11,12 +11,13 @@
 #include <vector>
 #include <map>
 
-#include "polyhook2/ADisassembler.hpp"
-#include "polyhook2/MemProtector.hpp"
-#include "polyhook2/ErrorLog.hpp"
-#include "polyhook2/IHook.hpp"
-#include "polyhook2/Enums.hpp"
-#include "polyhook2/Misc.hpp"
+#include "../ADisassembler.hpp"
+#include "../MemProtector.hpp"
+#include "../ErrorLog.hpp"
+#include "../IHook.hpp"
+#include "../Enums.hpp"
+#include "../Misc.hpp"
+#include <optional>
 
 #pragma warning(disable:4100)
 #pragma warning(disable:4189)

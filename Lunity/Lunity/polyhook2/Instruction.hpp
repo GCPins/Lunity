@@ -14,8 +14,8 @@
 #include <iomanip> //setw
 #include <type_traits>
 
-#include "polyhook2/UID.hpp"
-#include "polyhook2/Enums.hpp"
+#include "UID.hpp"
+#include "Enums.hpp"
 namespace PLH {
 class Instruction {
 public:
