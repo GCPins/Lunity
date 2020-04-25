@@ -1,17 +1,26 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Threading;
 
 namespace Lunity_Injector
 {
     class Program
     {
+        static void displayError(string error)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(error);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
         public static Process game;
         public static IntPtr pHandle;
         public static string dataDir = Environment.ExpandEnvironmentVariables(@"%appdata%\Lunity");
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Lunity injector by ASM");
             Console.WriteLine("Verifying Lunity...");
             if (!verifyLunity())
@@ -19,6 +28,7 @@ namespace Lunity_Injector
                 Console.WriteLine("An error occoured during Lunity verification...");
                 Console.WriteLine("For help, join this server: https://discord.gg/gNdBNTT");
                 Console.WriteLine("When asking for help, please supply the ENTIRE error above.");
+                Console.ReadLine();
                 return;
             }
             Console.WriteLine("Lunity is properly downloaded!");
@@ -30,6 +40,14 @@ namespace Lunity_Injector
             Thread.Sleep(1000);
         }
 
+        public static void applyAppPackages(string file)
+        {
+            FileInfo fInfo = new FileInfo(file);
+            FileSecurity fSecurity = fInfo.GetAccessControl();
+            fSecurity.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier("S-1-15-2-1"), FileSystemRights.FullControl, InheritanceFlags.None, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
+            fInfo.SetAccessControl(fSecurity);
+        }
+
         private static bool verifyLunity()
         {
             try
@@ -38,6 +56,12 @@ namespace Lunity_Injector
                 {
                     Directory.CreateDirectory(dataDir);
                 }
+                if (!File.Exists(dataDir + "/Lunity.dll"))
+                {
+                    displayError("Missing Lunity.dll!");
+                    return false;
+                }
+                applyAppPackages(dataDir + "/Lunity.dll");
                 return true;
             }catch(Exception ex)
             {
@@ -65,7 +89,7 @@ namespace Lunity_Injector
         }
         public static void injectLunity()
         {
-            return;
+            InjectDll(dataDir + "/Lunity.dll");
         }
 
         //Code from https://github.com/erfg12/memory.dll/blob/master/Memory/memory.cs
