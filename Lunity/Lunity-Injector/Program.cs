@@ -9,6 +9,10 @@ namespace Lunity_Injector
 {
     class Program
     {
+        static bool started = false;
+        static bool debug = true;
+        public static string debugLog = Environment.ExpandEnvironmentVariables(@"%appdata%\\..\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\RoamingState\\debug.txt");
+        static string lastLog = "";
         static void displayError(string error)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -35,8 +39,26 @@ namespace Lunity_Injector
             Console.WriteLine("Waiting for Minecraft...");
             awaitGame();
             Console.WriteLine("Minecraft found, injecting!");
+            if (started)
+            {
+                Thread.Sleep(2000);
+            }
             injectLunity();
             Console.WriteLine("Injected!");
+            displayError("Youre using a debug build!");
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            if (debug)
+            {
+                lastLog = File.ReadAllText(debugLog);
+                while (true)
+                {
+                    string newLog = File.ReadAllText(debugLog);
+                    string added = newLog.Substring(lastLog.Length);
+                    Console.Write(added);
+                    lastLog = newLog;
+                    Thread.Sleep(100);
+                }
+            }
             Thread.Sleep(1000);
         }
 
@@ -79,6 +101,11 @@ namespace Lunity_Injector
                 Process[] possiblilties = Process.GetProcessesByName("Minecraft.Windows");
                 if (possiblilties.Length < 1)
                 {
+                    if (!started)
+                    {
+                        Process.Start("minecraft://");
+                        started = true;
+                    }
                     continue;
                 }
                 Process tempGame = possiblilties[0];

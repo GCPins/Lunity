@@ -1,10 +1,16 @@
 // dllmain.cpp : Definisce il punto di ingresso per l'applicazione DLL.
 #include "pch.h"
+#include "BigHead.h"
+#include "SDK/LunMem.h"
+#include "Client/CheatManager.h"
 
 void ExecLunity(LPVOID lpParam) {
-    int i = 0;
+    CheatManager* manager = new CheatManager();
+    logHex("Module base", LunMem::getBaseModule());
+    logHex("Client Instance", (ulong)LunMem::getClientInstance());
+    logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->localPlayer);
     while (true) {
-        i++;
+        manager->tickCheats();
     }
 }
 
