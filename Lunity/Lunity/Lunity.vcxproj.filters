@@ -39,7 +39,16 @@
     <ClInclude Include="Logger.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Cheat.h">
+    <ClInclude Include="Client\Cheat.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\CheatManager.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\AirJump.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\pch.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,7 +62,10 @@
     <ClCompile Include="SDK\LunMem.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Cheat.cpp">
+    <ClCompile Include="Client\Cheat.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\AirJump.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

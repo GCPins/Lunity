@@ -5,7 +5,7 @@ static void log(string log) {
 	CloseHandle(CreateFileA(debugPath.c_str(), GENERIC_WRITE | GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL));
 	ofstream outfile;
 	outfile.open(debugPath.c_str(), ios_base::app);
-	outfile << log << endl;
+	outfile << log << "\n" << endl;
 	outfile.close();
 	return;
 }

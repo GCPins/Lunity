@@ -2,9 +2,9 @@
 #include "../BigHead.h"
 class LocalPlayer {
 private:
-	char pad_0178[0x174]; //0x0004
+	char pad_0178[0x178]; //0x0004
 public:
-	byte onGround;
+	uint onGround;
 };
 class ClientInstance {
 private:

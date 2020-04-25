@@ -1,11 +1,13 @@
 #pragma once
+#include "../SDK/LunMC.h"
+#include "../SDK/LunMem.h"
 class Cheat
 {
 public:
 	Cheat();
-	void onLoop();
-	void onTick();
-	void onEnable();
-	void onDisable();
+	virtual void onLoop();
+	virtual void onTick();
+	virtual void onEnable();
+	virtual void onDisable();
 };
 

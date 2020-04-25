@@ -154,8 +154,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Client\Cheats\AirJump.h" />
     <ClInclude Include="BigHead.h" />
-    <ClInclude Include="Cheat.h" />
+    <ClInclude Include="Client\CheatManager.h" />
+    <ClInclude Include="Client\Cheat.h" />
+    <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\pch.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Logger.h" />
@@ -165,7 +168,8 @@
     <ClInclude Include="SDK\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cheat.cpp" />
+    <ClCompile Include="Client\Cheat.cpp" />
+    <ClCompile Include="Client\Cheats\AirJump.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="SDK\LunMem.cpp" />
     <ClCompile Include="pch.cpp">

@@ -24,7 +24,48 @@ namespace Lunity_Injector
         public static string dataDir = Environment.ExpandEnvironmentVariables(@"%appdata%\Lunity");
         static void Main(string[] args)
         {
+            if (debug)
+            {
+                displayError("Youre using a debug build!");
+                File.Create(debugLog).Close();
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                new Thread(() =>
+                {
+                    if (debug)
+                    {
+                        using (FileStream stream = File.Open(debugLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                        {
+                            using (StreamReader reader = new StreamReader(stream))
+                            {
+                                while (!reader.EndOfStream)
+                                {
+                                    lastLog += reader.ReadLine();
+                                }
+                            }
+                        }
+                        while (true)
+                        {
+                            string newLog = "";
+                            using (FileStream stream = File.Open(debugLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                            {
+                                using (StreamReader reader = new StreamReader(stream))
+                                {
+                                    while (!reader.EndOfStream)
+                                    {
+                                        newLog += reader.ReadLine();
+                                    }
+                                }
+                            }
+                            string added = newLog.Substring(lastLog.Length);
+                            Console.WriteLine(added);
+                            lastLog = newLog;
+                            Thread.Sleep(100);
+                        }
+                    }
+                }).Start();
+            }
             Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
             Console.WriteLine("Lunity injector by ASM");
             Console.WriteLine("Verifying Lunity...");
             if (!verifyLunity())
@@ -45,21 +86,10 @@ namespace Lunity_Injector
             }
             injectLunity();
             Console.WriteLine("Injected!");
-            displayError("Youre using a debug build!");
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            if (debug)
-            {
-                lastLog = File.ReadAllText(debugLog);
-                while (true)
-                {
-                    string newLog = File.ReadAllText(debugLog);
-                    string added = newLog.Substring(lastLog.Length);
-                    Console.Write(added);
-                    lastLog = newLog;
-                    Thread.Sleep(100);
-                }
-            }
-            Thread.Sleep(1000);
+            if (!debug)
+                Thread.Sleep(1000);
+            else
+                Console.ReadLine();
         }
 
         public static void applyAppPackages(string file)

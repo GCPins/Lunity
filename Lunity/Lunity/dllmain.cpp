@@ -5,12 +5,12 @@
 #include "Client/CheatManager.h"
 
 void ExecLunity(LPVOID lpParam) {
-    CheatManager* manager = new CheatManager();
     logHex("Module base", LunMem::getBaseModule());
     logHex("Client Instance", (ulong)LunMem::getClientInstance());
     logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->localPlayer);
+    loadCheats();
     while (true) {
-        manager->tickCheats();
+        tickCheats();
     }
 }
 
