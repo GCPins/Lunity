@@ -3,12 +3,14 @@
 #include "BigHead.h"
 #include "SDK/LunMem.h"
 #include "Client/CheatManager.h"
+#include "Client/KeyHook.h"
 
 void ExecLunity(LPVOID lpParam) {
     logHex("Module base", LunMem::getBaseModule());
     logHex("Client Instance", (ulong)LunMem::getClientInstance());
-    logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->localPlayer);
+    //logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->localPlayer);
     loadCheats();
+    //installHooks();
     while (true) {
         tickCheats();
     }

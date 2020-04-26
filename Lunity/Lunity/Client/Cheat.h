@@ -1,6 +1,5 @@
 #pragma once
-#include "../SDK/LunMC.h"
-#include "../SDK/LunMem.h"
+#include "../BigHead.h"
 class Cheat
 {
 public:

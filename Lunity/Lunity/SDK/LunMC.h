@@ -1,5 +1,5 @@
 #pragma once
-#include "../BigHead.h"
+#define uint UINT32
 class LocalPlayer {
 private:
 	char pad_0178[0x178]; //0x0004

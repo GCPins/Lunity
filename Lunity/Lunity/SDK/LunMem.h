@@ -1,6 +1,6 @@
 #pragma once
-#include "../BigHead.h"
 #include "LunMC.h"
+#define ulong UINT64
 class LunMem
 {
 public:

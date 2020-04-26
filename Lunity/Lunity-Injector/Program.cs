@@ -22,6 +22,7 @@ namespace Lunity_Injector
         public static Process game;
         public static IntPtr pHandle;
         public static string dataDir = Environment.ExpandEnvironmentVariables(@"%appdata%\Lunity");
+        static string[] neededLibs = { "capstone.dll", "PolyHook_2.dll", "Lunity.dll" };
         static void Main(string[] args)
         {
             if (debug)
@@ -108,12 +109,15 @@ namespace Lunity_Injector
                 {
                     Directory.CreateDirectory(dataDir);
                 }
-                if (!File.Exists(dataDir + "/Lunity.dll"))
+                foreach(string lib in neededLibs)
                 {
-                    displayError("Missing Lunity.dll!");
-                    return false;
+                    if (!File.Exists(dataDir + "/" + lib))
+                    {
+                        displayError("Missing "+ lib + "!");
+                        return false;
+                    }
+                    applyAppPackages(dataDir + "/" + lib);
                 }
-                applyAppPackages(dataDir + "/Lunity.dll");
                 return true;
             }catch(Exception ex)
             {
@@ -146,7 +150,10 @@ namespace Lunity_Injector
         }
         public static void injectLunity()
         {
-            InjectDll(dataDir + "/Lunity.dll");
+            foreach (string lib in neededLibs)
+            {
+                InjectDll(dataDir + "/" + lib);
+            }
         }
 
         //Code from https://github.com/erfg12/memory.dll/blob/master/Memory/memory.cs
