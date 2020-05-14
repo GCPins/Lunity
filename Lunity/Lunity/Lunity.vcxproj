@@ -90,20 +90,19 @@
       <PreprocessorDefinitions>_DEBUG;LUNITY_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>A:\GitHub\vcpkg\packages\capstone_x86-windows\include;A:\GitHub\vcpkg\packages\polyhook2_x86-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>PolyHook_2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>A:\GitHub\vcpkg\packages\polyhook2_x64-windows\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)x64\Debug\Lunity.dll" "$(AppData)\Lunity\Lunity.dll"
-copy "$(SolutionDir)x64\Debug\PolyHook_2.dll" "$(AppData)\Lunity\PolyHook_2.dll"
-copy "$(SolutionDir)x64\Debug\capstone.dll" "$(AppData)\Lunity\capstone.dll"</Command>
+      <Command>copy "$(SolutionDir)x64\Debug\Lunity.dll" "$(AppData)\Lunity\Lunity.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -181,7 +180,6 @@ copy "$(SolutionDir)x64\Debug\capstone.dll" "$(AppData)\Lunity\capstone.dll"</Co
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\pch.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Client\KeyHook.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="polyhook2\ADisassembler.hpp" />
     <ClInclude Include="polyhook2\CapstoneDisassembler.hpp" />

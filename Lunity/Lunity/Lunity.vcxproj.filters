@@ -51,9 +51,6 @@
     <ClInclude Include="Client\Cheats\pch.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\KeyHook.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="polyhook2\Detour\ADetour.hpp">
       <Filter>File di intestazione</Filter>
     </ClInclude>

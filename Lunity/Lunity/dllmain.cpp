@@ -3,7 +3,6 @@
 #include "BigHead.h"
 #include "SDK/LunMem.h"
 #include "Client/CheatManager.h"
-#include "Client/KeyHook.h"
 
 void ExecLunity(LPVOID lpParam) {
     logHex("Module base", LunMem::getBaseModule());
