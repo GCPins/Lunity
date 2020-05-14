@@ -4,23 +4,12 @@
 class ClientInstance
 {
 public:
-	char pad_0008[88]; //0x0008
-	class MinecraftGame* MinecraftGame; //0x0060
-	char pad_0068[136]; //0x0068
+	char pad_0000[88]; //0x0000
+	class MinecraftGame* MinecraftGame; //0x0058
+	char pad_0060[144]; //0x0060
 	class LocalPlayer* LocalPlayer; //0x00F0
-	char pad_00F8[5933]; //0x00F8
-
-	virtual void Function0();
-	virtual void Function1();
-	virtual void Function2();
-	virtual void Function3();
-	virtual void Function4();
-	virtual void Function5();
-	virtual void Function6();
-	virtual void Function7();
-	virtual void Function8();
-	virtual void Function9();
-}; //Size: 0x1825
+	char pad_00F8[5941]; //0x00F8
+}; //Size: 0x182D
 
 class LocalPlayer
 {
@@ -69,13 +58,24 @@ class MinecraftGame
 public:
 	char pad_0000[56]; //0x0000
 	class MinecraftGraphics* MinecraftGraphics; //0x0038
-	char pad_0040[1992]; //0x0040
+	class NullFrameBuilder* NullFrameBuilder; //0x0040
+	char pad_0048[8]; //0x0048
+	class GameArguments* GameArguments; //0x0050
+	class GameRenderer* GameRenderer; //0x0058
+	char pad_0060[24]; //0x0060
+	class TextureGroup* TextureGroup; //0x0078
+	class TextureGroup* TextureGroup2; //0x0080
+	char pad_0088[8]; //0x0088
+	class FontRepository* FontRepository; //0x0090
+	char pad_0098[1904]; //0x0098
 }; //Size: 0x0808
 
 class MinecraftGraphics
 {
 public:
-	char pad_0008[2048]; //0x0008
+	char pad_0008[8]; //0x0008
+	class ShaderGroup* ShaderGroup; //0x0010
+	char pad_0018[2032]; //0x0018
 
 	virtual void Function0();
 	virtual void Function1();
@@ -88,3 +88,51 @@ public:
 	virtual void Function8();
 	virtual void Function9();
 }; //Size: 0x0808
+
+class ShaderGroup
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class NullFrameBuilder
+{
+public:
+	char pad_0000[1032]; //0x0000
+}; //Size: 0x0408
+
+class GameArguments
+{
+public:
+	char pad_0000[1032]; //0x0000
+}; //Size: 0x0408
+
+class GameRenderer
+{
+public:
+	char pad_0000[2056]; //0x0000
+}; //Size: 0x0808
+
+class TextureGroup
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class FontRepository
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class Minecraft
+{
+public:
+	char pad_0000[1024]; //0x0000
+}; //Size: 0x0400
+
+class N000010B9
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
