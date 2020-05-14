@@ -24,9 +24,6 @@
     <ClInclude Include="SDK\LunMem.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\LunMC.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="SDK\pch.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
@@ -163,6 +160,9 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="capstone\xcore.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\LunMC.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>

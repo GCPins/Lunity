@@ -3,6 +3,7 @@
 
 AirJump::AirJump():Cheat::Cheat("AirJump")
 {
+	enabled = true;
 }
 
 void AirJump::onLoop()
@@ -19,9 +20,9 @@ void AirJump::onTick()
 	Cheat::onTick();
 	//log("Ticking AirJump");
 	if (LunMem::getClientInstance() != NULL)
-		if (LunMem::getClientInstance()->localPlayer != NULL) {
+		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			//logHex("OnGround: ", LunMem::getClientInstance()->localPlayer->onGround);
-			LunMem::getClientInstance()->localPlayer->onGround = 0xFFFFFFFF;
+			LunMem::getClientInstance()->LocalPlayer->OnGround = 0xFFFFFFFF;
 		}
 }
 
