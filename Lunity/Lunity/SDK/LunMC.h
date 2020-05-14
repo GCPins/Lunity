@@ -4,7 +4,9 @@
 class ClientInstance
 {
 public:
-	char pad_0008[232]; //0x0008
+	char pad_0008[88]; //0x0008
+	class MinecraftGame* MinecraftGame; //0x0060
+	char pad_0068[136]; //0x0068
 	class LocalPlayer* LocalPlayer; //0x00F0
 	char pad_00F8[5933]; //0x00F8
 
@@ -26,7 +28,7 @@ public:
 	char pad_0000[376]; //0x0000
 	bool OnGround; //0x0178
 	char pad_0179[439]; //0x0179
-	class MultiPlayerLevel* N000006B1; //0x0330
+	class MultiPlayerLevel* MultiPlayerLevel; //0x0330
 	char pad_0338[120]; //0x0338
 	char Type[8]; //0x03B0
 	char pad_03B8[160]; //0x03B8
@@ -61,3 +63,28 @@ class Actor
 public:
 	char pad_0000[8]; //0x0000
 }; //Size: 0x0008
+
+class MinecraftGame
+{
+public:
+	char pad_0000[56]; //0x0000
+	class MinecraftGraphics* MinecraftGraphics; //0x0038
+	char pad_0040[1992]; //0x0040
+}; //Size: 0x0808
+
+class MinecraftGraphics
+{
+public:
+	char pad_0008[2048]; //0x0008
+
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
+}; //Size: 0x0808
