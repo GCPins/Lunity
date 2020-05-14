@@ -25,11 +25,39 @@ class LocalPlayer
 public:
 	char pad_0000[376]; //0x0000
 	bool OnGround; //0x0178
-	char pad_0179[567]; //0x0179
+	char pad_0179[439]; //0x0179
+	class MultiPlayerLevel* N000006B1; //0x0330
+	char pad_0338[120]; //0x0338
 	char Type[8]; //0x03B0
 	char pad_03B8[160]; //0x03B8
 	float PosX; //0x0458
 	float PosY; //0x045C
 	float PosZ; //0x0460
-	char pad_0464[932]; //0x0464
-}; //Size: 0x0808
+	float PosX2; //0x0464
+	float PosY2; //0x0468
+	float PosZ2; //0x046C
+	int32_t N000006E7; //0x0470
+	float HitboxWidth; //0x0474
+	float HitboxHeight; //0x0478
+	char pad_047C[892]; //0x047C
+}; //Size: 0x07F8
+
+class MultiPlayerLevel
+{
+public:
+	char pad_0000[2128]; //0x0000
+	int32_t N000008BE; //0x0850
+	int32_t LookingBlockSide; //0x0854
+	int32_t LookingBlockX; //0x0858
+	int32_t LookingBlockY; //0x085C
+	int32_t LookingBlockZ; //0x0860
+	char pad_0864[12]; //0x0864
+	class Actor* LookingActor; //0x0870
+	char pad_0878[1936]; //0x0878
+}; //Size: 0x1008
+
+class Actor
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
