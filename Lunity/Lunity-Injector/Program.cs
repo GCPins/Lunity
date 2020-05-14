@@ -22,7 +22,7 @@ namespace Lunity_Injector
         public static Process game;
         public static IntPtr pHandle;
         public static string dataDir = Environment.ExpandEnvironmentVariables(@"%appdata%\Lunity");
-        static string[] neededLibs = { "capstone.dll", "PolyHook_2.dll", "Lunity.dll" };
+        static string[] neededLibs = { "Lunity.dll" };
         static void Main(string[] args)
         {
             if (debug)
