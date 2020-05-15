@@ -32,3 +32,7 @@ void AirJump::onDisable()
 {
 	Cheat::onDisable();
 }
+
+void AirJump::onKey(ulong key) {
+	log("Airjump key");
+}

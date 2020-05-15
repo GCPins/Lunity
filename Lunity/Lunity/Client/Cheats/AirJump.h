@@ -9,5 +9,6 @@ public:
 	void onTick();
 	void onEnable();
 	void onDisable();
+	void onKey(ulong key);
 };
 
