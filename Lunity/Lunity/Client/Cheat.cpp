@@ -36,3 +36,7 @@ void Cheat::onEnable()
 void Cheat::onDisable()
 {
 }
+
+void Cheat::onKey(ulong key)
+{
+}

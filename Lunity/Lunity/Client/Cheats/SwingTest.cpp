@@ -10,6 +10,7 @@ void SwingTest::onTick()
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
 			player->swing();
+			Sleep(10);
 		}
 	}
 }

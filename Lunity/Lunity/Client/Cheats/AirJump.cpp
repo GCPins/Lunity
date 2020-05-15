@@ -4,15 +4,12 @@
 AirJump::AirJump():Cheat::Cheat("AirJump")
 {
 	enabled = true;
+	keyBind = 0x4b;
 }
 
 void AirJump::onLoop()
 {
 	Cheat::onLoop();
-	if (GetAsyncKeyState('k') || GetAsyncKeyState('K')) {
-		log("K is down");
-		enabled = !enabled;
-	}
 }
 
 void AirJump::onTick()

@@ -18,3 +18,16 @@ static void tickCheats() {
 		cheats[i]->onLoop();
 	}
 }
+static void distroKeyPress(ulong key) {
+	logHex("CM Press", key);
+	for (uint i = 0; i < cheats.size(); i++) {
+		logHex(cheats[i]->name, cheats[i]->keyBind);
+		if (cheats[i]->keyBind == key) {
+			log("Keybind match");
+			cheats[i]->enabled = !cheats[i]->enabled;
+		}
+	}
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onKey(key);
+	}
+}

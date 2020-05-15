@@ -4,6 +4,9 @@ class KeyHook
 {
 public:
 	static void installHook();
-	static int hookCallback(void* keycodePtr, void* keycodeItem);
+	static void KeyPressed(ulong key);
+	static void KeyReleased(ulong key);
+	static bool KeyState(ulong key);
+	static int hookCallback(ulong key, bool pressed);
 };
 

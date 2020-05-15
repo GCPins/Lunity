@@ -61,7 +61,7 @@ public:
 	virtual void Function29();
 	virtual void Function30();
 	virtual void Function31();
-	virtual void chorusFruitTeleport(Vector3* pos);
+	virtual void chorusFruitTeleport();
 	virtual void Function33();
 	virtual void Function34();
 	virtual void Function35();
@@ -652,3 +652,11 @@ class FontRepository
 public:
 	char pad_0000[8]; //0x0000
 }; //Size: 0x0008
+
+class KeyCodeItem
+{
+public:
+	char pad_0000[16]; //0x0000
+	BYTE KeyCode; //0x0010
+	char pad_0011[47]; //0x0011
+}; //Size: 0x0040
