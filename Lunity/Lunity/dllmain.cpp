@@ -13,7 +13,7 @@ void ExecLunity(LPVOID lpParam) {
     logHex("Module base", LunMem::getBaseModule());
     logHex("Client Instance", (ulong)LunMem::getClientInstance());
     logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->LocalPlayer);
-    loadCheats();
+    CheatManager::loadCheats();
     if (MH_Initialize() == MH_OK)
     {
         log("Minhook init");
@@ -21,7 +21,7 @@ void ExecLunity(LPVOID lpParam) {
     KeyHook::installHook();
     RenderHook::installHook();
     while (true) {
-        tickCheats();
+        CheatManager::tickCheats();
     }
 }
 

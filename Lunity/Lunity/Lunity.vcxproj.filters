@@ -183,6 +183,9 @@
     <ClInclude Include="SDK\DrawUtils.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\TabGUI.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -210,6 +213,12 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\RenderHook.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\TabGUI.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\CheatManager.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

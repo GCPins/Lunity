@@ -215,9 +215,11 @@
     <ClInclude Include="Client\Cheats\TpTest.h" />
     <ClInclude Include="Client\Cheats\SwingTest.h" />
     <ClInclude Include="SDK\TextHolder.h" />
+    <ClInclude Include="Client\Cheats\TabGUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client\Cheat.cpp" />
+    <ClCompile Include="Client\CheatManager.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\KeyHook.cpp" />
@@ -231,6 +233,7 @@
     </ClCompile>
     <ClCompile Include="Client\Cheats\TpTest.cpp" />
     <ClCompile Include="Client\Cheats\SwingTest.cpp" />
+    <ClCompile Include="Client\Cheats\TabGUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

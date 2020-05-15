@@ -81,25 +81,22 @@ struct vec2_t
 };
 
 static MinecraftUIRenderContext* renderctx;
-__int64 a2;
-__int64 tesselator;
-float* colorHolder;
 
 class DrawUtils
 {
 public:
 	static void setCtx(MinecraftUIRenderContext* ctx) {
-		renderctx = ctx;
+		renderctx = ctx;/*
 		a2 = reinterpret_cast<__int64*>(renderctx)[2];
 		tesselator = *reinterpret_cast<__int64*>(a2 + 0xA8);
-		colorHolder = *reinterpret_cast<float**>(a2 + 0x30);
+		colorHolder = *reinterpret_cast<float**>(a2 + 0x30);*/
 	}
-	static uintptr_t getFont() {
-		return (uintptr_t)LunMem::getClientInstance()->MinecraftGame->leBetterFont;
+	static BitmapFont* getFont() {
+		return LunMem::getClientInstance()->MinecraftGame->leBetterFont;
 	}
 	static float getTextWidth(std::string textStr, float size) {
 		TextHolder* text = new TextHolder(textStr);
-		uintptr_t font = getFont();
+		BitmapFont* font = getFont();
 		float wid = renderctx->getLineLength(font, text, size, false);
 		delete text;
 		return wid;
@@ -107,14 +104,18 @@ public:
 	static void flush() {
 		renderctx->flushText(0);
 	}
+	static void drawCoolText(vec2_t pos, std::string* textStr, float textSize) {
+		drawText(pos.add(vec2_t(-2, -2)), textStr, new MC_Color(0, 0, 0, 1), textSize);
+		drawText(pos.add(vec2_t(1, 1)), textStr, new MC_Color(0, 0, 0, 1), textSize);
+		drawText(pos, textStr, new MC_Color(1, 1, 1, 1), textSize);
+	}
 	static void drawText(vec2_t pos, std::string* textStr, MC_Color* color, float textSize)
 	{
 		static MC_Color* WHITE_COLOR = new MC_Color(1, 1, 1, 1, false);
 		if (color == nullptr)
 			color = WHITE_COLOR;
-		color = WHITE_COLOR;
 		TextHolder* text = new TextHolder(*textStr);
-		uintptr_t fontPtr = getFont();
+		BitmapFont* fontPtr = getFont();
 		static uintptr_t caretMeasureData = 0xFFFFFFFF;
 
 		float* posF = new float[4]; // vec4_t(startX, startY, endX, endY);
