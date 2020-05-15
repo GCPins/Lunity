@@ -1,4 +1,6 @@
 #pragma once
+#include "TextHolder.h"
+#include "../BigHead.h"
 struct Vector3 { float x, y, z; };
 // Created with ReClass.NET 1.2 by KN4CK3R
 
@@ -9,8 +11,8 @@ public:
 	class MinecraftGame* MinecraftGame; //0x0058
 	char pad_0060[144]; //0x0060
 	class LocalPlayer* LocalPlayer; //0x00F0
-	char pad_00F8[5941]; //0x00F8
-}; //Size: 0x182D
+	char pad_00F8[248]; //0x00F8
+}; //Size: 0x01F0
 
 class LocalPlayer
 {
@@ -584,8 +586,9 @@ public:
 class MinecraftGame
 {
 public:
-	char pad_0000[56]; //0x0000
-	class MinecraftGraphics* MinecraftGraphics; //0x0038
+	char pad_0000[48]; //0x0000
+	class MinecraftGraphics* MinecraftGraphics; //0x0030
+	class MinecraftGraphics* MinecraftGraphics2; //0x0038
 	class NullFrameBuilder* NullFrameBuilder; //0x0040
 	char pad_0048[8]; //0x0048
 	class GameArguments* GameArguments; //0x0050
@@ -593,10 +596,12 @@ public:
 	char pad_0060[24]; //0x0060
 	class TextureGroup* TextureGroup; //0x0078
 	class TextureGroup* TextureGroup2; //0x0080
-	char pad_0088[8]; //0x0088
-	class FontRepository* FontRepository; //0x0090
-	char pad_0098[1904]; //0x0098
-}; //Size: 0x0808
+	class FontRepository* FontRepository; //0x0088
+	class FontRepository* FontRepository2; //0x0090
+	char pad_0098[8]; //0x0098
+	uintptr_t theBetterFont; //0x00A0
+	char pad_00A8[1896]; //0x00A8
+}; //Size: 0x0810
 
 class MinecraftGraphics
 {
@@ -650,13 +655,55 @@ public:
 class FontRepository
 {
 public:
+	char pad_0008[256]; //0x0008
+
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
+}; //Size: 0x0108
+
+class MinecraftUIRenderContext
+{
+public:
+	char pad_0008[56]; //0x0008
+
+	virtual ~MinecraftUIRenderContext();
+	virtual float getLineLength(uintptr_t font, TextHolder* str, float textSize, bool unknown);
+	virtual float getTextAlpha();
+	virtual void setTextAlpha(float alpha);
+	virtual __int64 drawDebugText(const float* pos, TextHolder* text, float* color, float alpha, unsigned int textAlignment, const float* textMeasureData, const void* caretMeasureData);
+	virtual __int64 drawText(uintptr_t font, const float* pos, TextHolder* text, float* color, float alpha, unsigned int textAlignment, const float* textMeasureData, const uintptr_t* caretMeasureData);
+	virtual void flushText(float timeSinceLastFlush); // time used for ticking the obfuscated text
+	virtual __int64 drawImageNOTIMPLEMENTED(); // didnt bother putting in the parameters
+	virtual __int64 drawNinesliceNOTIMPLEMENTED();
+	virtual __int64 flushImagesNOTIMPLEMENTED();
+	virtual __int64 beginSharedMeshBatchNOTIMPLEMENTED();
+	virtual __int64 endSharedMeshBatchNOTIMPLEMENTED();
+	virtual void drawRectangle(const float* pos, const float* color, float alpha, int lineWidth); // line width is guessed
+	virtual void fillRectangle(const float* pos, const float* color, float alpha);
+}; //Size: 0x0040
+
+class N00000A14
+{
+public:
 	char pad_0000[8]; //0x0000
 }; //Size: 0x0008
 
-class KeyCodeItem
+class N00000A3A
 {
 public:
-	char pad_0000[16]; //0x0000
-	BYTE KeyCode; //0x0010
-	char pad_0011[47]; //0x0011
-}; //Size: 0x0040
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class BitmapFont
+{
+public:
+	char pad_0000[72]; //0x0000
+}; //Size: 0x0048

@@ -179,6 +179,7 @@
     <ClInclude Include="Client\Cheat.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\pch.h" />
+    <ClInclude Include="SDK\DrawUtils.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Client\KeyHook.h" />
     <ClInclude Include="Logger.h" />
@@ -206,18 +207,21 @@
     <ClInclude Include="polyhook2\Virtuals\VFuncSwapHook.hpp" />
     <ClInclude Include="polyhook2\Virtuals\VTableSwapHook.hpp" />
     <ClInclude Include="polyhook2\ZydisDisassembler.hpp" />
+    <ClInclude Include="Client\RenderHook.h" />
     <ClInclude Include="SDK\LunMC.h" />
     <ClInclude Include="SDK\LunMem.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SDK\pch.h" />
     <ClInclude Include="Client\Cheats\TpTest.h" />
     <ClInclude Include="Client\Cheats\SwingTest.h" />
+    <ClInclude Include="SDK\TextHolder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client\Cheat.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\KeyHook.cpp" />
+    <ClCompile Include="Client\RenderHook.cpp" />
     <ClCompile Include="SDK\LunMem.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
