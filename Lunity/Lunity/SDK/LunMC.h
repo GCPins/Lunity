@@ -1,4 +1,6 @@
 #pragma once
+#include "TextHolder.h"
+#include "../BigHead.h"
 struct Vector3 { float x, y, z; };
 // Created with ReClass.NET 1.2 by KN4CK3R
 
@@ -7,10 +9,23 @@ class ClientInstance
 public:
 	char pad_0000[88]; //0x0000
 	class MinecraftGame* MinecraftGame; //0x0058
-	char pad_0060[144]; //0x0060
+	class MinecraftGame* MinecraftGame2; //0x0060
+	class Minecraft* Minecraft; //0x0068
+	char pad_0070[24]; //0x0070
+	class LoopbackPacketSender* LoopbackPacketSender; //0x0088
+	class HolographicPlatform* HolographicPlatform; //0x0090
+	class VoiceSystem* VoiceSystem; //0x0098
+	class VanillaMoveInputHandler* VanillaMoveInputHandler; //0x00A0
+	char pad_00A8[8]; //0x00A8
+	class MinecraftKeyboardManager* MinecraftKeyboardManager; //0x00B0
+	class HitDetectSystem* HitDetectSystem; //0x00B8
+	class PrivateKeyManager* PrivateKeyManager; //0x00C0
+	class UserAuthentication* UserAuthentication; //0x00C8
+	class SceneFactory* SceneFactory; //0x00D0
+	char pad_00D8[24]; //0x00D8
 	class LocalPlayer* LocalPlayer; //0x00F0
-	char pad_00F8[5941]; //0x00F8
-}; //Size: 0x182D
+	char pad_00F8[248]; //0x00F8
+}; //Size: 0x01F0
 
 class LocalPlayer
 {
@@ -27,7 +42,8 @@ public:
 	int N000006E7; //0x0470
 	float HitboxWidth; //0x0474
 	float HitboxHeight; //0x0478
-	char pad_047C[892]; //0x047C
+	Vector3 Pos3; //0x047C
+	char pad_0488[888]; //0x0488
 
 	virtual void Function0();
 	virtual void Function1();
@@ -559,7 +575,7 @@ public:
 	virtual void Function527();
 	virtual void Function528();
 	virtual void Function529();
-}; //Size: 0x07F8
+}; //Size: 0x0800
 
 class MultiPlayerLevel
 {
@@ -584,8 +600,9 @@ public:
 class MinecraftGame
 {
 public:
-	char pad_0000[56]; //0x0000
-	class MinecraftGraphics* MinecraftGraphics; //0x0038
+	char pad_0000[48]; //0x0000
+	class MinecraftGraphics* MinecraftGraphics; //0x0030
+	class MinecraftGraphics* MinecraftGraphics2; //0x0038
 	class NullFrameBuilder* NullFrameBuilder; //0x0040
 	char pad_0048[8]; //0x0048
 	class GameArguments* GameArguments; //0x0050
@@ -593,10 +610,12 @@ public:
 	char pad_0060[24]; //0x0060
 	class TextureGroup* TextureGroup; //0x0078
 	class TextureGroup* TextureGroup2; //0x0080
-	char pad_0088[8]; //0x0088
-	class FontRepository* FontRepository; //0x0090
-	char pad_0098[1904]; //0x0098
-}; //Size: 0x0808
+	class FontRepository* FontRepository; //0x0088
+	class FontRepository* FontRepository2; //0x0090
+	class BitmapFont* leBetterFont; //0x0098
+	class BitmapFont* theBetterFont; //0x00A0
+	char pad_00A8[1896]; //0x00A8
+}; //Size: 0x0810
 
 class MinecraftGraphics
 {
@@ -626,8 +645,8 @@ public:
 class NullFrameBuilder
 {
 public:
-	char pad_0000[1032]; //0x0000
-}; //Size: 0x0408
+	char pad_0000[1024]; //0x0000
+}; //Size: 0x0400
 
 class GameArguments
 {
@@ -650,13 +669,124 @@ public:
 class FontRepository
 {
 public:
+	char pad_0008[256]; //0x0008
+
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
+}; //Size: 0x0108
+
+class MinecraftUIRenderContext
+{
+public:
+	char pad_0008[56]; //0x0008
+
+	virtual ~MinecraftUIRenderContext();
+	virtual float getLineLength(BitmapFont* font, TextHolder* str, float textSize, bool unknown);
+	virtual float getTextAlpha();
+	virtual void setTextAlpha(float alpha);
+	virtual __int64 drawDebugText(const float* pos, TextHolder* text, float* color, float alpha, unsigned int textAlignment, const float* textMeasureData, const void* caretMeasureData);
+	virtual __int64 drawText(BitmapFont* font, const float* pos, TextHolder* text, float* color, float alpha, unsigned int textAlignment, const float* textMeasureData, const uintptr_t* caretMeasureData);
+	virtual void flushText(float timeSinceLastFlush); // time used for ticking the obfuscated text
+	virtual __int64 drawImageNOTIMPLEMENTED(); // didnt bother putting in the parameters
+	virtual __int64 drawNinesliceNOTIMPLEMENTED();
+	virtual __int64 flushImagesNOTIMPLEMENTED();
+	virtual __int64 beginSharedMeshBatchNOTIMPLEMENTED();
+	virtual __int64 endSharedMeshBatchNOTIMPLEMENTED();
+	virtual void drawRectangle(const float* pos, const float* color, float alpha, int lineWidth); // line width is guessed
+	virtual void fillRectangle(const float* pos, const float* color, float alpha);
+}; //Size: 0x0040
+
+class UserAuthentication
+{
+public:
+	char pad_0000[72]; //0x0000
+}; //Size: 0x0048
+
+class BitmapFont
+{
+public:
+	char pad_0000[72]; //0x0000
+}; //Size: 0x0048
+
+class LoopbackPacketSender
+{
+public:
 	char pad_0000[8]; //0x0000
 }; //Size: 0x0008
 
-class KeyCodeItem
+class HolographicPlatform
 {
 public:
-	char pad_0000[16]; //0x0000
-	BYTE KeyCode; //0x0010
-	char pad_0011[47]; //0x0011
-}; //Size: 0x0040
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class VoiceSystem
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class VanillaMoveInputHandler
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class MinecraftKeyboardManager
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class HitDetectSystem
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class PrivateKeyManager
+{
+public:
+	char pad_0000[24]; //0x0000
+}; //Size: 0x0018
+
+class SceneFactory
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class Minecraft
+{
+public:
+	char pad_0000[192]; //0x0000
+	class NetworkHandler* NetworkHandler; //0x00C0
+	class LoopbackPacketSender* LoopbackPacketSender; //0x00C8
+	char pad_00D0[56]; //0x00D0
+}; //Size: 0x0108
+
+class NetworkHandler
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class N00000D28
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class N00000D51
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008

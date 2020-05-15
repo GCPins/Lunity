@@ -4,6 +4,7 @@
 #include "SDK/LunMem.h"
 #include "Client/CheatManager.h"
 #include "Client/KeyHook.h"
+#include "Client/RenderHook.h"
 
 #include <MinHook.h>
 #pragma comment(lib, "libMinHook.lib")
@@ -12,14 +13,15 @@ void ExecLunity(LPVOID lpParam) {
     logHex("Module base", LunMem::getBaseModule());
     logHex("Client Instance", (ulong)LunMem::getClientInstance());
     logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->LocalPlayer);
-    loadCheats();
+    CheatManager::loadCheats();
     if (MH_Initialize() == MH_OK)
     {
         log("Minhook init");
     }
     KeyHook::installHook();
+    RenderHook::installHook();
     while (true) {
-        tickCheats();
+        CheatManager::tickCheats();
     }
 }
 
