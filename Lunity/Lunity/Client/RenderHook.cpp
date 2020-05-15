@@ -16,7 +16,7 @@ int hookCallback(__int64 a1, MinecraftUIRenderContext* renderCtx) {
 	DrawUtils::flush();
 	int ret = original(a1, renderCtx);
 	std::string lunStr = std::string("Lunity");
-	DrawUtils::drawText(vec2_t(0,0), &std::string(lunStr), nullptr, 1.0f);
+	DrawUtils::drawText(vec2_t(10,10), &lunStr, new MC_Color(1,1,1,1), 1.0f);
 	DrawUtils::flush();
 	return ret;
 }
