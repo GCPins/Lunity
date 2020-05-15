@@ -209,6 +209,7 @@
     <ClInclude Include="SDK\LunMem.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SDK\pch.h" />
+    <ClInclude Include="Client\Cheats\TpTest.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client\Cheat.cpp" />
@@ -221,6 +222,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Client\Cheats\TpTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

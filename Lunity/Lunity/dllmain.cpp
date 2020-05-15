@@ -7,7 +7,7 @@
 void ExecLunity(LPVOID lpParam) {
     logHex("Module base", LunMem::getBaseModule());
     logHex("Client Instance", (ulong)LunMem::getClientInstance());
-    //logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->localPlayer);
+    logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->LocalPlayer);
     loadCheats();
     //installHooks();
     while (true) {
