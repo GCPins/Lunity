@@ -9,7 +9,20 @@ class ClientInstance
 public:
 	char pad_0000[88]; //0x0000
 	class MinecraftGame* MinecraftGame; //0x0058
-	char pad_0060[144]; //0x0060
+	class MinecraftGame* MinecraftGame2; //0x0060
+	class Minecraft* Minecraft; //0x0068
+	char pad_0070[24]; //0x0070
+	class LoopbackPacketSender* LoopbackPacketSender; //0x0088
+	class HolographicPlatform* HolographicPlatform; //0x0090
+	class VoiceSystem* VoiceSystem; //0x0098
+	class VanillaMoveInputHandler* VanillaMoveInputHandler; //0x00A0
+	char pad_00A8[8]; //0x00A8
+	class MinecraftKeyboardManager* MinecraftKeyboardManager; //0x00B0
+	class HitDetectSystem* HitDetectSystem; //0x00B8
+	class PrivateKeyManager* PrivateKeyManager; //0x00C0
+	class UserAuthentication* UserAuthentication; //0x00C8
+	class SceneFactory* SceneFactory; //0x00D0
+	char pad_00D8[24]; //0x00D8
 	class LocalPlayer* LocalPlayer; //0x00F0
 	char pad_00F8[248]; //0x00F8
 }; //Size: 0x01F0
@@ -29,7 +42,8 @@ public:
 	int N000006E7; //0x0470
 	float HitboxWidth; //0x0474
 	float HitboxHeight; //0x0478
-	char pad_047C[892]; //0x047C
+	Vector3 Pos3; //0x047C
+	char pad_0488[888]; //0x0488
 
 	virtual void Function0();
 	virtual void Function1();
@@ -561,7 +575,7 @@ public:
 	virtual void Function527();
 	virtual void Function528();
 	virtual void Function529();
-}; //Size: 0x07F8
+}; //Size: 0x0800
 
 class MultiPlayerLevel
 {
@@ -598,8 +612,8 @@ public:
 	class TextureGroup* TextureGroup2; //0x0080
 	class FontRepository* FontRepository; //0x0088
 	class FontRepository* FontRepository2; //0x0090
-	char pad_0098[8]; //0x0098
-	uintptr_t theBetterFont; //0x00A0
+	class BitmapFont* leBetterFont; //0x0098
+	class BitmapFont* theBetterFont; //0x00A0
 	char pad_00A8[1896]; //0x00A8
 }; //Size: 0x0810
 
@@ -631,8 +645,8 @@ public:
 class NullFrameBuilder
 {
 public:
-	char pad_0000[1032]; //0x0000
-}; //Size: 0x0408
+	char pad_0000[1024]; //0x0000
+}; //Size: 0x0400
 
 class GameArguments
 {
@@ -690,20 +704,89 @@ public:
 	virtual void fillRectangle(const float* pos, const float* color, float alpha);
 }; //Size: 0x0040
 
-class N00000A14
+class UserAuthentication
 {
 public:
-	char pad_0000[8]; //0x0000
-}; //Size: 0x0008
-
-class N00000A3A
-{
-public:
-	char pad_0000[8]; //0x0000
-}; //Size: 0x0008
+	char pad_0000[72]; //0x0000
+}; //Size: 0x0048
 
 class BitmapFont
 {
 public:
 	char pad_0000[72]; //0x0000
 }; //Size: 0x0048
+
+class LoopbackPacketSender
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class HolographicPlatform
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class VoiceSystem
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class VanillaMoveInputHandler
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class MinecraftKeyboardManager
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class HitDetectSystem
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class PrivateKeyManager
+{
+public:
+	char pad_0000[24]; //0x0000
+}; //Size: 0x0018
+
+class SceneFactory
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class Minecraft
+{
+public:
+	char pad_0000[192]; //0x0000
+	class NetworkHandler* NetworkHandler; //0x00C0
+	class LoopbackPacketSender* LoopbackPacketSender; //0x00C8
+	char pad_00D0[56]; //0x00D0
+}; //Size: 0x0108
+
+class NetworkHandler
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class N00000D28
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class N00000D51
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008

@@ -81,14 +81,21 @@ struct vec2_t
 };
 
 static MinecraftUIRenderContext* renderctx;
+__int64 a2;
+__int64 tesselator;
+float* colorHolder;
+
 class DrawUtils
 {
 public:
 	static void setCtx(MinecraftUIRenderContext* ctx) {
 		renderctx = ctx;
+		a2 = reinterpret_cast<__int64*>(renderctx)[2];
+		tesselator = *reinterpret_cast<__int64*>(a2 + 0xA8);
+		colorHolder = *reinterpret_cast<float**>(a2 + 0x30);
 	}
 	static uintptr_t getFont() {
-		return LunMem::getClientInstance()->MinecraftGame->theBetterFont;
+		return (uintptr_t)LunMem::getClientInstance()->MinecraftGame->leBetterFont;
 	}
 	static float getTextWidth(std::string textStr, float size) {
 		TextHolder* text = new TextHolder(textStr);
@@ -105,7 +112,7 @@ public:
 		static MC_Color* WHITE_COLOR = new MC_Color(1, 1, 1, 1, false);
 		if (color == nullptr)
 			color = WHITE_COLOR;
-
+		color = WHITE_COLOR;
 		TextHolder* text = new TextHolder(*textStr);
 		uintptr_t fontPtr = getFont();
 		static uintptr_t caretMeasureData = 0xFFFFFFFF;
@@ -118,13 +125,25 @@ public:
 
 		static float size = 1;
 		size = textSize;
-		renderctx->drawText(fontPtr, posF, text, color->arr, 1, 0, &size, &caretMeasureData);
+		if (fontPtr != NULL) {
+			if (posF != NULL) {
+				if (text != NULL) {
+					if (color != NULL) {
+						if (color->arr != NULL) {
+							if (size != NULL) {
+								if(caretMeasureData != NULL)
+									renderctx->drawText(fontPtr, posF, text, color->arr, 1, 0, &size, &caretMeasureData);
+							}
+						}
+					}
+				}
+			}
+		}
 
 		if (color->shouldDelete)
 			delete color;
 		delete[] posF;
 		delete text;
-
 	}
 };
 
