@@ -61,7 +61,7 @@ public:
 	virtual void Function29();
 	virtual void Function30();
 	virtual void Function31();
-	virtual void chorusFruitTeleport();
+	virtual void chorusFruitTeleport(Vector3* pos);
 	virtual void Function33();
 	virtual void Function34();
 	virtual void Function35();

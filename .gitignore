@@ -12,3 +12,4 @@
 */*/Release
 Debug/
 Release/
+*.lib
