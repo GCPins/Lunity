@@ -1,6 +1,7 @@
 #pragma once
-// Created with ReClass.NET 1.2 by KN4CK3R
 struct Vector3 { float x, y, z; };
+// Created with ReClass.NET 1.2 by KN4CK3R
+
 class ClientInstance
 {
 public:
@@ -38,7 +39,7 @@ public:
 	virtual void Function7();
 	virtual void Function8();
 	virtual void Function9();
-	virtual void setPos(Vector3* position);
+	virtual void setPos(Vector3* pos);
 	virtual Vector3* getPos();
 	virtual void Function12();
 	virtual void Function13();
@@ -60,7 +61,7 @@ public:
 	virtual void Function29();
 	virtual void Function30();
 	virtual void Function31();
-	virtual void Function32();
+	virtual void chorusFruitTeleport();
 	virtual void Function33();
 	virtual void Function34();
 	virtual void Function35();
@@ -227,7 +228,7 @@ public:
 	virtual void Function196();
 	virtual void Function197();
 	virtual void Function198();
-	virtual void Function199();
+	virtual void swing();
 	virtual void Function200();
 	virtual void Function201();
 	virtual void Function202();

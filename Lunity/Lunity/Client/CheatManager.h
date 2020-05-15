@@ -3,6 +3,7 @@
 #include "Cheat.h"
 #include "Cheats/AirJump.h"
 #include "Cheats/TpTest.h"
+#include "Cheats/SwingTest.h"
 
 static std::vector<Cheat*> cheats = std::vector<Cheat*>();
 
@@ -10,6 +11,7 @@ static void loadCheats() {
 	//Load cheats here
 	cheats.push_back(new AirJump());
 	cheats.push_back(new TpTest());
+	cheats.push_back(new SwingTest());
 }
 static void tickCheats() {
 	for (uint i = 0; i < cheats.size(); i++) {
