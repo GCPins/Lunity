@@ -8,6 +8,7 @@ TabGUI::TabGUI():Cheat::Cheat("TabGUI", "Visuals")
 	enabled = true;
 }
 
+uint selectedCat = 0;
 void TabGUI::onPostRender()
 {
 	vector<Cheat*> cheats = CheatManager::getCheats();
@@ -18,6 +19,26 @@ void TabGUI::onPostRender()
 	std::string lunStr = std::string("Lunity");
 	DrawUtils::drawText(vec2_t(10, 10), &lunStr, nullptr, 3.0f);
 	for (uint i = 0; i < categories.size(); i++) {
-		DrawUtils::drawText(vec2_t(10, 35 + (i * 10)), &categories[i], nullptr, 1.0f);
+		bool selected = selectedCat == i;
+		if (selected) {
+			DrawUtils::drawText(vec2_t(10, 35 + (i * 10)), &string(">"+categories[i]), nullptr, 1.0f);
+		}
+		else {
+			DrawUtils::drawText(vec2_t(10, 35 + (i * 10)), &categories[i], nullptr, 1.0f);
+		}
+	}
+}
+
+void TabGUI::onKey(ulong key)
+{
+	vector<string> categories = CheatManager::getCategories();
+	if (key == 0x28) {
+		selectedCat++;
+	}
+	if (key == 0x26) {
+		selectedCat--;
+	}
+	if (selectedCat >= categories.size()) {
+		selectedCat = 0;
 	}
 }
