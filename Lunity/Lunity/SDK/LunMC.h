@@ -254,7 +254,8 @@ public:
 	virtual void Function205();
 	virtual void Function206();
 	virtual void Function207();
-	virtual void Function208();
+	virtual bool isCreative(void);
+	virtual bool isAdventure(void);
 	virtual void Function209();
 	virtual void add(class ItemStack const&);
 	virtual void drop(class ItemStack const&, bool);
@@ -463,7 +464,7 @@ public:
 	virtual void Function414();
 	virtual void Function415();
 	virtual void Function416();
-	virtual void Function417();
+	virtual void crit(class Actor*);
 	virtual void Function418();
 	virtual void Function419();
 	virtual void Function420();
