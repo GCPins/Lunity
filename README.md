@@ -1,2 +1,2 @@
 # Lunity
-A Minecraft: Bedrock Edition internal mod base for C++ mods
+A Minecraft: Bedrock Edition internal C++ Utility Mod
