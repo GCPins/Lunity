@@ -26,6 +26,12 @@ void KeyHook::installHook() {
 	}
 }
 
+void KeyHook::uninstallHook()
+{
+	void* toHook = (void*)(LunMem::getBaseModule() + 0xD549F0);
+	MH_DisableHook(toHook);
+}
+
 std::map<ulong, bool> keyState;
 
 void KeyHook::KeyPressed(ulong key) {

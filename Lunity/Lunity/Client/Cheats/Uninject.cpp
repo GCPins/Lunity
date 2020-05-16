@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "Uninject.h"
+#include "../KeyHook.h"
+#include "../RenderHook.h"
 
 Uninject::Uninject() :Cheat::Cheat("Uninject", "Other")
 {
@@ -18,7 +20,11 @@ void Uninject::onTick()
 
 void Uninject::onEnable()
 {
+	log("Uninjecting...");
 	Cheat::onEnable();
+	KeyHook::uninstallHook();
+	RenderHook::uninstallHook();
+	log("Hooks removed, freeing...");
 	FreeLibraryAndExitThread((HMODULE)LunMem::getThisModule(), 0);
 }
 

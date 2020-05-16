@@ -42,3 +42,9 @@ void RenderHook::installHook() {
 		log("Failed to hook render!");
 	}
 }
+
+void RenderHook::uninstallHook()
+{
+	void* toHook = (void*)(LunMem::getBaseModule() + 0x7235A0);
+	MH_DisableHook(toHook);
+}
