@@ -791,3 +791,25 @@ class N00000D51
 public:
 	char pad_0000[8]; //0x0000
 }; //Size: 0x0008
+class GameMode
+{
+public:
+	char pad_0008[56]; //0x0008
+
+	virtual void Destructor();
+	virtual void startDestroyBlock();
+	virtual void destroyBlock();
+	virtual void continueDestroyBlock();
+	virtual void stopDestroyBlock();
+	virtual void startBuildBlock();
+	virtual void buildBlock();
+	virtual void continueBuildBlock();
+	virtual void stopBuildBlock();
+	virtual void tick();
+	virtual void getPickRange();
+	virtual void useItem();
+	virtual void useItemOn();
+	virtual void interact();
+	virtual void attack();
+	virtual void releaseUsingItem();
+}; //Size: 0x0040

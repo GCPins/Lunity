@@ -187,6 +187,7 @@
     <ClInclude Include="Client\Cheats\Uninject.h" />
     <ClInclude Include="Client\Hooks\pch.h" />
     <ClInclude Include="Client\pch.h" />
+    <ClInclude Include="Client\Hooks\GamemodeHook.h" />
     <ClInclude Include="SDK\DrawUtils.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Client\Hooks\KeyHook.h" />
@@ -234,6 +235,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\Hooks\KeyHook.cpp" />
     <ClCompile Include="Client\Hooks\RenderHook.cpp" />
+    <ClCompile Include="Client\Hooks\GamemodeHook.cpp" />
     <ClCompile Include="SDK\DrawUtils.cpp" />
     <ClCompile Include="SDK\LunMem.cpp" />
     <ClCompile Include="pch.cpp">
