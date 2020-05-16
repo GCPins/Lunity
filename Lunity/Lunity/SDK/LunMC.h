@@ -2,6 +2,7 @@
 #include "TextHolder.h"
 #include "../BigHead.h"
 struct Vector3 { float x, y, z; };
+struct Vector2 { float x, y; };
 // Created with ReClass.NET 1.2 by KN4CK3R
 
 class ClientInstance
@@ -61,7 +62,7 @@ public:
 	virtual void Function13();
 	virtual void Function14();
 	virtual void Function15();
-	virtual void setRot();
+	virtual void setRot(Vector2* vector);
 	virtual void Function17();
 	virtual void Function18();
 	virtual void Function19();
