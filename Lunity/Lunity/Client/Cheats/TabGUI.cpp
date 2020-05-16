@@ -63,6 +63,13 @@ void TabGUI::onKey(ulong key)
 	//logHex("key", key);
 	vector<string> categories = CheatManager::getCategories();
 	if (catIsSel) {
+		vector<Cheat*> cheatsInThisCat = vector<Cheat*>();
+		vector<Cheat*> cheats = CheatManager::getCheats();
+		for (uint i = 0; i < cheats.size(); i++) {
+			if (cheats[i]->category.compare(categories[highlightedCat]) == 0) {
+				cheatsInThisCat.push_back(cheats[i]);
+			}
+		}
 		if (key == 0x28) {
 			highlightedCht++;
 		}
@@ -73,14 +80,10 @@ void TabGUI::onKey(ulong key)
 			catIsSel = false;
 		}
 		if (key == 0x27) {
-			vector<Cheat*> cheats = CheatManager::getCheats();
-			vector<Cheat*> cheatsInThisCat = vector<Cheat*>();
-			for (uint i = 0; i < cheats.size(); i++) {
-				if (cheats[i]->category.compare(categories[highlightedCat]) == 0) {
-					cheatsInThisCat.push_back(cheats[i]);
-				}
-			}
 			cheatsInThisCat[highlightedCht]->enabled = !cheatsInThisCat[highlightedCht]->enabled;
+		}
+		if (highlightedCht >= cheatsInThisCat.size()) {
+			highlightedCht = 0;
 		}
 	}
 	else {
