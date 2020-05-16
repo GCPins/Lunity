@@ -1,9 +1,8 @@
 #pragma once
 #include "../BigHead.h"
 #include "Cheat.h"
+#include "Cheats/Killaura.h"
 #include "Cheats/AirJump.h"
-#include "Cheats/TpTest.h"
-#include "Cheats/SwingTest.h"
 #include "Cheats/TabGUI.h"
 
 class CheatManager {

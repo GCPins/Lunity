@@ -135,7 +135,7 @@ public:
 	virtual void Function86();
 	virtual void Function87();
 	virtual void Function88();
-	virtual void Function89();
+	virtual void setSneaking(bool);
 	virtual void Function90();
 	virtual void Function91();
 	virtual void Function92();
@@ -148,7 +148,7 @@ public:
 	virtual void Function99();
 	virtual void Function100();
 	virtual void Function101();
-	virtual void Function102();
+	virtual void attack(uintptr_t*);
 	virtual void Function103();
 	virtual void Function104();
 	virtual void Function105();
@@ -302,7 +302,7 @@ public:
 	virtual void Function253();
 	virtual void Function254();
 	virtual void Function255();
-	virtual void Function256();
+	virtual void setSprinting(bool);
 	virtual void Function257();
 	virtual void Function258();
 	virtual void Function259();
@@ -468,7 +468,7 @@ public:
 	virtual void Function419();
 	virtual void Function420();
 	virtual void Function421();
-	virtual void Function422();
+	virtual void addLevels(int);
 	virtual void Function423();
 	virtual void Function424();
 	virtual void Function425();

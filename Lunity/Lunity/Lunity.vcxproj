@@ -177,6 +177,7 @@
     <ClInclude Include="BigHead.h" />
     <ClInclude Include="Client\CheatManager.h" />
     <ClInclude Include="Client\Cheat.h" />
+    <ClInclude Include="Client\Cheats\Killaura.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\pch.h" />
     <ClInclude Include="SDK\DrawUtils.h" />
@@ -212,8 +213,6 @@
     <ClInclude Include="SDK\LunMem.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SDK\pch.h" />
-    <ClInclude Include="Client\Cheats\TpTest.h" />
-    <ClInclude Include="Client\Cheats\SwingTest.h" />
     <ClInclude Include="SDK\TextHolder.h" />
     <ClInclude Include="Client\Cheats\TabGUI.h" />
   </ItemGroup>
@@ -221,6 +220,7 @@
     <ClCompile Include="Client\Cheat.cpp" />
     <ClCompile Include="Client\CheatManager.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />
+    <ClCompile Include="Client\Cheats\Killaura.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\KeyHook.cpp" />
     <ClCompile Include="Client\RenderHook.cpp" />
@@ -232,8 +232,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Client\Cheats\TpTest.cpp" />
-    <ClCompile Include="Client\Cheats\SwingTest.cpp" />
     <ClCompile Include="Client\Cheats\TabGUI.cpp" />
   </ItemGroup>
   <ItemGroup>

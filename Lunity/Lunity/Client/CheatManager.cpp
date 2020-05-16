@@ -18,9 +18,8 @@ void CheatManager::loadCheats()
 {
 	cheats = vector<Cheat*>();
 	//Load cheats here
-	cheats.push_back(new SwingTest());
+	cheats.push_back(new Killaura());
 	cheats.push_back(new AirJump());
-	cheats.push_back(new TpTest());
 	cheats.push_back(new TabGUI());
 
 	for (uint i = 0; i < cheats.size(); i++) {

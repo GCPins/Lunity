@@ -165,12 +165,6 @@
     <ClInclude Include="SDK\LunMC.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Cheats\TpTest.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="Client\Cheats\SwingTest.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="Client\KeyHook.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
@@ -184,6 +178,9 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="Client\Cheats\TabGUI.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\Killaura.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
@@ -203,12 +200,6 @@
     <ClCompile Include="Client\Cheats\AirJump.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Client\Cheats\TpTest.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Client\Cheats\SwingTest.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
     <ClCompile Include="Client\KeyHook.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
@@ -222,6 +213,9 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="SDK\DrawUtils.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Killaura.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,8 +3,7 @@
 
 AirJump::AirJump():Cheat::Cheat("AirJump", "Movement")
 {
-	enabled = true;
-	keyBind = 0x4b;
+	//keyBind = 0x4b;
 }
 
 void AirJump::onLoop()
