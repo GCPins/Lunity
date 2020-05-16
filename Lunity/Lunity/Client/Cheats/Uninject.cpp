@@ -2,6 +2,7 @@
 #include "Uninject.h"
 #include "../Hooks/KeyHook.h"
 #include "../Hooks/RenderHook.h"
+#include "../Hooks/GamemodeHook.h"
 
 Uninject::Uninject() :Cheat::Cheat("Uninject", "Other")
 {
@@ -24,6 +25,7 @@ void Uninject::onEnable()
 	Cheat::onEnable();
 	KeyHook::uninstallHook();
 	RenderHook::uninstallHook();
+	GamemodeHook::uninstallHook();
 	log("Hooks removed, freeing...");
 	FreeLibraryAndExitThread((HMODULE)LunMem::getThisModule(), 0);
 }

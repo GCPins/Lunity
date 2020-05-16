@@ -5,12 +5,12 @@
 typedef int (WINAPI* GamemodeTick)(GameMode* gm);
 GamemodeTick original;
 
+static GameMode* thisGm = nullptr;
 int hookCallback(GameMode* gm) {
 	thisGm = gm;
 	return original(gm);
 }
 
-static GameMode* thisGm;
 GameMode* GamemodeHook::getLastGm()
 {
 	return thisGm;
@@ -36,4 +36,6 @@ void GamemodeHook::installHook()
 
 void GamemodeHook::uninstallHook()
 {
+	void* toHook = (void*)(LunMem::getBaseModule() + 0x14FEA00);
+	MH_DisableHook(toHook);
 }

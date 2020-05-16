@@ -7,6 +7,7 @@
 #include "Client/Hooks/RenderHook.h"
 
 #include <MinHook.h>
+#include "Client/Hooks/GamemodeHook.h"
 #pragma comment(lib, "libMinHook.lib")
 
 void ExecLunity(LPVOID lpParam) {
@@ -20,6 +21,7 @@ void ExecLunity(LPVOID lpParam) {
     }
     KeyHook::installHook();
     RenderHook::installHook();
+    GamemodeHook::installHook();
     while (true) {
         CheatManager::tickCheats();
         Sleep(1);
