@@ -13,7 +13,7 @@ namespace Lunity_Injector
 #if DEBUG
         static bool debug = true;
 #else
-        static bool debug = true;
+        static bool debug = false;
 #endif
         public static string debugLog = Environment.ExpandEnvironmentVariables(@"%appdata%\\..\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\RoamingState\\debug.txt");
         static string lastLog = "";
