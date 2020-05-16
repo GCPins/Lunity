@@ -184,6 +184,7 @@
     <ClInclude Include="Client\Cheats\Hitbox.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
+    <ClInclude Include="Client\Cheats\Triggerbot.h" />
     <ClInclude Include="Client\Cheats\Uninject.h" />
     <ClInclude Include="Client\Hooks\pch.h" />
     <ClInclude Include="Client\pch.h" />
@@ -231,6 +232,7 @@
     <ClCompile Include="Client\Cheats\AutoSprint.cpp" />
     <ClCompile Include="Client\Cheats\Hitbox.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
+    <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\Hooks\KeyHook.cpp" />

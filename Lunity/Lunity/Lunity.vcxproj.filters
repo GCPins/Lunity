@@ -198,6 +198,9 @@
     <ClInclude Include="Client\Hooks\GamemodeHook.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\Triggerbot.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -243,6 +246,9 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Hooks\GamemodeHook.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Triggerbot.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

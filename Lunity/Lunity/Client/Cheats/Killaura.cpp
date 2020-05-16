@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Killaura.h"
+#include "../Hooks/GamemodeHook.h"
 
 Killaura::Killaura() :Cheat::Cheat("Killaura", "Combat")
 {
@@ -14,10 +15,7 @@ void Killaura::onLoop()
 void Killaura::onTick()
 {
 	Cheat::onTick();
-	if (LunMem::getClientInstance() != NULL)
-		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
-			LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
-		}
+	//
 }
 
 void Killaura::onEnable()
