@@ -8,6 +8,7 @@ TabGUI::TabGUI():Cheat::Cheat("TabGUI", "Visuals")
 	enabled = true;
 }
 
+uint highlightedCht = 0;
 uint highlightedCat = 0;
 bool catIsSel = false;
 void TabGUI::onPostRender()
@@ -27,12 +28,16 @@ void TabGUI::onPostRender()
 		std::string lunStr = std::string("Lunity");
 		DrawUtils::drawText(vec2_t(10, 10), &lunStr, nullptr, 3.0f);
 		for (uint i = 0; i < cheatsInThisCat.size(); i++) {
-			bool selected = highlightedCat == i;
+			bool selected = highlightedCht == i;
+			MC_Color* color = nullptr;
+			if (cheatsInThisCat[i]->enabled) {
+				color = new MC_Color(0, 0, 1, 1);
+			}
 			if (selected) {
-				DrawUtils::drawText(vec2_t(10, 35 + (i * 10)), &string(">" + cheatsInThisCat[i]->name), nullptr, 1.0f);
+				DrawUtils::drawText(vec2_t(10, 35 + (i * 10)), &string(">" + cheatsInThisCat[i]->name), color, 1.0f);
 			}
 			else {
-				DrawUtils::drawText(vec2_t(10, 35 + (i * 10)), &cheatsInThisCat[i]->name, nullptr, 1.0f);
+				DrawUtils::drawText(vec2_t(10, 35 + (i * 10)), &cheatsInThisCat[i]->name, color, 1.0f);
 			}
 		}
 	}
@@ -55,11 +60,27 @@ void TabGUI::onPostRender()
 
 void TabGUI::onKey(ulong key)
 {
-	logHex("key", key);
+	//logHex("key", key);
 	vector<string> categories = CheatManager::getCategories();
 	if (catIsSel) {
+		if (key == 0x28) {
+			highlightedCht++;
+		}
+		if (key == 0x26) {
+			highlightedCht--;
+		}
 		if (key == 0x25) {
 			catIsSel = false;
+		}
+		if (key == 0x27) {
+			vector<Cheat*> cheats = CheatManager::getCheats();
+			vector<Cheat*> cheatsInThisCat = vector<Cheat*>();
+			for (uint i = 0; i < cheats.size(); i++) {
+				if (cheats[i]->category.compare(categories[highlightedCat]) == 0) {
+					cheatsInThisCat.push_back(cheats[i]);
+				}
+			}
+			cheatsInThisCat[highlightedCht]->enabled = !cheatsInThisCat[highlightedCht]->enabled;
 		}
 	}
 	else {
@@ -70,6 +91,7 @@ void TabGUI::onKey(ulong key)
 			highlightedCat--;
 		}
 		if (key == 0x27) {
+			highlightedCht = 0;
 			catIsSel = true;
 		}
 		if (highlightedCat >= categories.size()) {
