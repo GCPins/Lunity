@@ -15,6 +15,7 @@ void AutoSprint::onLoop()
 void AutoSprint::onTick()
 {
 	Cheat::onTick();
+	//log("AS tick");
 	if (LunMem::getClientInstance() != NULL)
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;

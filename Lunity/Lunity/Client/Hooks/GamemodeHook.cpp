@@ -4,12 +4,20 @@
 #include "../CheatManager.h"
 
 typedef int (WINAPI* GamemodeTick)(GameMode* gm);
-GamemodeTick original;
+GamemodeTick gmOriginal;
+GamemodeTick smOriginal;
 
 static GameMode* thisGm = nullptr;
-int hookCallback(GameMode* gm) {
+int gmHookCallback(GameMode* gm) {
 	thisGm = gm;
-	int retval = original(gm);
+	int retval = gmOriginal(gm);
+	CheatManager::gmTickCheats(gm);
+	return retval;
+}
+
+int smHookCallback(GameMode* gm) {
+	thisGm = gm;
+	int retval = smOriginal(gm);
 	CheatManager::gmTickCheats(gm);
 	return retval;
 }
@@ -25,7 +33,7 @@ void GamemodeHook::installHook()
 	void* toGmHook = (void*)(LunMem::getBaseModule() + 0x14FEA00);
 	logHex("ToHook", (ulong)toGmHook);
 	bool installSuccess = false;
-	if (MH_CreateHook(toGmHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
+	if (MH_CreateHook(toGmHook, &gmHookCallback, reinterpret_cast<LPVOID*>(&gmOriginal)) == MH_OK) {
 		log("Gamemode Hook successfully created!");
 		if (MH_EnableHook(toGmHook) == MH_OK) {
 			installSuccess = true;
@@ -40,7 +48,7 @@ void GamemodeHook::installHook()
 	void* toSmHook = (void*)(LunMem::getBaseModule() + 0x14FEF90);
 	logHex("ToHook", (ulong)toSmHook);
 	bool smInstallSuccess = false;
-	if (MH_CreateHook(toSmHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
+	if (MH_CreateHook(toSmHook, &smHookCallback, reinterpret_cast<LPVOID*>(&smOriginal)) == MH_OK) {
 		log("survivalmode Hook successfully created!");
 		if (MH_EnableHook(toSmHook) == MH_OK) {
 			smInstallSuccess = true;

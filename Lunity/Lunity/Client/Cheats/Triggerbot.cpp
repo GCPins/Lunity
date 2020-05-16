@@ -25,13 +25,7 @@ void Triggerbot::onGmTick(GameMode* gm) {
 			//logHex("Looking", (ulong)lookingAtEnt);
 			if (lookingAtEnt != NULL) {
 				player->swing();
-				if (player->GameMode == 0) {
-					SurvivalMode* sm = (SurvivalMode*)gm;
-					sm->attack(lookingAtEnt);
-				}
-				else {
-					gm->attack(lookingAtEnt);
-				}
+				gm->attack(lookingAtEnt);
 			}
 		}
 	}
