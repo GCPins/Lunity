@@ -5,6 +5,7 @@
 #include "Cheats/AirJump.h"
 #include "Cheats//AutoSprint.h"
 #include "Cheats/TabGUI.h"
+#include "Cheats/Uninject.h"
 
 class CheatManager {
 public:

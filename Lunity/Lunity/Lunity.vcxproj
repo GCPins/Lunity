@@ -180,6 +180,7 @@
     <ClInclude Include="Client\Cheats\AutoSprint.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
+    <ClInclude Include="Client\Cheats\Uninject.h" />
     <ClInclude Include="Client\pch.h" />
     <ClInclude Include="SDK\DrawUtils.h" />
     <ClInclude Include="framework.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="Client\Cheats\AirJump.cpp" />
     <ClCompile Include="Client\Cheats\AutoSprint.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
+    <ClCompile Include="Client\Cheats\Uninject.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\KeyHook.cpp" />
     <ClCompile Include="Client\RenderHook.cpp" />

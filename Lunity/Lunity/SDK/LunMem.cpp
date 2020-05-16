@@ -11,3 +11,8 @@ ClientInstance* LunMem::getClientInstance()
 	ulong baseOffset = 0x0307D3A0;
 	return (ClientInstance*)*(ulong*)((*(ulong*)(getBaseModule() + baseOffset))+0x30);
 }
+
+ulong LunMem::getThisModule()
+{
+	return (ulong)GetModuleHandleA("Lunity.dll");
+}

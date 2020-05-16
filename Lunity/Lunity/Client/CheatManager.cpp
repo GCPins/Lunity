@@ -22,6 +22,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new AirJump());
 	cheats.push_back(new AutoSprint());
 	cheats.push_back(new TabGUI());
+	cheats.push_back(new Uninject());
 
 	for (uint i = 0; i < cheats.size(); i++) {
 		if (find(categories.begin(), categories.end(), cheats[i]->category) == categories.end()) {

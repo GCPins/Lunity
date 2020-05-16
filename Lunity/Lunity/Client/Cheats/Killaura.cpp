@@ -17,7 +17,6 @@ void Killaura::onTick()
 	if (LunMem::getClientInstance() != NULL)
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
-			player->attack((uintptr_t*)player);
 		}
 }
 
