@@ -22,6 +22,7 @@ void ExecLunity(LPVOID lpParam) {
     RenderHook::installHook();
     while (true) {
         CheatManager::tickCheats();
+        Sleep(1);
     }
 }
 
