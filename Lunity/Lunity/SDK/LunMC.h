@@ -316,8 +316,11 @@ public:
 	int N000006E7; //0x0470
 	float HitboxWidth; //0x0474
 	float HitboxHeight; //0x0478
-	Vector3 Pos3; //0x047C
-	char pad_0488[888]; //0x0488
+	Vector3 Pos3; //0x047C	char pad_0488[6632]; //0x0488
+	char pad_0488[6632]; //0x0488
+	uint32_t N00001C7F; //0x1E70
+	int GameMode; //0x1E74
+	char pad_1E78[128]; //0x1E78
 
 	virtual void Function0();
 	virtual void Function1();

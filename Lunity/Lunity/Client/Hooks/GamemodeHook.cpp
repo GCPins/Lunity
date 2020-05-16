@@ -37,17 +37,17 @@ void GamemodeHook::installHook()
 	}
 
 	log("installing survivalmode hook...");
-	void* toGmHook = (void*)(LunMem::getBaseModule() + 0x14FEF90);
-	logHex("ToHook", (ulong)toGmHook);
-	bool installSuccess = false;
-	if (MH_CreateHook(toGmHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
+	void* toSmHook = (void*)(LunMem::getBaseModule() + 0x14FEF90);
+	logHex("ToHook", (ulong)toSmHook);
+	bool smInstallSuccess = false;
+	if (MH_CreateHook(toSmHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
 		log("survivalmode Hook successfully created!");
-		if (MH_EnableHook(toGmHook) == MH_OK) {
-			installSuccess = true;
+		if (MH_EnableHook(toSmHook) == MH_OK) {
+			smInstallSuccess = true;
 			log("survivalmode hook installed");
 		}
 	}
-	if (!installSuccess) {
+	if (!smInstallSuccess) {
 		log("Failed to hook survivalmode!");
 	}
 }
