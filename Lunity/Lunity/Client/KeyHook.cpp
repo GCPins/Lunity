@@ -31,12 +31,12 @@ std::map<ulong, bool> keyState;
 void KeyHook::KeyPressed(ulong key) {
 	keyState[key] = true;
 	CheatManager::distroKeyPress(key);
-	log("Press");
+	//log("Press");
 }
 
 void KeyHook::KeyReleased(ulong key) {
 	keyState[key] = false;
-	log("Release");
+	//log("Release");
 }
 
 bool KeyHook::KeyState(ulong key) {

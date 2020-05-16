@@ -15,17 +15,12 @@ float entireW = 0;
 int hookCallback(__int64 a1, MinecraftUIRenderContext* renderCtx) {
 	DrawUtils::setCtx(renderCtx);
 
+	CheatManager::onPreRender();
+
 	DrawUtils::flush();
 	int ret = original(a1, renderCtx);
 
-	vector<Cheat*> cheats = CheatManager::getCheats();
-	//Cant be used in another function for some reason
-	DrawUtils::fillRectangle(vec4_t(8, 8, 100, 35 + (cheats.size() * 10)), MC_Color(0,0,0,1), .5);
-	std::string lunStr = std::string("Lunity");
-	DrawUtils::drawText(vec2_t(10, 10), &lunStr, nullptr, 3.0f);
-	for (uint i = 0; i < cheats.size(); i++) {
-		DrawUtils::drawText(vec2_t(10, 35 + (i * 10)), &cheats[i]->name, nullptr, 1.0f);
-	}
+	CheatManager::onPostRender();
 
 	DrawUtils::flush();
 	return ret;

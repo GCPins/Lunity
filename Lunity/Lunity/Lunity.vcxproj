@@ -224,6 +224,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\KeyHook.cpp" />
     <ClCompile Include="Client\RenderHook.cpp" />
+    <ClCompile Include="SDK\DrawUtils.cpp" />
     <ClCompile Include="SDK\LunMem.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

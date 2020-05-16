@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SwingTest.h"
 #include "../KeyHook.h"
-SwingTest::SwingTest() : Cheat::Cheat("SwingTest") {
+SwingTest::SwingTest() : Cheat::Cheat("SwingTest", "Combat") {
 	enabled = true;
 }
 

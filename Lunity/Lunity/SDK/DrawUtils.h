@@ -1,4 +1,5 @@
 #pragma once
+#include "LunMem.h"
 #include "LunMC.h"
 
 struct MC_Color {
@@ -268,86 +269,16 @@ struct vec4_t
 	};
 };
 
-static MinecraftUIRenderContext* renderctx;
-
 class DrawUtils
 {
 public:
-	static void setCtx(MinecraftUIRenderContext* ctx) {
-		renderctx = ctx;/*
-		a2 = reinterpret_cast<__int64*>(renderctx)[2];
-		tesselator = *reinterpret_cast<__int64*>(a2 + 0xA8);
-		colorHolder = *reinterpret_cast<float**>(a2 + 0x30);*/
-	}
-	static BitmapFont* getFont() {
-		return LunMem::getClientInstance()->MinecraftGame->leBetterFont;
-	}
-	static float getTextWidth(std::string textStr, float size) {
-		TextHolder* text = new TextHolder(textStr);
-		BitmapFont* font = getFont();
-		float wid = renderctx->getLineLength(font, text, size, false);
-		delete text;
-		return wid;
-	}
-	static void flush() {
-		renderctx->flushText(0);
-	}
-	static void drawCoolText(vec2_t pos, std::string* textStr, float textSize) {
-		drawText(pos.add(vec2_t(-2, -2)), textStr, new MC_Color(0, 0, 0, 1), textSize);
-		drawText(pos.add(vec2_t(1, 1)), textStr, new MC_Color(0, 0, 0, 1), textSize);
-		drawText(pos, textStr, new MC_Color(1, 1, 1, 1), textSize);
-	}
-	static void drawText(vec2_t pos, std::string* textStr, MC_Color* color, float textSize)
-	{
-		static MC_Color* WHITE_COLOR = new MC_Color(1, 1, 1, 1, false);
-		if (color == nullptr)
-			color = WHITE_COLOR;
-		TextHolder* text = new TextHolder(*textStr);
-		BitmapFont* fontPtr = getFont();
-		static uintptr_t caretMeasureData = 0xFFFFFFFF;
-
-		float* posF = new float[4]; // vec4_t(startX, startY, endX, endY);
-		posF[0] = pos.x;
-		posF[1] = pos.x + 1000;
-		posF[2] = pos.y;
-		posF[3] = pos.y + 1000;
-
-		static float size = 1;
-		size = textSize;
-		if (fontPtr != NULL) {
-			if (posF != NULL) {
-				if (text != NULL) {
-					if (color != NULL) {
-						if (color->arr != NULL) {
-							if (size != NULL) {
-								if(caretMeasureData != NULL)
-									renderctx->drawText(fontPtr, posF, text, color->arr, 1, 0, &size, &caretMeasureData);
-							}
-						}
-					}
-				}
-			}
-		}
-
-		if (color->shouldDelete)
-			delete color;
-		delete[] posF;
-		delete text;
-	}
-	static void fillRectangle(vec4_t pos, const MC_Color col, float alpha)
-	{
-		float* posF = new float[4]; // vec4_t(startX, startY, endX, endY);
-		posF[0] = pos.x;
-		posF[1] = pos.z;
-		posF[2] = pos.y;
-		posF[3] = pos.w;
-
-		MC_Color* c = new MC_Color(col);
-
-		renderctx->fillRectangle(posF, reinterpret_cast<float*>(c), alpha);
-
-		delete c;
-		delete[] posF;
-	}
+	static void setCtx(MinecraftUIRenderContext* ctx);
+	static BitmapFont* getFont();
+	static float getTextWidth(std::string textStr, float size);
+	static void flush();
+	static void drawCoolText(vec2_t pos, std::string* textStr, float textSize);
+	static void drawText(vec2_t pos, std::string* textStr, MC_Color* color, float textSize);
+	static void fillRectangle(vec4_t pos, const MC_Color col, float alpha);
+	static void drawRectangle(vec4_t pos, MC_Color col, float alpha, float lineWidth);
 };
 

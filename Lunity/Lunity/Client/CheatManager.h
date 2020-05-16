@@ -8,8 +8,11 @@
 
 class CheatManager {
 public:
-	static std::vector<Cheat*> getCheats();
+	static vector<Cheat*> getCheats();
+	static vector<string> getCategories();
 	static void loadCheats();
 	static void tickCheats();
 	static void distroKeyPress(ulong key);
+	static void onPreRender();
+	static void onPostRender();
 };

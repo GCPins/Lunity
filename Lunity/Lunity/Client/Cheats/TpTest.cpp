@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "TpTest.h"
-TpTest::TpTest() :Cheat::Cheat("TpTest")
+TpTest::TpTest() :Cheat::Cheat("TpTest", "Movement")
 {
 	enabled = true;
 }

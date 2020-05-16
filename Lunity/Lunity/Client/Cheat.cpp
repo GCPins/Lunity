@@ -1,9 +1,10 @@
 #include "pch.h"
 #include "Cheat.h"
 
-Cheat::Cheat(string name)
+Cheat::Cheat(string name, string category)
 {
 	this->name = name;
+	this->category = category;
 	log("Loaded "+name);
 }
 
@@ -38,5 +39,13 @@ void Cheat::onDisable()
 }
 
 void Cheat::onKey(ulong key)
+{
+}
+
+void Cheat::onPreRender()
+{
+}
+
+void Cheat::onPostRender()
 {
 }

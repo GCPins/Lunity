@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "AirJump.h"
 
-AirJump::AirJump():Cheat::Cheat("AirJump")
+AirJump::AirJump():Cheat::Cheat("AirJump", "Movement")
 {
 	enabled = true;
 	keyBind = 0x4b;
@@ -34,5 +34,4 @@ void AirJump::onDisable()
 }
 
 void AirJump::onKey(ulong key) {
-	log("Airjump key");
 }

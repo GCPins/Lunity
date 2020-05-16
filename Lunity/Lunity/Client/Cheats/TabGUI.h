@@ -4,5 +4,5 @@ class TabGUI : public Cheat
 {
 public:
 	TabGUI();
+	void onPostRender();
 };
-
