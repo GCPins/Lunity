@@ -2,8 +2,8 @@
 #include "KeyHook.h"
 #include <MinHook.h>
 #pragma comment(lib, "libMinHook.lib")
-#include "../BigHead.h"
-#include "CheatManager.h"
+#include "../../BigHead.h"
+#include "../CheatManager.h"
 #include <map>
 
 typedef int (WINAPI* KeyPressed)(ulong key, bool pressed);

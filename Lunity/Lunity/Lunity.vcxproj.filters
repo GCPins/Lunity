@@ -165,13 +165,7 @@
     <ClInclude Include="SDK\LunMC.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\KeyHook.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="SDK\TextHolder.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="Client\RenderHook.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="SDK\DrawUtils.h">
@@ -189,7 +183,13 @@
     <ClInclude Include="Client\Cheats\Uninject.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Cheats\Hitbox.h">
+    <ClInclude Include="Client\Hooks\KeyHook.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Hooks\RenderHook.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Hooks\pch.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
@@ -207,12 +207,6 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\AirJump.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Client\KeyHook.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Client\RenderHook.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\TabGUI.cpp">
@@ -233,7 +227,10 @@
     <ClCompile Include="Client\Cheats\Uninject.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Client\Cheats\Hitbox.cpp">
+    <ClCompile Include="Client\Hooks\KeyHook.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Hooks\RenderHook.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "RenderHook.h"
 #include "../SDK/LunMem.h"
-#include "../SDK/LunMC.h"
-#include "../SDK/DrawUtils.h"
-#include "../Logger.h"
-#include "CheatManager.h"
+#include "../../SDK/LunMC.h"
+#include "../../SDK/DrawUtils.h"
+#include "../../Logger.h"
+#include "../CheatManager.h"
 #include <MinHook.h>
 #pragma comment(lib, "libMinHook.lib")
 

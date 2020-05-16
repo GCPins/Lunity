@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Hitbox.h"
-#include "../KeyHook.h"
+#include "../Hooks/KeyHook.h"
 
 Hitbox::Hitbox() :Cheat::Cheat("Hitbox", "Combat")
 {
