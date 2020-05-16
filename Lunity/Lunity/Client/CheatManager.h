@@ -3,6 +3,7 @@
 #include "Cheat.h"
 #include "Cheats/Killaura.h"
 #include "Cheats/AirJump.h"
+#include "Cheats//AutoSprint.h"
 #include "Cheats/TabGUI.h"
 
 class CheatManager {
