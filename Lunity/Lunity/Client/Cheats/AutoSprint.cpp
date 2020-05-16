@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "AutoSprint.h"
-#include "../KeyHook.h"
+#include "../Hooks/KeyHook.h"
 
 AutoSprint::AutoSprint() :Cheat::Cheat("AutoSprint", "Movement")
 {

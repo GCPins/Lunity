@@ -3,8 +3,8 @@
 #include "BigHead.h"
 #include "SDK/LunMem.h"
 #include "Client/CheatManager.h"
-#include "Client/KeyHook.h"
-#include "Client/RenderHook.h"
+#include "Client/Hooks/KeyHook.h"
+#include "Client/Hooks/RenderHook.h"
 
 #include <MinHook.h>
 #pragma comment(lib, "libMinHook.lib")

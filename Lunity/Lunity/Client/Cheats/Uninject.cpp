@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Uninject.h"
-#include "../KeyHook.h"
-#include "../RenderHook.h"
+#include "../Hooks/KeyHook.h"
+#include "../Hooks/RenderHook.h"
 
 Uninject::Uninject() :Cheat::Cheat("Uninject", "Other")
 {
