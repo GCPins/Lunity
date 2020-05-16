@@ -19,6 +19,7 @@ void CheatManager::loadCheats()
 	cheats = vector<Cheat*>();
 	//Load cheats here
 	cheats.push_back(new Killaura());
+	cheats.push_back(new Hitbox());
 	cheats.push_back(new AirJump());
 	cheats.push_back(new AutoSprint());
 	cheats.push_back(new TabGUI());
