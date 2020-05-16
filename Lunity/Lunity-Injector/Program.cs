@@ -87,7 +87,7 @@ namespace Lunity_Injector
             Console.WriteLine("Minecraft found, injecting!");
             if (started)
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(6000);
             }
             injectLunity();
             Console.WriteLine("Injected!");

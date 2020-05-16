@@ -532,7 +532,6 @@ public:
 	virtual void Function207();
 	virtual bool isCreative(void);
 	virtual bool isAdventure(void);
-	virtual void Function209();
 	virtual void add(class ItemStack const&);
 	virtual void drop(class ItemStack const&, bool);
 	virtual void Function212();
