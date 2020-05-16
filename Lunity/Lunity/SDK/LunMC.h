@@ -148,7 +148,7 @@ public:
 	virtual void Function99();
 	virtual void Function100();
 	virtual void Function101();
-	virtual void attack(uintptr_t*);
+	virtual void attack(class Actor*);
 	virtual void Function103();
 	virtual void Function104();
 	virtual void Function105();
@@ -261,7 +261,7 @@ public:
 	virtual void Function212();
 	virtual void Function213();
 	virtual void Function214();
-	virtual void Function215();
+	virtual void setSize(float, float);
 	virtual void Function216();
 	virtual void Function217();
 	virtual void Function218();
