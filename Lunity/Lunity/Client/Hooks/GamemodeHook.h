@@ -3,6 +3,7 @@
 class GamemodeHook
 {
 public:
+	static GameMode* getLastGm();
 	static void installHook();
 	static void uninstallHook();
 };
