@@ -42,6 +42,14 @@ void CheatManager::tickCheats()
 	}
 }
 
+void CheatManager::gmTickCheats(GameMode* gm)
+{
+	//logHex("Cheat vec size", getCheats().size());
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onGmLoop(gm);
+	}
+}
+
 void CheatManager::distroKeyPress(ulong key)
 {
 	//logHex("CM Press", key);

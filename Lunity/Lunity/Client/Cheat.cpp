@@ -30,6 +30,17 @@ void Cheat::onTick()
 {
 }
 
+void Cheat::onGmLoop(GameMode* gm)
+{
+	if (enabled) {
+		onGmTick(gm);
+	}
+}
+
+void Cheat::onGmTick(GameMode* gm)
+{
+}
+
 void Cheat::onEnable()
 {
 }

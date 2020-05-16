@@ -15,6 +15,7 @@ public:
 	static vector<string> getCategories();
 	static void loadCheats();
 	static void tickCheats();
+	static void gmTickCheats(GameMode* gm);
 	static void distroKeyPress(ulong key);
 	static void onPreRender();
 	static void onPostRender();

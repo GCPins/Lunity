@@ -15,13 +15,18 @@ void Triggerbot::onLoop()
 void Triggerbot::onTick()
 {
 	Cheat::onTick();
+}
+
+void Triggerbot::onGmTick(GameMode* gm) {
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
 			Actor* lookingAtEnt = LunMem::getClientInstance()->LocalPlayer->MultiPlayerLevel->LookingActor;
-
-			if (lookingAtEnt) {
-				GamemodeHook::getLastGm()->attack(lookingAtEnt);
+			//logHex("Looking", (ulong)lookingAtEnt);
+			if (lookingAtEnt != NULL) {
+				player->swing();
+				//player->attack(lookingAtEnt);
+				gm->attack(lookingAtEnt);
 			}
 		}
 	}

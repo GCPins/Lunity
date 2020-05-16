@@ -11,6 +11,8 @@ public:
 	Cheat(string name, string category);
 	virtual void onLoop();
 	virtual void onTick();
+	virtual void onGmLoop(GameMode* gm);
+	virtual void onGmTick(GameMode* gm);
 	virtual void onEnable();
 	virtual void onDisable();
 	virtual void onKey(ulong key);

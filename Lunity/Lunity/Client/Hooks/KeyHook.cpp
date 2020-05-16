@@ -37,6 +37,7 @@ std::map<ulong, bool> keyState;
 void KeyHook::KeyPressed(ulong key) {
 	keyState[key] = true;
 	CheatManager::distroKeyPress(key);
+	//logHex("GuiData", (ulong)LunMem::getClientInstance()->getGuiData());
 	//log("Press");
 }
 

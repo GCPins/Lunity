@@ -7,6 +7,7 @@ public:
 	Triggerbot();
 	void onLoop();
 	void onTick();
+	void onGmTick(GameMode* gm);
 	void onEnable();
 	void onDisable();
 	void onKey(ulong key);
