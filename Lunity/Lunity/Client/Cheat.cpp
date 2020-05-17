@@ -5,7 +5,7 @@ Cheat::Cheat(string name, string category)
 {
 	this->name = name;
 	this->category = category;
-	log("Loaded "+name);
+	Logger::log("Loaded "+name);
 }
 
 void Cheat::onLoop()
@@ -13,11 +13,11 @@ void Cheat::onLoop()
 	if (wasEnabled != enabled) {
 		if (enabled) {
 			onEnable();
-			log("Enabled " + name);
+			Logger::log("Enabled " + name);
 		}
 		else {
 			onDisable();
-			log("Disabled " + name);
+			Logger::log("Disabled " + name);
 		}
 		wasEnabled = enabled;
 	}

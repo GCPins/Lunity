@@ -27,19 +27,19 @@ int hookCallback(__int64 a1, MinecraftUIRenderContext* renderCtx) {
 }
 
 void RenderHook::installHook() {
-	log("installing render hook...");
+	Logger::log("installing render hook...");
 	void* toHook = (void*)(LunMem::getBaseModule() + 0x7235A0);
-	logHex("ToHook", (ulong)toHook);
+	Logger::logHex("ToHook", (ulong)toHook);
 	bool installSuccess = false;
 	if (MH_CreateHook(toHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
-		log("Render Hook successfully created!");
+		Logger::log("Render Hook successfully created!");
 		if (MH_EnableHook(toHook) == MH_OK) {
 			installSuccess = true;
-			log("render hook installed");
+			Logger::log("render hook installed");
 		}
 	}
 	if (!installSuccess) {
-		log("Failed to hook render!");
+		Logger::log("Failed to hook render!");
 	}
 }
 

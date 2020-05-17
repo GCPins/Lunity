@@ -10,19 +10,19 @@ typedef int (WINAPI* KeyPressed)(ulong key, bool pressed);
 KeyPressed original;
 
 void KeyHook::installHook() {
-	log("installing hook...");
+	Logger::log("installing hook...");
 	void* toHook = (void*)(LunMem::getBaseModule() + 0xD549F0);
-	logHex("ToHook", (ulong)toHook);
+	Logger::logHex("ToHook", (ulong)toHook);
 	bool installSuccess = false;
 	if (MH_CreateHook(toHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
-		log("Hook successfully created!");
+		Logger::log("Hook successfully created!");
 		if (MH_EnableHook(toHook) == MH_OK) {
 			installSuccess = true;
-			log("key hook installed");
+			Logger::log("key hook installed");
 		}
 	}
 	if (!installSuccess) {
-		log("Failed to hook!");
+		Logger::log("Failed to hook!");
 	}
 }
 

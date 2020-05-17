@@ -21,12 +21,12 @@ void Uninject::onTick()
 
 void Uninject::onEnable()
 {
-	log("Uninjecting...");
+	Logger::log("Uninjecting...");
 	Cheat::onEnable();
 	KeyHook::uninstallHook();
 	RenderHook::uninstallHook();
 	GamemodeHook::uninstallHook();
-	log("Hooks removed, freeing...");
+	Logger::log("Hooks removed, freeing...");
 	FreeLibraryAndExitThread((HMODULE)LunMem::getThisModule(), 0);
 }
 
