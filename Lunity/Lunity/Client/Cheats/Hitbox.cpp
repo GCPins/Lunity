@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Hitbox.h"
 #include "../Hooks/KeyHook.h"
+#include "../../SDK/EntList.h"
 
 Hitbox::Hitbox() :Cheat::Cheat("Hitbox", "Combat")
 {
@@ -15,15 +16,14 @@ void Hitbox::onLoop()
 void Hitbox::onTick()
 {
 	Cheat::onTick();
-	MultiPlayerLevel* Level = LunMem::getClientInstance()->LocalPlayer->MultiPlayerLevel;
-	uintptr_t startAddr = (uintptr_t)(Level + 0x40);
-	uintptr_t endAddr = (uintptr_t)(Level + 0x48);
-
-	for (uintptr_t currEnt = startAddr; currEnt < endAddr; currEnt += 0x8) {
-		LocalPlayer* Entity = (LocalPlayer*)currEnt;
-		Entity->setSize((float)6, (float)6);
+	vector<Actor*>* ents = getEntities();
+	if (ents != NULL) {
+		for (uint i = 0; i < ents->size(); i++) {
+			Actor* Entity = (Actor*)ents->at(i);
+			Entity->setSize((float)6, (float)6);
+		}
+		Sleep(10);
 	}
-	Sleep(10);
 }
 
 void Hitbox::onEnable()

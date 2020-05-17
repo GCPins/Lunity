@@ -204,6 +204,9 @@
     <ClInclude Include="Client\Cheats\NameTest.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="SDK\EntList.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

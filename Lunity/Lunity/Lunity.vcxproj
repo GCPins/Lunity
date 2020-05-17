@@ -219,6 +219,7 @@
     <ClInclude Include="polyhook2\Virtuals\VTableSwapHook.hpp" />
     <ClInclude Include="polyhook2\ZydisDisassembler.hpp" />
     <ClInclude Include="Client\Hooks\RenderHook.h" />
+    <ClInclude Include="SDK\EntList.h" />
     <ClInclude Include="SDK\LunMC.h" />
     <ClInclude Include="SDK\LunMem.h" />
     <ClInclude Include="pch.h" />
