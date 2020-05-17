@@ -15,15 +15,19 @@ void Hitbox::onLoop()
 void Hitbox::onTick()
 {
 	Cheat::onTick();
-	MultiPlayerLevel* Level = LunMem::getClientInstance()->LocalPlayer->MultiPlayerLevel;
-	uintptr_t startAddr = (uintptr_t)(Level + 0x40);
-	uintptr_t endAddr = (uintptr_t)(Level + 0x48);
+	if (LunMem::getClientInstance() != NULL) {
+		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
+			MultiPlayerLevel* Level = LunMem::getClientInstance()->LocalPlayer->MultiPlayerLevel;
+			uintptr_t startAddr = (uintptr_t)Level->playerListBegin;
+			uintptr_t endAddr = (uintptr_t)Level->playerListEnd;
 
-	for (uintptr_t currEnt = startAddr; currEnt < endAddr; currEnt += 0x8) {
-		LocalPlayer* Entity = (LocalPlayer*)currEnt;
-		Entity->setSize((float)6, (float)6);
+			for (uintptr_t currEnt = startAddr; currEnt < endAddr; currEnt += 0x8) {
+				if (currEnt == startAddr) continue;
+				Actor* Entity = (Actor*)currEnt;
+				Entity->setSize(5, 2);
+			}
+		}
 	}
-	Sleep(10);
 }
 
 void Hitbox::onEnable()
