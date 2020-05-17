@@ -1121,7 +1121,10 @@ public:
 class MultiPlayerLevel
 {
 public:
-	char pad_0000[2128]; //0x0000
+	char pad_0000[64]; //0x0000
+	void* playerListBegin; //0x0040
+	void* playerListEnd; //0x0048
+	char pad_0050[2048]; //0x0050
 	int N000008BE; //0x0850
 	int LookingBlockSide; //0x0854
 	int LookingBlockX; //0x0858
@@ -1129,8 +1132,8 @@ public:
 	int LookingBlockZ; //0x0860
 	char pad_0864[12]; //0x0864
 	class Actor* LookingActor; //0x0870
-	char pad_0878[1936]; //0x0878
-}; //Size: 0x1008
+	char pad_0878[1944]; //0x0878
+}; //Size: 0x1010
 
 class MinecraftGame
 {
