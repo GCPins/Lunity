@@ -4,6 +4,9 @@
 struct Vector3 { float x, y, z; };
 struct Vector2 { float x, y; };
 struct Vector3_i { int x, y, z; };
+struct Matrix4x4{
+	float vert[16];
+};
 // Created with ReClass.NET 1.2 by KN4CK3R
 
 class GuiData
@@ -13,7 +16,9 @@ public:
 	Vector2 Resolution; //0x0018
 	Vector2 Resolution2; //0x0020
 	Vector2 ScaledResolution; //0x0028
-	char pad_0030[1040]; //0x0030
+	char pad_0030[8]; //0x0030
+	float Scale; //0x0038
+	char pad_003C[1028]; //0x003C
 
 	virtual void Function0();
 	virtual void Function1();
@@ -82,7 +87,9 @@ public:
 	class MinecraftGame* MinecraftGame; //0x0058
 	class MinecraftGame* MinecraftGame2; //0x0060
 	class Minecraft* Minecraft; //0x0068
-	char pad_0070[24]; //0x0070
+	char pad_0070[8]; //0x0070
+	class LevelRenderer* LevelRenderer; //0x0078
+	char pad_0080[8]; //0x0080
 	class LoopbackPacketSender* LoopbackPacketSender; //0x0088
 	class HolographicPlatform* HolographicPlatform; //0x0090
 	class VoiceSystem* VoiceSystem; //0x0098
@@ -1471,3 +1478,24 @@ public:
 	virtual bool attack(Actor*);
 	virtual void releaseUsingItem();
 }; //Size: 0x0040
+
+class LevelRenderer
+{
+public:
+	char pad_0000[2144]; //0x0000
+	Vector3 Origin; //0x0860
+	Matrix4x4 N00001187; //0x086C
+	Matrix4x4 N00001188; //0x08AC
+	Matrix4x4 N00001189; //0x08EC
+	Matrix4x4 HandViewModelMatrix; //0x092C
+	Matrix4x4 N0000118B; //0x096C
+	char pad_09AC[232]; //0x09AC
+	Matrix4x4 N000011CB; //0x0A94
+	Matrix4x4 PossibleViewMatrix; //0x0AD4
+	Matrix4x4 N000011CD; //0x0B14
+	Matrix4x4 N000011CE; //0x0B54
+	Matrix4x4 N000011CF; //0x0B94
+	Matrix4x4 N000011D0; //0x0BD4
+	Matrix4x4 N000011D1; //0x0C14
+	char pad_0C54[200]; //0x0C54
+}; //Size: 0x0D1C
