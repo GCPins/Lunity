@@ -17,16 +17,18 @@ void Scaffold::onTick()
 	Cheat::onTick();
 }
 
+Vector3_i* blockPos = new Vector3_i;
+Vector3 currentPos;
+
 void Scaffold::onGmTick(GameMode* gm) {
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 
 			LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
-
-			Vector3_i* blockPos = new Vector3_i;
-			Vector3 currentPos = *Player->getPos();
+			currentPos = *Player->getPos();
 
 			int side = 0;
+			bool bridgedSideways = false;
 
 			blockPos->x = (int)floor(currentPos.x);
 			blockPos->y = (int)floor(currentPos.y - (float)2.0f);
@@ -43,79 +45,92 @@ void Scaffold::onGmTick(GameMode* gm) {
 				side = 3;
 			else if (playerYaw >= 135 && playerYaw <= 180 || (playerYaw >= -180 && playerYaw <= -135))
 				side = 2;
+			
+			switch (side) {
 
-			gm->buildBlock(blockPos, side);
-			int diagonalFace = Scaffold::calculateNewBlockSide(side, *Player->getPos());
-			if (diagonalFace > 0) gm->buildBlock(blockPos, diagonalFace);
+			case 5:
+				if (floor(currentPos.z - 0.2f) == floor(currentPos.z - 1.0f)) {
+					bridgedSideways = true;
+					gm->buildBlock(blockPos, 2);
+					blockPos->z--;
+					gm->buildBlock(blockPos, 5);
+					TextHolder* Text = new TextHolder("Facing East, turning left");
+					Player->displayLocalizableMessage(Text);
+				}
+				else if (floor(currentPos.z + 0.2f) == floor(currentPos.z + 1.0f)) {
+					bridgedSideways = true;
+					gm->buildBlock(blockPos, 3);
+					blockPos->z++;
+					gm->buildBlock(blockPos, 5);
+					TextHolder* Text = new TextHolder("Facing East, turning right");
+					Player->displayLocalizableMessage(Text);
+				}
+				break;
+
+			case 4:
+				if (floor(currentPos.z + 0.2f) == floor(currentPos.z + 1.0f)) {
+					bridgedSideways = true;
+					gm->buildBlock(blockPos, 3);
+					blockPos->z++;
+					gm->buildBlock(blockPos, 4);
+					TextHolder* Text = new TextHolder("Facing West, turning left");
+					Player->displayLocalizableMessage(Text);
+				}
+				else if (floor(currentPos.z - 0.2f) == floor(currentPos.z - 1.0f)) {
+					bridgedSideways = true;
+					gm->buildBlock(blockPos, 2);
+					blockPos->z--;
+					gm->buildBlock(blockPos, 4);
+					TextHolder* Text = new TextHolder("Facing West, turning right");
+					Player->displayLocalizableMessage(Text);
+				}
+				break;
+
+			case 3:
+				if (floor(currentPos.x + 0.2f) == floor(currentPos.x + 1.0f)) {
+					bridgedSideways = true;
+					gm->buildBlock(blockPos, 5);
+					blockPos->x++;
+					gm->buildBlock(blockPos, 3);
+					TextHolder* Text = new TextHolder("Facing South, turning left");
+					Player->displayLocalizableMessage(Text);
+				}
+				else if (floor(currentPos.x - 0.2f) == floor(currentPos.x - 1.0f)) {
+					bridgedSideways = true;
+					gm->buildBlock(blockPos, 4);
+					blockPos->x--;
+					gm->buildBlock(blockPos, 3);
+					TextHolder* Text = new TextHolder("Facing South, turning right");
+					Player->displayLocalizableMessage(Text);
+				}
+				break;
+
+			case 2:
+				if (floor(currentPos.x - 0.2f) == floor(currentPos.x - 1.0f)) {
+					bridgedSideways = true;
+					gm->buildBlock(blockPos, 4);
+					blockPos->x--;
+					gm->buildBlock(blockPos, 2);
+					TextHolder* Text = new TextHolder("Facing North, turning left");
+					Player->displayLocalizableMessage(Text);
+				}
+				else if (floor(currentPos.x + 0.2f) == floor(currentPos.x + 1.0f)) {
+					bridgedSideways = true;
+					gm->buildBlock(blockPos, 5);
+					blockPos->x++;
+					gm->buildBlock(blockPos, 2);
+					TextHolder* Text = new TextHolder("Facing North, turning right");
+					Player->displayLocalizableMessage(Text);
+				}
+				break;
+			}
+			if (!bridgedSideways) {
+				gm->buildBlock(blockPos, side);
+			}
+
+			bridgedSideways = false;
 		}
 	}
-}
-
-int Scaffold::calculateNewBlockSide(int currSide, Vector3 currentPos) {
-	LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
-
-	float playerX = currentPos.x;
-	float playerZ = currentPos.z;
-
-	int newFace = 0;
-
-	switch (currSide) {
-
-	case 5:
-		if (floor(playerZ - 0.2f) == floor(playerZ - 1.0f)) {
-			newFace = 2;
-			TextHolder* Text = new TextHolder("Facing East, turning left");
-			Player->displayLocalizableMessage(Text);
-		}
-		else if (floor(playerZ + 0.2f) == floor(playerZ + 1.0f)) {
-			newFace = 3;
-			TextHolder* Text = new TextHolder("Facing East, turning right");
-			Player->displayLocalizableMessage(Text);
-		}
-		break;
-
-	case 4:
-		if (floor(playerZ + 0.2f) == floor(playerZ + 1.0f)) {
-			newFace = 3;
-			TextHolder* Text = new TextHolder("Facing West, turning left");
-			Player->displayLocalizableMessage(Text);
-		}
-		else if (floor(playerZ - 0.2f) == floor(playerZ - 1.0f)) {
-			newFace = 2;
-			TextHolder* Text = new TextHolder("Facing West, turning right");
-			Player->displayLocalizableMessage(Text);
-		}
-		break;
-
-	case 3:
-		if (floor(playerX + 0.2f) == floor(playerX + 1.0f)) {
-			newFace = 5;
-			TextHolder* Text = new TextHolder("Facing South, turning left");
-			Player->displayLocalizableMessage(Text);
-		}
-		else if (floor(playerX - 0.2f) == floor(playerX - 1.0f)) {
-			newFace = 4;
-			TextHolder* Text = new TextHolder("Facing South, turning right");
-			Player->displayLocalizableMessage(Text);
-		}
-		break;
-
-	case 2:
-		if (floor(playerX - 0.2f) == floor(playerX - 1.0f)) {
-			newFace = 5;
-			TextHolder* Text = new TextHolder("Facing North, turning left");
-			Player->displayLocalizableMessage(Text);
-		}
-		else if (floor(playerX + 0.2f) == floor(playerX + 1.0f)) {
-			newFace = 4;
-			TextHolder* Text = new TextHolder("Facing North, turning right");
-			Player->displayLocalizableMessage(Text);
-		}
-		break;
-
-	}
-
-	return newFace;
 }
 
 void Scaffold::onEnable()
