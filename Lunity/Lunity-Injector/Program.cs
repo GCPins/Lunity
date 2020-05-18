@@ -85,10 +85,10 @@ namespace Lunity_Injector
             Console.WriteLine("Waiting for Minecraft...");
             awaitGame();
             Console.WriteLine("Minecraft found, injecting!");
-            if (started)
+            /*if (started)
             {
                 Thread.Sleep(6000);
-            }
+            }*/
             injectLunity();
             Console.WriteLine("Injected!");
             if (!debug)
