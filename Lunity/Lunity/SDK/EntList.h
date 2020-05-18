@@ -28,8 +28,10 @@ static vector<Actor*>* getEntities() {
 		}
 		if (list[index]->isAlive()) {
 			if (!list[index]->isInvisible()) {
-				//Logger::logHex("Current ent", (ulong)list[index]);
-				ret->push_back(list[index]);
+				if (list[index]->MovedTick != NULL) {
+					//Logger::logHex("Current ent", (ulong)list[index]);
+					ret->push_back(list[index]);
+				}
 			}
 		}
 		index++;

@@ -305,23 +305,21 @@ public:
 class Actor
 {
 public:
-	char pad_0008[368]; //0x0008
+	char pad_0000[376]; //0x0000
 	bool OnGround; //0x0178
-	char pad_0179[439]; //0x0179
+	char pad_0179[399]; //0x0179
+	int MovedTick; //0x0308
+	char pad_030C[36]; //0x030C
 	class MultiPlayerLevel* MultiPlayerLevel; //0x0330
 	char pad_0338[120]; //0x0338
 	char Type[8]; //0x03B0
 	char pad_03B8[160]; //0x03B8
 	Vector3 Pos; //0x0458
 	Vector3 Pos2; //0x0464
-	int N000006E7; //0x0470
-	float HitboxWidth; //0x0474
-	float HitboxHeight; //0x0478
-	Vector3 Pos3; //0x047C	char pad_0488[6632]; //0x0488
-	char pad_0488[6632]; //0x0488
-	uint32_t N00001C7F; //0x1E70
-	int GameMode; //0x1E74
-	char pad_1E78[128]; //0x1E78
+	uint32_t N00000E3B; //0x0470
+	Vector2 Size; //0x0474
+	Vector3 Pos3; //0x047C
+	char pad_0488[912]; //0x0488
 
 	virtual void Function0();
 	virtual void Function1();

@@ -21,6 +21,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Killaura());
 	cheats.push_back(new Triggerbot());
 	cheats.push_back(new Hitbox());
+	cheats.push_back(new TpAura());
 
 	cheats.push_back(new AirJump());
 	cheats.push_back(new AutoSprint());

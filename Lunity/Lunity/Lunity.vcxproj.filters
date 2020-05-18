@@ -207,6 +207,12 @@
     <ClInclude Include="SDK\EntList.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\Scaffold.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\TpAura.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -261,6 +267,12 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Logger.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Scaffold.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\TpAura.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
