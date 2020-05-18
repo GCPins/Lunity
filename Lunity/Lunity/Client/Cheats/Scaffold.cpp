@@ -65,6 +65,12 @@ void Scaffold::onGmTick(GameMode* gm) {
 					//TextHolder* Text = new TextHolder("Facing East, turning right");
 					//Player->displayLocalizableMessage(Text);
 				}
+
+				if (floor(currentPos.x - 0.2f) == floor(currentPos.x - 1.0f)) {
+					gm->buildBlock(blockPos, 4);
+					TextHolder* Text = new TextHolder("Facing East, going backwards");
+					Player->displayLocalizableMessage(Text);
+				}
 				break;
 
 			case 4:
@@ -83,6 +89,12 @@ void Scaffold::onGmTick(GameMode* gm) {
 					gm->buildBlock(blockPos, 4);
 					//TextHolder* Text = new TextHolder("Facing West, turning right");
 					//Player->displayLocalizableMessage(Text);
+				}
+
+				if (floor(currentPos.x + 0.2f) == floor(currentPos.x + 1.0f)) {
+					gm->buildBlock(blockPos, 5);
+					TextHolder* Text = new TextHolder("Facing West, going backwards");
+					Player->displayLocalizableMessage(Text);
 				}
 				break;
 
@@ -103,6 +115,12 @@ void Scaffold::onGmTick(GameMode* gm) {
 					//TextHolder* Text = new TextHolder("Facing South, turning right");
 					//Player->displayLocalizableMessage(Text);
 				}
+
+				if (floor(currentPos.z - 0.2f) == floor(currentPos.z - 1.0f)) {
+					gm->buildBlock(blockPos, 2);
+					TextHolder* Text = new TextHolder("Facing South, going backwards");
+					Player->displayLocalizableMessage(Text);
+				}
 				break;
 
 			case 2:
@@ -121,6 +139,12 @@ void Scaffold::onGmTick(GameMode* gm) {
 					gm->buildBlock(blockPos, 2);
 					//TextHolder* Text = new TextHolder("Facing North, turning right");
 					//Player->displayLocalizableMessage(Text);
+				}
+
+				if (floor(currentPos.z + 0.2f) == floor(currentPos.z + 1.0f)) {
+					gm->buildBlock(blockPos, 3);
+					TextHolder* Text = new TextHolder("Facing North, going backwards");
+					Player->displayLocalizableMessage(Text);
 				}
 				break;
 			}
