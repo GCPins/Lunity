@@ -65,12 +65,12 @@ int Scaffold::calculateNewBlockSide(int currSide, Vector3 currentPos) {
 		if (floor(playerZ - 0.2f) == floor(playerZ - 1.0f)) {
 			newFace = 2;
 			TextHolder* Text = new TextHolder("Facing East, turning left");
-			//Player->displayLocalizableMessage(Text);
+			Player->displayLocalizableMessage(Text);
 		}
 		else if (floor(playerZ + 0.2f) == floor(playerZ + 1.0f)) {
 			newFace = 3;
 			TextHolder* Text = new TextHolder("Facing East, turning right");
-			//Player->displayLocalizableMessage(Text);
+			Player->displayLocalizableMessage(Text);
 		}
 		break;
 
@@ -78,12 +78,12 @@ int Scaffold::calculateNewBlockSide(int currSide, Vector3 currentPos) {
 		if (floor(playerZ + 0.2f) == floor(playerZ + 1.0f)) {
 			newFace = 3;
 			TextHolder* Text = new TextHolder("Facing West, turning left");
-			//Player->displayLocalizableMessage(Text);
+			Player->displayLocalizableMessage(Text);
 		}
 		else if (floor(playerZ - 0.2f) == floor(playerZ - 1.0f)) {
 			newFace = 2;
 			TextHolder* Text = new TextHolder("Facing West, turning right");
-			//Player->displayLocalizableMessage(Text);
+			Player->displayLocalizableMessage(Text);
 		}
 		break;
 
@@ -91,12 +91,12 @@ int Scaffold::calculateNewBlockSide(int currSide, Vector3 currentPos) {
 		if (floor(playerX + 0.2f) == floor(playerX + 1.0f)) {
 			newFace = 5;
 			TextHolder* Text = new TextHolder("Facing South, turning left");
-			//Player->displayLocalizableMessage(Text);
+			Player->displayLocalizableMessage(Text);
 		}
 		else if (floor(playerX - 0.2f) == floor(playerX - 1.0f)) {
 			newFace = 4;
 			TextHolder* Text = new TextHolder("Facing South, turning right");
-			//Player->displayLocalizableMessage(Text);
+			Player->displayLocalizableMessage(Text);
 		}
 		break;
 
@@ -104,12 +104,12 @@ int Scaffold::calculateNewBlockSide(int currSide, Vector3 currentPos) {
 		if (floor(playerX - 0.2f) == floor(playerX - 1.0f)) {
 			newFace = 5;
 			TextHolder* Text = new TextHolder("Facing North, turning left");
-			//Player->displayLocalizableMessage(Text);
+			Player->displayLocalizableMessage(Text);
 		}
 		else if (floor(playerX + 0.2f) == floor(playerX + 1.0f)) {
 			newFace = 4;
 			TextHolder* Text = new TextHolder("Facing North, turning right");
-			//Player->displayLocalizableMessage(Text);
+			Player->displayLocalizableMessage(Text);
 		}
 		break;
 
