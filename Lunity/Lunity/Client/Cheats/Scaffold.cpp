@@ -33,30 +33,12 @@ void Scaffold::onGmTick(GameMode* gm) {
 	
 	if (playerYaw < -45 && playerYaw > -135)
 		side = 5;
-	else if ((playerYaw <= 0 && playerYaw >= -45) || (playerYaw >= 0 && playerYaw <= 45))
-		side = 3;
 	else if (playerYaw > 45 && playerYaw < 135)
 		side = 4;
+	else if ((playerYaw <= 0 && playerYaw >= -45) || (playerYaw >= 0 && playerYaw <= 45))
+		side = 3;
 	else if (playerYaw >= 135 && playerYaw <= 180 || (playerYaw >= -180 && playerYaw <= -135))
 		side = 2;
-
-	/*switch (side) {
-		case 5:
-			blockPos->x++;
-		break;
-
-		case 4:
-			blockPos->x--;
-		break;
-
-		case 3:
-			blockPos->z++;
-		break;
-
-		case 2:
-			blockPos->z--;
-		break;
-	}*/
 
 	if (side) {
 		gm->buildBlock(blockPos, side);
