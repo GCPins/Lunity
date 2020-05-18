@@ -281,5 +281,6 @@ public:
 	static void drawText(vec2_t pos, std::string* textStr, MC_Color* color, float textSize);
 	static void fillRectangle(vec4_t pos, const MC_Color col, float alpha);
 	static void drawRectangle(vec4_t pos, MC_Color col, float alpha, float lineWidth);
+	static vec2_t DirtyWorldToScreen(vec3_t pos, float matrix[16], int windowWidth, int windowHeight);
 };
 

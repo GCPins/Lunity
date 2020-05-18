@@ -12,5 +12,9 @@ void NameTest::onEnable()
 	LunMem::getClientInstance()->LocalPlayer->setName(new TextHolder("Franklin"));
 	LunMem::getClientInstance()->LocalPlayer->setNameTagVisible(true);
 	*/
-	enabled = false;
+	//enabled = false;
+}
+
+void NameTest::onPostRender() {
+
 }
