@@ -216,9 +216,6 @@
     <ClInclude Include="Client\Cheats\ModuleList.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Hooks\AssetHook.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -282,9 +279,6 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\ModuleList.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Client\Hooks\AssetHook.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

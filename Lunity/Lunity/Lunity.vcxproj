@@ -162,7 +162,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Client\Hooks\AssetHook.h" />
     <ClInclude Include="capstone\arm.h" />
     <ClInclude Include="capstone\arm64.h" />
     <ClInclude Include="capstone\capstone.h" />
@@ -232,7 +231,6 @@
     <ClInclude Include="Client\Cheats\TabGUI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Client\Hooks\AssetHook.cpp" />
     <ClCompile Include="Client\Cheat.cpp" />
     <ClCompile Include="Client\CheatManager.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />

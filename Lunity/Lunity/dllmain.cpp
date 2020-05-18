@@ -5,7 +5,6 @@
 #include "Client/CheatManager.h"
 #include "Client/Hooks/KeyHook.h"
 #include "Client/Hooks/RenderHook.h"
-#include "Client/Hooks/AssetHook.h"
 
 #include <MinHook.h>
 #include "Client/Hooks/GamemodeHook.h"
@@ -16,8 +15,6 @@ void ExecLunity(LPVOID lpParam) {
     Logger::logHex("Client Instance", (ulong)LunMem::getClientInstance());
     Logger::logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->LocalPlayer);
 
-    Sleep(6000);
-
     CheatManager::loadCheats();
     if (MH_Initialize() == MH_OK)
     {
@@ -26,7 +23,6 @@ void ExecLunity(LPVOID lpParam) {
     KeyHook::installHook();
     RenderHook::installHook();
     GamemodeHook::installHook();
-    AssetHook::installHook();
     while (true) {
         CheatManager::tickCheats();
         Sleep(1);
