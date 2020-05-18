@@ -22,13 +22,45 @@ void Scaffold::onGmTick(GameMode* gm) {
 	Vector3_i* blockPos = new Vector3_i;
 	Vector3 currentPos = *Player->getPos();
 
-	blockPos->x = (int)currentPos.x + 0.3f;
-	blockPos->y = (int)currentPos.y - 2;
-	blockPos->z = (int)currentPos.z + 0.3f;
+	int side = 0;
 
-	gm->buildBlock(blockPos, 0);
+	blockPos->x = (int)floor(currentPos.x);
+	blockPos->y = (int)floor(currentPos.y - (float)2.0f);
+	blockPos->z = (int)floor(currentPos.z);
 
-	//gm->buildBlock();
+	Vector2 playerLookingVec = Player->LookingVec;
+	float playerYaw = playerLookingVec.y;
+	
+	if (playerYaw < -45 && playerYaw > -135)
+		side = 5;
+	else if ((playerYaw <= 0 && playerYaw >= -45) || (playerYaw >= 0 && playerYaw <= 45))
+		side = 3;
+	else if (playerYaw > 45 && playerYaw < 135)
+		side = 4;
+	else if (playerYaw >= 135 && playerYaw <= 180 || (playerYaw >= -180 && playerYaw <= -135))
+		side = 2;
+
+	/*switch (side) {
+		case 5:
+			blockPos->x++;
+		break;
+
+		case 4:
+			blockPos->x--;
+		break;
+
+		case 3:
+			blockPos->z++;
+		break;
+
+		case 2:
+			blockPos->z--;
+		break;
+	}*/
+
+	if (side) {
+		gm->buildBlock(blockPos, side);
+	}
 }
 
 void Scaffold::onEnable()
@@ -42,4 +74,8 @@ void Scaffold::onDisable()
 }
 
 void Scaffold::onKey(ulong key) {
+}
+
+void calculateOnKey() {
+
 }
