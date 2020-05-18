@@ -568,9 +568,19 @@ public:
 class LocalPlayer
 {
 public:
-	char pad_0008[368]; //0x0008
+	char pad_0008[232]; //0x0008
+	Vector2 LookingVec; //0x00F0
+	Vector2 LookingVec2; //0x00F8
+	char pad_0100[120]; //0x0100
 	bool OnGround; //0x0178
-	char pad_0179[439]; //0x0179
+	char pad_0179[391]; //0x0179
+	int N000006AB; //0x0300
+	float Speed; //0x0304
+	int MoveTick; //0x0308
+	char pad_030C[20]; //0x030C
+	class BlockSource* BlockSource; //0x0320
+	int N000006B0; //0x0328
+	char pad_032C[4]; //0x032C
 	class MultiPlayerLevel* MultiPlayerLevel; //0x0330
 	char pad_0338[120]; //0x0338
 	char Type[8]; //0x03B0
@@ -580,11 +590,8 @@ public:
 	int N000006E7; //0x0470
 	float HitboxWidth; //0x0474
 	float HitboxHeight; //0x0478
-	Vector3 Pos3; //0x047C	char pad_0488[6632]; //0x0488
-	char pad_0488[6632]; //0x0488
-	uint32_t N00001C7F; //0x1E70
-	int GameMode; //0x1E74
-	char pad_1E78[128]; //0x1E78
+	Vector3 Pos3; //0x047C
+	char pad_0488[1136]; //0x0488
 
 	virtual void Function0();
 	virtual void Function1();
