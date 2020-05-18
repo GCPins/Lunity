@@ -2,13 +2,16 @@
 #include "DrawUtils.h"
 
 static MinecraftUIRenderContext* renderctx;
+static GuiData* guiData;
 
-void DrawUtils::setCtx(MinecraftUIRenderContext* ctx)
+void DrawUtils::setCtx(MinecraftUIRenderContext* ctx, GuiData* gui)
 {
-	renderctx = ctx;/*
-	a2 = reinterpret_cast<__int64*>(renderctx)[2];
-	tesselator = *reinterpret_cast<__int64*>(a2 + 0xA8);
-	colorHolder = *reinterpret_cast<float**>(a2 + 0x30);*/
+	renderctx = ctx;
+	guiData = gui;
+}
+
+GuiData* DrawUtils::getGuiData() {
+	return guiData;
 }
 
 BitmapFont* DrawUtils::getFont()

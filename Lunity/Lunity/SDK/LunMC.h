@@ -9,8 +9,71 @@ struct Vector3_i { int x, y, z; };
 class GuiData
 {
 public:
-	char pad_0000[64]; //0x0000
-}; //Size: 0x0040
+	char pad_0008[16]; //0x0008
+	Vector2 Resolution; //0x0018
+	Vector2 Resolution2; //0x0020
+	Vector2 ScaledResolution; //0x0028
+	char pad_0030[1040]; //0x0030
+
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
+	virtual void Function10();
+	virtual void Function11();
+	virtual void Function12();
+	virtual void Function13();
+	virtual void Function14();
+	virtual void Function15();
+	virtual void Function16();
+	virtual void Function17();
+	virtual void Function18();
+	virtual void Function19();
+	virtual void Function20();
+	virtual void Function21();
+	virtual void Function22();
+	virtual void Function23();
+	virtual void Function24();
+	virtual void Function25();
+	virtual void Function26();
+	virtual void Function27();
+	virtual void Function28();
+	virtual void Function29();
+	virtual void Function30();
+	virtual void Function31();
+	virtual void Function32();
+	virtual void Function33();
+	virtual void Function34();
+	virtual void Function35();
+	virtual void Function36();
+	virtual void Function37();
+	virtual void Function38();
+	virtual void Function39();
+	virtual void Function40();
+	virtual void Function41();
+	virtual void Function42();
+	virtual void Function43();
+	virtual void Function44();
+	virtual void Function45();
+	virtual void Function46();
+	virtual void Function47();
+	virtual void Function48();
+	virtual void Function49();
+	virtual void Function50();
+	virtual void Function51();
+	virtual void Function52();
+	virtual void Function53();
+	virtual void Function54();
+	virtual void Function55();
+	virtual void Function56();
+	virtual void Function57();
+}; //Size: 0x0440
 
 class ClientInstance
 {
@@ -209,34 +272,34 @@ public:
 	virtual void Function172();
 	virtual void Function173();
 	virtual void Function174();
-	virtual void Function175();
-	virtual void Function176();
-	virtual void Function177();
-	virtual void Function178();
-	virtual void Function179();
-	virtual void Function180();
-	virtual void Function181();
-	virtual void Function182();
-	virtual void Function183();
-	virtual void Function184();
-	virtual void Function185();
-	virtual void Function186();
-	virtual void Function187();
-	virtual void Function188();
-	virtual void Function189();
-	virtual void Function190();
-	virtual void Function191();
+	virtual void* Function175();
+	virtual void* Function176();
+	virtual void* Function177();
+	virtual void* Function178();
+	virtual void* Function179();
+	virtual void* Function180();
+	virtual void* Function181();
+	virtual void* Function182();
+	virtual void* Function183();
+	virtual void* Function184();
+	virtual void* Function185();
+	virtual void* Function186();
+	virtual void* Function187();
 	virtual GuiData* getGuiData();
-	virtual void Function193();
-	virtual void Function194();
-	virtual void Function195();
-	virtual void Function196();
-	virtual void Function197();
-	virtual void Function198();
-	virtual void Function199();
-	virtual void Function200();
-	virtual void Function201();
-	virtual void Function202();
+	virtual void* Function189();
+	virtual void* Function190();
+	virtual void* Function191();
+	virtual void* Function192();
+	virtual void* Function193();
+	virtual void* Function194();
+	virtual void* Function195();
+	virtual void* Function196();
+	virtual void* Function197();
+	virtual void* Function198();
+	virtual void* Function199();
+	virtual void* Function200();
+	virtual void* Function201();
+	virtual void* Function202();
 	virtual void Function203();
 	virtual void Function204();
 	virtual void Function205();

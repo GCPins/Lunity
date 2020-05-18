@@ -13,7 +13,7 @@ RenderText original;
 
 float entireW = 0;
 int hookCallback(__int64 a1, MinecraftUIRenderContext* renderCtx) {
-	DrawUtils::setCtx(renderCtx);
+	DrawUtils::setCtx(renderCtx, LunMem::getClientInstance()->getGuiData());
 
 	CheatManager::onPreRender();
 

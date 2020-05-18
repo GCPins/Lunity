@@ -162,6 +162,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Client\Hooks\AssetHook.h" />
     <ClInclude Include="capstone\arm.h" />
     <ClInclude Include="capstone\arm64.h" />
     <ClInclude Include="capstone\capstone.h" />
@@ -183,9 +184,10 @@
     <ClInclude Include="Client\Cheats\AutoSprint.h" />
     <ClInclude Include="Client\Cheats\Hitbox.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
+    <ClInclude Include="Client\Cheats\ModuleList.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\Cheats\Scaffold.h" />
-    <ClInclude Include="Client\Cheats\TpAura.h" />
+    <ClInclude Include="Client\Cheats\Spinbot.h" />
     <ClInclude Include="Client\Cheats\Triggerbot.h" />
     <ClInclude Include="Client\Cheats\Uninject.h" />
     <ClInclude Include="Client\Hooks\pch.h" />
@@ -230,14 +232,16 @@
     <ClInclude Include="Client\Cheats\TabGUI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Client\Hooks\AssetHook.cpp" />
     <ClCompile Include="Client\Cheat.cpp" />
     <ClCompile Include="Client\CheatManager.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />
     <ClCompile Include="Client\Cheats\AutoSprint.cpp" />
     <ClCompile Include="Client\Cheats\Hitbox.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
+    <ClCompile Include="Client\Cheats\ModuleList.cpp" />
     <ClCompile Include="Client\Cheats\Scaffold.cpp" />
-    <ClCompile Include="Client\Cheats\TpAura.cpp" />
+    <ClCompile Include="Client\Cheats\Spinbot.cpp" />
     <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
     <ClCompile Include="dllmain.cpp" />

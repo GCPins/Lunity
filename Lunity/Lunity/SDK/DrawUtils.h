@@ -272,7 +272,8 @@ struct vec4_t
 class DrawUtils
 {
 public:
-	static void setCtx(MinecraftUIRenderContext* ctx);
+	static void setCtx(MinecraftUIRenderContext* ctx, GuiData* gui);
+	static GuiData* getGuiData();
 	static BitmapFont* getFont();
 	static float getTextWidth(std::string textStr, float size);
 	static void flush();

@@ -210,7 +210,13 @@
     <ClInclude Include="Client\Cheats\Scaffold.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Cheats\TpAura.h">
+    <ClInclude Include="Client\Cheats\Spinbot.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\ModuleList.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Hooks\AssetHook.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
@@ -272,7 +278,13 @@
     <ClCompile Include="Client\Cheats\Scaffold.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Client\Cheats\TpAura.cpp">
+    <ClCompile Include="Client\Cheats\Spinbot.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\ModuleList.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Hooks\AssetHook.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
