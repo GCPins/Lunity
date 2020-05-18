@@ -3,6 +3,7 @@
 #include "../BigHead.h"
 struct Vector3 { float x, y, z; };
 struct Vector2 { float x, y; };
+struct Vector3_i { int x, y, z; };
 // Created with ReClass.NET 1.2 by KN4CK3R
 
 class GuiData
@@ -1393,13 +1394,13 @@ public:
 	char pad_0010[48]; //0x0010
 
 	virtual void Destructor();
-	virtual void startDestroyBlock(Vector3*, UCHAR, bool);
-	virtual void destroyBlock(Vector3*, UCHAR);
-	virtual void continueDestroyBlock(Vector3*, UCHAR, bool);
-	virtual void stopDestroyBlock(Vector3*);
-	virtual void startBuildBlock(Vector3*, UCHAR);
-	virtual void buildBlock(Vector3*, UCHAR);
-	virtual void continueBuildBlock(Vector3*, UCHAR);
+	virtual void startDestroyBlock(Vector3_i*, UCHAR, bool);
+	virtual void destroyBlock(Vector3_i*, UCHAR);
+	virtual void continueDestroyBlock(Vector3_i*, UCHAR, bool);
+	virtual void stopDestroyBlock(Vector3_i*);
+	virtual void startBuildBlock(Vector3_i*, UCHAR);
+	virtual void buildBlock(Vector3_i*, UCHAR);
+	virtual void continueBuildBlock(Vector3_i*, UCHAR);
 	virtual void stopBuildBlock(void);
 	virtual void tick(void);
 	virtual void getPickRange();
