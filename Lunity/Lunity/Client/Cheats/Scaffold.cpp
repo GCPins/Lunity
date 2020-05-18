@@ -40,7 +40,10 @@ void Scaffold::onGmTick(GameMode* gm) {
 	else if (playerYaw >= 135 && playerYaw <= 180 || (playerYaw >= -180 && playerYaw <= -135))
 		side = 2;
 
-	if (side) {
+	if (Player->isJumping()) {
+		gm->buildBlock(blockPos, 1);
+	}
+	else {
 		gm->buildBlock(blockPos, side);
 	}
 }
