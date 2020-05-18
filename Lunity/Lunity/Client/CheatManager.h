@@ -4,8 +4,12 @@
 #include "Cheats/Killaura.h"
 #include "Cheats/Triggerbot.h"
 #include "Cheats/Hitbox.h"
+
 #include "Cheats/AirJump.h"
 #include "Cheats/AutoSprint.h"
+
+#include "Cheats/Scaffold.h"
+
 #include "Cheats/TabGUI.h"
 #include "Cheats/Uninject.h"
 #include "Cheats/NameTest.h"

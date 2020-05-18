@@ -3,6 +3,7 @@
 #include "../BigHead.h"
 struct Vector3 { float x, y, z; };
 struct Vector2 { float x, y; };
+struct Vector3_i { int x, y, z; };
 // Created with ReClass.NET 1.2 by KN4CK3R
 
 class GuiData
@@ -404,8 +405,8 @@ public:
 	virtual void Function79();
 	virtual void Function80();
 	virtual void Function81();
-	virtual void isImmobile();
-	virtual void isSilent();
+	virtual bool isImmobile(void);
+	virtual bool isSilent(void);
 	virtual void Function84();
 	virtual void Function85();
 	virtual void Function86();
@@ -437,7 +438,7 @@ public:
 	virtual void Function112();
 	virtual void setStanding(bool);
 	virtual void Function114();
-	virtual void getEntityTypeId(bool);
+	virtual int getEntityTypeId(void);
 	virtual bool isJumping(void);
 	virtual void Function117();
 	virtual void Function118();
@@ -554,7 +555,7 @@ public:
 	virtual void Function229();
 	virtual void Function230();
 	virtual void Function231();
-	virtual void outOfWorld();
+	virtual bool outOfWorld();
 	virtual void Function233();
 	virtual void Function234();
 	virtual void Function235();
@@ -1390,7 +1391,7 @@ public:
 	virtual void continueDestroyBlock(Vector3*, UCHAR, bool);
 	virtual void stopDestroyBlock(Vector3*);
 	virtual void startBuildBlock(Vector3*, UCHAR);
-	virtual void buildBlock(Vector3*, UCHAR);
+	virtual void buildBlock(Vector3_i*, UCHAR);
 	virtual void continueBuildBlock(Vector3*, UCHAR);
 	virtual void stopBuildBlock(void);
 	virtual void tick(void);
@@ -1413,7 +1414,7 @@ public:
 	virtual void continueDestroyBlock(Vector3*, UCHAR, bool);
 	virtual void stopDestroyBlock(Vector3*);
 	virtual void startBuildBlock(Vector3*, UCHAR);
-	virtual void buildBlock(Vector3*, UCHAR);
+	virtual void buildBlock(Vector3_i*, UCHAR);
 	virtual void continueBuildBlock(Vector3*, UCHAR);
 	virtual void stopBuildBlock(void);
 	virtual void tick(void);

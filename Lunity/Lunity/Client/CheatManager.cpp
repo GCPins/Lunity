@@ -21,8 +21,12 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Killaura());
 	cheats.push_back(new Triggerbot());
 	cheats.push_back(new Hitbox());
+
 	cheats.push_back(new AirJump());
 	cheats.push_back(new AutoSprint());
+
+	cheats.push_back(new Scaffold());
+
 	cheats.push_back(new TabGUI());
 	cheats.push_back(new Uninject());
 	cheats.push_back(new NameTest());
