@@ -4,7 +4,7 @@
 Vector2* rot;
 Spinbot::Spinbot():Cheat::Cheat("Spinbot", "Player")
 {
-	keyBind = 0x4F;
+	//keyBind = 0x4F;
 	rot = new Vector2();
 	rot->x = 0.0f;
 }

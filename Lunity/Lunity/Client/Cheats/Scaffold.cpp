@@ -54,16 +54,16 @@ void Scaffold::onGmTick(GameMode* gm) {
 					gm->buildBlock(blockPos, 2);
 					blockPos->z--;
 					gm->buildBlock(blockPos, 5);
-					TextHolder* Text = new TextHolder("Facing East, turning left");
-					Player->displayLocalizableMessage(Text);
+					//TextHolder* Text = new TextHolder("Facing East, turning left");
+					//Player->displayLocalizableMessage(Text);
 				}
 				else if (floor(currentPos.z + 0.2f) == floor(currentPos.z + 1.0f)) {
 					bridgedSideways = true;
 					gm->buildBlock(blockPos, 3);
 					blockPos->z++;
 					gm->buildBlock(blockPos, 5);
-					TextHolder* Text = new TextHolder("Facing East, turning right");
-					Player->displayLocalizableMessage(Text);
+					//TextHolder* Text = new TextHolder("Facing East, turning right");
+					//Player->displayLocalizableMessage(Text);
 				}
 				break;
 
@@ -73,16 +73,16 @@ void Scaffold::onGmTick(GameMode* gm) {
 					gm->buildBlock(blockPos, 3);
 					blockPos->z++;
 					gm->buildBlock(blockPos, 4);
-					TextHolder* Text = new TextHolder("Facing West, turning left");
-					Player->displayLocalizableMessage(Text);
+					//TextHolder* Text = new TextHolder("Facing West, turning left");
+					//Player->displayLocalizableMessage(Text);
 				}
 				else if (floor(currentPos.z - 0.2f) == floor(currentPos.z - 1.0f)) {
 					bridgedSideways = true;
 					gm->buildBlock(blockPos, 2);
 					blockPos->z--;
 					gm->buildBlock(blockPos, 4);
-					TextHolder* Text = new TextHolder("Facing West, turning right");
-					Player->displayLocalizableMessage(Text);
+					//TextHolder* Text = new TextHolder("Facing West, turning right");
+					//Player->displayLocalizableMessage(Text);
 				}
 				break;
 
@@ -92,16 +92,16 @@ void Scaffold::onGmTick(GameMode* gm) {
 					gm->buildBlock(blockPos, 5);
 					blockPos->x++;
 					gm->buildBlock(blockPos, 3);
-					TextHolder* Text = new TextHolder("Facing South, turning left");
-					Player->displayLocalizableMessage(Text);
+					//TextHolder* Text = new TextHolder("Facing South, turning left");
+					//Player->displayLocalizableMessage(Text);
 				}
 				else if (floor(currentPos.x - 0.2f) == floor(currentPos.x - 1.0f)) {
 					bridgedSideways = true;
 					gm->buildBlock(blockPos, 4);
 					blockPos->x--;
 					gm->buildBlock(blockPos, 3);
-					TextHolder* Text = new TextHolder("Facing South, turning right");
-					Player->displayLocalizableMessage(Text);
+					//TextHolder* Text = new TextHolder("Facing South, turning right");
+					//Player->displayLocalizableMessage(Text);
 				}
 				break;
 
@@ -111,16 +111,16 @@ void Scaffold::onGmTick(GameMode* gm) {
 					gm->buildBlock(blockPos, 4);
 					blockPos->x--;
 					gm->buildBlock(blockPos, 2);
-					TextHolder* Text = new TextHolder("Facing North, turning left");
-					Player->displayLocalizableMessage(Text);
+					//TextHolder* Text = new TextHolder("Facing North, turning left");
+					//Player->displayLocalizableMessage(Text);
 				}
 				else if (floor(currentPos.x + 0.2f) == floor(currentPos.x + 1.0f)) {
 					bridgedSideways = true;
 					gm->buildBlock(blockPos, 5);
 					blockPos->x++;
 					gm->buildBlock(blockPos, 2);
-					TextHolder* Text = new TextHolder("Facing North, turning right");
-					Player->displayLocalizableMessage(Text);
+					//TextHolder* Text = new TextHolder("Facing North, turning right");
+					//Player->displayLocalizableMessage(Text);
 				}
 				break;
 			}
