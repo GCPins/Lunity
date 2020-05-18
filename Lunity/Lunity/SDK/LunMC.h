@@ -1389,30 +1389,8 @@ public:
 class GameMode
 {
 public:
-	char pad_0008[56]; //0x0008
-
-	virtual void Destructor();
-	virtual void startDestroyBlock(Vector3*, UCHAR, bool);
-	virtual void destroyBlock(Vector3*, UCHAR);
-	virtual void continueDestroyBlock(Vector3*, UCHAR, bool);
-	virtual void stopDestroyBlock(Vector3*);
-	virtual void startBuildBlock(Vector3*, UCHAR);
-	virtual void buildBlock(Vector3*, UCHAR);
-	virtual void continueBuildBlock(Vector3*, UCHAR);
-	virtual void stopBuildBlock(void);
-	virtual void tick(void);
-	virtual void getPickRange();
-	virtual void useItem();
-	virtual void useItemOn();
-	virtual void interact();
-	virtual bool attack(Actor*);
-	virtual void releaseUsingItem();
-}; //Size: 0x0040
-
-class SurvivalMode
-{
-public:
-	char pad_0008[56]; //0x0008
+	class ServerPlayer* Player; //0x0008
+	char pad_0010[48]; //0x0010
 
 	virtual void Destructor();
 	virtual void startDestroyBlock(Vector3*, UCHAR, bool);
