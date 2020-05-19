@@ -184,11 +184,13 @@
     <ClInclude Include="Client\Cheats\Hitbox.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
     <ClInclude Include="Client\Cheats\ModuleList.h" />
+    <ClInclude Include="Client\Cheats\NoSlowDown.h" />
     <ClInclude Include="Client\Cheats\Nuker.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\Cheats\Scaffold.h" />
     <ClInclude Include="Client\Cheats\Triggerbot.h" />
     <ClInclude Include="Client\Cheats\Uninject.h" />
+    <ClInclude Include="Client\Cheats\Velocity.h" />
     <ClInclude Include="Client\Hooks\pch.h" />
     <ClInclude Include="Client\pch.h" />
     <ClInclude Include="Client\Hooks\GamemodeHook.h" />
@@ -238,10 +240,12 @@
     <ClCompile Include="Client\Cheats\Hitbox.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
     <ClCompile Include="Client\Cheats\ModuleList.cpp" />
+    <ClCompile Include="Client\Cheats\NoSlowDown.cpp" />
     <ClCompile Include="Client\Cheats\Nuker.cpp" />
     <ClCompile Include="Client\Cheats\Scaffold.cpp" />
     <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
+    <ClCompile Include="Client\Cheats\Velocity.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\Hooks\KeyHook.cpp" />
     <ClCompile Include="Client\Hooks\RenderHook.cpp" />

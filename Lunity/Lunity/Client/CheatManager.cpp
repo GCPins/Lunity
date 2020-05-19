@@ -24,9 +24,11 @@ void CheatManager::loadCheats()
 
 	cheats.push_back(new AirJump());
 	cheats.push_back(new AutoSprint());
+	cheats.push_back(new NoSlowDown());
 
 	cheats.push_back(new Scaffold());
 	cheats.push_back(new Nuker());
+	cheats.push_back(new Velocity());
 
 	cheats.push_back(new TabGUI());
 	cheats.push_back(new ModuleList());

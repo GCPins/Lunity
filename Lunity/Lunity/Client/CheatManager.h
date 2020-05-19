@@ -7,9 +7,11 @@
 
 #include "Cheats/AirJump.h"
 #include "Cheats/AutoSprint.h"
+#include "Cheats/NoSlowDown.h"
 
 #include "Cheats/Scaffold.h"
 #include "Cheats/Nuker.h"
+#include "Cheats/Velocity.h"
 
 #include "Cheats/TabGUI.h"
 #include "Cheats/ModuleList.h"
