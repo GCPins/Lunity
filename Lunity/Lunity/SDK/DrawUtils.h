@@ -214,7 +214,7 @@ struct vec3_t
 	}
 
 
-	bool WorldToScreen2(float fovx, float fovy, float windowWidth, float windowHeight, vec3_t left, vec3_t up, vec3_t forward, vec3_t origin, vec3_t& screen)
+	bool WorldToScreen2(float fovx, float fovy, float windowWidth, float windowHeight, vec3_t left, vec3_t up, vec3_t forward, vec3_t origin, vec2_t& screen)
 	{
 		vec3_t transform;
 		float xc, yc;
@@ -281,6 +281,6 @@ public:
 	static void drawText(vec2_t pos, std::string* textStr, MC_Color* color, float textSize);
 	static void fillRectangle(vec4_t pos, const MC_Color col, float alpha);
 	static void drawRectangle(vec4_t pos, MC_Color col, float alpha, float lineWidth);
-	static bool WorldToScreen(vec3_t pos, vec2_t* screen, float matrix[16], int windowWidth, int windowHeight);
+	static bool WorldToScreen(vec3_t pos, vec2_t& screen);
 };
 

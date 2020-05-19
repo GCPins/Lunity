@@ -102,7 +102,12 @@ public:
 	class SceneFactory* SceneFactory; //0x00D0
 	char pad_00D8[24]; //0x00D8
 	class LocalPlayer* LocalPlayer; //0x00F0
-	char pad_00F8[248]; //0x00F8
+	char pad_00F8[1288]; //0x00F8
+	float fovX; //0x0600
+	char pad_0604[12]; //0x0604
+	int N000014C5; //0x0610
+	float fovY; //0x0614
+	char pad_0618[168]; //0x0618
 
 	virtual void destructorClientInstance();
 	virtual void onInitMinecraftGame();
@@ -1482,20 +1487,11 @@ public:
 class LevelRenderer
 {
 public:
-	char pad_0000[2144]; //0x0000
+	char pad_0008[760]; //0x0008
+	class GameRenderer* GameRenderer; //0x0300
+	char pad_0308[1368]; //0x0308
 	Vector3 Origin; //0x0860
-	Matrix4x4 N00001187; //0x086C
-	Matrix4x4 N00001188; //0x08AC
-	Matrix4x4 N00001189; //0x08EC
-	Matrix4x4 HandViewModelMatrix; //0x092C
-	Matrix4x4 N0000118B; //0x096C
-	char pad_09AC[232]; //0x09AC
-	Matrix4x4 N000011CB; //0x0A94
-	Matrix4x4 PossibleViewMatrix; //0x0AD4
-	Matrix4x4 N000011CD; //0x0B14
-	Matrix4x4 N000011CE; //0x0B54
-	Matrix4x4 N000011CF; //0x0B94
-	Matrix4x4 N000011D0; //0x0BD4
-	Matrix4x4 N000011D1; //0x0C14
-	char pad_0C54[200]; //0x0C54
+	char pad_086C[3608]; //0x086C
+
+
 }; //Size: 0x0D1C

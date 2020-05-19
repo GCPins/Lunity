@@ -5,6 +5,6 @@ class NameTest : public Cheat
 public:
 	NameTest();
 	void onEnable();
-	void onPostRender();
+	void onPreRender();
 };
 
