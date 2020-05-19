@@ -210,9 +210,6 @@
     <ClInclude Include="Client\Cheats\Scaffold.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Cheats\Spinbot.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="Client\Cheats\ModuleList.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
@@ -276,9 +273,6 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\Scaffold.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Client\Cheats\Spinbot.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\ModuleList.cpp">
