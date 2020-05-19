@@ -161,8 +161,8 @@ bool DrawUtils::WorldToScreen(vec3_t pos, vec2_t& screen)
 	Vector3 origin = lr->Origin;
 	vec3_t origVec3t(origin.x, origin.y, origin.z);
 	vec3_t* forward = directionalVector(lp->LookingVec.y, lp->LookingVec.x);
-	vec3_t* left = directionalVector(lp->LookingVec.y-90, lp->LookingVec.x);
-	vec3_t* up = directionalVector(lp->LookingVec.y, lp->LookingVec.x-90);
+	vec3_t* left = directionalVector(lp->LookingVec.y+90, lp->LookingVec.x);
+	vec3_t* up = directionalVector(lp->LookingVec.y, lp->LookingVec.x+90);
 	return DirtyWorldToScreen(origVec3t, pos, screen, ci->fovX, ci->fovY, gd->Resolution.x, gd->Resolution.y, *left, *up, *forward);
 }
 
