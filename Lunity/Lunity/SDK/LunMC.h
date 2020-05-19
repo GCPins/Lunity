@@ -910,7 +910,7 @@ public:
 	virtual void Function252();
 	virtual void Function253();
 	virtual void Function254();
-	virtual void Function255();
+	virtual bool isSprinting(void);
 	virtual void setSprinting(bool);
 	virtual void Function257();
 	virtual void Function258();
