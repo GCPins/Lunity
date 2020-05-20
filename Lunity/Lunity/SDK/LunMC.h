@@ -653,7 +653,10 @@ public:
 	float HitboxWidth; //0x0474
 	float HitboxHeight; //0x0478
 	Vector3 Pos3; //0x047C
-	char pad_0488[1136]; //0x0488
+	char pad_0488[8]; //0x0488
+	int N000006EA; //0x0490
+	Vector3 VelocityXYZ; //0x0494
+	char pad_04A0[1156]; //0x04A0
 
 	virtual void Function0();
 	virtual void Function1();
