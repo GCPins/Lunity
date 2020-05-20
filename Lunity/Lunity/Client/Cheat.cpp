@@ -53,6 +53,14 @@ void Cheat::onKey(ulong key)
 {
 }
 
+void Cheat::onMouseButton(ulong button)
+{
+}
+
+void Cheat::onMouseMove()
+{
+}
+
 void Cheat::onPreRender()
 {
 }

@@ -76,6 +76,20 @@ void CheatManager::distroKeyPress(ulong key)
 	}
 }
 
+void CheatManager::distroButtonPress(ulong key)
+{
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onMouseButton(key);
+	}
+}
+
+void CheatManager::distroMouseMove()
+{
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onMouseMove();
+	}
+}
+
 void CheatManager::onPreRender()
 {
 	for (uint i = 0; i < cheats.size(); i++) {
