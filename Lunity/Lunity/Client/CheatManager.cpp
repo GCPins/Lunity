@@ -22,6 +22,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Triggerbot());
 	cheats.push_back(new Hitbox());
 
+	cheats.push_back(new Jetpack());
 	cheats.push_back(new AirJump());
 	cheats.push_back(new AutoSprint());
 	cheats.push_back(new NoSlowDown());

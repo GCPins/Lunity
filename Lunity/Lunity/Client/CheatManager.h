@@ -5,6 +5,7 @@
 #include "Cheats/Triggerbot.h"
 #include "Cheats/Hitbox.h"
 
+#include "Cheats/Jetpack.h"
 #include "Cheats/AirJump.h"
 #include "Cheats/AutoSprint.h"
 #include "Cheats/NoSlowDown.h"
