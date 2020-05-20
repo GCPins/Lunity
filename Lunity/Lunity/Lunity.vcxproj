@@ -181,6 +181,7 @@
     <ClInclude Include="Client\CheatManager.h" />
     <ClInclude Include="Client\Cheat.h" />
     <ClInclude Include="Client\Cheats\AutoSprint.h" />
+    <ClInclude Include="Client\Cheats\BunnyHop.h" />
     <ClInclude Include="Client\Cheats\Hitbox.h" />
     <ClInclude Include="Client\Cheats\Jetpack.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
@@ -238,6 +239,7 @@
     <ClCompile Include="Client\CheatManager.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />
     <ClCompile Include="Client\Cheats\AutoSprint.cpp" />
+    <ClCompile Include="Client\Cheats\BunnyHop.cpp" />
     <ClCompile Include="Client\Cheats\Hitbox.cpp" />
     <ClCompile Include="Client\Cheats\Jetpack.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />

@@ -17,23 +17,28 @@ vector<string> CheatManager::getCategories()
 void CheatManager::loadCheats()
 {
 	cheats = vector<Cheat*>();
-	//Load cheats here
+	/* Combat */
 	cheats.push_back(new Killaura());
 	cheats.push_back(new Triggerbot());
 	cheats.push_back(new Hitbox());
 
+	/* Movement */
 	cheats.push_back(new Jetpack());
 	cheats.push_back(new AirJump());
 	cheats.push_back(new AutoSprint());
 	cheats.push_back(new NoSlowDown());
+	cheats.push_back(new BunnyHop());
 
+	/* Player */
 	cheats.push_back(new Scaffold());
 	cheats.push_back(new Nuker());
 	cheats.push_back(new Velocity());
 
+	/* Visuals */
 	cheats.push_back(new TabGUI());
 	cheats.push_back(new ModuleList());
 
+	/* Other */
 	cheats.push_back(new Uninject());
 	cheats.push_back(new NameTest());
 

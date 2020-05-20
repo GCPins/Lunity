@@ -3,7 +3,7 @@
 #include "../Hooks/KeyHook.h"
 
 #define PI 3.14159
-float jetpackSpeed = 1;
+float jetpackSpeed = 1.0f;
 
 Jetpack::Jetpack() :Cheat::Cheat("Jetpack", "Movement")
 {
