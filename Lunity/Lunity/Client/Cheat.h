@@ -16,6 +16,8 @@ public:
 	virtual void onEnable();
 	virtual void onDisable();
 	virtual void onKey(ulong key);
+	virtual void onMouseButton(ulong button);
+	virtual void onMouseMove();
 	virtual void onPreRender();
 	virtual void onPostRender();
 };

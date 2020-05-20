@@ -14,3 +14,15 @@ void NameTest::onEnable()
 	*/
 	enabled = false;
 }
+
+void NameTest::onMouseButton(ulong btn) {
+	if (btn == 1) {
+		Logger::log("Left click!");
+	}
+	if (btn == 2) {
+		Logger::log("Right click!");
+	}
+	if (btn == 3) {
+		Logger::log("Mb!");
+	}
+}

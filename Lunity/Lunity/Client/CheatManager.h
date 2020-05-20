@@ -39,6 +39,8 @@ public:
 	static void tickCheats();
 	static void gmTickCheats(GameMode* gm);
 	static void distroKeyPress(ulong key);
+	static void distroButtonPress(ulong key);
+	static void distroMouseMove();
 	static void onPreRender();
 	static void onPostRender();
 };

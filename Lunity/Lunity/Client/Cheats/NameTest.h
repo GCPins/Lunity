@@ -5,5 +5,6 @@ class NameTest : public Cheat
 public:
 	NameTest();
 	void onEnable();
+	void onMouseButton(ulong btn);
 };
 
