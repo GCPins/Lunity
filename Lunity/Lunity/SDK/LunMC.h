@@ -1,6 +1,7 @@
 #pragma once
 #include "TextHolder.h"
 #include "../BigHead.h"
+#include <functional>
 struct Vector3 { float x, y, z; };
 struct Vector2 { float x, y; };
 struct Vector3i { int x, y, z; };
@@ -369,6 +370,37 @@ class SimpleContainer
 {
 public:
 	char pad_0000[272]; //0x0000
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void getItem(int);
+	virtual bool hasRoomForItem(struct ItemStack);
+	virtual void addItem(struct ItemStack);
+	virtual void addItemToFirstEmptySlot(struct ItemStack);
+	virtual void setItem(int, struct ItemStack);
+	virtual void removeItem(int, int);
+	virtual void removeAllItems(void);
+	virtual void Function11();
+	virtual __int64 getContainerSize(void);
+	virtual __int64 getMaxStackSize(void);
+	virtual void Function14();
+	virtual void Function15();
+	virtual void Function16();
+	virtual void Function17();
+	virtual void Function18();
+	virtual void Function19();
+	virtual int findFirstSlotForItem(struct ItemStack);
+	virtual void Function21();
+	virtual void Function22();
+	virtual void Function23();
+	virtual void Function24();
+	virtual void setCustomName(TextHolder);
+	virtual bool hasCustomName(void);
+	virtual void Function27();
+	virtual void Function28();
+	virtual void createTransactionContext(std::function<void(struct Container&, int, ItemStack const&, ItemStack const&)>, std::function<void(void)>);
+	virtual void triggerTransactionChange(int, struct ItemStack const&, struct ItemStack const&);
 }; //Size: 0x0110
 
 class PlayerUIContainer
