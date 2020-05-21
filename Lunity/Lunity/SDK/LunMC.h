@@ -365,6 +365,20 @@ public:
 	virtual void Function265();
 }; //Size: 0x01F0
 
+class SimpleContainer
+{
+public:
+	char pad_0000[272]; //0x0000
+}; //Size: 0x0110
+
+class PlayerUIContainer
+{
+public:
+	char pad_0000[32]; //0x0000
+	int8_t InvenOpen; //0x0020
+	char pad_0021[271]; //0x0021
+}; //Size: 0x0130
+
 class Actor
 {
 public:
@@ -656,15 +670,18 @@ public:
 	char pad_0488[8]; //0x0488
 	int N000006EA; //0x0490
 	Vector3 VelocityXYZ; //0x0494
-	char pad_04A0[2352]; //0x04A0
-	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0DD0
-	char pad_0DD0[456]; //0x0DD0
-	class ItemStack* ItemStacks; //0x0F98
-	char pad_0FA0[800]; //0x0FA0
-	int8_t InvenOpen; //0x12C0
-	char pad_12C1[263]; //0x12C1
-	class GameMode* GamemodePtr; //0x13C8
-	char pad_13D0[1844]; //0x13D0
+	char pad_04A0[216]; //0x04A0
+	class SimpleContainer SimpleContainer; //0x0578
+	class SimpleContainer SimpleContainer2; //0x0688
+	char pad_0798[2096]; //0x0798
+	class CraftingContainerManagerModel* CraftingContainerManagerModel; //0x0FC8
+	char pad_0FD0[8]; //0x0FD0
+	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0FD8
+	char pad_0FE0[456]; //0x0FE0
+	class ItemStack* ItemStacks; //0x11A8
+	char pad_11B0[768]; //0x11B0
+	class PlayerUIContainer PlayerUIContainer; //0x14B0
+	char pad_15E0[2124]; //0x15E0
 
 	virtual void Function0();
 	virtual void Function1();
@@ -1054,19 +1071,19 @@ public:
 	virtual void Function385();
 	virtual void Function386();
 	virtual void Function387();
-	virtual void Function388();
-	virtual void Function389();
-	virtual void Function390();
-	virtual void Function391();
-	virtual void Function392();
-	virtual void Function393();
+	virtual void openInventory();
+	virtual void openStructureEditor(Vector3i* pos);
+	virtual void openLabTable(Vector3i* pos);
+	virtual void openElementConstructor(Vector3i* pos);
+	virtual void openCompoundCreator(Vector3i* pos);
+	virtual void openMaterialReader(Vector3i* pos);
 	virtual void Function394();
 	virtual void Function395();
 	virtual void Function396();
 	virtual void Function397();
 	virtual void Function398();
 	virtual void displayLocalizableMessage(TextHolder* text);
-	virtual void Function400();
+	virtual void displayTextObjectMessage();//(TextObjectRoot* textObj, TextHolder* textHolder);
 	virtual void Function401();
 	virtual void Function402();
 	virtual void Function403();
@@ -1082,7 +1099,7 @@ public:
 	virtual void Function413();
 	virtual void Function414();
 	virtual void Function415();
-	virtual void Function416();
+	virtual void setPlayerGameType();//GameType* gameType);
 	virtual void crit(class Actor*);
 	virtual void Function418();
 	virtual void Function419();
@@ -1103,7 +1120,7 @@ public:
 	virtual void Function434();
 	virtual void Function435();
 	virtual void Function436();
-	virtual void Function437();
+	virtual void sendInventoryTransaction(void* transaction);//void is actually a InventoryTransaction, but i dont have that
 	virtual void Function438();
 	virtual void Function439();
 	virtual void Function440();
@@ -1111,7 +1128,7 @@ public:
 	virtual void Function442();
 	virtual void Function443();
 	virtual void Function444();
-	virtual void Function445();
+	virtual void onMovePlayerPacketNormal(Vector3* pos, Vector2* looking, float param_3);
 	virtual void Function446();
 	virtual void Function447();
 	virtual void Function448();
