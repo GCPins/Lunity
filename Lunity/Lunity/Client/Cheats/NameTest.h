@@ -5,5 +5,7 @@ class NameTest : public Cheat
 public:
 	NameTest();
 	void onEnable();
+	void onTick();
+	void onGmTick(GameMode* gm);
 };
 

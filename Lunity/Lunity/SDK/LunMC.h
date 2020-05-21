@@ -1,7 +1,8 @@
 #pragma once
 #include "TextHolder.h"
-#include "../BigHead.h"
+#include "LunMem.h"
 #include <functional>
+#define ulong uint64_t
 struct Vector3 { float x, y, z; };
 struct Vector2 { float x, y; };
 struct Vector3i { int x, y, z; };
@@ -415,7 +416,9 @@ public:
 class Actor
 {
 public:
-	char pad_0000[376]; //0x0000
+	char pad_0000[216]; //0x0000
+	uint64_t ActorId; //0x00D8
+	char pad_00E0[152]; //0x00E0
 	bool OnGround; //0x0178
 	char pad_0179[399]; //0x0179
 	int MovedTick; //0x0308
@@ -677,7 +680,9 @@ public:
 class LocalPlayer
 {
 public:
-	char pad_0008[232]; //0x0008
+	char pad_0008[208]; //0x0008
+	uint64_t ActorId; //0x00D8
+	char pad_00E0[16]; //0x00E0
 	Vector2 LookingVec; //0x00F0
 	Vector2 LookingVec2; //0x00F8
 	char pad_0100[120]; //0x0100
@@ -1438,8 +1443,22 @@ public:
 class LoopbackPacketSender
 {
 public:
-	char pad_0000[8]; //0x0000
-}; //Size: 0x0008
+	char pad_0008[8]; //0x0008
+	class NetworkHandler* NetworkHandler; //0x0010
+	char pad_0018[48]; //0x0018
+
+	virtual void Function0();
+	virtual void Function1();
+	virtual void sendToServer(void* packet);
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
+}; //Size: 0x0048
+
 
 class HolographicPlatform
 {
@@ -1492,12 +1511,6 @@ public:
 	char pad_00D0[56]; //0x00D0
 }; //Size: 0x0108
 
-class NetworkHandler
-{
-public:
-	char pad_0000[8]; //0x0000
-}; //Size: 0x0008
-
 class N00000D28
 {
 public:
@@ -1548,3 +1561,56 @@ public:
 	class N000013CA* N00001345; //0x0018
 	char pad_0020[104]; //0x0020
 }; //Size: 0x0088
+
+class NetworkHandler
+{
+public:
+	char pad_0000[24]; //0x0000
+	class RakNetInstance* RakNetInstance; //0x0018
+	class LocalConnector* LocalConnector; //0x0020
+	class RakNetServerLocator* RakNetServerLocator; //0x0028
+	char pad_0030[448]; //0x0030
+}; //Size: 0x01F0
+
+class RakNetServerLocator
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class RakNetInstance
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class LocalConnector
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class MovePlayerPacket
+{
+public:
+	long VTable; //0x0000
+	char pad_0008[32]; //0x0008
+	uint64_t ActorId; //0x0028
+	Vector3 Pos; //0x0030
+	Vector2 LookingVec; //0x003C
+	char pad_0044[4]; //0x0044
+	int8_t N00001248; //0x0048
+	int8_t onGround; //0x0049
+	char pad_004A[54]; //0x004A
+	class Actor* Player; //0x0080
+	char pad_0088[136]; //0x0088
+
+	MovePlayerPacket(Actor* player, Vector3* pos, Vector2* looking, int8_t onGround) {
+		this->ActorId = player->ActorId;
+		this->Pos = *pos;
+		this->LookingVec = *looking;
+		this->onGround = onGround;
+		this->Player = player;
+		VTable = (ulong)GetModuleHandle(NULL) + 0x2B04E68;
+	}
+}; //Size: 0x0110
