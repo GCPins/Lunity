@@ -16,7 +16,7 @@ void Instabreak::onGmTick(GameMode* gm) {
 			int lookingBlockZ = Player->MultiPlayerLevel->LookingBlockZ;
 
 			if (MouseHook::ButtonState(0x01) && lookingBlockY > 0) {
-				Vector3_i blockPos;
+				Vector3i blockPos;
 				blockPos.x = lookingBlockX;
 				blockPos.y = lookingBlockY;
 				blockPos.z = lookingBlockZ;

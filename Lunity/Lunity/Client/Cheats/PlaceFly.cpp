@@ -15,7 +15,7 @@ void PlaceFly::onGmTick(GameMode* gm) {
 	LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
 	Vector3* pos = player->getPos();
 	//player.
-	/*Vector3_i* vec3i = new Vector3_i();
+	/*Vector3i* vec3i = new Vector3i();
 	vec3i->x = floor(pos->x);
 	vec3i->y = floor(pos->y - 2);
 	vec3i->z = floor(pos->z);

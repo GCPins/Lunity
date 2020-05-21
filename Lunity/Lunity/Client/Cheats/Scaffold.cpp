@@ -17,7 +17,7 @@ void Scaffold::onTick()
 	Cheat::onTick();
 }
 
-Vector3_i* blockPos = new Vector3_i;
+Vector3i* blockPos = new Vector3i;
 Vector3 currentPos;
 
 void Scaffold::onGmTick(GameMode* gm) {

@@ -28,14 +28,14 @@ void Nuker::onGmTick(GameMode* gm) {
 
 			if (MouseHook::ButtonState(0x01) && staringBlockY > 0) {
 
-				Vector3_i blockPos;
+				Vector3i blockPos;
 				blockPos.x = staringBlockX;
 				blockPos.y = staringBlockY;
 				blockPos.z = staringBlockZ;
 
 				gm->destroyBlock(&blockPos, 1);
 
-				Vector3_i newBlockPos = blockPos;
+				Vector3i newBlockPos = blockPos;
 
 				int radiusSize = 2;
 

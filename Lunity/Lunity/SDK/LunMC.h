@@ -3,7 +3,7 @@
 #include "../BigHead.h"
 struct Vector3 { float x, y, z; };
 struct Vector2 { float x, y; };
-struct Vector3_i { int x, y, z; };
+struct Vector3i { int x, y, z; };
 // Created with ReClass.NET 1.2 by KN4CK3R
 
 class GuiData
@@ -660,11 +660,11 @@ public:
 	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0DD0
 	char pad_0DD0[456]; //0x0DD0
 	class ItemStack* ItemStacks; //0x0F98
-	char pad_0FA0[792]; //0x0FA0
-	int8_t InvenOpen; //0x12B8
-	char pad_12B9[263]; //0x12B9
-	class GameMode* GamemodePtr; //0x13C0
-	char pad_13C8[1844]; //0x13C8
+	char pad_0FA0[800]; //0x0FA0
+	int8_t InvenOpen; //0x12C0
+	char pad_12C1[263]; //0x12C1
+	class GameMode* GamemodePtr; //0x13C8
+	char pad_13D0[1844]; //0x13D0
 
 	virtual void Function0();
 	virtual void Function1();
@@ -1033,8 +1033,8 @@ public:
 	virtual void Function364();
 	virtual void Function365();
 	virtual void Function366();
-	virtual void openContainer(Vector3* pos);
-	virtual void Function368();
+	virtual void openContainer(Vector3i* pos);
+	virtual void openFurnace(Vector3i* pos);
 	virtual void Function369();
 	virtual void Function370();
 	virtual void Function371();
@@ -1466,13 +1466,13 @@ public:
 	char pad_0010[48]; //0x0010
 
 	virtual void Destructor();
-	virtual void startDestroyBlock(Vector3_i*, UCHAR, bool);
-	virtual void destroyBlock(Vector3_i*, UCHAR);
-	virtual void continueDestroyBlock(Vector3_i*, UCHAR, bool);
-	virtual void stopDestroyBlock(Vector3_i*);
-	virtual void startBuildBlock(Vector3_i*, UCHAR);
-	virtual void buildBlock(Vector3_i*, UCHAR);
-	virtual void continueBuildBlock(Vector3_i*, UCHAR);
+	virtual void startDestroyBlock(Vector3i*, UCHAR, bool);
+	virtual void destroyBlock(Vector3i*, UCHAR);
+	virtual void continueDestroyBlock(Vector3i*, UCHAR, bool);
+	virtual void stopDestroyBlock(Vector3i*);
+	virtual void startBuildBlock(Vector3i*, UCHAR);
+	virtual void buildBlock(Vector3i*, UCHAR);
+	virtual void continueBuildBlock(Vector3i*, UCHAR);
 	virtual void stopBuildBlock(void);
 	virtual void tick(void);
 	virtual void getPickRange();
