@@ -2,6 +2,7 @@
 #include "Nuker.h"
 #include "../Hooks/GamemodeHook.h"
 #include "../Hooks/KeyHook.h"
+#include "../Hooks/MouseHook.h"
 
 Nuker::Nuker() :Cheat::Cheat("Nuker", "Player")
 {
@@ -25,9 +26,7 @@ void Nuker::onGmTick(GameMode* gm) {
 			int staringBlockY = LunMem::getClientInstance()->LocalPlayer->MultiPlayerLevel->LookingBlockY;
 			int staringBlockZ = LunMem::getClientInstance()->LocalPlayer->MultiPlayerLevel->LookingBlockZ;
 
-			if (KeyHook::KeyState(0x4E) && staringBlockY > 0) {
-				//TextHolder* Text = new TextHolder("DIG");
-				//LunMem::getClientInstance()->LocalPlayer->displayLocalizableMessage(Text);
+			if (MouseHook::ButtonState(0x01) && staringBlockY > 0) {
 
 				Vector3_i blockPos;
 				blockPos.x = staringBlockX;
