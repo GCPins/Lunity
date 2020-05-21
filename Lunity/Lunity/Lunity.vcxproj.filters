@@ -237,9 +237,6 @@
     <ClInclude Include="Client\Cheats\Instabreak.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Cheats\PlaceFly.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="Client\Cheats\NoWeb.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
@@ -327,9 +324,6 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\Instabreak.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Client\Cheats\PlaceFly.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\NoWeb.cpp">

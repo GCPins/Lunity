@@ -14,7 +14,6 @@
 #include "Cheats/AutoSprint.h"
 #include "Cheats/NoSlowDown.h"
 #include "Cheats/BunnyHop.h"
-#include "Cheats/PlaceFly.h"
 #include "Cheats/NoWeb.h"
 
 /* Player */

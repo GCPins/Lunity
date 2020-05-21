@@ -28,7 +28,6 @@ void CheatManager::loadCheats()
 	cheats.push_back(new AutoSprint());
 	cheats.push_back(new NoSlowDown());
 	cheats.push_back(new BunnyHop());
-	cheats.push_back(new PlaceFly());
 	cheats.push_back(new NoWeb());
 
 	/* Player */
