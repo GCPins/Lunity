@@ -658,11 +658,13 @@ public:
 	Vector3 VelocityXYZ; //0x0494
 	char pad_04A0[2352]; //0x04A0
 	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0DD0
-	char pad_0DD8[1264]; //0x0DD8
-	int8_t InvenOpen; //0x12C8
-	char pad_12C9[263]; //0x12C9
-	class GameMode* GamemodePtr; //0x13D0
-	char pad_13D8[1832]; //0x13D8
+	char pad_0DD0[456]; //0x0DD0
+	class ItemStack* ItemStacks; //0x0F98
+	char pad_0FA0[792]; //0x0FA0
+	int8_t InvenOpen; //0x12B8
+	char pad_12B9[263]; //0x12B9
+	class GameMode* GamemodePtr; //0x13C0
+	char pad_13C8[1844]; //0x13C8
 
 	virtual void Function0();
 	virtual void Function1();
@@ -697,7 +699,7 @@ public:
 	virtual void Function30();
 	virtual void Function31();
 	virtual void chorusFruitTeleport();
-	virtual void Function33();
+	virtual void lerpTo(Vector3* start, Vector3* end, int fracOfJourney); //According to unity documentation LMAO
 	virtual void Function34();
 	virtual void Function35();
 	virtual void Function36();
@@ -1031,7 +1033,7 @@ public:
 	virtual void Function364();
 	virtual void Function365();
 	virtual void Function366();
-	virtual void Function367();
+	virtual void openContainer(Vector3* pos);
 	virtual void Function368();
 	virtual void Function369();
 	virtual void Function370();
@@ -1488,3 +1490,11 @@ public:
 	long CurrentSlot; //0x0010
 	char pad_0018[244]; //0x0018
 }; //Size: 0x010C
+
+class ItemStack
+{
+public:
+	char pad_0000[24]; //0x0000
+	class N000013CA* N00001345; //0x0018
+	char pad_0020[104]; //0x0020
+}; //Size: 0x0088
