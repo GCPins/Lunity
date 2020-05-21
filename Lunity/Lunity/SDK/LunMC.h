@@ -368,7 +368,18 @@ public:
 class SimpleContainer
 {
 public:
-	char pad_0000[272]; //0x0000
+	char pad_0008[264]; //0x0008
+
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
 }; //Size: 0x0110
 
 class PlayerUIContainer
@@ -865,8 +876,8 @@ public:
 	virtual void Function179();
 	virtual void Function180();
 	virtual void Function181();
-	virtual void Function182();
-	virtual void Function183();
+	virtual void startSwimming();
+	virtual void stopSwimming();
 	virtual void Function184();
 	virtual void Function185();
 	virtual void Function186();

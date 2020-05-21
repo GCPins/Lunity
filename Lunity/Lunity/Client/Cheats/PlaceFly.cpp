@@ -1,5 +1,10 @@
+#pragma once
 #include "pch.h"
 #include "PlaceFly.h"
+#include "../Hooks/KeyHook.h"
+
+#define PI 3.14159
+float placeFlySpeed = 1.0f;
 
 PlaceFly::PlaceFly() : Cheat::Cheat("PlaceFly", "Movement")
 {
@@ -7,17 +12,18 @@ PlaceFly::PlaceFly() : Cheat::Cheat("PlaceFly", "Movement")
 
 void PlaceFly::onEnable()
 {
-	//add = true;
 }
 
 //bool add = true;
 void PlaceFly::onGmTick(GameMode* gm) {
-	LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
-	Vector3* pos = player->getPos();
-	//player.
-	/*Vector3i* vec3i = new Vector3i();
-	vec3i->x = floor(pos->x);
-	vec3i->y = floor(pos->y - 2);
-	vec3i->z = floor(pos->z);
-	gm->buildBlock(vec3i, 1);*/
+	LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
+	Player->setSitting(true);
+	Player->startSwimming();
+	if (KeyHook::KeyState(0x46)) {
+		Vector2 lookingVec = Player->LookingVec;
+		Player->VelocityXYZ.x = cos((lookingVec.y + 90.0f) * (PI / 180.0f)) * placeFlySpeed;
+		Player->VelocityXYZ.y = sin((lookingVec.x) * -(PI / 180.0f)) * placeFlySpeed;
+		Player->VelocityXYZ.z = sin((lookingVec.y + 90.0f) * (PI / 180.0f)) * placeFlySpeed;
+	}
+	
 }
