@@ -1,6 +1,7 @@
 #pragma once
 #include "TextHolder.h"
 #include "../BigHead.h"
+#include <functional>
 struct Vector3 { float x, y, z; };
 struct Vector2 { float x, y; };
 struct Vector3i { int x, y, z; };
