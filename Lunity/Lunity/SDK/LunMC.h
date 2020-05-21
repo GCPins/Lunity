@@ -656,7 +656,13 @@ public:
 	char pad_0488[8]; //0x0488
 	int N000006EA; //0x0490
 	Vector3 VelocityXYZ; //0x0494
-	char pad_04A0[1156]; //0x04A0
+	char pad_04A0[2352]; //0x04A0
+	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0DD0
+	char pad_0DD8[1264]; //0x0DD8
+	int8_t InvenOpen; //0x12C8
+	char pad_12C9[263]; //0x12C9
+	class GameMode* GamemodePtr; //0x13D0
+	char pad_13D8[1832]; //0x13D8
 
 	virtual void Function0();
 	virtual void Function1();
@@ -1474,3 +1480,11 @@ public:
 	virtual bool attack(Actor*);
 	virtual void releaseUsingItem();
 }; //Size: 0x0040
+
+class PlayerInventoryProxy
+{
+public:
+	char pad_0000[16]; //0x0000
+	long CurrentSlot; //0x0010
+	char pad_0018[244]; //0x0018
+}; //Size: 0x010C
