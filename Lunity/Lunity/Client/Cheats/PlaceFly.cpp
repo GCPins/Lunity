@@ -18,7 +18,7 @@ void PlaceFly::onEnable()
 void PlaceFly::onGmTick(GameMode* gm) {
 	LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
 	Player->setSitting(true);
-	Player->startSwimming();
+	//Player->startSwimming();
 	if (KeyHook::KeyState(0x46)) {
 		Vector2 lookingVec = Player->LookingVec;
 		Player->VelocityXYZ.x = cos((lookingVec.y + 90.0f) * (PI / 180.0f)) * placeFlySpeed;
