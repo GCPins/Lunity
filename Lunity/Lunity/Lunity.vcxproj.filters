@@ -231,6 +231,12 @@
     <ClInclude Include="Client\Hooks\MouseHook.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\ClickTP.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\Instabreak.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -309,6 +315,12 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Hooks\MouseHook.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\ClickTP.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Instabreak.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

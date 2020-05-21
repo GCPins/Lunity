@@ -20,6 +20,8 @@
 #include "Cheats/Scaffold.h"
 #include "Cheats/Nuker.h"
 #include "Cheats/Velocity.h"
+#include "Cheats/Instabreak.h"
+#include "Cheats/ClickTP.h"
 
 /* Visuals */
 
