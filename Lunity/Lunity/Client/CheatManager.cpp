@@ -30,6 +30,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new BunnyHop());
 	cheats.push_back(new NoWeb());
 	cheats.push_back(new Speed());
+	cheats.push_back(new ShiftWarp());
 
 	/* Player */
 	cheats.push_back(new Scaffold());

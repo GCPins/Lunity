@@ -194,6 +194,7 @@
     <ClInclude Include="Client\Cheats\Nuker.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\Cheats\Scaffold.h" />
+    <ClInclude Include="Client\Cheats\ShiftWarp.h" />
     <ClInclude Include="Client\Cheats\Speed.h" />
     <ClInclude Include="Client\Cheats\Triggerbot.h" />
     <ClInclude Include="Client\Cheats\Uninject.h" />
@@ -257,6 +258,7 @@
     <ClCompile Include="Client\Cheats\NoWeb.cpp" />
     <ClCompile Include="Client\Cheats\Nuker.cpp" />
     <ClCompile Include="Client\Cheats\Scaffold.cpp" />
+    <ClCompile Include="Client\Cheats\ShiftWarp.cpp" />
     <ClCompile Include="Client\Cheats\Speed.cpp" />
     <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
