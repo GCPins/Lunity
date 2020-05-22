@@ -205,7 +205,6 @@
     <ClInclude Include="Client\Hooks\GamemodeHook.h" />
     <ClInclude Include="Client\Cheats\PacketLogger.h" />
     <ClInclude Include="Client\Hooks\MouseHook.h" />
-    <ClInclude Include="Client\Cheats\NoFall.h" />
     <ClInclude Include="SDK\DrawUtils.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Client\Hooks\KeyHook.h" />
@@ -273,7 +272,6 @@
     <ClCompile Include="Client\Cheats\PacketLogger.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Client\Hooks\MouseHook.cpp" />
-    <ClCompile Include="Client\Cheats\NoFall.cpp" />
     <ClCompile Include="SDK\DrawUtils.cpp" />
     <ClCompile Include="SDK\LunMem.cpp" />
     <ClCompile Include="pch.cpp">

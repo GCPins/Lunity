@@ -237,22 +237,19 @@
     <ClInclude Include="Client\Cheats\NoWeb.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Cheats\MineplexYesCheat.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="Client\Cheats\Speed.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="Client\Cheats\ShiftWarp.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="Client\Hooks\NetworkHook.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="Client\Cheats\PacketLogger.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Cheats\NoFall.h">
+    <ClInclude Include="Client\Cheats\MineplexYesCheat.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\ShiftWarp.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\Speed.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
@@ -341,22 +338,19 @@
     <ClCompile Include="Client\Cheats\NoWeb.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Client\Cheats\MineplexYesCheat.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Client\Cheats\Speed.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-    <ClCompile Include="Client\Cheats\ShiftWarp.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
     <ClCompile Include="Client\Hooks\NetworkHook.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\PacketLogger.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Client\Cheats\NoFall.cpp">
+    <ClCompile Include="Client\Cheats\MineplexYesCheat.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\ShiftWarp.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Speed.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

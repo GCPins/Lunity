@@ -33,7 +33,7 @@
 /* Other */
 
 #include "Cheats/Uninject.h"
-#include "Cheats/NameTest.h"
+//#include "Cheats/NameTest.h"
 #include "Cheats/MineplexYesCheat.h"
 #include "Cheats/PacketLogger.h"
 #include "Hooks/NetworkHook.h"
