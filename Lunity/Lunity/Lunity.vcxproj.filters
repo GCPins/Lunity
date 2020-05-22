@@ -201,9 +201,6 @@
     <ClInclude Include="Client\Cheats\Triggerbot.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Cheats\NameTest.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
     <ClInclude Include="SDK\EntList.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
@@ -247,6 +244,15 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="Client\Cheats\ShiftWarp.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Hooks\NetworkHook.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\PacketLogger.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\NoFall.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
@@ -299,9 +305,6 @@
     <ClCompile Include="Client\Cheats\Triggerbot.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Client\Cheats\NameTest.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
     <ClCompile Include="Logger.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
@@ -345,6 +348,15 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\ShiftWarp.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Hooks\NetworkHook.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\PacketLogger.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\NoFall.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

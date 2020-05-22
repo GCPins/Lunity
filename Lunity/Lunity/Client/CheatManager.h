@@ -35,6 +35,8 @@
 #include "Cheats/Uninject.h"
 #include "Cheats/NameTest.h"
 #include "Cheats/MineplexYesCheat.h"
+#include "Cheats/PacketLogger.h"
+#include "Hooks/NetworkHook.h"
 
 class CheatManager {
 public:
@@ -48,4 +50,5 @@ public:
 	static void distroMouseMove();
 	static void onPreRender();
 	static void onPostRender();
+	static void onPacket(void* Packet, PacketType type);
 };

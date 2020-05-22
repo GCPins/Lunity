@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CheatManager.h"
 #include "../SDK/DrawUtils.h"
+#include "Hooks/NetworkHook.h"
 
 vector<Cheat*> cheats;
 vector<string> categories;
@@ -46,6 +47,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Uninject());
 	cheats.push_back(new NameTest());
 	cheats.push_back(new MineplexYesCheat());
+	cheats.push_back(new PacketLogger());
 
 	for (uint i = 0; i < cheats.size(); i++) {
 		if (find(categories.begin(), categories.end(), cheats[i]->category) == categories.end()) {
@@ -112,5 +114,12 @@ void CheatManager::onPostRender()
 {
 	for (uint i = 0; i < cheats.size(); i++) {
 		cheats[i]->onPostRender();
+	}
+}
+
+void CheatManager::onPacket(void* Packet, PacketType type)
+{
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onPacket(Packet, type);
 	}
 }
