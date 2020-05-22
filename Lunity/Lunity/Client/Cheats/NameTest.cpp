@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "NameTest.h"
-#include "../../SDK/EntList.h"
 
 NameTest::NameTest() : Cheat::Cheat("NameTest", "Other")
 {
@@ -21,26 +20,15 @@ void NameTest::onTick() {
 	
 }
 
-int i = 0;
 void NameTest::onGmTick(GameMode* gm) {
 	ClientInstance* inst = LunMem::getClientInstance();
 	LocalPlayer* plr = inst->LocalPlayer;
+	Vector3* pos = new Vector3();
+	pos->x = 0;
+	pos->y = 5;
+	pos->z = 0;
 	Vector2* look = &plr->LookingVec;
-	vector<Actor*>* ents = getEntities();
-
-	Actor* ent = ents->at(i);
-	if (ent != (Actor*)plr) {
-		Vector3* pos = ent->getPos();
-		MovePlayerPacket* packet = new MovePlayerPacket((Actor*)plr, pos, look, 0x1);
-		inst->LoopbackPacketSender->sendToServer(packet);
-
-		plr->swing();
-		gm->attack(ent);
-	}
-
-	i++;
-	if (ents->size() <= i) {
-		i = 0;
-	}
+	MovePlayerPacket* packet = new MovePlayerPacket((Actor*)plr, pos, look, 0x1);
 	//Logger::logHex("Genned", (ulong)packet);
+	inst->LoopbackPacketSender->sendToServer(packet);
 }
