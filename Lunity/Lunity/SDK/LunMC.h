@@ -1593,7 +1593,7 @@ public:
 class MovePlayerPacket
 {
 public:
-	long VTable; //0x0000
+	ulong VTable; //0x0000
 	char pad_0008[32]; //0x0008
 	uint64_t ActorId; //0x0028
 	Vector3 Pos; //0x0030
@@ -1606,11 +1606,11 @@ public:
 	char pad_0088[136]; //0x0088
 
 	MovePlayerPacket(Actor* player, Vector3* pos, Vector2* looking, int8_t onGround) {
+		VTable = (ulong)GetModuleHandle(NULL) + 0x2B04E68;
 		this->ActorId = player->ActorId;
 		this->Pos = *pos;
 		this->LookingVec = *looking;
 		this->onGround = onGround;
 		this->Player = player;
-		VTable = (ulong)GetModuleHandle(NULL) + 0x2B04E68;
 	}
 }; //Size: 0x0110

@@ -25,12 +25,6 @@ int i = 0;
 void NameTest::onGmTick(GameMode* gm) {
 	ClientInstance* inst = LunMem::getClientInstance();
 	LocalPlayer* plr = inst->LocalPlayer;
-	MovePlayerPacket* packet = new MovePlayerPacket((Actor*)plr, plr->getPos(), &plr->LookingVec, 0x1);
-	inst->LoopbackPacketSender->sendToServer(packet);
-	Logger::logHex("Genned", (ulong)packet);
-	/*
-	ClientInstance* inst = LunMem::getClientInstance();
-	LocalPlayer* plr = inst->LocalPlayer;
 	Vector2* look = &plr->LookingVec;
 	vector<Actor*>* ents = getEntities();
 
@@ -49,5 +43,4 @@ void NameTest::onGmTick(GameMode* gm) {
 		i = 0;
 	}
 	//Logger::logHex("Genned", (ulong)packet);
-	*/
 }
