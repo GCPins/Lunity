@@ -240,6 +240,12 @@
     <ClInclude Include="Client\Cheats\NoWeb.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\MineplexYesCheat.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\Speed.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -327,6 +333,12 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\NoWeb.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\MineplexYesCheat.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Speed.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

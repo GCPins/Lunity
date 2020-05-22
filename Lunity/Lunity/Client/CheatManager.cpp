@@ -29,6 +29,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new NoSlowDown());
 	cheats.push_back(new BunnyHop());
 	cheats.push_back(new NoWeb());
+	cheats.push_back(new Speed());
 
 	/* Player */
 	cheats.push_back(new Scaffold());
@@ -44,6 +45,7 @@ void CheatManager::loadCheats()
 	/* Other */
 	cheats.push_back(new Uninject());
 	cheats.push_back(new NameTest());
+	cheats.push_back(new MineplexYesCheat());
 
 	for (uint i = 0; i < cheats.size(); i++) {
 		if (find(categories.begin(), categories.end(), cheats[i]->category) == categories.end()) {

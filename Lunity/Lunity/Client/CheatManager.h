@@ -15,6 +15,7 @@
 #include "Cheats/NoSlowDown.h"
 #include "Cheats/BunnyHop.h"
 #include "Cheats/NoWeb.h"
+#include "Cheats/Speed.h"
 
 /* Player */
 
@@ -33,6 +34,7 @@
 
 #include "Cheats/Uninject.h"
 #include "Cheats/NameTest.h"
+#include "Cheats/MineplexYesCheat.h"
 
 class CheatManager {
 public:
