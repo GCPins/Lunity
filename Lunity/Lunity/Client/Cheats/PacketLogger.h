@@ -1,11 +1,12 @@
 #pragma once
 #include "../Cheat.h"
-class NameTest : public Cheat
+class PacketLogger : public Cheat
 {
 public:
-	NameTest();
+	PacketLogger();
 	void onEnable();
 	void onTick();
 	void onGmTick(GameMode* gm);
+	void onPacket(void* Packet);
 };
 

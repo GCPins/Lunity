@@ -68,3 +68,7 @@ void Cheat::onPreRender()
 void Cheat::onPostRender()
 {
 }
+
+void Cheat::onPacket(void* Packet)
+{
+}

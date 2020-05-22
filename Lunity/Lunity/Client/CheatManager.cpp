@@ -43,7 +43,7 @@ void CheatManager::loadCheats()
 
 	/* Other */
 	cheats.push_back(new Uninject());
-	cheats.push_back(new NameTest());
+	cheats.push_back(new PacketLogger());
 
 	for (uint i = 0; i < cheats.size(); i++) {
 		if (find(categories.begin(), categories.end(), cheats[i]->category) == categories.end()) {
@@ -110,5 +110,12 @@ void CheatManager::onPostRender()
 {
 	for (uint i = 0; i < cheats.size(); i++) {
 		cheats[i]->onPostRender();
+	}
+}
+
+void CheatManager::onPacket(void* Packet)
+{
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onPacket(Packet);
 	}
 }

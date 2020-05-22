@@ -196,10 +196,11 @@
     <ClInclude Include="Client\Cheats\Triggerbot.h" />
     <ClInclude Include="Client\Cheats\Uninject.h" />
     <ClInclude Include="Client\Cheats\Velocity.h" />
+    <ClInclude Include="Client\Hooks\NetworkHook.h" />
     <ClInclude Include="Client\Hooks\pch.h" />
     <ClInclude Include="Client\pch.h" />
     <ClInclude Include="Client\Hooks\GamemodeHook.h" />
-    <ClInclude Include="Client\Cheats\NameTest.h" />
+    <ClInclude Include="Client\Cheats\PacketLogger.h" />
     <ClInclude Include="Client\Hooks\MouseHook.h" />
     <ClInclude Include="SDK\DrawUtils.h" />
     <ClInclude Include="framework.h" />
@@ -257,11 +258,12 @@
     <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
     <ClCompile Include="Client\Cheats\Velocity.cpp" />
+    <ClCompile Include="Client\Hooks\NetworkHook.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\Hooks\KeyHook.cpp" />
     <ClCompile Include="Client\Hooks\RenderHook.cpp" />
     <ClCompile Include="Client\Hooks\GamemodeHook.cpp" />
-    <ClCompile Include="Client\Cheats\NameTest.cpp" />
+    <ClCompile Include="Client\Cheats\PacketLogger.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Client\Hooks\MouseHook.cpp" />
     <ClCompile Include="SDK\DrawUtils.cpp" />

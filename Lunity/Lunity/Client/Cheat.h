@@ -20,5 +20,6 @@ public:
 	virtual void onMouseMove();
 	virtual void onPreRender();
 	virtual void onPostRender();
+	virtual void onPacket(void* Packet);
 };
 
