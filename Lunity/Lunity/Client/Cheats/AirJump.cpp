@@ -25,6 +25,12 @@ void AirJump::onTick()
 void AirJump::onEnable()
 {
 	Cheat::onEnable();
+	TextHolder playerName = TextHolder(string("Hacker"));
+	TextHolder textH = TextHolder(string("no"));
+	TextPacket* text = new TextPacket(playerName, textH);
+	Logger::logHex("Constructed", (ulong)text);
+	//while(1){}
+	LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(text);
 }
 
 void AirJump::onDisable()

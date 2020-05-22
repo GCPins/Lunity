@@ -30,5 +30,9 @@ void PacketLogger::onPacket(void* Packet, PacketType type) {
 		if (type == Movement) {
 			Logger::log("Packet was movement packet");
 		}
+		if (type == Text) {
+			Logger::log("Packet was text packet");
+			while(1){}
+		}
 	}
 }

@@ -1614,3 +1614,20 @@ public:
 		this->Player = player;
 	}
 }; //Size: 0x0110
+
+class TextPacket
+{
+public:
+	ulong VTable; //0x0000
+	char pad_0008[40]; //0x0008
+	TextHolder PlayerName; //0x0030
+	char pad_0038[24]; //0x0038
+	TextHolder Text; //0x0050
+	char pad_0058[144]; //0x0058
+
+	TextPacket(TextHolder playername, TextHolder text) {
+		VTable = (ulong)GetModuleHandle(NULL) + 0x2B05DB8;
+		this->PlayerName = playername;
+		this->Text = text;
+	}
+}; //Size: 0x00E8
