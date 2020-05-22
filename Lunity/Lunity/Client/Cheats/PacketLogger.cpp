@@ -24,10 +24,10 @@ void PacketLogger::onGmTick(GameMode* gm) {
 
 }
 
-void PacketLogger::onPacket(void* Packet) {
+void PacketLogger::onPacket(void* Packet, PacketType type) {
 	if (enabled) {
 		Logger::logHex("Packet sent", (ulong)Packet);
-		if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04E68) {
+		if (type == Movement) {
 			Logger::log("Packet was movement packet");
 		}
 	}

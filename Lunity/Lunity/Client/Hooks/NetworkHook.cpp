@@ -12,7 +12,11 @@ typedef int (__thiscall* SendToServer)(LoopbackPacketSender* packetSender, void*
 SendToServer original;
 
 int __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
-	CheatManager::onPacket(Packet);
+	PacketType pt = Unknown;
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04E68) {
+		pt = Movement;
+	}
+	CheatManager::onPacket(Packet, pt);
 	return original(packetSender, Packet);
 }
 

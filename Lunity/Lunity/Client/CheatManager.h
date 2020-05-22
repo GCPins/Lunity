@@ -23,6 +23,7 @@
 #include "Cheats/Velocity.h"
 #include "Cheats/Instabreak.h"
 #include "Cheats/ClickTP.h"
+#include "Cheats/NoFall.h"
 
 /* Visuals */
 
@@ -33,6 +34,7 @@
 
 #include "Cheats/Uninject.h"
 #include "Cheats/PacketLogger.h"
+#include "Hooks/NetworkHook.h"
 
 class CheatManager {
 public:
@@ -46,5 +48,5 @@ public:
 	static void distroMouseMove();
 	static void onPreRender();
 	static void onPostRender();
-	static void onPacket(void* Packet);
+	static void onPacket(void* Packet, PacketType type);
 };

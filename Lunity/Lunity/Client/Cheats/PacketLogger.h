@@ -7,6 +7,6 @@ public:
 	void onEnable();
 	void onTick();
 	void onGmTick(GameMode* gm);
-	void onPacket(void* Packet);
+	void onPacket(void* Packet, PacketType type);
 };
 

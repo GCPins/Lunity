@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CheatManager.h"
 #include "../SDK/DrawUtils.h"
+#include "Hooks/NetworkHook.h"
 
 vector<Cheat*> cheats;
 vector<string> categories;
@@ -36,6 +37,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Velocity());
 	cheats.push_back(new Instabreak());
 	cheats.push_back(new ClickTP());
+	cheats.push_back(new NoFall());
 
 	/* Visuals */
 	cheats.push_back(new TabGUI());
@@ -113,9 +115,9 @@ void CheatManager::onPostRender()
 	}
 }
 
-void CheatManager::onPacket(void* Packet)
+void CheatManager::onPacket(void* Packet, PacketType type)
 {
 	for (uint i = 0; i < cheats.size(); i++) {
-		cheats[i]->onPacket(Packet);
+		cheats[i]->onPacket(Packet, type);
 	}
 }
