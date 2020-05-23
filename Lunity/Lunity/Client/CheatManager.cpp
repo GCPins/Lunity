@@ -45,9 +45,10 @@ void CheatManager::loadCheats()
 
 	/* Other */
 	cheats.push_back(new Uninject());
-	//cheats.push_back(new NameTest());
 	cheats.push_back(new MineplexYesCheat());
 	cheats.push_back(new PacketLogger());
+
+	//cheats.push_back(new TestModule());
 
 	for (uint i = 0; i < cheats.size(); i++) {
 		if (find(categories.begin(), categories.end(), cheats[i]->category) == categories.end()) {
