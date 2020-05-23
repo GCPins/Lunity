@@ -3,7 +3,7 @@
 #include "../Hooks/KeyHook.h"
 
 #define PI 3.14159
-float speedValue = 0.4f;
+float speedValue = 0.7f;
 
 Speed::Speed() :Cheat::Cheat("Speed", "Movement")
 {
