@@ -63,7 +63,9 @@ void BunnyHop::onTick()
 				Player->VelocityXYZ.x = cos((calcYaw) * (PI / 180.0f)) * bunnyHopSpeed;
 				Player->VelocityXYZ.z = sin((calcYaw) * (PI / 180.0f)) * bunnyHopSpeed;
 
-				if (Player->OnGround) Player->jumpFromGround();
+				if (Player->OnGround) {
+					if(!Player->isJumping()) Player->jumpFromGround();
+				}
 			}
 		}
 	}
