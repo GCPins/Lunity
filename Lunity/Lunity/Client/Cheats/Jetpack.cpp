@@ -24,9 +24,17 @@ void Jetpack::onTick()
 		if (Player != NULL) {
 			if (KeyHook::KeyState(0x46)) {
 				Vector2 lookingVec = Player->LookingVec;
-				Player->VelocityXYZ.x = cos((lookingVec.y + 90.0f) * (PI / 180.0f)) * jetpackSpeed;
-				Player->VelocityXYZ.y = sin((lookingVec.x) * -(PI / 180.0f)) * jetpackSpeed;
-				Player->VelocityXYZ.z = sin((lookingVec.y + 90.0f) * (PI / 180.0f)) * jetpackSpeed;
+				//Player->VelocityXYZ.x = cos((lookingVec.y + 90.0f) * (PI / 180.0f)) * jetpackSpeed;
+				//Player->VelocityXYZ.y = sin((lookingVec.x) * -(PI / 180.0f)) * jetpackSpeed;
+				//Player->VelocityXYZ.z = sin((lookingVec.y + 90.0f) * (PI / 180.0f)) * jetpackSpeed;
+
+				Vector3 lerpToPos;
+
+				lerpToPos.x = cos((lookingVec.y + 90.0f) * (PI / 180.0f)) * jetpackSpeed;
+				lerpToPos.y = sin((lookingVec.x) * -(PI / 180.0f)) * jetpackSpeed;
+				lerpToPos.z = sin((lookingVec.y + 90.0f) * (PI / 180.0f)) * jetpackSpeed;
+
+				Player->lerpMotion(&lerpToPos);
 			}
 		}
 	}

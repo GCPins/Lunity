@@ -755,7 +755,7 @@ public:
 	virtual void Function31();
 	virtual void chorusFruitTeleport();
 	virtual void lerpTo(Vector3* start, Vector3* end, int fracOfJourney); //According to unity documentation LMAO
-	virtual void Function34();
+	virtual void lerpMotion(Vector3*);
 	virtual void Function35();
 	virtual void Function36();
 	virtual void Function37();
