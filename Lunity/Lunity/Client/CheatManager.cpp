@@ -43,6 +43,7 @@ void CheatManager::loadCheats()
 	/* Visuals */
 	cheats.push_back(new TabGUI());
 	cheats.push_back(new ModuleList());
+	cheats.push_back(new Coords());
 
 	/* Other */
 	cheats.push_back(new Uninject());

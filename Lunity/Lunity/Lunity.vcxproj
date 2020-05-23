@@ -183,6 +183,7 @@
     <ClInclude Include="Client\Cheats\AutoSprint.h" />
     <ClInclude Include="Client\Cheats\BunnyHop.h" />
     <ClInclude Include="Client\Cheats\ClickTP.h" />
+    <ClInclude Include="Client\Cheats\Coords.h" />
     <ClInclude Include="Client\Cheats\Hitbox.h" />
     <ClInclude Include="Client\Cheats\Instabreak.h" />
     <ClInclude Include="Client\Cheats\Jesus.h" />
@@ -250,6 +251,7 @@
     <ClCompile Include="Client\Cheats\AutoSprint.cpp" />
     <ClCompile Include="Client\Cheats\BunnyHop.cpp" />
     <ClCompile Include="Client\Cheats\ClickTP.cpp" />
+    <ClCompile Include="Client\Cheats\Coords.cpp" />
     <ClCompile Include="Client\Cheats\Hitbox.cpp" />
     <ClCompile Include="Client\Cheats\Instabreak.cpp" />
     <ClCompile Include="Client\Cheats\Jesus.cpp" />
