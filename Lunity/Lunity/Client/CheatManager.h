@@ -16,6 +16,7 @@
 #include "Cheats/BunnyHop.h"
 #include "Cheats/NoWeb.h"
 #include "Cheats/Speed.h"
+#include "Cheats/Jesus.h"
 
 /* Player */
 
