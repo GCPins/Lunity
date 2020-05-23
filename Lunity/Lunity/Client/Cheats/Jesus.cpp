@@ -23,13 +23,8 @@ void Jesus::onTick()
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			LocalPlayer* localPlayer = LunMem::getClientInstance()->LocalPlayer;
 
-			if (localPlayer->isInWater() | localPlayer->isInLava()) {
-				if (localPlayer->isJumping()) {
-					localPlayer->VelocityXYZ.y = 0.25f;
-				}
-				else {
-					localPlayer->jumpFromGround();
-				}
+			if (localPlayer->isInWater() | localPlayer->isOverWater() | localPlayer->isInLava()) {
+				localPlayer->VelocityXYZ.y = 0.35f;
 			}
 		}
 	}
