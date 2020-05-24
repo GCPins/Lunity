@@ -1,12 +1,18 @@
 #include "pch.h"
 #include "ClickGUI.h"
 #include "../../SDK/DrawUtils.h"
+#include "../CheatManager.h"
 
 ClickGUI::ClickGUI() : Cheat::Cheat("ClickGUI", "Visuals")
 {
 }
 
 vector<vec4_t> linesss;
+
+void ClickGUI::onDisable() {
+	linesss.clear();
+}
+
 float rainOff = 0.0f;
 
 void ClickGUI::onMouseMove() {
@@ -36,6 +42,8 @@ void ClickGUI::onPostRender()
 		if (linesss.size() > 500) {
 			linesss.erase(linesss.begin());
 		}
+
+		CheatManager::drawCategoryWindows();
 
 		//DrawUtils::drawText(vec2_t(mx, my), &string("°"), nullptr, 1.0f);
 	}
