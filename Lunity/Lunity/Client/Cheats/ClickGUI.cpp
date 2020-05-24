@@ -26,14 +26,14 @@ void ClickGUI::onPostRender()
 		int my = float(gd->MouseY) / gd->GuiScale;
 		linesss.push_back(vec4_t(mx - 1, my - 1, mx + 1, my + 1));
 		for (int i = 0; i < linesss.size(); i++) {
-			float colorProg = (float)i / 100.0f;
+			float colorProg = (float)i / 500.0f;
 			colorProg += rainOff;
 			if (colorProg >= 1) {
 				colorProg -= 1;
 			}
 			DrawUtils::fillRectangle(linesss[i], DrawUtils::rainbow(colorProg), 1);
 		}
-		if (linesss.size() > 50) {
+		if (linesss.size() > 500) {
 			linesss.erase(linesss.begin());
 		}
 
