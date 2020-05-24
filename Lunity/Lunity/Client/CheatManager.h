@@ -31,6 +31,7 @@
 #include "Cheats/TabGUI.h"
 #include "Cheats/ModuleList.h"
 #include "Cheats/Coords.h"
+#include "Cheats/ClickGUI.h"
 
 /* Other */
 

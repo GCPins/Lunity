@@ -15,7 +15,12 @@ public:
 	Vector2 Resolution; //0x0018
 	Vector2 Resolution2; //0x0020
 	Vector2 ScaledResolution; //0x0028
-	char pad_0030[1040]; //0x0030
+	int N0000190A; //0x0030
+	float GuiScale; //0x0034
+	char pad_0038[26]; //0x0038
+	uint16_t MouseX; //0x0052
+	uint16_t MouseY; //0x0054
+	char pad_0056[1006]; //0x0056
 
 	virtual void Function0();
 	virtual void Function1();

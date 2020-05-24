@@ -176,6 +176,7 @@
     <ClInclude Include="capstone\tms320c64x.h" />
     <ClInclude Include="capstone\x86.h" />
     <ClInclude Include="capstone\xcore.h" />
+    <ClInclude Include="Client\Cheats\ClickGUI.h" />
     <ClInclude Include="Client\Cheats\AirJump.h" />
     <ClInclude Include="BigHead.h" />
     <ClInclude Include="Client\CheatManager.h" />
@@ -245,6 +246,7 @@
     <ClInclude Include="Client\Cheats\TabGUI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Client\Cheats\ClickGUI.cpp" />
     <ClCompile Include="Client\Cheat.cpp" />
     <ClCompile Include="Client\CheatManager.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />

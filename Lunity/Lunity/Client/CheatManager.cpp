@@ -44,6 +44,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new TabGUI());
 	cheats.push_back(new ModuleList());
 	cheats.push_back(new Coords());
+	cheats.push_back(new ClickGUI());
 
 	/* Other */
 	cheats.push_back(new Uninject());
