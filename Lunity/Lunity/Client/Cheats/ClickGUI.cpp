@@ -6,6 +6,17 @@ ClickGUI::ClickGUI() : Cheat::Cheat("ClickGUI", "Visuals")
 {
 }
 
+vector<vec4_t> linesss;
+float rainOff = 0.0f;
+
+void ClickGUI::onMouseMove() {
+	rainOff += 0.01f;
+	//Logger::log("RainbowOff: " + to_string(rainOff));
+	if (rainOff >= 1) {
+		rainOff = 0;
+	}
+}
+
 void ClickGUI::onPostRender()
 {
 	if (enabled) {
@@ -13,7 +24,19 @@ void ClickGUI::onPostRender()
 		GuiData* gd = DrawUtils::getGuiData();
 		int mx = float(gd->MouseX) / gd->GuiScale;
 		int my = float(gd->MouseY) / gd->GuiScale;
-		DrawUtils::fillRectangle(vec4_t(mx - 1, my - 1, mx + 1, my + 1), MC_Color(0,0,0,1), 1);
+		linesss.push_back(vec4_t(mx - 1, my - 1, mx + 1, my + 1));
+		for (int i = 0; i < linesss.size(); i++) {
+			float colorProg = (float)i / 100.0f;
+			colorProg += rainOff;
+			if (colorProg >= 1) {
+				colorProg -= 1;
+			}
+			DrawUtils::fillRectangle(linesss[i], DrawUtils::rainbow(colorProg), 1);
+		}
+		if (linesss.size() > 50) {
+			linesss.erase(linesss.begin());
+		}
+
 		//DrawUtils::drawText(vec2_t(mx, my), &string("°"), nullptr, 1.0f);
 	}
 }

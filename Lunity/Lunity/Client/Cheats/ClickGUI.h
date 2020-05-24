@@ -4,6 +4,7 @@ class ClickGUI : public Cheat
 {
 public:
 	ClickGUI();
+	void onMouseMove();
 	void onPostRender();
 };
 

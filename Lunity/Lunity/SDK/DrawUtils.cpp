@@ -102,3 +102,26 @@ void DrawUtils::drawRectangle(vec4_t pos, MC_Color col, float alpha, float lineW
 	fillRectangle(vec4_t(pos.z - lineWidth, pos.y, pos.z + lineWidth, pos.w), col, alpha); // 
 	fillRectangle(vec4_t(pos.x - lineWidth, pos.w - lineWidth, pos.z + lineWidth, pos.w + lineWidth), col, alpha);
 }
+
+MC_Color DrawUtils::rainbow(float progress)
+{
+	float div = (abs(progress / 1) * 6);
+	float ascending = div / 1;
+	float descending = 1.0f - ascending;
+
+	switch ((int)div)
+	{
+	case 0:
+		return MC_Color(1, ascending, 0, 1);
+	case 1:
+		return MC_Color(descending, 1, 0, 1);
+	case 2:
+		return MC_Color(0, 1, ascending, 1);
+	case 3:
+		return MC_Color(0, descending, 1, 1);
+	case 4:
+		return MC_Color(ascending, 0, 1, 1);
+	default: // case 5:
+		return MC_Color(1, 0, descending, 1);
+	}
+}
