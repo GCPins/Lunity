@@ -48,111 +48,59 @@ void Scaffold::onGmTick(GameMode* gm) {
 			
 			switch (side) {
 
-			case 5:
-				if (floor(currentPos.z - 0.2f) == floor(currentPos.z - 1.0f)) {
-					bridgedSideways = true;
-					gm->buildBlock(blockPos, 2);
-					blockPos->z--;
+			case 5: //East
+				if (floor(currentPos.x + 0.3f) == floor(currentPos.x + 1.0f)) {
 					gm->buildBlock(blockPos, 5);
-					//TextHolder* Text = new TextHolder("Facing East, turning left");
-					//Player->displayLocalizableMessage(Text);
-				}
-				else if (floor(currentPos.z + 0.2f) == floor(currentPos.z + 1.0f)) {
-					bridgedSideways = true;
-					gm->buildBlock(blockPos, 3);
-					blockPos->z++;
-					gm->buildBlock(blockPos, 5);
-					//TextHolder* Text = new TextHolder("Facing East, turning right");
-					//Player->displayLocalizableMessage(Text);
 				}
 
-				if (floor(currentPos.x - 0.2f) == floor(currentPos.x - 1.0f)) {
-					gm->buildBlock(blockPos, 4);
-					//TextHolder* Text = new TextHolder("Facing East, going backwards");
-					//Player->displayLocalizableMessage(Text);
+				if (floor(currentPos.z - 0.25f) == floor(currentPos.z - 1.0f)) {
+					gm->buildBlock(blockPos, 2); //Left
 				}
-				break;
+				else if (floor(currentPos.z + 0.25f) == floor(currentPos.z + 1.0f)) {
+					gm->buildBlock(blockPos, 3); //Right
+				}
+			break;
 
-			case 4:
-				if (floor(currentPos.z + 0.2f) == floor(currentPos.z + 1.0f)) {
-					bridgedSideways = true;
-					gm->buildBlock(blockPos, 3);
-					blockPos->z++;
+			case 4: //West
+				if (floor(currentPos.x - 0.3f) == floor(currentPos.x - 1.0f)) {
 					gm->buildBlock(blockPos, 4);
-					//TextHolder* Text = new TextHolder("Facing West, turning left");
-					//Player->displayLocalizableMessage(Text);
 				}
-				else if (floor(currentPos.z - 0.2f) == floor(currentPos.z - 1.0f)) {
-					bridgedSideways = true;
+
+				if (floor(currentPos.z + 0.25f) == floor(currentPos.z + 1.0f)) {
+					gm->buildBlock(blockPos, 3); //Left
+				} 
+				else if (floor(currentPos.z - 0.25f) == floor(currentPos.z - 1.0f)) {
+					gm->buildBlock(blockPos, 2); //Right
+				}
+			break;
+
+			case 3: //South
+				if (floor(currentPos.z + 0.3f) == floor(currentPos.z + 1.0f)) {
+					gm->buildBlock(blockPos, 3);
+				}
+
+				if (floor(currentPos.x + 0.25f) == floor(currentPos.x + 1.0f)) {
+					gm->buildBlock(blockPos, 5); //Left
+				}
+				else if (floor(currentPos.x - 0.25f) == floor(currentPos.x - 1.0f)) {
+					gm->buildBlock(blockPos, 4); //Right
+				}
+			break;
+
+			case 2: //North
+				if (floor(currentPos.z - 0.3f) == floor(currentPos.z - 1.0f)) {
 					gm->buildBlock(blockPos, 2);
-					blockPos->z--;
-					gm->buildBlock(blockPos, 4);
-					//TextHolder* Text = new TextHolder("Facing West, turning right");
-					//Player->displayLocalizableMessage(Text);
 				}
 
-				if (floor(currentPos.x + 0.2f) == floor(currentPos.x + 1.0f)) {
-					gm->buildBlock(blockPos, 5);
-					//TextHolder* Text = new TextHolder("Facing West, going backwards");
-					//Player->displayLocalizableMessage(Text);
+				if (floor(currentPos.x - 0.25f) == floor(currentPos.x - 1.0f)) {
+					gm->buildBlock(blockPos, 4); //Left
 				}
-				break;
+				else if (floor(currentPos.x + 0.25f) == floor(currentPos.x + 1.0f)) {
+					gm->buildBlock(blockPos, 5); //Right
+				}
+			break;
 
-			case 3:
-				if (floor(currentPos.x + 0.2f) == floor(currentPos.x + 1.0f)) {
-					bridgedSideways = true;
-					gm->buildBlock(blockPos, 5);
-					blockPos->x++;
-					gm->buildBlock(blockPos, 3);
-					//TextHolder* Text = new TextHolder("Facing South, turning left");
-					//Player->displayLocalizableMessage(Text);
-				}
-				else if (floor(currentPos.x - 0.2f) == floor(currentPos.x - 1.0f)) {
-					bridgedSideways = true;
-					gm->buildBlock(blockPos, 4);
-					blockPos->x--;
-					gm->buildBlock(blockPos, 3);
-					//TextHolder* Text = new TextHolder("Facing South, turning right");
-					//Player->displayLocalizableMessage(Text);
-				}
-
-				if (floor(currentPos.z - 0.2f) == floor(currentPos.z - 1.0f)) {
-					gm->buildBlock(blockPos, 2);
-					//TextHolder* Text = new TextHolder("Facing South, going backwards");
-					//Player->displayLocalizableMessage(Text);
-				}
-				break;
-
-			case 2:
-				if (floor(currentPos.x - 0.2f) == floor(currentPos.x - 1.0f)) {
-					bridgedSideways = true;
-					gm->buildBlock(blockPos, 4);
-					blockPos->x--;
-					gm->buildBlock(blockPos, 2);
-					//TextHolder* Text = new TextHolder("Facing North, turning left");
-					//Player->displayLocalizableMessage(Text);
-				}
-				else if (floor(currentPos.x + 0.2f) == floor(currentPos.x + 1.0f)) {
-					bridgedSideways = true;
-					gm->buildBlock(blockPos, 5);
-					blockPos->x++;
-					gm->buildBlock(blockPos, 2);
-					//TextHolder* Text = new TextHolder("Facing North, turning right");
-					//Player->displayLocalizableMessage(Text);
-				}
-
-				if (floor(currentPos.z + 0.2f) == floor(currentPos.z + 1.0f)) {
-					gm->buildBlock(blockPos, 3);
-					//TextHolder* Text = new TextHolder("Facing North, going backwards");
-					//Player->displayLocalizableMessage(Text);
-				}
-				break;
 			}
-			if (!bridgedSideways) {
-				gm->buildBlock(blockPos, side);
-			}
-
-			bridgedSideways = false;
 		}
 	}
 }
