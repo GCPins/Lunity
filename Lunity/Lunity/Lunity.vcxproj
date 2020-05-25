@@ -202,6 +202,8 @@
     <ClInclude Include="Client\Cheats\Triggerbot.h" />
     <ClInclude Include="Client\Cheats\Uninject.h" />
     <ClInclude Include="Client\Cheats\Velocity.h" />
+    <ClInclude Include="Client\Gui\pch.h" />
+    <ClInclude Include="Client\Gui\VWindow.h" />
     <ClInclude Include="Client\Hooks\NetworkHook.h" />
     <ClInclude Include="Client\Hooks\pch.h" />
     <ClInclude Include="Client\pch.h" />
@@ -244,6 +246,7 @@
     <ClInclude Include="SDK\pch.h" />
     <ClInclude Include="SDK\TextHolder.h" />
     <ClInclude Include="Client\Cheats\TabGUI.h" />
+    <ClInclude Include="Client\Gui\VObj.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client\Cheats\ClickGUI.cpp" />
@@ -270,6 +273,7 @@
     <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
     <ClCompile Include="Client\Cheats\Velocity.cpp" />
+    <ClCompile Include="Client\Gui\VWindow.cpp" />
     <ClCompile Include="Client\Hooks\NetworkHook.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\Hooks\KeyHook.cpp" />
@@ -287,6 +291,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Client\Cheats\TabGUI.cpp" />
+    <ClCompile Include="Client\Gui\VObj.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
