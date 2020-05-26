@@ -7,5 +7,7 @@ NoPacket::NoPacket() :Cheat::Cheat("NoPacket", "Other")
 }
 
 void NoPacket::onPacket(void* Packet, PacketType type, bool* cancel) {
-	*cancel = true;
+	if (enabled) {
+		*cancel = true;
+	}
 }
