@@ -16,6 +16,9 @@ int __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04E68) {
 		pt = Movement;
 	}
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B05DB8) {
+		pt = Text;
+	}
 	CheatManager::onPacket(Packet, pt);
 	return original(packetSender, Packet);
 }

@@ -1,6 +1,7 @@
 #pragma once
 enum PacketType {
 	Movement,
+	Text,
 	Unknown
 };
 class NetworkHook
