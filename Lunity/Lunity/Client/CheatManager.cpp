@@ -50,6 +50,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Uninject());
 	cheats.push_back(new MineplexYesCheat());
 	cheats.push_back(new PacketLogger());
+	cheats.push_back(new NoPacket());
 
 	//cheats.push_back(new TestModule());
 

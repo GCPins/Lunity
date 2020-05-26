@@ -192,12 +192,12 @@
     <ClInclude Include="Client\Cheats\Killaura.h" />
     <ClInclude Include="Client\Cheats\MineplexYesCheat.h" />
     <ClInclude Include="Client\Cheats\ModuleList.h" />
+    <ClInclude Include="Client\Cheats\NoPacket.h" />
     <ClInclude Include="Client\Cheats\NoSlowDown.h" />
     <ClInclude Include="Client\Cheats\NoWeb.h" />
     <ClInclude Include="Client\Cheats\Nuker.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\Cheats\Scaffold.h" />
-    <ClInclude Include="Client\Cheats\ShiftWarp.h" />
     <ClInclude Include="Client\Cheats\Speed.h" />
     <ClInclude Include="Client\Cheats\Triggerbot.h" />
     <ClInclude Include="Client\Cheats\Uninject.h" />
@@ -261,11 +261,11 @@
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
     <ClCompile Include="Client\Cheats\MineplexYesCheat.cpp" />
     <ClCompile Include="Client\Cheats\ModuleList.cpp" />
+    <ClCompile Include="Client\Cheats\NoPacket.cpp" />
     <ClCompile Include="Client\Cheats\NoSlowDown.cpp" />
     <ClCompile Include="Client\Cheats\NoWeb.cpp" />
     <ClCompile Include="Client\Cheats\Nuker.cpp" />
     <ClCompile Include="Client\Cheats\Scaffold.cpp" />
-    <ClCompile Include="Client\Cheats\ShiftWarp.cpp" />
     <ClCompile Include="Client\Cheats\Speed.cpp" />
     <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
