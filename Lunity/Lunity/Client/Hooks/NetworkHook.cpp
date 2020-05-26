@@ -8,10 +8,10 @@
 #include <MinHook.h>
 #pragma comment(lib, "libMinHook.lib")
 
-typedef int (__thiscall* SendToServer)(LoopbackPacketSender* packetSender, void* Packet);
+typedef void (__thiscall* SendToServer)(LoopbackPacketSender* packetSender, void* Packet);
 SendToServer original;
 
-int __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
+void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
 	PacketType pt = Unknown;
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04E68) {
 		pt = Movement;
@@ -19,8 +19,10 @@ int __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B05DB8) {
 		pt = Text;
 	}
-	CheatManager::onPacket(Packet, pt);
-	return original(packetSender, Packet);
+	bool canceled = false;
+	CheatManager::onPacket(Packet, pt, &canceled);
+	if (!canceled)
+		original(packetSender, Packet);
 }
 
 void NetworkHook::installHook() {

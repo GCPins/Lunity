@@ -1581,8 +1581,10 @@ public:
 class RakNetInstance
 {
 public:
-	char pad_0000[8]; //0x0000
-}; //Size: 0x0008
+	char pad_0000[864]; //0x0000
+	TextHolder ServerIp; //0x0360
+	char pad_0368[8]; //0x0368
+}; //Size: 0x0370
 
 class LocalConnector
 {

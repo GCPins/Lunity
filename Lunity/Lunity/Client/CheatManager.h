@@ -55,5 +55,5 @@ public:
 	static void distroMouseMove();
 	static void onPreRender();
 	static void onPostRender();
-	static void onPacket(void* Packet, PacketType type);
+	static void onPacket(void* Packet, PacketType type, bool* cancel);
 };
