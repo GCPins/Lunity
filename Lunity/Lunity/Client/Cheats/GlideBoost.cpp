@@ -24,6 +24,7 @@ void GlideBoost::onDisable()
 }
 
 void GlideBoost::onPacket(void* Packet, PacketType type, bool* cancel) {
+	RakNetInstance* rak = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
 	if (moving) {
 		if (strcmp(rak->ServerIp.getText(), "geo.hivebedrock.network") == 0) {
 
