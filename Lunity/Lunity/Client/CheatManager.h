@@ -17,6 +17,7 @@
 #include "Cheats/NoWeb.h"
 #include "Cheats/Speed.h"
 #include "Cheats/Jesus.h"
+#include "Cheats/GlideBoost.h"
 
 /* Player */
 
