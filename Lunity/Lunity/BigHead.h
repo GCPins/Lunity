@@ -1,6 +1,7 @@
 #include "Logger.h"
 #include "SDK/LunMem.h"
 #include "SDK/LunMC.h"
+#include "SDK/LunMath.h"
 #include <cstdint>
 #include <string>
 #include <vector>

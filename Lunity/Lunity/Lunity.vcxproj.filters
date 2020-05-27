@@ -270,6 +270,9 @@
     <ClInclude Include="Client\Gui\pch.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="SDK\LunMath.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

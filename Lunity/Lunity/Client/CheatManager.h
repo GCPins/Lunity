@@ -56,5 +56,4 @@ public:
 	static void onPreRender();
 	static void onPostRender();
 	static void onPacket(void* Packet, PacketType type);
-	static void drawCategoryWindows();
 };
