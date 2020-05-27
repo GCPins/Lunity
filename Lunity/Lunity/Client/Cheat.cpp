@@ -57,6 +57,10 @@ void Cheat::onMouseButton(ulong button)
 {
 }
 
+void Cheat::onMouseRelease(ulong button)
+{
+}
+
 void Cheat::onMouseMove()
 {
 }

@@ -4,10 +4,10 @@
 #include "../CheatManager.h"
 #include "../Gui/VWindow.h"
 
-VWindow* testWindow;
+vector<VWindow*> windows;
 ClickGUI::ClickGUI() : Cheat::Cheat("ClickGUI", "Visuals")
 {
-	testWindow = new VWindow(0,0,60,10);
+	windows.push_back(new VWindow(0,0,60,10));
 }
 
 vector<vec4_t> linesss;
@@ -24,13 +24,27 @@ void ClickGUI::onMouseMove() {
 	if (rainOff >= 1) {
 		rainOff = 0;
 	}
+	for (int i = 0; i < windows.size(); i++) {
+		windows[i]->onMouseMove();
+	}
+}
+void ClickGUI::onMouseButton(ulong button) {
+	for (int i = 0; i < windows.size(); i++) {
+		windows[i]->onMouseButton(button);
+	}
+}
+void ClickGUI::onMouseRelease(ulong button) {
+	for (int i = 0; i < windows.size(); i++) {
+		windows[i]->onMouseRelease(button);
+	}
 }
 
 void ClickGUI::onPostRender()
 {
 	if (enabled) {
-		testWindow->onRender();
-
+		for (int i = 0; i < windows.size(); i++) {
+			windows[i]->onRender();
+		}
 
 		//Fancy mouse shit
 		//Logger::logHex("GuiData", (ulong)DrawUtils::getGuiData());

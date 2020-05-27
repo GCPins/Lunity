@@ -9,7 +9,7 @@ void MouseHook::ButtonPressed(ulong button) {
 
 void MouseHook::ButtonReleased(ulong button) {
 	buttonState[button] = false;
-	//log("Release");
+	CheatManager::distroButtonRelease(button);
 }
 
 void MouseHook::MouseMoved() {

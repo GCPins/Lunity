@@ -52,6 +52,7 @@ public:
 	static void gmTickCheats(GameMode* gm);
 	static void distroKeyPress(ulong key);
 	static void distroButtonPress(ulong key);
+	static void distroButtonRelease(ulong key);
 	static void distroMouseMove();
 	static void onPreRender();
 	static void onPostRender();

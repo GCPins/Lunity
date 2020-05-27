@@ -5,7 +5,7 @@ class VWindow : public VObj
 public:
 	VRectI titleRect;
 	VRectI contentRect;
-	bool dragging;
+	bool dragging = false;
 	int dx;
 	int dy;
 	bool expanded;
@@ -13,6 +13,9 @@ public:
 	VWindow();
 	VWindow(int x, int y);
 	VWindow(int x, int y, int width, int height);
+	void onMouseButton(ulong button);
+	void onMouseRelease(ulong button);
+	void onMouseMove();
 	virtual void onRender();
 };
 

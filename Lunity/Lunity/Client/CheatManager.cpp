@@ -100,6 +100,13 @@ void CheatManager::distroButtonPress(ulong key)
 	}
 }
 
+void CheatManager::distroButtonRelease(ulong key)
+{
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onMouseRelease(key);
+	}
+}
+
 void CheatManager::distroMouseMove()
 {
 	for (uint i = 0; i < cheats.size(); i++) {
