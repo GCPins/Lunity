@@ -40,6 +40,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Velocity());
 	cheats.push_back(new Instabreak());
 	cheats.push_back(new ClickTP());
+	cheats.push_back(new Gamemode());
 
 	/* Visuals */
 	cheats.push_back(new TabGUI());
@@ -50,6 +51,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Uninject());
 	cheats.push_back(new MineplexYesCheat());
 	cheats.push_back(new PacketLogger());
+	cheats.push_back(new NoPacket());
 
 	//cheats.push_back(new TestModule());
 

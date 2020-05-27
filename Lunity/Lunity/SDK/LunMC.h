@@ -1137,7 +1137,7 @@ public:
 	virtual void Function413();
 	virtual void Function414();
 	virtual void Function415();
-	virtual void setPlayerGameType();//GameType* gameType);
+	virtual void setPlayerGameType(int);
 	virtual void crit(class Actor*);
 	virtual void Function418();
 	virtual void Function419();
