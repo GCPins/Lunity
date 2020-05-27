@@ -26,6 +26,7 @@
 #include "Cheats/Velocity.h"
 #include "Cheats/Instabreak.h"
 #include "Cheats/ClickTP.h"
+#include "Cheats/Gamemode.h"
 
 /* Visuals */
 

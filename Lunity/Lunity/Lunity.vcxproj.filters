@@ -261,6 +261,9 @@
     <ClInclude Include="Client\Cheats\NoPacket.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\Gamemode.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -369,6 +372,9 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\NoPacket.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Gamemode.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
