@@ -10,9 +10,9 @@ public:
 	int dy;
 	bool expanded;
 	string title;
-	VWindow();
-	VWindow(int x, int y);
-	VWindow(int x, int y, int width, int height);
+	VWindow(string title);
+	VWindow(string title, int x, int y);
+	VWindow(string title, int x, int y, int width, int height);
 	void onMouseButton(ulong button);
 	void onMouseRelease(ulong button);
 	void onMouseMove();

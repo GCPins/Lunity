@@ -7,7 +7,7 @@
 vector<VWindow*> windows;
 ClickGUI::ClickGUI() : Cheat::Cheat("ClickGUI", "Visuals")
 {
-	windows.push_back(new VWindow(0,0,60,10));
+	windows.push_back(new VWindow("Test",0,0,60,10));
 }
 
 vector<vec4_t> linesss;

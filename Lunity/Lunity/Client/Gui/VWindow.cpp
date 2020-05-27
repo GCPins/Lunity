@@ -1,14 +1,15 @@
 #include "pch.h"
 #include "VWindow.h"
 
-VWindow::VWindow() {
-	VWindow::VWindow(0, 0);
+VWindow::VWindow(string title) {
+	VWindow::VWindow(title, 0, 0);
 }
-VWindow::VWindow(int x, int y) {
-	VWindow::VWindow(0, 0, 60, 15);
+VWindow::VWindow(string title, int x, int y) {
+	VWindow::VWindow(title, 0, 0, 80, 15);
 }
-VWindow::VWindow(int x, int y, int width, int height) {
+VWindow::VWindow(string title, int x, int y, int width, int height) {
 	titleRect = VRectI(x,y,width,height);
+	this->title = title;
 }
 
 void VWindow::onMouseButton(ulong button) {
@@ -16,22 +17,24 @@ void VWindow::onMouseButton(ulong button) {
 	int my = getMouseY();
 	if (button == 0x1) {
 		if (titleRect.contains(mx, my)) {
-			Logger::log("Start");
 			dx = mx - titleRect.x;
 			dy = my - titleRect.y;
 			dragging = true;
 		}
 	}
+	if (button == 0x2) {
+		if (titleRect.contains(mx, my)) {
+			expanded = !expanded;
+		}
+	}
 }
 void VWindow::onMouseRelease(ulong button) {
-	Logger::log("Stop");
 	dragging = false;
 }
 
 void VWindow::onMouseMove()
 {
 	if (dragging) {
-		Logger::log("Drag");
 		int mx = getMouseX();
 		int my = getMouseY();
 		titleRect.x = mx - dx;
@@ -45,4 +48,10 @@ void VWindow::onRender()
 	DrawUtils::fillRectangle(rect, MC_Color(.15, .15, .15, 1), 1);
 	vec2_t loc = vec2_t(titleRect.x, titleRect.y);
 	DrawUtils::drawText(loc, &title, nullptr, 1);
+	string expTecks = "-";
+	if (!expanded) {
+		expTecks = "+";
+	}
+	loc = vec2_t(titleRect.x+titleRect.width-DrawUtils::getTextWidth(expTecks,1), titleRect.y);
+	DrawUtils::drawText(loc, &expTecks, nullptr, 1);
 }
