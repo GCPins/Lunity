@@ -42,6 +42,12 @@ void PacketLogger::onPacket(void* Packet, PacketType type, bool* cancel) {
 			if (type == PacketType::Text) {
 				fileName = string("Text-") + fileName;
 			}
+			if (type == PacketType::PlayerAuthInput) {
+				fileName = string("PAIn-") + fileName;
+			}
+			if (type == PacketType::CraftingEvent) {
+				fileName = string("Crft-") + fileName;
+			}
 		}
 		string debugPath = string(getenv("APPDATA") + string("\\..\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\RoamingState\\Packets\\") + fileName);
 		ofstream fout;

@@ -19,6 +19,12 @@ void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B05DB8) {
 		pt = PacketType::Text;
 	}
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04FF0) {
+		pt = PacketType::PlayerAuthInput;
+	}
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B046C0) {
+		pt = PacketType::CraftingEvent;
+	}
 	bool canceled = false;
 	CheatManager::onPacket(Packet, pt, &canceled);
 	if (!canceled)

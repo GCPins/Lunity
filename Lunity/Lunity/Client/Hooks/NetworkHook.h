@@ -2,6 +2,8 @@
 enum class PacketType {
 	Movement,
 	Text,
+	PlayerAuthInput,
+	CraftingEvent,
 	Unknown
 };
 class NetworkHook

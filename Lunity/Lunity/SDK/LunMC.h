@@ -1616,3 +1616,14 @@ public:
 		this->Player = player;
 	}
 }; //Size: 0x0110
+
+class PlayerAuthInputPacket
+{
+public:
+	ulong VTable; //0x0000
+	char pad_0008[32]; //0x0008
+	Vector2 LookingVec; //0x0028
+	Vector3 Position; //0x0030
+	float HeadYawOrSomeShit; //0x003C
+	char pad_0040[36]; //0x0040
+}; //Size: 0x0064
