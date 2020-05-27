@@ -3,7 +3,7 @@
 
 #define PI 3.14159
 
-float glideBoostSpeed = 1.2;
+float glideBoostSpeed = 1.0;
 bool moving = false;
 Vector3* savedPos;
 Vector2 lookingVec;
@@ -23,16 +23,19 @@ void GlideBoost::onDisable()
 	Cheat::onDisable();
 }
 
+int sentCount = 0;
 void GlideBoost::onPacket(void* Packet, PacketType type, bool* cancel) {
 	if (moving) {
+		RakNetInstance* rak = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
 		if (strcmp(rak->ServerIp.getText(), "geo.hivebedrock.network") == 0) {
-
-		}
-		if (type == Movement) {
-			MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
-			pkt->Pos.x = 0;
-			pkt->Pos.y = 0;
-			pkt->Pos.z = 0;
+			if (sentCount % 10) {
+				*cancel = true;
+				Logger::log("Canceled packet to hive!");
+			}
+			else {
+				Logger::log("Sent packet to hive!");
+			}
+			sentCount++;
 		}
 	}
 }

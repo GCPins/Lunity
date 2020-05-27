@@ -1,5 +1,5 @@
 #pragma once
-enum PacketType {
+enum class PacketType {
 	Movement,
 	Text,
 	Unknown

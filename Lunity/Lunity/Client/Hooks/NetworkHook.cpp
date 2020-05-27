@@ -12,12 +12,12 @@ typedef void (__thiscall* SendToServer)(LoopbackPacketSender* packetSender, void
 SendToServer original;
 
 void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
-	PacketType pt = Unknown;
+	PacketType pt = PacketType::Unknown;
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04E68) {
-		pt = Movement;
+		pt = PacketType::Movement;
 	}
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B05DB8) {
-		pt = Text;
+		pt = PacketType::Text;
 	}
 	bool canceled = false;
 	CheatManager::onPacket(Packet, pt, &canceled);

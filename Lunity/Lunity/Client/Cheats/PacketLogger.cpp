@@ -28,18 +28,18 @@ int packetId = 0;
 void PacketLogger::onPacket(void* Packet, PacketType type, bool* cancel) {
 	if (enabled) {
 		Logger::logHex("Packet sent", (ulong)Packet);
-		if (type == Movement) {
+		if (type == PacketType::Movement) {
 			Logger::log("Packet was movement packet");
 		}
 		Logger::log("Saving packet to disk...");
 		char logged[0x0110];
 		memcpy(logged, Packet, 0x0110);
 		string fileName = to_string(packetId) + string(".pkt");
-		if (type != Unknown) {
-			if (type == Movement) {
+		if (type != PacketType::Unknown) {
+			if (type == PacketType::Movement) {
 				fileName = string("Mvmt-") + fileName;
 			}
-			if (type == Text) {
+			if (type == PacketType::Text) {
 				fileName = string("Text-") + fileName;
 			}
 		}
