@@ -1,9 +1,9 @@
 #pragma once
-#include "../VWindow.h"
+#include "../VObj.h"
 class VControl : public VObj
 {
 public:
-	VWindow* parent;
+	VObj* parent;
 	virtual void onMouseButton(ulong button);
 	virtual void onMouseRelease(ulong button);
 	virtual void onMouseMove();
