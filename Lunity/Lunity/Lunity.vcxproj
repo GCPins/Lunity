@@ -181,6 +181,7 @@
     <ClInclude Include="Client\CheatManager.h" />
     <ClInclude Include="Client\Cheat.h" />
     <ClInclude Include="Client\Cheats\AutoSprint.h" />
+    <ClInclude Include="Client\Cheats\AutoWalk.h" />
     <ClInclude Include="Client\Cheats\BunnyHop.h" />
     <ClInclude Include="Client\Cheats\ClickTP.h" />
     <ClInclude Include="Client\Cheats\Coords.h" />
@@ -252,6 +253,7 @@
     <ClCompile Include="Client\CheatManager.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />
     <ClCompile Include="Client\Cheats\AutoSprint.cpp" />
+    <ClCompile Include="Client\Cheats\AutoWalk.cpp" />
     <ClCompile Include="Client\Cheats\BunnyHop.cpp" />
     <ClCompile Include="Client\Cheats\ClickTP.cpp" />
     <ClCompile Include="Client\Cheats\Coords.cpp" />

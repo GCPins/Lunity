@@ -19,6 +19,7 @@
 #include "Cheats/Jesus.h"
 #include "Cheats/GlideBoost.h"
 #include "Cheats/Glide.h"
+#include "Cheats/AutoWalk.h"
 
 /* Player */
 

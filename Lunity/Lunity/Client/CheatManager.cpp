@@ -34,6 +34,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Jesus());
 	cheats.push_back(new GlideBoost());
 	cheats.push_back(new Glide());
+	cheats.push_back(new AutoWalk());
 
 	/* Player */
 	cheats.push_back(new Scaffold());
