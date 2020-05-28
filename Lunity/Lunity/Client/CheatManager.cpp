@@ -29,13 +29,13 @@ void CheatManager::loadCheats()
 	cheats.push_back(new AutoSprint());
 	cheats.push_back(new NoSlowDown());
 	cheats.push_back(new BunnyHop());
-	cheats.push_back(new NoWeb());
-	cheats.push_back(new Speed());
-	cheats.push_back(new Jesus());
-	cheats.push_back(new GlideBoost());
+	//cheats.push_back(new NoWeb());
+	//cheats.push_back(new Speed());
+	//cheats.push_back(new Jesus());
+	//cheats.push_back(new GlideBoost());
 	cheats.push_back(new Glide());
-	cheats.push_back(new AutoWalk());
-	cheats.push_back(new NoWater());
+	//cheats.push_back(new AutoWalk());
+	//cheats.push_back(new NoWater());
 
 	/* Player */
 	cheats.push_back(new Scaffold());
@@ -43,7 +43,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Velocity());
 	cheats.push_back(new Instabreak());
 	cheats.push_back(new ClickTP());
-	cheats.push_back(new Gamemode());
+	//cheats.push_back(new Gamemode());
 
 	/* Visuals */
 	cheats.push_back(new TabGUI());
@@ -52,8 +52,8 @@ void CheatManager::loadCheats()
 
 	/* Other */
 	cheats.push_back(new Uninject());
-	cheats.push_back(new MineplexYesCheat());
-	cheats.push_back(new PacketLogger());
+	//cheats.push_back(new MineplexYesCheat());
+	//cheats.push_back(new PacketLogger());
 	cheats.push_back(new NoPacket());
 
 	//cheats.push_back(new TestModule());

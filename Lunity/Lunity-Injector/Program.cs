@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Threading;
+using System.Web.Script.Serialization;
 
 namespace Lunity_Injector
 {
     class Program
     {
         static bool started = false;
+        static bool beta = false;
 #if DEBUG
         static bool debug = true;
 #else
@@ -72,6 +76,12 @@ namespace Lunity_Injector
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.WriteLine("Lunity injector by ASM");
+            if (!beta)
+            {
+                Console.WriteLine("Downloading lunity...");
+                updateLunity();
+                Console.WriteLine("Lunity updated!");
+            }
             Console.WriteLine("Verifying Lunity...");
             if (!verifyLunity())
             {
@@ -95,6 +105,50 @@ namespace Lunity_Injector
                 Thread.Sleep(1000);
             else
                 Console.ReadLine();
+        }
+
+        public static string getLatestVersion()
+        {
+            WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            List<RootObject> data = serializer.Deserialize<List<RootObject>>(wc.DownloadString("https://api.github.com/repos/LunityClient/LunityReleases/releases"));
+            return data[0].tag_name;
+        }
+        public static bool downloadLunity(string ver)
+        {
+            WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            List<RootObject> data = serializer.Deserialize<List<RootObject>>(wc.DownloadString("https://api.github.com/repos/LunityClient/LunityReleases/releases"));
+            foreach (RootObject ro in data)
+            {
+                if (ro.tag_name == ver)
+                {
+                    downloadFile(dataDir + "/Lunity.dll", ro.assets[0].browser_download_url);
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static void downloadFile(string dest, string url)
+        {
+            WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+            wc.DownloadFile(url, dest);
+        }
+        public static void updateLunity()
+        {
+            try
+            {
+                downloadLunity(getLatestVersion());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("An error occoured while updating!");
+                Console.WriteLine("Press enter to try injecting anyway or close the window to quit");
+                Console.ReadLine();
+            }
         }
 
         public static void applyAppPackages(string file)
