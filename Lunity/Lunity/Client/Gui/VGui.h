@@ -259,7 +259,21 @@ void VResizableWindow::contentRender()
 }
 
 
-
+/*
+Window manager shit
+*/
+vector<VWindow*> windows;
+void addWindow(VWindow* window) {
+	windows.push_back(window);
+}
+void removeWindow(VWindow* window) {
+	int i;
+	for (i = 0; i < windows.size(); i++) {
+		if (windows[i] == window)
+			break;
+	}
+	windows.erase(windows.begin() + i);
+}
 
 
 /*
@@ -362,9 +376,8 @@ This window can be used as an example for other windows.
 It is resizable and features buttons with click callbacks,
 And will feature all the other possible controls as they are made
 */
-void __stdcall onClick(VButton* button) {
-	Logger::log("le click");
-}
+void __stdcall onClick(VButton* button);
+void __stdcall closeTest(VButton* button);
 class TestWindow : public VResizableWindow {
 public:
 	TestWindow(int x, int y);
@@ -375,9 +388,16 @@ TestWindow::TestWindow(int x, int y) : VResizableWindow::VResizableWindow("Epic"
 	addControl(new VButton("test", 0, 20, 40, 10, &onClick));
 	addControl(new VLabel("cool label!", 0, 50));
 	this->minWidth = 60;
-	this->minHeight = 60;
+	this->minHeight = 80;
+	addControl(new VButton("Close", 0, 60, 60, 10, &closeTest));
 }
 void TestWindow::onRender()
 {
 	VResizableWindow::onRender();
+}
+void __stdcall onClick(VButton* button) {
+	addWindow(new TestWindow(0, 0));
+}
+void __stdcall closeTest(VButton* button) {
+	removeWindow(button->parent);
 }

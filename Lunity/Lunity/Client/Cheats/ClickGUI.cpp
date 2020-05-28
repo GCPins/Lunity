@@ -4,12 +4,11 @@
 #include "../CheatManager.h"
 #include "../Gui/VGui.h"
 
-vector<VWindow*> windows;
 ClickGUI::ClickGUI() : Cheat::Cheat("ClickGUI", "Visuals")
 {
-	windows.push_back(new VWindow("Test",0,0,60,100));
-	windows.push_back(new VResizableWindow("Test2", 100, 0, 80, 100));
-	windows.push_back(new TestWindow(150, 0));
+	addWindow(new VWindow("Test",0,0,60,100));
+	addWindow(new VResizableWindow("Test2", 100, 0, 80, 100));
+	addWindow(new TestWindow(150, 0));
 }
 
 vector<vec4_t> linesss;
