@@ -276,6 +276,9 @@
     <ClInclude Include="Client\Gui\VResizableWindow.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Gui\Controls\VControl.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -393,6 +396,9 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Gui\VResizableWindow.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Gui\Controls\VControl.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

@@ -69,4 +69,13 @@ void VWindow::contentRender()
 {
 	vec4_t rect = vec4_t(contentRect.x, contentRect.y, contentRect.x + contentRect.width, contentRect.y + contentRect.height);
 	DrawUtils::fillRectangle(rect, MC_Color(.25, .25, .25, 1), 1);
+
+	for (int i = 0; i < controls.size(); i++) {
+		controls[i]->onRender();
+	}
+}
+
+void VWindow::addControl(VControl* control)
+{
+	controls.push_back(control);
 }

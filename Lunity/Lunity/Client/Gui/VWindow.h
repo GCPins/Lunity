@@ -1,5 +1,6 @@
 #pragma once
 #include "VObj.h"
+#include "Controls/VControl.h"
 class VWindow : public VObj
 {
 public:
@@ -10,6 +11,7 @@ public:
 	int dy;
 	bool expanded;
 	string title;
+	vector<VControl*> controls;
 	VWindow(string title);
 	VWindow(string title, int x, int y);
 	VWindow(string title, int x, int y, int width, int height);
@@ -18,5 +20,6 @@ public:
 	virtual void onMouseMove();
 	virtual void onRender();
 	virtual void contentRender();
+	virtual void addControl(VControl* control);
 };
 

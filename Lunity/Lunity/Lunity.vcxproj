@@ -203,6 +203,7 @@
     <ClInclude Include="Client\Cheats\Uninject.h" />
     <ClInclude Include="Client\Cheats\Velocity.h" />
     <ClInclude Include="Client\Gui\pch.h" />
+    <ClInclude Include="Client\Gui\Controls\VControl.h" />
     <ClInclude Include="Client\Gui\VResizableWindow.h" />
     <ClInclude Include="Client\Gui\VWindow.h" />
     <ClInclude Include="Client\Hooks\NetworkHook.h" />
@@ -275,6 +276,7 @@
     <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
     <ClCompile Include="Client\Cheats\Velocity.cpp" />
+    <ClCompile Include="Client\Gui\Controls\VControl.cpp" />
     <ClCompile Include="Client\Gui\VResizableWindow.cpp" />
     <ClCompile Include="Client\Gui\VWindow.cpp" />
     <ClCompile Include="Client\Hooks\NetworkHook.cpp" />

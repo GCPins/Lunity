@@ -47,6 +47,12 @@ void VResizableWindow::onMouseMove()
 	if (dragging) {
 		titleRect.width = mx - contentRect.x;
 		contentRect.height = my - contentRect.y;
+		if (titleRect.width < 30) {
+			titleRect.width = 30;
+		}
+		if (contentRect.height < 5) {
+			contentRect.height = 5;
+		}
 	}
 }
 
