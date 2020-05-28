@@ -963,8 +963,8 @@ public:
 	virtual void Function239();
 	virtual void Function240();
 	virtual void Function241();
-	virtual void Function242();
-	virtual void Function243();
+	virtual void updateWaterState(void);
+	virtual void doWaterSplashEffect(void);
 	virtual void Function244();
 	virtual void Function245();
 	virtual void Function246();
