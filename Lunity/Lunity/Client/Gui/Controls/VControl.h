@@ -1,5 +1,4 @@
 #pragma once
-#include "../VObj.h"
 #include "../VWindow.h"
 class VControl : public VObj
 {

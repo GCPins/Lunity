@@ -202,6 +202,8 @@
     <ClInclude Include="Client\Cheats\Triggerbot.h" />
     <ClInclude Include="Client\Cheats\Uninject.h" />
     <ClInclude Include="Client\Cheats\Velocity.h" />
+    <ClInclude Include="Client\Gui\Controls\pch.h" />
+    <ClInclude Include="Client\Gui\Controls\VButton.h" />
     <ClInclude Include="Client\Gui\pch.h" />
     <ClInclude Include="Client\Gui\Controls\VControl.h" />
     <ClInclude Include="Client\Gui\VResizableWindow.h" />
@@ -276,6 +278,7 @@
     <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
     <ClCompile Include="Client\Cheats\Velocity.cpp" />
+    <ClCompile Include="Client\Gui\Controls\VButton.cpp" />
     <ClCompile Include="Client\Gui\Controls\VControl.cpp" />
     <ClCompile Include="Client\Gui\VResizableWindow.cpp" />
     <ClCompile Include="Client\Gui\VWindow.cpp" />
