@@ -19,6 +19,10 @@ public:
 		return cx > x && cy > y && cx < x + width && cy < y + height;
 	}
 
+	VRectI add(int ax, int ay, int awidth, int aheight) {
+		return VRectI(x + ax, y + ay, width + awidth, height + aheight);
+	}
+
 	/*vec4_t toVec4() {
 		return vec4_t(x, y, x+width, x+height);
 	}

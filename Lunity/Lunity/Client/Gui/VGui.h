@@ -95,12 +95,12 @@ VWindow::VWindow(string title) {
 	VWindow::VWindow(title, 0, 0);
 }
 VWindow::VWindow(string title, int x, int y) {
-	VWindow::VWindow(title, 0, 0, 80, 15);
+	VWindow::VWindow(title, 0, 0, 80, 100);
 }
 VWindow::VWindow(string title, int x, int y, int width, int height) {
-	titleRect = VRectI(x, y, width, height);
+	titleRect = VRectI(x, y, width, 10);
 	this->title = title;
-	contentRect.height = 100;
+	contentRect.height = height;
 }
 void VWindow::onMouseButton(ulong button) {
 	int mx = getMouseX();
@@ -162,6 +162,7 @@ void VWindow::contentRender()
 }
 void VWindow::addControl(class VControl* control)
 {
+	control->parent = this;
 	controls.push_back(control);
 }
 
@@ -270,22 +271,58 @@ public:
 };
 VButton::VButton(string text, int x, int y)
 {
+	VButton(text, x, y, 20, 10);
 }
 VButton::VButton(string text, int x, int y, int width, int height)
 {
+	this->text = text;
+	this->rect.x = x;
+	this->rect.y = y;
+	this->rect.width = width;
+	this->rect.height = height;
 }
 void VButton::onRender()
 {
 	int mx = getMouseX();
 	int my = getMouseY();
-	MC_Color bg = MC_Color(.30, .30, .30, 1);
-	if (rect.contains(mx, my)) {
-		bg = MC_Color(.35, .35, .35, 1);
-	}
+	MC_Color* bg;
 	VRectI pRect = parent->contentRect;
-	DrawUtils::fillRectangle(vec4_t(rect.x,
-		rect.y,
-		rect.x + rect.width,
-		rect.y + rect.height), bg, 1);
-	DrawUtils::drawText(vec2_t(rect.x + (rect.width / 2), rect.y + (rect.height / 2)), &text, nullptr, 1);
+	if (rect.add(pRect.x, pRect.y,0,0).contains(mx, my)) {
+		if(MouseHook::ButtonState(0x1))
+			bg = new MC_Color(.50, .50, .50, 1);
+		else
+			bg = new MC_Color(.35, .35, .35, 1);
+	}
+	else {
+		bg = new MC_Color(.30, .30, .30, 1);
+	}
+	DrawUtils::fillRectangle(vec4_t(
+		pRect.x+rect.x,
+		pRect.y+rect.y,
+		pRect.x+rect.x + rect.width,
+		pRect.y+rect.y + rect.height), *bg, 1);
+	delete bg;
+	DrawUtils::drawText(vec2_t(pRect.x+rect.x + (rect.width / 2)-(DrawUtils::getTextWidth(text, 1)/2), pRect.y+rect.y + (rect.height / 2)-5), &text, nullptr, 1);
+}
+
+
+
+/*
+
+Custom windows and shit
+Use the space below this for 
+
+*/
+class TestWindow : public VResizableWindow {
+public:
+	TestWindow(int x, int y);
+	void onRender();
+};
+TestWindow::TestWindow(int x, int y) : VResizableWindow::VResizableWindow("Epic", x, y, 80, 100)
+{
+	addControl(new VButton("test", 0, 20, 40, 10));
+}
+void TestWindow::onRender()
+{
+	VResizableWindow::onRender();
 }
