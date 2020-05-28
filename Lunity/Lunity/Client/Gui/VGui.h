@@ -39,6 +39,35 @@ void VObj::onRender()
 
 
 /*
+Control base class, hopefully fixes compiler issues
+*/
+/*
+VControl
+*/
+class VControl : public VObj
+{
+public:
+	class VWindow* parent;
+	virtual void onMouseButton(ulong button);
+	virtual void onMouseRelease(ulong button);
+	virtual void onMouseMove();
+	virtual void onRender();
+};
+void VControl::onMouseButton(ulong button)
+{
+}
+void VControl::onMouseRelease(ulong button)
+{
+}
+void VControl::onMouseMove()
+{
+}
+void VControl::onRender()
+{
+}
+
+
+/*
 VWindow class
 */
 class VWindow : public VObj
@@ -51,7 +80,7 @@ public:
 	int dy;
 	bool expanded;
 	string title;
-	vector<VControl*> controls;
+	vector<class VControl*> controls;
 	VWindow(string title);
 	VWindow(string title, int x, int y);
 	VWindow(string title, int x, int y, int width, int height);
@@ -60,7 +89,7 @@ public:
 	virtual void onMouseMove();
 	virtual void onRender();
 	virtual void contentRender();
-	virtual void addControl(VControl* control);
+	virtual void addControl(class VControl* control);
 };
 VWindow::VWindow(string title) {
 	VWindow::VWindow(title, 0, 0);
@@ -131,7 +160,7 @@ void VWindow::contentRender()
 		controls[i]->onRender();
 	}
 }
-void VWindow::addControl(VControl* control)
+void VWindow::addControl(class VControl* control)
 {
 	controls.push_back(control);
 }
@@ -218,33 +247,14 @@ void VResizableWindow::contentRender()
 }
 
 
+
+
+
 /*
 
 Controls
 
 */
-/*
-VControl
-*/
-class VControl : public VObj
-{
-public:
-	VWindow* parent;
-	virtual void onMouseButton(ulong button);
-	virtual void onMouseRelease(ulong button);
-	virtual void onMouseMove();
-};
-void VControl::onMouseButton(ulong button)
-{
-}
-void VControl::onMouseRelease(ulong button)
-{
-}
-void VControl::onMouseMove()
-{
-}
-
-
 /*
 VButton
 */
@@ -273,9 +283,9 @@ void VButton::onRender()
 		bg = MC_Color(.35, .35, .35, 1);
 	}
 	VRectI pRect = parent->contentRect;
-		DrawUtils::fillRectangle(vec4_t(rect.x,
-			rect.y,
-			rect.x + rect.width,
-			rect.y + rect.height), bg, 1);
+	DrawUtils::fillRectangle(vec4_t(rect.x,
+		rect.y,
+		rect.x + rect.width,
+		rect.y + rect.height), bg, 1);
 	DrawUtils::drawText(vec2_t(rect.x + (rect.width / 2), rect.y + (rect.height / 2)), &text, nullptr, 1);
 }

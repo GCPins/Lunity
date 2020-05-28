@@ -2,8 +2,7 @@
 #include "ClickGUI.h"
 #include "../../SDK/DrawUtils.h"
 #include "../CheatManager.h"
-#include "../Gui/VWindow.h"
-#include "../Gui/VResizableWindow.h"
+#include "../Gui/VGui.h"
 
 vector<VWindow*> windows;
 ClickGUI::ClickGUI() : Cheat::Cheat("ClickGUI", "Visuals")
