@@ -37,7 +37,7 @@ void Nuker::onGmTick(GameMode* gm) {
 
 				Vector3i newBlockPos = blockPos;
 
-				int radiusSize = 2;
+				int radiusSize = 6;
 
 				for (int varX = blockPos.x; varX < blockPos.x + radiusSize; varX++) {
 					for (int varZ = blockPos.z; varZ < blockPos.z + radiusSize; varZ++) {
