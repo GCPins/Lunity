@@ -5,6 +5,7 @@
 #include "../../SDK/DrawUtils.h"
 #include "../../Logger.h"
 #include "../CheatManager.h"
+
 #include <MinHook.h>
 #pragma comment(lib, "libMinHook.lib")
 
