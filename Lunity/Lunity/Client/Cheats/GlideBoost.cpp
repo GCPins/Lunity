@@ -25,20 +25,25 @@ void GlideBoost::onDisable()
 
 int sentCount = 0;
 void GlideBoost::onPacket(void* Packet, PacketType type, bool* cancel) {
-	RakNetInstance* rak = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
-	if (moving) {
-		RakNetInstance* rak = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
-		if (strcmp(rak->ServerIp.getText(), "geo.hivebedrock.network") == 0) {
-			if (sentCount % 10) {
-				*cancel = true;
-				Logger::log("Canceled packet to hive!");
-			}
-			else {
-				Logger::log("Sent packet to hive!");
-			}
-			sentCount++;
-		}
-	}
+	//if (enabled) {
+	//	RakNetInstance* rak = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
+	//	if (strcmp(rak->ServerIp.getText(), "geo.hivebedrock.network") == 0) {
+	//		if (type == PacketType::Movement) {
+	//			MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
+	//			pkt->Pos.x = 0;
+	//			pkt->Pos.y = 0;
+	//			pkt->Pos.z = 0;
+	//		}
+	//		/*if (sentCount % 10) {
+	//			*cancel = true;
+	//			Logger::log("Canceled packet to hive!");
+	//		}
+	//		else {
+	//			Logger::log("Sent packet to hive!");
+	//		}
+	//		sentCount++;*/
+	//	}
+	//}
 }
 
 Vector3 Nofavec;
@@ -64,6 +69,11 @@ void GlideBoost::onTick()
 					Player->VelocityXYZ.y = (float)0;
 					Player->VelocityXYZ.z = sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * glideBoostSpeed;
 
+					if (strcmp(rak->ServerIp.getText(), "geo.hivebedrock.network") == 0) {
+						MovePlayerPacket* a = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 0x1);
+						a->Pos.y = savedPos->y - 9;
+						LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(a);
+					}
 					if (strcmp(rak->ServerIp.getText(), "mco.cubecraft.net") == 0) {
 						//Lucy's disabler (outdated, same as flare those scumbags)
 						Vector3* posa = Player->getPos();
