@@ -117,6 +117,10 @@ namespace Lunity_Injector
         }
         public static bool downloadLunity(string ver)
         {
+            if (!Directory.Exists(dataDir))
+            {
+                Directory.CreateDirectory(dataDir);
+            }
             WebClient wc = new WebClient();
             wc.Headers.Add("user-agent", " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -125,7 +129,13 @@ namespace Lunity_Injector
             {
                 if (ro.tag_name == ver)
                 {
-                    downloadFile(dataDir + "/Lunity.dll", ro.assets[0].browser_download_url);
+                    foreach(Asset asset in ro.assets)
+                    {
+                        if (asset.browser_download_url.Contains(".dll"))
+                        {
+                            downloadFile(dataDir + "/Lunity.dll", asset.browser_download_url);
+                        }
+                    }
                     return true;
                 }
             }
