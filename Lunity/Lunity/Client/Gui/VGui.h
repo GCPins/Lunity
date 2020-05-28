@@ -117,9 +117,15 @@ void VWindow::onMouseButton(ulong button) {
 			expanded = !expanded;
 		}
 	}
+	for (int i = 0; i < controls.size(); i++) {
+		controls[i]->onMouseButton(button);
+	}
 }
 void VWindow::onMouseRelease(ulong button) {
 	dragging = false;
+	for (int i = 0; i < controls.size(); i++) {
+		controls[i]->onMouseRelease(button);
+	}
 }
 void VWindow::onMouseMove()
 {
@@ -128,6 +134,9 @@ void VWindow::onMouseMove()
 		int my = getMouseY();
 		titleRect.x = mx - dx;
 		titleRect.y = my - dy;
+	}
+	for (int i = 0; i < controls.size(); i++) {
+		controls[i]->onMouseMove();
 	}
 }
 void VWindow::onRender()
@@ -265,21 +274,24 @@ class VButton :
 public:
 	string text;
 	VRectI rect;
-	VButton(string text, int x, int y);
-	VButton(string text, int x, int y, int width, int height);
+	void (*callback)(VButton* button);
+	VButton(string text, int x, int y, void (*callback)(VButton* button));
+	VButton(string text, int x, int y, int width, int height, void (*callback)(VButton* button));
 	virtual void onRender();
+	virtual void onMouseButton(ulong button);
 };
-VButton::VButton(string text, int x, int y)
+VButton::VButton(string text, int x, int y, void (*callback)(VButton* button))
 {
-	VButton(text, x, y, 20, 10);
+	VButton(text, x, y, 20, 10, callback);
 }
-VButton::VButton(string text, int x, int y, int width, int height)
+VButton::VButton(string text, int x, int y, int width, int height, void (*callback)(VButton* button))
 {
 	this->text = text;
 	this->rect.x = x;
 	this->rect.y = y;
 	this->rect.width = width;
 	this->rect.height = height;
+	this->callback = callback;
 }
 void VButton::onRender()
 {
@@ -304,6 +316,17 @@ void VButton::onRender()
 	delete bg;
 	DrawUtils::drawText(vec2_t(pRect.x+rect.x + (rect.width / 2)-(DrawUtils::getTextWidth(text, 1)/2), pRect.y+rect.y + (rect.height / 2)-5), &text, nullptr, 1);
 }
+void VButton::onMouseButton(ulong button)
+{
+	if (button == 0x1) {
+		int mx = getMouseX();
+		int my = getMouseY();
+		VRectI pRect = parent->contentRect;
+		if (rect.add(pRect.x, pRect.y, 0, 0).contains(mx, my)) {
+			this->callback(this);
+		}
+	}
+}
 
 
 
@@ -313,6 +336,10 @@ Custom windows and shit
 Use the space below this for 
 
 */
+void __stdcall onClick(VButton* button) {
+	button->parent->addControl(new VButton("test", 0, button->rect.x + 40, 40, 10, &onClick));
+	Logger::log("le click");
+}
 class TestWindow : public VResizableWindow {
 public:
 	TestWindow(int x, int y);
@@ -320,7 +347,7 @@ public:
 };
 TestWindow::TestWindow(int x, int y) : VResizableWindow::VResizableWindow("Epic", x, y, 80, 100)
 {
-	addControl(new VButton("test", 0, 20, 40, 10));
+	addControl(new VButton("test", 0, 20, 40, 10, &onClick));
 }
 void TestWindow::onRender()
 {
