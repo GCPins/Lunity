@@ -216,3 +216,66 @@ void VResizableWindow::contentRender()
 	vec4_t rect = vec4_t(resizer.x, resizer.y, resizer.x + resizer.width, resizer.y + resizer.height);
 	DrawUtils::fillRectangle(rect, MC_Color(.10, .10, .10, 1), 1);
 }
+
+
+/*
+
+Controls
+
+*/
+/*
+VControl
+*/
+class VControl : public VObj
+{
+public:
+	VWindow* parent;
+	virtual void onMouseButton(ulong button);
+	virtual void onMouseRelease(ulong button);
+	virtual void onMouseMove();
+};
+void VControl::onMouseButton(ulong button)
+{
+}
+void VControl::onMouseRelease(ulong button)
+{
+}
+void VControl::onMouseMove()
+{
+}
+
+
+/*
+VButton
+*/
+class VButton :
+	public VControl
+{
+public:
+	string text;
+	VRectI rect;
+	VButton(string text, int x, int y);
+	VButton(string text, int x, int y, int width, int height);
+	virtual void onRender();
+};
+VButton::VButton(string text, int x, int y)
+{
+}
+VButton::VButton(string text, int x, int y, int width, int height)
+{
+}
+void VButton::onRender()
+{
+	int mx = getMouseX();
+	int my = getMouseY();
+	MC_Color bg = MC_Color(.30, .30, .30, 1);
+	if (rect.contains(mx, my)) {
+		bg = MC_Color(.35, .35, .35, 1);
+	}
+	VRectI pRect = parent->contentRect;
+		DrawUtils::fillRectangle(vec4_t(rect.x,
+			rect.y,
+			rect.x + rect.width,
+			rect.y + rect.height), bg, 1);
+	DrawUtils::drawText(vec2_t(rect.x + (rect.width / 2), rect.y + (rect.height / 2)), &text, nullptr, 1);
+}
