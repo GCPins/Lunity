@@ -183,6 +183,8 @@ class VResizableWindow : public VWindow
 {
 public:
 	VRectI resizer;
+	int minWidth = 30;
+	int minHeight = 10;
 	VResizableWindow(string title);
 	VResizableWindow(string title, int x, int y);
 	VResizableWindow(string title, int x, int y, int width, int height);
@@ -235,11 +237,11 @@ void VResizableWindow::onMouseMove()
 	if (dragging) {
 		titleRect.width = mx - contentRect.x;
 		contentRect.height = my - contentRect.y;
-		if (titleRect.width < 30) {
-			titleRect.width = 30;
+		if (titleRect.width < minWidth) {
+			titleRect.width = minWidth;
 		}
-		if (contentRect.height < 5) {
-			contentRect.height = 5;
+		if (contentRect.height < minHeight) {
+			contentRect.height = minHeight;
 		}
 	}
 }
@@ -327,7 +329,25 @@ void VButton::onMouseButton(ulong button)
 		}
 	}
 }
-
+class VLabel : public VControl {
+public:
+	string text;
+	int x;
+	int y;
+	VLabel(string text, int x, int y);
+	virtual void onRender();
+};
+VLabel::VLabel(string text, int x, int y)
+{
+	this->text = text;
+	this->x = x;
+	this->y = y;
+}
+void VLabel::onRender()
+{
+	VRectI pRect = parent->contentRect;
+	DrawUtils::drawText(vec2_t(pRect.x + x, pRect.y + y), &text, nullptr, 1);
+}
 
 
 /*
@@ -336,8 +356,13 @@ Custom windows and shit
 Use the space below this for 
 
 */
+/*
+TestWindow
+This window can be used as an example for other windows.
+It is resizable and features buttons with click callbacks,
+And will feature all the other possible controls as they are made
+*/
 void __stdcall onClick(VButton* button) {
-	button->parent->addControl(new VButton("test", 0, button->rect.x + 40, 40, 10, &onClick));
 	Logger::log("le click");
 }
 class TestWindow : public VResizableWindow {
@@ -348,6 +373,9 @@ public:
 TestWindow::TestWindow(int x, int y) : VResizableWindow::VResizableWindow("Epic", x, y, 80, 100)
 {
 	addControl(new VButton("test", 0, 20, 40, 10, &onClick));
+	addControl(new VLabel("cool label!", 0, 50));
+	this->minWidth = 60;
+	this->minHeight = 60;
 }
 void TestWindow::onRender()
 {
