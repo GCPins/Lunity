@@ -10,6 +10,7 @@ VWindow::VWindow(string title, int x, int y) {
 VWindow::VWindow(string title, int x, int y, int width, int height) {
 	titleRect = VRectI(x,y,width,height);
 	this->title = title;
+	contentRect.height = 100;
 }
 
 void VWindow::onMouseButton(ulong button) {
@@ -54,4 +55,18 @@ void VWindow::onRender()
 	}
 	loc = vec2_t(titleRect.x+titleRect.width-DrawUtils::getTextWidth(expTecks,1), titleRect.y);
 	DrawUtils::drawText(loc, &expTecks, nullptr, 1);
+
+	if (expanded) {
+		contentRect.x = titleRect.x;
+		contentRect.y = titleRect.y + titleRect.height;
+		contentRect.width = titleRect.width;
+
+		contentRender();
+	}
+}
+
+void VWindow::contentRender()
+{
+	vec4_t rect = vec4_t(contentRect.x, contentRect.y, contentRect.x + contentRect.width, contentRect.y + contentRect.height);
+	DrawUtils::fillRectangle(rect, MC_Color(.25, .25, .25, 1), 1);
 }

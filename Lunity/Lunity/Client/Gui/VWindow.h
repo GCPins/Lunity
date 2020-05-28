@@ -13,9 +13,10 @@ public:
 	VWindow(string title);
 	VWindow(string title, int x, int y);
 	VWindow(string title, int x, int y, int width, int height);
-	void onMouseButton(ulong button);
-	void onMouseRelease(ulong button);
-	void onMouseMove();
+	virtual void onMouseButton(ulong button);
+	virtual void onMouseRelease(ulong button);
+	virtual void onMouseMove();
 	virtual void onRender();
+	virtual void contentRender();
 };
 
