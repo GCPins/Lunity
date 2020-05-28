@@ -1,4 +1,6 @@
 #pragma once
+#ifndef VWINDOW_H
+#define VWINDOW_H
 #include "VObj.h"
 #include "Controls/VControl.h"
 class VWindow : public VObj
@@ -22,4 +24,4 @@ public:
 	virtual void contentRender();
 	virtual void addControl(VControl* control);
 };
-
+#endif

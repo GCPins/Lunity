@@ -5,9 +5,9 @@ class VButton :
 {
 public:
 	string text;
-	int x;
-	int y;
-	int width;
-	int height;
+	VRectI rect;
+	VButton(string text, int x, int y);
+	VButton(string text, int x, int y, int width, int height);
+	virtual void onRender();
 };
 
