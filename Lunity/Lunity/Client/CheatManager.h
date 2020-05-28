@@ -18,6 +18,7 @@
 #include "Cheats/Speed.h"
 #include "Cheats/Jesus.h"
 #include "Cheats/GlideBoost.h"
+#include "Cheats/Glide.h"
 
 /* Player */
 

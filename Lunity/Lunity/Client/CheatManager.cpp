@@ -33,6 +33,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Speed());
 	cheats.push_back(new Jesus());
 	cheats.push_back(new GlideBoost());
+	cheats.push_back(new Glide());
 
 	/* Player */
 	cheats.push_back(new Scaffold());

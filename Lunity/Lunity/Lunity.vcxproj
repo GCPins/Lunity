@@ -185,6 +185,7 @@
     <ClInclude Include="Client\Cheats\ClickTP.h" />
     <ClInclude Include="Client\Cheats\Coords.h" />
     <ClInclude Include="Client\Cheats\Gamemode.h" />
+    <ClInclude Include="Client\Cheats\Glide.h" />
     <ClInclude Include="Client\Cheats\GlideBoost.h" />
     <ClInclude Include="Client\Cheats\Hitbox.h" />
     <ClInclude Include="Client\Cheats\Instabreak.h" />
@@ -255,6 +256,7 @@
     <ClCompile Include="Client\Cheats\ClickTP.cpp" />
     <ClCompile Include="Client\Cheats\Coords.cpp" />
     <ClCompile Include="Client\Cheats\Gamemode.cpp" />
+    <ClCompile Include="Client\Cheats\Glide.cpp" />
     <ClCompile Include="Client\Cheats\GlideBoost.cpp" />
     <ClCompile Include="Client\Cheats\Hitbox.cpp" />
     <ClCompile Include="Client\Cheats\Instabreak.cpp" />
