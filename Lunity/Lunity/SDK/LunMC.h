@@ -717,7 +717,9 @@ public:
 	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0FD8
 	char pad_0FE0[456]; //0x0FE0
 	class ItemStack* ItemStacks; //0x11A8
-	char pad_11B0[768]; //0x11B0
+	char pad_11B0[272]; //0x11B0
+	uint64_t InventoryUiState; //0x12C0
+	char pad_12C8[488]; //0x12C8
 	class PlayerUIContainer PlayerUIContainer; //0x14B0
 	char pad_15E0[2124]; //0x15E0
 
