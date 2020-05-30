@@ -24,7 +24,7 @@ void GlideBoost::onDisable()
 }
 
 int sentCount = 0;
-void GlideBoost::onPacket(void* Packet, PacketType type, bool* cancel) {
+void GlideBoost::onPacketSend(void* Packet, PacketType type, bool* cancel) {
 	//if (enabled) {
 	//	RakNetInstance* rak = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
 	//	if (strcmp(rak->ServerIp.getText(), "geo.hivebedrock.network") == 0) {

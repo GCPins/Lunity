@@ -25,7 +25,7 @@ void PacketLogger::onGmTick(GameMode* gm) {
 }
 
 int packetId = 0;
-void PacketLogger::onPacket(void* Packet, PacketType type, bool* cancel) {
+void PacketLogger::onPacketSend(void* Packet, PacketType type, bool* cancel) {
 	if (enabled) {
 		Logger::logHex("Packet sent", (ulong)Packet);
 		if (type == PacketType::Movement) {

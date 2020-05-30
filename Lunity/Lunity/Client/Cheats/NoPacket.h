@@ -6,6 +6,6 @@ class NoPacket : public Cheat
 {
 public:
 	NoPacket();
-	void onPacket(void* Packet, PacketType type, bool* cancel);
+	void onPacketSend(void* Packet, PacketType type, bool* cancel);
 };
 

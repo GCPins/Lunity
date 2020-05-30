@@ -127,9 +127,9 @@ void CheatManager::onPostRender()
 	}
 }
 
-void CheatManager::onPacket(void* Packet, PacketType type, bool* cancel)
+void CheatManager::onPacketSend(void* Packet, PacketType type, bool* cancel)
 {
 	for (uint i = 0; i < cheats.size(); i++) {
-		cheats[i]->onPacket(Packet, type, cancel);
+		cheats[i]->onPacketSend(Packet, type, cancel);
 	}
 }

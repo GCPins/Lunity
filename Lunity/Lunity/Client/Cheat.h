@@ -21,6 +21,6 @@ public:
 	virtual void onMouseMove();
 	virtual void onPreRender();
 	virtual void onPostRender();
-	virtual void onPacket(void* Packet, PacketType type, bool* cancel);
+	virtual void onPacketSend(void* Packet, PacketType type, bool* cancel);
 };
 

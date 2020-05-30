@@ -26,7 +26,7 @@ void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
 		pt = PacketType::CraftingEvent;
 	}
 	bool canceled = false;
-	CheatManager::onPacket(Packet, pt, &canceled);
+	CheatManager::onPacketSend(Packet, pt, &canceled);
 	if (!canceled)
 		original(packetSender, Packet);
 }

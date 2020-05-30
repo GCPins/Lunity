@@ -69,6 +69,6 @@ void Cheat::onPostRender()
 {
 }
 
-void Cheat::onPacket(void* Packet, PacketType type, bool* cancel)
+void Cheat::onPacketSend(void* Packet, PacketType type, bool* cancel)
 {
 }
