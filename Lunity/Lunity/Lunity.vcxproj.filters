@@ -273,6 +273,9 @@
     <ClInclude Include="Client\Cheats\NoWater.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\InventoryMove.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -393,6 +396,9 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\NoWater.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\InventoryMove.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

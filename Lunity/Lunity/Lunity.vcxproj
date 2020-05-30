@@ -190,6 +190,7 @@
     <ClInclude Include="Client\Cheats\GlideBoost.h" />
     <ClInclude Include="Client\Cheats\Hitbox.h" />
     <ClInclude Include="Client\Cheats\Instabreak.h" />
+    <ClInclude Include="Client\Cheats\InventoryMove.h" />
     <ClInclude Include="Client\Cheats\Jesus.h" />
     <ClInclude Include="Client\Cheats\Jetpack.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
@@ -263,6 +264,7 @@
     <ClCompile Include="Client\Cheats\GlideBoost.cpp" />
     <ClCompile Include="Client\Cheats\Hitbox.cpp" />
     <ClCompile Include="Client\Cheats\Instabreak.cpp" />
+    <ClCompile Include="Client\Cheats\InventoryMove.cpp" />
     <ClCompile Include="Client\Cheats\Jesus.cpp" />
     <ClCompile Include="Client\Cheats\Jetpack.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />

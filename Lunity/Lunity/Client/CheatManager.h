@@ -30,6 +30,7 @@
 #include "Cheats/Instabreak.h"
 #include "Cheats/ClickTP.h"
 #include "Cheats/Gamemode.h"
+#include "Cheats/InventoryMove.h"
 
 /* Visuals */
 

@@ -44,6 +44,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Instabreak());
 	cheats.push_back(new ClickTP());
 	cheats.push_back(new Gamemode());
+	cheats.push_back(new InventoryMove());
 
 	/* Visuals */
 	cheats.push_back(new TabGUI());
