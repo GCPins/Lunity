@@ -458,6 +458,7 @@ TestWindow::TestWindow(int x, int y) : VResizableWindow::VResizableWindow("Epic"
 	this->minWidth = 90;
 	this->minHeight = 80;
 	addControl(new VButton("Close", 0, 60, 60, 10, &closeTest));
+	//addControl(new VCheckbox(60, 50, nullptr));
 	addControl(new VCheckbox(60, 50, nullptr));
 }
 void TestWindow::onRender()
