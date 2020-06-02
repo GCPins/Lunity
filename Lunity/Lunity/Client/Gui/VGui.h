@@ -48,6 +48,8 @@ class VControl : public VObj
 {
 public:
 	class VWindow* parent;
+	int x;
+	int y;
 	virtual void onMouseButton(ulong button);
 	virtual void onMouseRelease(ulong button);
 	virtual void onMouseMove();
@@ -334,20 +336,20 @@ void VButton::onRender()
 }
 void VButton::onMouseButton(ulong button)
 {
-	if (button == 0x1) {
-		int mx = getMouseX();
-		int my = getMouseY();
-		VRectI pRect = parent->contentRect;
-		if (rect.add(pRect.x, pRect.y, 0, 0).contains(mx, my)) {
-			this->callback(this);
+	if (this->callback != nullptr) {
+		if (button == 0x1) {
+			int mx = getMouseX();
+			int my = getMouseY();
+			VRectI pRect = parent->contentRect;
+			if (rect.add(pRect.x, pRect.y, 0, 0).contains(mx, my)) {
+				this->callback(this);
+			}
 		}
 	}
 }
 class VLabel : public VControl {
 public:
 	string text;
-	int x;
-	int y;
 	VLabel(string text, int x, int y);
 	virtual void onRender();
 };
@@ -362,7 +364,27 @@ void VLabel::onRender()
 	VRectI pRect = parent->contentRect;
 	DrawUtils::drawText(vec2_t(pRect.x + x, pRect.y + y), &text, nullptr, 1);
 }
+class VCheckbox : public VControl {
+public:
+	bool checked;
+	void (*callback)(VCheckbox* checkbox);
+	VCheckbox(int x, int y, void (*callback)(VCheckbox* checkbox));
+	virtual void onRender();
+	virtual void onMouseButton(ulong button);
+};
+VCheckbox::VCheckbox(int x, int y, void(*callback)(VCheckbox* checkbox))
+{
+	this->x = x;
+	this->y = y;
+	this->callback = callback;
+}
+void VCheckbox::onRender()
+{
 
+}
+void VCheckbox::onMouseButton(ulong button)
+{
+}
 
 /*
 
