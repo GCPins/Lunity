@@ -336,12 +336,12 @@ void VButton::onRender()
 }
 void VButton::onMouseButton(ulong button)
 {
-	if (this->callback != nullptr) {
-		if (button == 0x1) {
-			int mx = getMouseX();
-			int my = getMouseY();
-			VRectI pRect = parent->contentRect;
-			if (rect.add(pRect.x, pRect.y, 0, 0).contains(mx, my)) {
+	if (button == 0x1) {
+		int mx = getMouseX();
+		int my = getMouseY();
+		VRectI pRect = parent->contentRect;
+		if (rect.add(pRect.x, pRect.y, 0, 0).contains(mx, my)) {
+			if (this->callback != nullptr) {
 				this->callback(this);
 			}
 		}
@@ -367,6 +367,7 @@ void VLabel::onRender()
 class VCheckbox : public VControl {
 public:
 	bool checked;
+	VRectI rect;
 	void (*callback)(VCheckbox* checkbox);
 	VCheckbox(int x, int y, void (*callback)(VCheckbox* checkbox));
 	virtual void onRender();
@@ -377,13 +378,58 @@ VCheckbox::VCheckbox(int x, int y, void(*callback)(VCheckbox* checkbox))
 	this->x = x;
 	this->y = y;
 	this->callback = callback;
+	this->rect.x = x;
+	this->rect.y = y;
+	this->rect.width = 8;
+	this->rect.height = 8;
 }
 void VCheckbox::onRender()
 {
-
+	int mx = getMouseX();
+	int my = getMouseY();
+	MC_Color* bg;
+	VRectI pRect = parent->contentRect;
+	if (rect.add(pRect.x, pRect.y, 0, 0).contains(mx, my)) {
+		if (MouseHook::ButtonState(0x1))
+			bg = new MC_Color(.50, .50, .50, 1);
+		else
+			bg = new MC_Color(.35, .35, .35, 1);
+	}
+	else {
+		bg = new MC_Color(.30, .30, .30, 1);
+	}
+	DrawUtils::fillRectangle(vec4_t(
+		pRect.x + rect.x,
+		pRect.y + rect.y,
+		pRect.x + rect.x + rect.width,
+		pRect.y + rect.y + rect.height), *bg, 1);
+	MC_Color* check;
+	if (checked) {
+		check = new MC_Color(0, 1, 0, 1);
+	}
+	else {
+		check = new MC_Color(1, 0, 0, 1);
+	}
+	DrawUtils::fillRectangle(vec4_t(
+		pRect.x + rect.x + 2,
+		pRect.y + rect.y + 2,
+		pRect.x + rect.x + rect.width - 2,
+		pRect.y + rect.y + rect.height - 2), *check, 1);
+	delete bg;
 }
 void VCheckbox::onMouseButton(ulong button)
 {
+	if (button == 0x1) {
+		int mx = getMouseX();
+		int my = getMouseY();
+		VRectI pRect = parent->contentRect;
+		if (rect.add(pRect.x, pRect.y, 0, 0).contains(mx, my)) {
+			if (this->callback != nullptr) {
+				this->callback(this);
+			}
+			checked = !checked;
+		}
+	}
 }
 
 /*
@@ -409,9 +455,10 @@ TestWindow::TestWindow(int x, int y) : VResizableWindow::VResizableWindow("Epic"
 {
 	addControl(new VButton("test", 0, 20, 40, 10, &onClick));
 	addControl(new VLabel("cool label!", 0, 50));
-	this->minWidth = 60;
+	this->minWidth = 90;
 	this->minHeight = 80;
 	addControl(new VButton("Close", 0, 60, 60, 10, &closeTest));
+	addControl(new VCheckbox(60, 50, nullptr));
 }
 void TestWindow::onRender()
 {
