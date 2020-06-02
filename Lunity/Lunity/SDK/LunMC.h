@@ -1598,7 +1598,9 @@ class MovePlayerPacket
 {
 public:
 	ulong VTable; //0x0000
-	char pad_0008[32]; //0x0008
+	ulong dunno;
+	char pad_0008[16]; //0x0008
+	ulong dunno2;
 	uint64_t ActorId; //0x0028
 	Vector3 Pos; //0x0030
 	Vector2 LookingVec; //0x003C
@@ -1611,6 +1613,8 @@ public:
 
 	MovePlayerPacket(Actor* player, Vector3* pos, Vector2* looking, int8_t onGround) {
 		VTable = (ulong)GetModuleHandle(NULL) + 0x2B04E68;
+		dunno = 0x0200000001000000;
+		dunno2 = 0x8F41000000000000;
 		this->ActorId = player->ActorId;
 		this->Pos = *pos;
 		this->LookingVec = *looking;
@@ -1628,4 +1632,9 @@ public:
 	Vector3 Position; //0x0030
 	float HeadYawOrSomeShit; //0x003C
 	char pad_0040[36]; //0x0040
+	PlayerAuthInputPacket(Vector2 lookingVec, Vector3 position) {
+		VTable = (ulong)GetModuleHandle(NULL) + 0x2B04FF0;
+		LookingVec = lookingVec;
+		Position = position;
+	}
 }; //Size: 0x0064
