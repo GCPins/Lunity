@@ -21,6 +21,7 @@
 #include "Cheats/Glide.h"
 #include "Cheats/AutoWalk.h"
 #include "Cheats/NoWater.h"
+#include "Cheats/CCFly.h"
 
 /* Player */
 
