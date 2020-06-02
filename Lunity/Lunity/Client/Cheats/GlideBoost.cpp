@@ -88,6 +88,17 @@ void GlideBoost::onTick()
 						MovePlayerPacket* a2 = new MovePlayerPacket((Actor*)Player, &Nofavec, &Player->LookingVec, 0x0);
 						LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(a2);
 						delete a2;
+
+						//Part 2
+						Vector3* posb = Player->getPos();
+						Vector3* copyPosb = new Vector3{ posb->x, posb->y, posb->z };
+						MovePlayerPacket* movePlayerPacket = new MovePlayerPacket((Actor*)Player, copyPosb, &Player->LookingVec, 0x0);
+						LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(movePlayerPacket);
+						delete movePlayerPacket;
+						copyPosb->y = -4477558.0f;
+						movePlayerPacket = new MovePlayerPacket((Actor*)Player, copyPosb, &Player->LookingVec, 0x0);
+						LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(movePlayerPacket);
+						delete movePlayerPacket;
 					}
 					
 				}
