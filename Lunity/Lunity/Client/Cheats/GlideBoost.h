@@ -10,6 +10,6 @@ public:
 	void onTick();
 	void onEnable();
 	void onDisable();
-	void onPacketSend(void* Packet, PacketType type, bool* cancel);
+	void onPacket(void* Packet, PacketType type, bool* cancel);
 };
 
