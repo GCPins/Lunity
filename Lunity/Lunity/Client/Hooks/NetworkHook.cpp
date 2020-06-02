@@ -11,7 +11,7 @@
 typedef void (__thiscall* SendToServer)(LoopbackPacketSender* packetSender, void* Packet);
 SendToServer original;
 
-void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
+void __fastcall receiveCallback(LoopbackPacketSender* packetSender, void* Packet) {
 	PacketType pt = PacketType::Unknown;
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04E68) {
 		pt = PacketType::Movement;
@@ -36,7 +36,7 @@ void NetworkHook::installHook() {
 	void* toHook = (void*)(LunMem::getBaseModule() + 0xFF0BE0);
 	Logger::logHex("ToHook", (ulong)toHook);
 	bool installSuccess = false;
-	if (MH_CreateHook(toHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
+	if (MH_CreateHook(toHook, &receiveCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
 		Logger::log("Network Hook successfully created!");
 		if (MH_EnableHook(toHook) == MH_OK) {
 			installSuccess = true;
