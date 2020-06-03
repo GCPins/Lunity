@@ -31,6 +31,7 @@
 #include "Cheats/ClickTP.h"
 #include "Cheats/Gamemode.h"
 #include "Cheats/InventoryMove.h"
+#include "Cheats/NoFall.h"
 
 /* Visuals */
 

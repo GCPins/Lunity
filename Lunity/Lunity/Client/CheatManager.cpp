@@ -45,6 +45,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new ClickTP());
 	cheats.push_back(new Gamemode());
 	cheats.push_back(new InventoryMove());
+	cheats.push_back(new NoFall());
 
 	/* Visuals */
 	cheats.push_back(new TabGUI());
@@ -53,9 +54,9 @@ void CheatManager::loadCheats()
 
 	/* Other */
 	cheats.push_back(new Uninject());
-	cheats.push_back(new MineplexYesCheat());
-	cheats.push_back(new PacketLogger());
-	cheats.push_back(new NoPacket());
+	//cheats.push_back(new MineplexYesCheat());
+	//cheats.push_back(new PacketLogger());
+	//cheats.push_back(new NoPacket());
 
 	//cheats.push_back(new TestModule());
 

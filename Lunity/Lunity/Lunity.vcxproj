@@ -196,6 +196,7 @@
     <ClInclude Include="Client\Cheats\Killaura.h" />
     <ClInclude Include="Client\Cheats\MineplexYesCheat.h" />
     <ClInclude Include="Client\Cheats\ModuleList.h" />
+    <ClInclude Include="Client\Cheats\NoFall.h" />
     <ClInclude Include="Client\Cheats\NoPacket.h" />
     <ClInclude Include="Client\Cheats\NoSlowDown.h" />
     <ClInclude Include="Client\Cheats\NoWater.h" />
@@ -270,6 +271,7 @@
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
     <ClCompile Include="Client\Cheats\MineplexYesCheat.cpp" />
     <ClCompile Include="Client\Cheats\ModuleList.cpp" />
+    <ClCompile Include="Client\Cheats\NoFall.cpp" />
     <ClCompile Include="Client\Cheats\NoPacket.cpp" />
     <ClCompile Include="Client\Cheats\NoSlowDown.cpp" />
     <ClCompile Include="Client\Cheats\NoWater.cpp" />

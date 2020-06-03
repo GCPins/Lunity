@@ -687,7 +687,9 @@ public:
 	Vector2 LookingVec2; //0x00F8
 	char pad_0100[120]; //0x0100
 	bool OnGround; //0x0178
-	char pad_0179[391]; //0x0179
+	char pad_0179[27]; //0x0179
+	float FallingIncrementer; //0x0194
+	char pad_0198[360]; //0x0198
 	int N000006AB; //0x0300
 	float Speed; //0x0304
 	int MoveTick; //0x0308
