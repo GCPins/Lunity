@@ -21,6 +21,7 @@
 #include "Cheats/Glide.h"
 #include "Cheats/AutoWalk.h"
 #include "Cheats/NoWater.h"
+#include "Cheats/CCFly.h"
 
 /* Player */
 
@@ -45,6 +46,7 @@
 #include "Cheats/MineplexYesCheat.h"
 #include "Cheats/PacketLogger.h"
 #include "Cheats/NoPacket.h"
+#include "Cheats/CCGodMode.h"
 
 #include "Hooks/NetworkHook.h"
 #include "Cheats/TestModule.h"

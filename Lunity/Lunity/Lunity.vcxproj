@@ -176,6 +176,7 @@
     <ClInclude Include="capstone\tms320c64x.h" />
     <ClInclude Include="capstone\x86.h" />
     <ClInclude Include="capstone\xcore.h" />
+    <ClInclude Include="Client\Cheats\CCGodMode.h" />
     <ClInclude Include="Client\Cheats\AirJump.h" />
     <ClInclude Include="BigHead.h" />
     <ClInclude Include="Client\CheatManager.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Client\Cheats\AutoSprint.h" />
     <ClInclude Include="Client\Cheats\AutoWalk.h" />
     <ClInclude Include="Client\Cheats\BunnyHop.h" />
+    <ClInclude Include="Client\Cheats\CCFly.h" />
     <ClInclude Include="Client\Cheats\ClickTP.h" />
     <ClInclude Include="Client\Cheats\Coords.h" />
     <ClInclude Include="Client\Cheats\Gamemode.h" />
@@ -252,6 +254,8 @@
     <ClInclude Include="Client\Cheats\TabGUI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Client\Cheats\CCGodMode.cpp" />
+    <ClCompile Include="Client\Cheats\CCFly.cpp" />
     <ClCompile Include="Client\Cheat.cpp" />
     <ClCompile Include="Client\CheatManager.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />

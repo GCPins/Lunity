@@ -36,6 +36,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Glide());
 	cheats.push_back(new AutoWalk());
 	cheats.push_back(new NoWater());
+	cheats.push_back(new CCFly());
 
 	/* Player */
 	cheats.push_back(new Scaffold());
@@ -45,7 +46,6 @@ void CheatManager::loadCheats()
 	cheats.push_back(new ClickTP());
 	cheats.push_back(new Gamemode());
 	cheats.push_back(new InventoryMove());
-	cheats.push_back(new NoFall());
 
 	/* Visuals */
 	cheats.push_back(new TabGUI());
@@ -54,9 +54,10 @@ void CheatManager::loadCheats()
 
 	/* Other */
 	cheats.push_back(new Uninject());
-	//cheats.push_back(new MineplexYesCheat());
-	//cheats.push_back(new PacketLogger());
-	//cheats.push_back(new NoPacket());
+	cheats.push_back(new MineplexYesCheat());
+	cheats.push_back(new PacketLogger());
+	cheats.push_back(new NoPacket());
+	//cheats.push_back(new CCGodMode());
 
 	//cheats.push_back(new TestModule());
 
