@@ -36,6 +36,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Glide());
 	cheats.push_back(new AutoWalk());
 	cheats.push_back(new NoWater());
+	cheats.push_back(new NoFall());
 	cheats.push_back(new CCFly());
 
 	/* Player */
