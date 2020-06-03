@@ -45,6 +45,7 @@
 #include "Cheats/MineplexYesCheat.h"
 #include "Cheats/PacketLogger.h"
 #include "Cheats/NoPacket.h"
+#include "Cheats/CCGodMode.h"
 
 #include "Hooks/NetworkHook.h"
 #include "Cheats/TestModule.h"

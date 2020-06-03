@@ -1,11 +1,9 @@
 #pragma once
 #include "../Cheat.h"
-class CCFly : public Cheat
+class CCGodMode : public Cheat
 {
 public:
-	CCFly();
-	void onGmTick(GameMode* gm);
-	void onEnable();
+	CCGodMode();
 	void onPacket(void* Packet, PacketType type, bool* cancel);
 };
 

@@ -1,15 +1,32 @@
 #include "pch.h"
 #include "CCFly.h"
 #include "../Hooks/KeyHook.h"
+#include "../../SDK/EntList.h"
 #define PI 3.14159
 CCFly::CCFly() : Cheat::Cheat("CCFly", "Movement")
 {
 }
-float leCCFlySpeed = .3f;
+float leCCFlySpeed = .2f;
 bool ccmoving = false;
 float addBy = 0;
 int ticked = 0;
-Vector3 Nofavec;
+Vector3 lastPos;
+int posSwitch;
+
+float distance(Vector3* posA, Vector3* posB) {
+	float dX = posA->x - posB->x;
+	float dY = posA->y - posB->y;
+	float dZ = posA->z - posB->z;
+	float dist = sqrt(dX * dX + dY * dY + dZ * dZ);
+	return dist;
+}
+
+void CCFly::onEnable() {
+	LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
+	lastPos = *Player->getPos();
+	//Player->getPos()->y += 5;
+}
+
 void CCFly::onGmTick(GameMode* gm)
 {
 	if (LunMem::getClientInstance() != NULL) {
@@ -20,48 +37,33 @@ void CCFly::onGmTick(GameMode* gm)
 					ccmoving = true;
 					addBy = 0;
 					ticked = 0;
-					Player->jumpFromGround();
+					lastPos = *Player->getPos();
+					//Player->jumpFromGround();
+					//Player->actuallyHurt(1, (Actor*)Player, false);
+					//Player->animateHurt();
+					Player->swing();
+
+					MovePlayerPacket* pkt = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 1);
+					pkt->Pos.x += cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
+					pkt->Pos.y += (float)0;
+					pkt->Pos.z += sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
+					LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(pkt);
+					delete pkt;
+
+					Player->swing();
+
+					//Player->startSwimming();
+
+					//Player->getPos()->y += 5;
 					Logger::log("Moving!");
 				}
 				if (ccmoving) {
-					////Lucy's disabler (outdated, same as flare those scumbags)
-					//Vector3* posa = Player->getPos();
-					//Vector3* bedPos = new Vector3{ posa->x, posa->y - 1.6f, posa->z };
-					//Vector3* pos = Player->getPos();
-					//Nofavec = *pos;
-					//Nofavec.y += 1.6;
-					//MovePlayerPacket* a = new MovePlayerPacket((Actor*)Player, &Nofavec, &Player->LookingVec, 0x0);
-					//LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(a);
-					//delete a;
-					//Nofavec.y -= 1.6;
-					//MovePlayerPacket* a2 = new MovePlayerPacket((Actor*)Player, &Nofavec, &Player->LookingVec, 0x0);
-					//LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(a2);
-					//delete a2;
-
-					////Part 2
-					//Vector3* posb = Player->getPos();
-					//Vector3* copyPosb = new Vector3{ posb->x, posb->y, posb->z };
-					//MovePlayerPacket* movePlayerPacket = new MovePlayerPacket((Actor*)Player, copyPosb, &Player->LookingVec, 0x0);
-					//LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(movePlayerPacket);
-					//delete movePlayerPacket;
-					//copyPosb->y = -4477558.0f;
-					//movePlayerPacket = new MovePlayerPacket((Actor*)Player, copyPosb, &Player->LookingVec, 0x0);
-					//LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(movePlayerPacket);
-					//delete movePlayerPacket;
-
-					MovePlayerPacket* movePlayerPacket = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 0x1);
-					movePlayerPacket->Pos.y = 50 + Player->getPos()->y - addBy;
-					//Logger::log(to_string(movePlayerPacket->Pos.y));
-					LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(movePlayerPacket);
-
-					if (ticked % 7 == 0) {
-						if (addBy >= 50) {
-							addBy = 0;
-						}
-						addBy += 1;
-					}
-					ticked++;
-
+					MovePlayerPacket* pkt = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 1);
+					pkt->Pos.x += cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
+					pkt->Pos.y += (float)0;
+					pkt->Pos.z += sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
+					LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(pkt);
+					delete pkt;
 
 					//Move the player client
 					Player->VelocityXYZ.x = cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
@@ -75,6 +77,7 @@ void CCFly::onGmTick(GameMode* gm)
 					Player->VelocityXYZ.x = (float)0;
 					Player->VelocityXYZ.y = (float)0;
 					Player->VelocityXYZ.z = (float)0;
+					//Player->stopSwimming();
 					Logger::log("Stop Moving!");
 				}
 			}
@@ -84,18 +87,16 @@ void CCFly::onGmTick(GameMode* gm)
 
 void CCFly::onPacket(void* Packet, PacketType type, bool* cancel)
 {
-	/*if (ccmoving) {
-		if (type == PacketType::Movement || type == PacketType::PlayerAuthInput) {
-			if (sent % 4 != 0) {
-				*cancel = true;
-			}
-			else {
-				MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
-				pkt->Pos.y -= subBy;
-				subBy -= 0.1f;
-				Logger::log("Sent to CC");
-			}
-			sent++;
-		}
-	}*/
+	//if (enabled) {
+	//	if (type == PacketType::Movement || type == PacketType::PlayerAuthInput) {
+	//		LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
+	//		MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
+	//		pkt->onGround = true;
+	//		/*if (ticked % 3 == 0) {
+	//			addBy += 1.0f;
+	//		}
+	//		ticked++;*/
+	//		//Logger::log("Sent to CC");
+	//	}
+	//}
 }
