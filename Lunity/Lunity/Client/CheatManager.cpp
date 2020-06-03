@@ -36,7 +36,6 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Glide());
 	cheats.push_back(new AutoWalk());
 	cheats.push_back(new NoWater());
-	cheats.push_back(new NoFall());
 	cheats.push_back(new CCFly());
 
 	/* Player */
@@ -47,6 +46,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new ClickTP());
 	cheats.push_back(new Gamemode());
 	cheats.push_back(new InventoryMove());
+	cheats.push_back(new NoFall());
 
 	/* Visuals */
 	cheats.push_back(new TabGUI());
