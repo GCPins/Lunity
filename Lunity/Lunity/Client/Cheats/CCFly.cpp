@@ -6,7 +6,7 @@
 CCFly::CCFly() : Cheat::Cheat("CCFly", "Movement")
 {
 }
-float leCCFlySpeed = .2f;
+float leCCFlySpeed = .3f;
 bool ccmoving = false;
 float addBy = 0;
 int ticked = 0;
@@ -54,21 +54,19 @@ void CCFly::onGmTick(GameMode* gm)
 
 					//Player->startSwimming();
 
-					//Player->getPos()->y += 5;
 					Logger::log("Moving!");
 				}
 				if (ccmoving) {
-					MovePlayerPacket* pkt = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 1);
-					pkt->Pos.x += cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
-					pkt->Pos.y += (float)0;
-					pkt->Pos.z += sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
-					LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(pkt);
-					delete pkt;
-
 					//Move the player client
 					Player->VelocityXYZ.x = cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
 					Player->VelocityXYZ.y = (float)0;
 					Player->VelocityXYZ.z = sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
+
+					if (ticked == 10) {
+						Player->VelocityXYZ.y += .5;
+					}
+
+					ticked++;
 				}
 			}
 			else {
