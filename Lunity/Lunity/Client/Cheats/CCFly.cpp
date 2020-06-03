@@ -50,11 +50,14 @@ void CCFly::onGmTick(GameMode* gm)
 					//delete movePlayerPacket;
 
 					MovePlayerPacket* movePlayerPacket = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 0x1);
-					movePlayerPacket->Pos.y = Player->getPos()->y + addBy;
-					Logger::log(to_string(movePlayerPacket->Pos.y));
+					movePlayerPacket->Pos.y = 50 + Player->getPos()->y - addBy;
+					//Logger::log(to_string(movePlayerPacket->Pos.y));
 					LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(movePlayerPacket);
 
 					if (ticked % 7 == 0) {
+						if (addBy >= 50) {
+							addBy = 0;
+						}
 						addBy += 1;
 					}
 					ticked++;
