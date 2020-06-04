@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "WarpShift.h"
 
+Vector3 savedPos;
+
 WarpShift::WarpShift() :Cheat::Cheat("WarpShift", "Movement")
 {
 
@@ -18,7 +20,23 @@ void WarpShift::onTick()
 
 				LunMem::getClientInstance()->LocalPlayer->VelocityXYZ.y = (float)0;
 				LunMem::getClientInstance()->LocalPlayer->setPos(&currentPos);
+				MovePlayerPacket* movementPacket = new MovePlayerPacket((Actor*)LunMem::getClientInstance()->LocalPlayer, &savedPos, &LunMem::getClientInstance()->LocalPlayer->LookingVec, 0x1);
+				LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(movementPacket);
+				delete movementPacket;
 			}
+			else {
+				savedPos.x = LunMem::getClientInstance()->LocalPlayer->getPos()->x;
+				savedPos.y = LunMem::getClientInstance()->LocalPlayer->getPos()->y;
+				savedPos.z = LunMem::getClientInstance()->LocalPlayer->getPos()->z;
+			}
+		}
+	}
+}
+
+void WarpShift::onPacket(void* Packet, PacketType type, bool* cancel) {
+	if (enabled) {
+		if (KeyHook::KeyState(0x43)) {
+			*cancel = true;
 		}
 	}
 }
