@@ -20,9 +20,15 @@ void HiveGlide::onTick()
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
+			
+			if (KeyHook::KeyState(0x57)) {
+				Player->VelocityXYZ.x = cos((Player->LookingVec.y + 90.0f) * (3.14159 / 180.0f)) * 0.3f;
+				Player->VelocityXYZ.z = sin((Player->LookingVec.y + 90.0f) * (3.14159 / 180.0f)) * 0.3f;
+			}
+
 			Player->VelocityXYZ.y = (float)0;
 
-			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(250)) {
+			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(200)) {
 
 				if (toggle) {
 					toggle = false;

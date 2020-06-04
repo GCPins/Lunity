@@ -1,6 +1,7 @@
 #pragma once
 #include "../../BigHead.h"
 #include "../Cheat.h"
+#include "../Hooks/KeyHook.h"
 #include <chrono>
 
 class HiveGlide : public Cheat
