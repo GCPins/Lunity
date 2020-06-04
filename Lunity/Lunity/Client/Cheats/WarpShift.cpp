@@ -18,7 +18,7 @@ bool distanceTooGreat(Vector3 savedPosVec, Vector3 currentPosVec) {
 	float dX = savedPos.x - currentPosVec.x;
 	float dZ = savedPos.z - currentPosVec.z;
 
-	if (sqrt(dX * dX + dZ * dZ) >= (float)15) {
+	if (sqrt(dX * dX + dZ * dZ) >= (float)20) {
 		return true;
 	}
 	else {
