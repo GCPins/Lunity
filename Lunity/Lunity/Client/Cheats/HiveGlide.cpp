@@ -25,18 +25,22 @@ void HiveGlide::onTick()
 			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(250)) {
 
 				if (toggle) {
-					LunMem::Nop((BYTE*)LunMem::getBaseModule() + 0x900617, 3);
-					Logger::log("NOP");
 					toggle = false;
 				}
 				else {
-					LunMem::Patch((BYTE*)LunMem::getBaseModule() + 0x900617, (BYTE*)"\xFF\x50\x08", 3);
-					Logger::log("Patch");
 					toggle = true;
 				}
 
 				savedTime = std::chrono::high_resolution_clock::now();
 			}
+		}
+	}
+}
+
+void HiveGlide::onPacket(void* Packet, PacketType type, bool* cancel) {
+	if (enabled) {
+		if (type == PacketType::Movement) {
+			if (toggle) *cancel = true;
 		}
 	}
 }
@@ -50,6 +54,5 @@ void HiveGlide::onEnable()
 
 void HiveGlide::onDisable() {
 	Cheat::onDisable();
-	LunMem::Patch((BYTE*)LunMem::getBaseModule() + 0x900617, (BYTE*)"\xFF\x50\x08", 3);
 	toggle = false;
 }
