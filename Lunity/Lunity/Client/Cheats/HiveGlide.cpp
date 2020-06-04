@@ -8,6 +8,7 @@
 
 static std::chrono::time_point<std::chrono::steady_clock> savedTime;
 bool toggle = false;
+bool onlyPrintOnce = false;
 
 HiveGlide::HiveGlide() :Cheat::Cheat("HiveGlide", "Movement")
 {
@@ -28,7 +29,7 @@ void HiveGlide::onTick()
 
 			Player->VelocityXYZ.y = (float)0;
 
-			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(200)) {
+			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(150)) {
 
 				if (toggle) {
 					toggle = false;
@@ -54,7 +55,10 @@ void HiveGlide::onPacket(void* Packet, PacketType type, bool* cancel) {
 void HiveGlide::onEnable()
 {
 	Cheat::onEnable();
-	Logger::log("Made by the help of R3coil");
+	if (!onlyPrintOnce) {
+		Logger::log("Made by the help of R3coil");
+		onlyPrintOnce = true;
+	}
 	savedTime = std::chrono::high_resolution_clock::now();
 }
 
