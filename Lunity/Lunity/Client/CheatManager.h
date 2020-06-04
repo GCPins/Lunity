@@ -23,6 +23,7 @@
 #include "Cheats/NoWater.h"
 #include "Cheats/CCFly.h"
 #include "Cheats/WarpShift.h"
+#include "Cheats/HiveGlide.h"
 
 /* Player */
 

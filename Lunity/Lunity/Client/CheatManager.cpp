@@ -38,6 +38,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new NoWater());
 	cheats.push_back(new CCFly());
 	cheats.push_back(new WarpShift());
+	cheats.push_back(new HiveGlide());
 
 	/* Player */
 	cheats.push_back(new Scaffold());
