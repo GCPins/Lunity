@@ -6,14 +6,10 @@ WarpShift::WarpShift() :Cheat::Cheat("WarpShift", "Movement")
 
 }
 
-void teleportForwards(LocalPlayer* Player) {
-	Vector3 currentPos = *Player->getPos();
-	currentPos.x += cos((Player->LookingVec.y + 90.0f) * (3.14159 / 180.0f)) * 0.05f;
-	currentPos.z += sin((Player->LookingVec.y + 90.0f) * (3.14159 / 180.0f)) * 0.05f;
-
+void moveForward(LocalPlayer* Player) {
+	Player->VelocityXYZ.x = cos((Player->LookingVec.y + 90.0f) * (3.14159 / 180.0f)) * 0.6f;
 	Player->VelocityXYZ.y = (float)0;
-	Player->setPos(&currentPos);
-
+	Player->VelocityXYZ.z = sin((Player->LookingVec.y + 90.0f) * (3.14159 / 180.0f)) * 0.6f;
 }
 
 void WarpShift::onTick()
@@ -24,7 +20,7 @@ void WarpShift::onTick()
 			if (KeyHook::KeyState(0x43)) {
 				LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
 
-				teleportForwards(Player);
+				moveForward(Player);
 
 				MovePlayerPacket* movementPacket = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 0x0);
 				LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(movementPacket);
