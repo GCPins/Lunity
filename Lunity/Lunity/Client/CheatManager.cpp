@@ -37,6 +37,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new AutoWalk());
 	cheats.push_back(new NoWater());
 	cheats.push_back(new CCFly());
+	cheats.push_back(new WarpShift());
 
 	/* Player */
 	cheats.push_back(new Scaffold());

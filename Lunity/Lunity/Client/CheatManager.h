@@ -22,6 +22,7 @@
 #include "Cheats/AutoWalk.h"
 #include "Cheats/NoWater.h"
 #include "Cheats/CCFly.h"
+#include "Cheats/WarpShift.h"
 
 /* Player */
 

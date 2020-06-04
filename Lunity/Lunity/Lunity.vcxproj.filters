@@ -282,6 +282,12 @@
     <ClInclude Include="Client\Cheats\CCGodMode.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\NoFall.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\WarpShift.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -411,6 +417,12 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\CCGodMode.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\NoFall.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\WarpShift.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
