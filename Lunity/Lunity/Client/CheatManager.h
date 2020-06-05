@@ -57,6 +57,7 @@
 class CheatManager {
 public:
 	static vector<Cheat*> getCheats();
+	static vector<Cheat*> getCheatsOfCategory(string category);
 	static vector<string> getCategories();
 	static void loadCheats();
 	static void tickCheats();

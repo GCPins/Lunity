@@ -50,8 +50,11 @@ struct Vector4 {
 	float* toArr() {
 		return arr;
 	}
+	bool contains(float px, float py) {
+		return x < px && y < py && z > px && w > py;
+	}
 	bool contains(Vector2 point) {
-		return x <= point.x && y <= point.y && z >= point.x && w >= point.y;
+		return x < point.x && y < point.y && z > point.x && w > point.y;
 	}
 };
 struct Color : Vector4 {

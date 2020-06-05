@@ -10,6 +10,17 @@ vector<Cheat*> CheatManager::getCheats()
 	return cheats;
 }
 
+vector<Cheat*> CheatManager::getCheatsOfCategory(string category)
+{
+	vector<Cheat*> returner;
+	for (int i = 0; i < cheats.size(); i++) {
+		if (cheats[i]->category.compare(category) == 0) {
+			returner.push_back(cheats[i]);
+		}
+	}
+	return returner;
+}
+
 vector<string> CheatManager::getCategories()
 {
 	return categories;

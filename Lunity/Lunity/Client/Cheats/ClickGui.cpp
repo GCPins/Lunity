@@ -8,6 +8,7 @@
 struct Frame {
 	string title;
 	Rect titleRect;
+	bool expanded;
 };
 int dx;
 int dy;
@@ -39,34 +40,62 @@ short getMouseY()
 }
 
 void ClickGui::onMouseButton(ulong button) {
-	if (button == 1) {
-		if (beingDragged == nullptr) {
-			GuiData* gd = DrawUtils::getGuiData();
+	if (enabled) {
+		if (button == 1) {
+			if (beingDragged == nullptr) {
+				GuiData* gd = DrawUtils::getGuiData();
+				int x = getMouseX();
+				int y = getMouseY();
+				for (int i = 0; i < windows.size(); i++) {
+					Frame* window = windows[i];
+					Rect titleRect = window->titleRect;
+					if (titleRect.contains(Vector2(x, y))) {
+						dx = x - titleRect.x;
+						dy = y - titleRect.y;
+						beingDragged = window;
+					}
+					else {
+						vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
+						for (int i = 0; i < cheatsInCat.size(); i++) {
+							Cheat* leCheat = cheatsInCat[i];
+							Rect cheatRect = Rect(titleRect.x, titleRect.y + titleRect.height + i * 10, 75, 10);
+							int mx = getMouseX();
+							int my = getMouseY();
+							Color rectColor = Color(.15, .15, .15, 1);
+							if (cheatRect.contains(mx, my)) {
+								leCheat->enabled = !leCheat->enabled;
+							}
+						}
+					}
+				}
+			}
+		}
+		if (button == 2) {
 			int x = getMouseX();
 			int y = getMouseY();
 			for (int i = 0; i < windows.size(); i++) {
 				Frame* window = windows[i];
 				Rect titleRect = window->titleRect;
 				if (titleRect.contains(Vector2(x, y))) {
-					dx = x - titleRect.x;
-					dy = y - titleRect.y;
-					beingDragged = window;
+					window->expanded = !window->expanded;
 				}
 			}
 		}
 	}
 }
 void ClickGui::onMouseMove() {
-	if (beingDragged != nullptr) {
-		if (MouseHook::ButtonState(1)) {
-			Rect titleRect = beingDragged->titleRect;
-			int x = getMouseX();
-			int y = getMouseY();
-			Vector2 newPos = Vector2(x - dx, y - dy);
-			beingDragged->titleRect.setPos(newPos);
-		}
-		else {
-			beingDragged = nullptr;
+	if (enabled) {
+		if (beingDragged != nullptr) {
+			if (MouseHook::ButtonState(1)) {
+				Rect titleRect = beingDragged->titleRect;
+				int x = getMouseX();
+				int y = getMouseY();
+				Vector2 newPos = Vector2(x - dx, y - dy);
+				beingDragged->titleRect.setPos(newPos);
+			}
+			else {
+				beingDragged = nullptr;
+			}
 		}
 	}
 }
@@ -91,8 +120,35 @@ void ClickGui::onPostRender()
 		for (int i = 0; i < windows.size(); i++) {
 			Frame* window = windows[i];
 			Rect titleRect = window->titleRect;
-			DrawUtils::fillRectangle(titleRect, Color(.15,.15,.15,1), 1);
+			DrawUtils::fillRectangle(titleRect, Color(.35,.35,.35,1), 1);
 			DrawUtils::drawText(Vector2(titleRect.x, titleRect.y), &window->title, nullptr, 1);
+			string expIco = "+";
+			if (window->expanded) {
+				expIco = "-";
+			}
+			float expWid = DrawUtils::getTextWidth(expIco, 1);
+			DrawUtils::drawText(Vector2(titleRect.x + titleRect.width - expWid, titleRect.y), &expIco, nullptr, 1);
+			if (window->expanded) {
+				DrawUtils::fillRectangle(Rect(titleRect.x, titleRect.y + titleRect.height, titleRect.width, 1), Color(1, 0, 1, 1), 1);
+				vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
+				for (int i = 0; i < cheatsInCat.size(); i++) {
+					Cheat* leCheat = cheatsInCat[i];
+					Rect cheatRect = Rect(titleRect.x, titleRect.y + titleRect.height + (i==0) + i * 10, 75, 10);
+					int mx = getMouseX();
+					int my = getMouseY();
+					Color rectColor = Color(.15, .15, .15, 1);
+					if (cheatRect.contains(mx, my)) {
+						rectColor.x += .2;
+						rectColor.y += .2;
+						rectColor.z += .2;
+					}
+					if (leCheat->enabled) {
+						rectColor.z = 1;
+					}
+					DrawUtils::fillRectangle(cheatRect, rectColor, 1);
+					DrawUtils::drawText(Vector2(cheatRect.x, cheatRect.y), &leCheat->name, nullptr, 1);
+				}
+			}
 		}
 	}
 }
