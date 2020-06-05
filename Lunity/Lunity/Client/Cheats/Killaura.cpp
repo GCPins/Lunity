@@ -14,11 +14,12 @@ Killaura::Killaura() :Cheat::Cheat("Killaura", "Combat")
 Vector2 lookingAngles;
 
 void Killaura::onGmTick(GameMode* gm) {
+	RakNetInstance* Raknet = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
+	Logger::log(Raknet->ServerIp.getText());
 	LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
 	vector<Actor*>* ents = getEntities();
 	if (ents != NULL) {
-		RakNetInstance* Raknet = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
-		if (strcmp(Raknet->ServerIp.getText(), "mco.cubecraft.net") == 0) {
+		if (strcmp(Raknet->ServerIp.getText(), "geo.hivebedrock.network") == 0) {
 			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(200)) {
 				for (uint i = 0; i < ents->size(); i++) {
 					if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 12.0f) {
