@@ -4,6 +4,8 @@
 #include "../../SDK/EntList.h"
 #include "../../SDK/LunMath.h"
 
+static std::chrono::time_point<std::chrono::steady_clock> savedTime;
+
 Killaura::Killaura() :Cheat::Cheat("Killaura", "Combat")
 {
 
@@ -15,12 +17,15 @@ void Killaura::onGmTick(GameMode* gm) {
 	LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
 	vector<Actor*>* ents = getEntities();
 	if (ents != NULL) {
-		for (uint i = 0; i < ents->size(); i++) {
-			if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 12.0f) {
-				lookingAngles = LunMath::getRotationAnglesToEnt(*ents->at(i)->getPos(), *player->getPos());
-				player->swing();
-				gm->attack(ents->at(i));
+		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(300)) {
+			for (uint i = 0; i < ents->size(); i++) {
+				if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 12.0f) {
+					lookingAngles = LunMath::getRotationAnglesToEnt(*ents->at(i)->getPos(), *player->getPos());
+					player->swing();
+					gm->attack(ents->at(i));
+				}
 			}
+			savedTime = std::chrono::high_resolution_clock::now();
 		}
 	}
 }
