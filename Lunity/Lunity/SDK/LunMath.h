@@ -50,6 +50,9 @@ struct Vector4 {
 	float* toArr() {
 		return arr;
 	}
+	bool contains(Vector2 point) {
+		return x <= point.x && y <= point.y && z >= point.x && w >= point.y;
+	}
 };
 struct Color : Vector4 {
 	bool deletable;
@@ -58,6 +61,26 @@ struct Color : Vector4 {
 	}
 	Color(float x, float y, float z, float w) : Vector4::Vector4(x, y, z, w) {
 		this->deletable = false;
+	}
+};
+struct Rect : Vector4 {
+	float width;
+	float height;
+	Rect(float x, float y, float width, float height) : Vector4::Vector4(x, y, x + width, y + height) {
+		this->width = width;
+		this->height = height;
+	}
+	void setPos(float x, float y) {
+		this->x = x;
+		this->y = y;
+		this->z = x + width;
+		this->w = y + height;
+	}
+	void setPos(Vector2 pos) {
+		this->x = pos.x;
+		this->y = pos.y;
+		this->z = pos.x + width;
+		this->w = pos.y + height;
 	}
 };
 
