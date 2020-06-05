@@ -11,6 +11,5 @@ public:
 	void onEnable();
 	void onDisable();
 	void onKey(ulong key);
-	int calculateNewBlockSide(int currSide, Vector3 currentPos);
 };
 

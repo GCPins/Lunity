@@ -49,7 +49,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -110,7 +110,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;LUNITY_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;LUNITY_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -149,6 +149,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;LUNITY_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -176,23 +177,49 @@
     <ClInclude Include="capstone\tms320c64x.h" />
     <ClInclude Include="capstone\x86.h" />
     <ClInclude Include="capstone\xcore.h" />
+    <ClInclude Include="Client\Cheats\CCGodMode.h" />
     <ClInclude Include="Client\Cheats\AirJump.h" />
     <ClInclude Include="BigHead.h" />
     <ClInclude Include="Client\CheatManager.h" />
     <ClInclude Include="Client\Cheat.h" />
     <ClInclude Include="Client\Cheats\AutoSprint.h" />
+    <ClInclude Include="Client\Cheats\AutoWalk.h" />
+    <ClInclude Include="Client\Cheats\BunnyHop.h" />
+    <ClInclude Include="Client\Cheats\CCFly.h" />
+    <ClInclude Include="Client\Cheats\ClickGui.h" />
+    <ClInclude Include="Client\Cheats\ClickTP.h" />
+    <ClInclude Include="Client\Cheats\Coords.h" />
+    <ClInclude Include="Client\Cheats\Gamemode.h" />
+    <ClInclude Include="Client\Cheats\Glide.h" />
+    <ClInclude Include="Client\Cheats\GlideBoost.h" />
     <ClInclude Include="Client\Cheats\Hitbox.h" />
+    <ClInclude Include="Client\Cheats\HiveGlide.h" />
+    <ClInclude Include="Client\Cheats\Instabreak.h" />
+    <ClInclude Include="Client\Cheats\InventoryMove.h" />
+    <ClInclude Include="Client\Cheats\Jesus.h" />
+    <ClInclude Include="Client\Cheats\Jetpack.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
+    <ClInclude Include="Client\Cheats\MineplexBP.h" />
     <ClInclude Include="Client\Cheats\ModuleList.h" />
+    <ClInclude Include="Client\Cheats\NoFall.h" />
+    <ClInclude Include="Client\Cheats\NoPacket.h" />
+    <ClInclude Include="Client\Cheats\NoSlowDown.h" />
+    <ClInclude Include="Client\Cheats\NoWater.h" />
+    <ClInclude Include="Client\Cheats\NoWeb.h" />
+    <ClInclude Include="Client\Cheats\Nuker.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\Cheats\Scaffold.h" />
-    <ClInclude Include="Client\Cheats\Spinbot.h" />
+    <ClInclude Include="Client\Cheats\Speed.h" />
     <ClInclude Include="Client\Cheats\Triggerbot.h" />
     <ClInclude Include="Client\Cheats\Uninject.h" />
+    <ClInclude Include="Client\Cheats\Velocity.h" />
+    <ClInclude Include="Client\Cheats\WarpShift.h" />
+    <ClInclude Include="Client\Hooks\NetworkHook.h" />
     <ClInclude Include="Client\Hooks\pch.h" />
     <ClInclude Include="Client\pch.h" />
     <ClInclude Include="Client\Hooks\GamemodeHook.h" />
-    <ClInclude Include="Client\Cheats\NameTest.h" />
+    <ClInclude Include="Client\Cheats\PacketLogger.h" />
+    <ClInclude Include="Client\Hooks\MouseHook.h" />
     <ClInclude Include="SDK\DrawUtils.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Client\Hooks\KeyHook.h" />
@@ -223,6 +250,7 @@
     <ClInclude Include="polyhook2\ZydisDisassembler.hpp" />
     <ClInclude Include="Client\Hooks\RenderHook.h" />
     <ClInclude Include="SDK\EntList.h" />
+    <ClInclude Include="SDK\LunMath.h" />
     <ClInclude Include="SDK\LunMC.h" />
     <ClInclude Include="SDK\LunMem.h" />
     <ClInclude Include="pch.h" />
@@ -231,23 +259,49 @@
     <ClInclude Include="Client\Cheats\TabGUI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Client\Cheats\CCGodMode.cpp" />
+    <ClCompile Include="Client\Cheats\CCFly.cpp" />
     <ClCompile Include="Client\Cheat.cpp" />
     <ClCompile Include="Client\CheatManager.cpp" />
     <ClCompile Include="Client\Cheats\AirJump.cpp" />
     <ClCompile Include="Client\Cheats\AutoSprint.cpp" />
+    <ClCompile Include="Client\Cheats\AutoWalk.cpp" />
+    <ClCompile Include="Client\Cheats\BunnyHop.cpp" />
+    <ClCompile Include="Client\Cheats\ClickGui.cpp" />
+    <ClCompile Include="Client\Cheats\ClickTP.cpp" />
+    <ClCompile Include="Client\Cheats\Coords.cpp" />
+    <ClCompile Include="Client\Cheats\Gamemode.cpp" />
+    <ClCompile Include="Client\Cheats\Glide.cpp" />
+    <ClCompile Include="Client\Cheats\GlideBoost.cpp" />
     <ClCompile Include="Client\Cheats\Hitbox.cpp" />
+    <ClCompile Include="Client\Cheats\HiveGlide.cpp" />
+    <ClCompile Include="Client\Cheats\Instabreak.cpp" />
+    <ClCompile Include="Client\Cheats\InventoryMove.cpp" />
+    <ClCompile Include="Client\Cheats\Jesus.cpp" />
+    <ClCompile Include="Client\Cheats\Jetpack.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
+    <ClCompile Include="Client\Cheats\MineplexBP.cpp" />
     <ClCompile Include="Client\Cheats\ModuleList.cpp" />
+    <ClCompile Include="Client\Cheats\NoFall.cpp" />
+    <ClCompile Include="Client\Cheats\NoPacket.cpp" />
+    <ClCompile Include="Client\Cheats\NoSlowDown.cpp" />
+    <ClCompile Include="Client\Cheats\NoWater.cpp" />
+    <ClCompile Include="Client\Cheats\NoWeb.cpp" />
+    <ClCompile Include="Client\Cheats\Nuker.cpp" />
     <ClCompile Include="Client\Cheats\Scaffold.cpp" />
-    <ClCompile Include="Client\Cheats\Spinbot.cpp" />
+    <ClCompile Include="Client\Cheats\Speed.cpp" />
     <ClCompile Include="Client\Cheats\Triggerbot.cpp" />
     <ClCompile Include="Client\Cheats\Uninject.cpp" />
+    <ClCompile Include="Client\Cheats\Velocity.cpp" />
+    <ClCompile Include="Client\Cheats\WarpShift.cpp" />
+    <ClCompile Include="Client\Hooks\NetworkHook.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\Hooks\KeyHook.cpp" />
     <ClCompile Include="Client\Hooks\RenderHook.cpp" />
     <ClCompile Include="Client\Hooks\GamemodeHook.cpp" />
-    <ClCompile Include="Client\Cheats\NameTest.cpp" />
+    <ClCompile Include="Client\Cheats\PacketLogger.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Client\Hooks\MouseHook.cpp" />
     <ClCompile Include="SDK\DrawUtils.cpp" />
     <ClCompile Include="SDK\LunMem.cpp" />
     <ClCompile Include="pch.cpp">

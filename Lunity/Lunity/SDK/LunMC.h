@@ -1,12 +1,9 @@
 #pragma once
 #include "TextHolder.h"
-#include "../BigHead.h"
-struct Vector3 { float x, y, z; };
-struct Vector2 { float x, y; };
-struct Vector3_i { int x, y, z; };
-struct Matrix4x4{
-	float vert[16];
-};
+#include "LunMath.h"
+#include "LunMem.h"
+#include <functional>
+#define ulong uint64_t
 // Created with ReClass.NET 1.2 by KN4CK3R
 
 class GuiData
@@ -16,9 +13,12 @@ public:
 	Vector2 Resolution; //0x0018
 	Vector2 Resolution2; //0x0020
 	Vector2 ScaledResolution; //0x0028
-	char pad_0030[8]; //0x0030
-	float Scale; //0x0038
-	char pad_003C[1028]; //0x003C
+	int N0000190A; //0x0030
+	float GuiScale; //0x0034
+	char pad_0038[26]; //0x0038
+	uint16_t MouseX; //0x0052
+	uint16_t MouseY; //0x0054
+	char pad_0056[1006]; //0x0056
 
 	virtual void Function0();
 	virtual void Function1();
@@ -377,10 +377,58 @@ public:
 	virtual void Function265();
 }; //Size: 0x01F0
 
+class SimpleContainer
+{
+public:
+	char pad_0008[264]; //0x0008
+
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void getItem(int);
+	virtual bool hasRoomForItem(struct ItemStack);
+	virtual void addItem(struct ItemStack);
+	virtual void addItemToFirstEmptySlot(struct ItemStack);
+	virtual void setItem(int, struct ItemStack);
+	virtual void removeItem(int, int);
+	virtual void removeAllItems(void);
+	virtual void Function11();
+	virtual __int64 getContainerSize(void);
+	virtual __int64 getMaxStackSize(void);
+	virtual void Function14();
+	virtual void Function15();
+	virtual void Function16();
+	virtual void Function17();
+	virtual void Function18();
+	virtual void Function19();
+	virtual int findFirstSlotForItem(struct ItemStack);
+	virtual void Function21();
+	virtual void Function22();
+	virtual void Function23();
+	virtual void Function24();
+	virtual void setCustomName(TextHolder);
+	virtual bool hasCustomName(void);
+	virtual void Function27();
+	virtual void Function28();
+	virtual void createTransactionContext(std::function<void(struct Container&, int, ItemStack const&, ItemStack const&)>, std::function<void(void)>);
+	virtual void triggerTransactionChange(int, struct ItemStack const&, struct ItemStack const&);
+}; //Size: 0x0110
+
+class PlayerUIContainer
+{
+public:
+	char pad_0000[32]; //0x0000
+	int8_t InvenOpen; //0x0020
+	char pad_0021[271]; //0x0021
+}; //Size: 0x0130
+
 class Actor
 {
 public:
-	char pad_0000[376]; //0x0000
+	char pad_0000[216]; //0x0000
+	uint64_t ActorId; //0x00D8
+	char pad_00E0[152]; //0x00E0
 	bool OnGround; //0x0178
 	char pad_0179[399]; //0x0179
 	int MovedTick; //0x0308
@@ -642,12 +690,16 @@ public:
 class LocalPlayer
 {
 public:
-	char pad_0008[232]; //0x0008
+	char pad_0008[208]; //0x0008
+	uint64_t ActorId; //0x00D8
+	char pad_00E0[16]; //0x00E0
 	Vector2 LookingVec; //0x00F0
 	Vector2 LookingVec2; //0x00F8
 	char pad_0100[120]; //0x0100
 	bool OnGround; //0x0178
-	char pad_0179[391]; //0x0179
+	char pad_0179[27]; //0x0179
+	float FallingIncrementer; //0x0194
+	char pad_0198[360]; //0x0198
 	int N000006AB; //0x0300
 	float Speed; //0x0304
 	int MoveTick; //0x0308
@@ -665,7 +717,23 @@ public:
 	float HitboxWidth; //0x0474
 	float HitboxHeight; //0x0478
 	Vector3 Pos3; //0x047C
-	char pad_0488[1136]; //0x0488
+	char pad_0488[8]; //0x0488
+	int N000006EA; //0x0490
+	Vector3 VelocityXYZ; //0x0494
+	char pad_04A0[216]; //0x04A0
+	class SimpleContainer SimpleContainer; //0x0578
+	class SimpleContainer SimpleContainer2; //0x0688
+	char pad_0798[2096]; //0x0798
+	class CraftingContainerManagerModel* CraftingContainerManagerModel; //0x0FC8
+	char pad_0FD0[8]; //0x0FD0
+	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0FD8
+	char pad_0FE0[456]; //0x0FE0
+	class ItemStack* ItemStacks; //0x11A8
+	char pad_11B0[272]; //0x11B0
+	uint64_t InventoryUiState; //0x12C0
+	char pad_12C8[488]; //0x12C8
+	class PlayerUIContainer PlayerUIContainer; //0x14B0
+	char pad_15E0[2124]; //0x15E0
 
 	virtual void Function0();
 	virtual void Function1();
@@ -700,8 +768,8 @@ public:
 	virtual void Function30();
 	virtual void Function31();
 	virtual void chorusFruitTeleport();
-	virtual void Function33();
-	virtual void Function34();
+	virtual void lerpTo(Vector3* start, Vector3* end, int fracOfJourney); //According to unity documentation LMAO
+	virtual void lerpMotion(Vector3*);
 	virtual void Function35();
 	virtual void Function36();
 	virtual void Function37();
@@ -771,7 +839,7 @@ public:
 	virtual void Function101();
 	virtual void attack(class Actor*);
 	virtual void Function103();
-	virtual void Function104();
+	virtual void adjustDamageAmount(int amt);
 	virtual void Function105();
 	virtual void Function106();
 	virtual void setSitting(bool);
@@ -789,9 +857,9 @@ public:
 	virtual void Function119();
 	virtual void Function120();
 	virtual void Function121();
-	virtual void Function122();
-	virtual void Function123();
-	virtual void Function124();
+	virtual void actuallyHurt(int damage, Actor* dealer, bool unknown);
+	virtual void animateHurt();
+	virtual void doFireHurt(int damage);
 	virtual void Function125();
 	virtual void Function126();
 	virtual void feed(int);
@@ -849,8 +917,8 @@ public:
 	virtual void Function179();
 	virtual void Function180();
 	virtual void Function181();
-	virtual void Function182();
-	virtual void Function183();
+	virtual void startSwimming();
+	virtual void stopSwimming();
 	virtual void Function184();
 	virtual void Function185();
 	virtual void Function186();
@@ -909,8 +977,8 @@ public:
 	virtual void Function239();
 	virtual void Function240();
 	virtual void Function241();
-	virtual void Function242();
-	virtual void Function243();
+	virtual void updateWaterState(void);
+	virtual void doWaterSplashEffect(void);
 	virtual void Function244();
 	virtual void Function245();
 	virtual void Function246();
@@ -922,7 +990,7 @@ public:
 	virtual void Function252();
 	virtual void Function253();
 	virtual void Function254();
-	virtual void Function255();
+	virtual bool isSprinting(void);
 	virtual void setSprinting(bool);
 	virtual void Function257();
 	virtual void Function258();
@@ -1034,40 +1102,40 @@ public:
 	virtual void Function364();
 	virtual void Function365();
 	virtual void Function366();
-	virtual void Function367();
-	virtual void Function368();
-	virtual void Function369();
-	virtual void Function370();
-	virtual void Function371();
-	virtual void Function372();
-	virtual void Function373();
-	virtual void Function374();
+	virtual void openContainer(Vector3i* pos);
+	virtual void openFurnace(Vector3i* pos);
+	virtual void openBlastFurnace(Vector3i* pos);
+	virtual void openSmoker(Vector3i* pos);
+	virtual void openEnchanter(Vector3i* pos);
+	virtual void openAnvil(Vector3i* pos);
+	virtual void openGrindstone(Vector3i* pos);
+	virtual void openBrewingStand(Vector3i* pos);
 	virtual void Function375();
-	virtual void Function376();
-	virtual void Function377();
-	virtual void Function378();
+	virtual void openHopper(Vector3i* pos);
+	virtual void openDispenser(Vector3i* pos);
+	virtual void openBeacon(Vector3i* pos);
 	virtual void Function379();
 	virtual void Function380();
-	virtual void Function381();
+	virtual void openCommandBlock(Vector3i* pos);
 	virtual void Function382();
 	virtual void Function383();
 	virtual void Function384();
 	virtual void Function385();
 	virtual void Function386();
 	virtual void Function387();
-	virtual void Function388();
-	virtual void Function389();
-	virtual void Function390();
-	virtual void Function391();
-	virtual void Function392();
-	virtual void Function393();
+	virtual void openInventory();
+	virtual void openStructureEditor(Vector3i* pos);
+	virtual void openLabTable(Vector3i* pos);
+	virtual void openElementConstructor(Vector3i* pos);
+	virtual void openCompoundCreator(Vector3i* pos);
+	virtual void openMaterialReader(Vector3i* pos);
 	virtual void Function394();
 	virtual void Function395();
 	virtual void Function396();
 	virtual void Function397();
 	virtual void Function398();
 	virtual void displayLocalizableMessage(TextHolder* text);
-	virtual void Function400();
+	virtual void displayTextObjectMessage();//(TextObjectRoot* textObj, TextHolder* textHolder);
 	virtual void Function401();
 	virtual void Function402();
 	virtual void Function403();
@@ -1083,7 +1151,7 @@ public:
 	virtual void Function413();
 	virtual void Function414();
 	virtual void Function415();
-	virtual void Function416();
+	virtual void setPlayerGameType(int);
 	virtual void crit(class Actor*);
 	virtual void Function418();
 	virtual void Function419();
@@ -1104,7 +1172,7 @@ public:
 	virtual void Function434();
 	virtual void Function435();
 	virtual void Function436();
-	virtual void Function437();
+	virtual void sendInventoryTransaction(void* transaction);//void is actually a InventoryTransaction, but i dont have that
 	virtual void Function438();
 	virtual void Function439();
 	virtual void Function440();
@@ -1112,7 +1180,7 @@ public:
 	virtual void Function442();
 	virtual void Function443();
 	virtual void Function444();
-	virtual void Function445();
+	virtual void onMovePlayerPacketNormal(Vector3* pos, Vector2* looking, float param_3);
 	virtual void Function446();
 	virtual void Function447();
 	virtual void Function448();
@@ -1389,8 +1457,22 @@ public:
 class LoopbackPacketSender
 {
 public:
-	char pad_0000[8]; //0x0000
-}; //Size: 0x0008
+	char pad_0008[8]; //0x0008
+	class NetworkHandler* NetworkHandler; //0x0010
+	char pad_0018[48]; //0x0018
+
+	virtual void Function0();
+	virtual void Function1();
+	virtual void sendToServer(void* packet);
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
+}; //Size: 0x0048
+
 
 class HolographicPlatform
 {
@@ -1443,12 +1525,6 @@ public:
 	char pad_00D0[56]; //0x00D0
 }; //Size: 0x0108
 
-class NetworkHandler
-{
-public:
-	char pad_0000[8]; //0x0000
-}; //Size: 0x0008
-
 class N00000D28
 {
 public:
@@ -1467,13 +1543,13 @@ public:
 	char pad_0010[48]; //0x0010
 
 	virtual void Destructor();
-	virtual void startDestroyBlock(Vector3_i*, UCHAR, bool);
-	virtual void destroyBlock(Vector3_i*, UCHAR);
-	virtual void continueDestroyBlock(Vector3_i*, UCHAR, bool);
-	virtual void stopDestroyBlock(Vector3_i*);
-	virtual void startBuildBlock(Vector3_i*, UCHAR);
-	virtual void buildBlock(Vector3_i*, UCHAR);
-	virtual void continueBuildBlock(Vector3_i*, UCHAR);
+	virtual void startDestroyBlock(Vector3i*, UCHAR, bool);
+	virtual void destroyBlock(Vector3i*, UCHAR);
+	virtual void continueDestroyBlock(Vector3i*, UCHAR, bool);
+	virtual void stopDestroyBlock(Vector3i*);
+	virtual void startBuildBlock(Vector3i*, UCHAR);
+	virtual void buildBlock(Vector3i*, UCHAR);
+	virtual void continueBuildBlock(Vector3i*, UCHAR);
 	virtual void stopBuildBlock(void);
 	virtual void tick(void);
 	virtual void getPickRange();
@@ -1495,3 +1571,93 @@ public:
 
 
 }; //Size: 0x0D1C
+class PlayerInventoryProxy
+{
+public:
+	char pad_0000[16]; //0x0000
+	long CurrentSlot; //0x0010
+	char pad_0018[244]; //0x0018
+}; //Size: 0x010C
+
+class ItemStack
+{
+public:
+	char pad_0000[24]; //0x0000
+	class N000013CA* N00001345; //0x0018
+	char pad_0020[104]; //0x0020
+}; //Size: 0x0088
+
+class NetworkHandler
+{
+public:
+	char pad_0000[24]; //0x0000
+	class RakNetInstance* RakNetInstance; //0x0018
+	class LocalConnector* LocalConnector; //0x0020
+	class RakNetServerLocator* RakNetServerLocator; //0x0028
+	char pad_0030[448]; //0x0030
+}; //Size: 0x01F0
+
+class RakNetServerLocator
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class RakNetInstance
+{
+public:
+	char pad_0000[864]; //0x0000
+	TextHolder ServerIp; //0x0360
+	char pad_0368[8]; //0x0368
+}; //Size: 0x0370
+
+class LocalConnector
+{
+public:
+	char pad_0000[8]; //0x0000
+}; //Size: 0x0008
+
+class MovePlayerPacket
+{
+public:
+	ulong VTable; //0x0000
+	ulong dunno;
+	char pad_0008[16]; //0x0008
+	ulong dunno2;
+	uint64_t ActorId; //0x0028
+	Vector3 Pos; //0x0030
+	Vector2 LookingVec; //0x003C
+	char pad_0044[4]; //0x0044
+	int8_t N00001248; //0x0048
+	int8_t onGround; //0x0049
+	char pad_004A[54]; //0x004A
+	class Actor* Player; //0x0080
+	char pad_0088[136]; //0x0088
+
+	MovePlayerPacket(Actor* player, Vector3* pos, Vector2* looking, int8_t onGround) {
+		VTable = (ulong)GetModuleHandle(NULL) + 0x2B04E68;
+		dunno = 0x0200000001000000;
+		dunno2 = 0x8F41000000000000;
+		this->ActorId = player->ActorId;
+		this->Pos = *pos;
+		this->LookingVec = *looking;
+		this->onGround = onGround;
+		this->Player = player;
+	}
+}; //Size: 0x0110
+
+class PlayerAuthInputPacket
+{
+public:
+	ulong VTable; //0x0000
+	char pad_0008[32]; //0x0008
+	Vector2 LookingVec; //0x0028
+	Vector3 Pos; //0x0030
+	float HeadYawOrSomeShit; //0x003C
+	char pad_0040[36]; //0x0040
+	PlayerAuthInputPacket(Vector2 lookingVec, Vector3 position) {
+		VTable = (ulong)GetModuleHandle(NULL) + 0x2B04FF0;
+		LookingVec = lookingVec;
+		Pos = position;
+	}
+}; //Size: 0x0064

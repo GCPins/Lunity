@@ -5,9 +5,11 @@
 #include "Client/CheatManager.h"
 #include "Client/Hooks/KeyHook.h"
 #include "Client/Hooks/RenderHook.h"
+#include "Client/Hooks/GamemodeHook.h"
+#include "Client/Hooks/MouseHook.h"
+#include "Client/Hooks/NetworkHook.h"
 
 #include <MinHook.h>
-#include "Client/Hooks/GamemodeHook.h"
 #pragma comment(lib, "libMinHook.lib")
 
 void ExecLunity(LPVOID lpParam) {
@@ -23,6 +25,8 @@ void ExecLunity(LPVOID lpParam) {
     KeyHook::installHook();
     RenderHook::installHook();
     GamemodeHook::installHook();
+    MouseHook::installHook();
+    NetworkHook::installHook();
     while (true) {
         CheatManager::tickCheats();
         Sleep(1);

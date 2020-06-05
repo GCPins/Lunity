@@ -1,12 +1,24 @@
 #include "pch.h"
 #include "CheatManager.h"
 #include "../SDK/DrawUtils.h"
+#include "Hooks/NetworkHook.h"
 
 vector<Cheat*> cheats;
 vector<string> categories;
 vector<Cheat*> CheatManager::getCheats()
 {
 	return cheats;
+}
+
+vector<Cheat*> CheatManager::getCheatsOfCategory(string category)
+{
+	vector<Cheat*> returner;
+	for (int i = 0; i < cheats.size(); i++) {
+		if (cheats[i]->category.compare(category) == 0) {
+			returner.push_back(cheats[i]);
+		}
+	}
+	return returner;
 }
 
 vector<string> CheatManager::getCategories()
@@ -17,22 +29,52 @@ vector<string> CheatManager::getCategories()
 void CheatManager::loadCheats()
 {
 	cheats = vector<Cheat*>();
-	//Load cheats here
+	/* Combat */
 	cheats.push_back(new Killaura());
 	cheats.push_back(new Triggerbot());
 	cheats.push_back(new Hitbox());
-	cheats.push_back(new Spinbot());
 
+	/* Movement */
+	cheats.push_back(new Jetpack());
 	cheats.push_back(new AirJump());
 	cheats.push_back(new AutoSprint());
+	cheats.push_back(new NoSlowDown());
+	cheats.push_back(new BunnyHop());
+	cheats.push_back(new NoWeb());
+	cheats.push_back(new Speed());
+	cheats.push_back(new Jesus());
+	cheats.push_back(new GlideBoost());
+	cheats.push_back(new Glide());
+	cheats.push_back(new AutoWalk());
+	cheats.push_back(new NoWater());
+	cheats.push_back(new CCFly());
+	cheats.push_back(new WarpShift());
+	cheats.push_back(new HiveGlide());
 
+	/* Player */
 	cheats.push_back(new Scaffold());
+	cheats.push_back(new Nuker());
+	cheats.push_back(new Velocity());
+	cheats.push_back(new Instabreak());
+	cheats.push_back(new ClickTP());
+	cheats.push_back(new Gamemode());
+	cheats.push_back(new InventoryMove());
+	cheats.push_back(new NoFall());
 
+	/* Visuals */
 	cheats.push_back(new TabGUI());
 	cheats.push_back(new ModuleList());
+	cheats.push_back(new Coords());
+	cheats.push_back(new ClickGui());
 
+	/* Other */
 	cheats.push_back(new Uninject());
-	cheats.push_back(new NameTest());
+	cheats.push_back(new MineplexBP());
+	cheats.push_back(new PacketLogger());
+	cheats.push_back(new NoPacket());
+	//cheats.push_back(new CCGodMode());
+
+	//cheats.push_back(new TestModule());
 
 	for (uint i = 0; i < cheats.size(); i++) {
 		if (find(categories.begin(), categories.end(), cheats[i]->category) == categories.end()) {
@@ -74,6 +116,20 @@ void CheatManager::distroKeyPress(ulong key)
 	}
 }
 
+void CheatManager::distroButtonPress(ulong key)
+{
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onMouseButton(key);
+	}
+}
+
+void CheatManager::distroMouseMove()
+{
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onMouseMove();
+	}
+}
+
 void CheatManager::onPreRender()
 {
 	for (uint i = 0; i < cheats.size(); i++) {
@@ -85,5 +141,12 @@ void CheatManager::onPostRender()
 {
 	for (uint i = 0; i < cheats.size(); i++) {
 		cheats[i]->onPostRender();
+	}
+}
+
+void CheatManager::onPacket(void* Packet, PacketType type, bool* cancel)
+{
+	for (uint i = 0; i < cheats.size(); i++) {
+		cheats[i]->onPacket(Packet, type, cancel);
 	}
 }

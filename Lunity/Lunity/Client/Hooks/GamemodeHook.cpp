@@ -10,19 +10,19 @@ GamemodeTick smOriginal;
 static GameMode* thisGm = nullptr;
 int gmHookCallback(GameMode* gm) {
 	thisGm = gm;
-	int retval = gmOriginal(gm);
 	if ((ulong)gm->Player == (ulong)LunMem::getClientInstance()->LocalPlayer) {
 		CheatManager::gmTickCheats(gm);
 	}
+	int retval = gmOriginal(gm);
 	return retval;
 }
 
 int smHookCallback(GameMode* gm) {
 	thisGm = gm;
-	int retval = smOriginal(gm);
 	if ((ulong)gm->Player == (ulong)LunMem::getClientInstance()->LocalPlayer) {
 		CheatManager::gmTickCheats(gm);
 	}
+	int retval = smOriginal(gm);
 	return retval;
 }
 

@@ -1,15 +1,13 @@
 #pragma once
 #include "../../BigHead.h"
 #include "../Cheat.h"
+#include <chrono>
+
 class Killaura : public Cheat
 {
 public:
 	Killaura();
-	void onLoop();
-	void onTick();
 	void onGmTick(GameMode* gm);
-	void onEnable();
-	void onDisable();
-	void onKey(ulong key);
+	void onPacket(void* Packet, PacketType type, bool* cancel);
 };
 

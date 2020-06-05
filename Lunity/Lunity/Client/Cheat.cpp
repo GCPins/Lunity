@@ -53,10 +53,22 @@ void Cheat::onKey(ulong key)
 {
 }
 
+void Cheat::onMouseButton(ulong button)
+{
+}
+
+void Cheat::onMouseMove()
+{
+}
+
 void Cheat::onPreRender()
 {
 }
 
 void Cheat::onPostRender()
+{
+}
+
+void Cheat::onPacket(void* Packet, PacketType type, bool* cancel)
 {
 }

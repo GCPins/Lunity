@@ -1,14 +1,11 @@
 #pragma once
 #include "../../BigHead.h"
 #include "../Cheat.h"
-class Spinbot : public Cheat
+class Gamemode: public Cheat
 {
 public:
-	Spinbot();
-	void onLoop();
+	Gamemode();
 	void onTick();
-	void onEnable();
 	void onDisable();
-	void onKey(ulong key);
 };
 

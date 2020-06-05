@@ -1,0 +1,55 @@
+#include "pch.h"
+#include "NetworkHook.h"
+#include "../../SDK/LunMem.h"
+#include "../../SDK/LunMC.h"
+#include "../../SDK/DrawUtils.h"
+#include "../../Logger.h"
+#include "../CheatManager.h"
+#include <MinHook.h>
+#pragma comment(lib, "libMinHook.lib")
+
+typedef void (__thiscall* SendToServer)(LoopbackPacketSender* packetSender, void* Packet);
+SendToServer original;
+
+void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
+	PacketType pt = PacketType::Unknown;
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04E68) {
+		pt = PacketType::Movement;
+	}
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B05DB8) {
+		pt = PacketType::Text;
+	}
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04FF0) {
+		pt = PacketType::PlayerAuthInput;
+	}
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B046C0) {
+		pt = PacketType::CraftingEvent;
+	}
+	bool canceled = false;
+	CheatManager::onPacket(Packet, pt, &canceled);
+	if (!canceled)
+		original(packetSender, Packet);
+}
+
+void NetworkHook::installHook() {
+	Logger::log("installing network hook...");
+	void* toHook = (void*)(LunMem::getBaseModule() + 0xFF0BE0);
+	Logger::logHex("ToHook", (ulong)toHook);
+	bool installSuccess = false;
+	if (MH_CreateHook(toHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
+		Logger::log("Network Hook successfully created!");
+		if (MH_EnableHook(toHook) == MH_OK) {
+			installSuccess = true;
+			Logger::log("Network hook installed");
+		}
+	}
+	if (!installSuccess) {
+		Logger::log("Failed to hook network!");
+	}
+}
+
+void NetworkHook::uninstallHook()
+{
+	void* toHook = (void*)(LunMem::getBaseModule() + 0xFF0BE0);
+	MH_DisableHook(toHook);
+}

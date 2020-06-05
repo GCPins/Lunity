@@ -1,5 +1,6 @@
 #pragma once
 #include "../BigHead.h"
+#include "Hooks/NetworkHook.h"
 class Cheat
 {
 public:
@@ -16,7 +17,10 @@ public:
 	virtual void onEnable();
 	virtual void onDisable();
 	virtual void onKey(ulong key);
+	virtual void onMouseButton(ulong button);
+	virtual void onMouseMove();
 	virtual void onPreRender();
 	virtual void onPostRender();
+	virtual void onPacket(void* Packet, PacketType type, bool* cancel);
 };
 

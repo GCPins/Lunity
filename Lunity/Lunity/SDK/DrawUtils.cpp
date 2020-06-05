@@ -33,23 +33,23 @@ void DrawUtils::flush()
 	renderctx->flushText(0);
 }
 
-void DrawUtils::drawCoolText(vec2_t pos, std::string* textStr, float textSize)
+void DrawUtils::drawCoolText(Vector2 pos, std::string* textStr, float textSize)
 {
-	drawText(pos.add(vec2_t(-2, -2)), textStr, new MC_Color(0, 0, 0, 1), textSize);
-	drawText(pos.add(vec2_t(1, 1)), textStr, new MC_Color(0, 0, 0, 1), textSize);
-	drawText(pos, textStr, new MC_Color(1, 1, 1, 1), textSize);
+	drawText(pos.add(Vector2(-2, -2)), textStr, new Color(0, 0, 0, 1), textSize);
+	drawText(pos.add(Vector2(1, 1)), textStr, new Color(0, 0, 0, 1), textSize);
+	drawText(pos, textStr, new Color(1, 1, 1, 1), textSize);
 }
 
-void DrawUtils::drawText(vec2_t pos, std::string* textStr, MC_Color* color, float textSize)
+void DrawUtils::drawText(Vector2 pos, std::string* textStr, Color* color, float textSize)
 {
-	static MC_Color* WHITE_COLOR = new MC_Color(1, 1, 1, 1, false);
+	static Color* WHITE_COLOR = new Color(1, 1, 1, 1, false);
 	if (color == nullptr)
 		color = WHITE_COLOR;
 	TextHolder* text = new TextHolder(*textStr);
 	BitmapFont* fontPtr = getFont();
 	static uintptr_t caretMeasureData = 0xFFFFFFFF;
 
-	float* posF = new float[4]; // vec4_t(startX, startY, endX, endY);
+	float* posF = new float[4]; // Vector4(startX, startY, endX, endY);
 	posF[0] = pos.x;
 	posF[1] = pos.x + 1000;
 	posF[2] = pos.y;
@@ -61,10 +61,10 @@ void DrawUtils::drawText(vec2_t pos, std::string* textStr, MC_Color* color, floa
 		if (posF != NULL) {
 			if (text != NULL) {
 				if (color != NULL) {
-					if (color->arr != NULL) {
+					if (color->toArr() != NULL) {
 						if (size != NULL) {
 							if (caretMeasureData != NULL)
-								renderctx->drawText(fontPtr, posF, text, color->arr, 1, 0, &size, &caretMeasureData);
+								renderctx->drawText(fontPtr, posF, text, color->toArr(), 1, 0, &size, &caretMeasureData);
 						}
 					}
 				}
@@ -72,21 +72,21 @@ void DrawUtils::drawText(vec2_t pos, std::string* textStr, MC_Color* color, floa
 		}
 	}
 
-	if (color->shouldDelete)
+	if (color->deletable)
 		delete color;
 	delete[] posF;
 	delete text;
 }
 
-void DrawUtils::fillRectangle(vec4_t pos, const MC_Color col, float alpha)
+void DrawUtils::fillRectangle(Vector4 pos, const Vector4 col, float alpha)
 {
-	float* posF = new float[4]; // vec4_t(startX, startY, endX, endY);
+	float* posF = new float[4]; // Vector4(startX, startY, endX, endY);
 	posF[0] = pos.x;
 	posF[1] = pos.z;
 	posF[2] = pos.y;
 	posF[3] = pos.w;
 
-	MC_Color* c = new MC_Color(col);
+	Vector4* c = new Vector4(col);
 
 	renderctx->fillRectangle(posF, reinterpret_cast<float*>(c), alpha);
 
@@ -94,39 +94,39 @@ void DrawUtils::fillRectangle(vec4_t pos, const MC_Color col, float alpha)
 	delete[] posF;
 }
 
-void DrawUtils::drawRectangle(vec4_t pos, MC_Color col, float alpha, float lineWidth)
+void DrawUtils::drawRectangle(Vector4 pos, Vector4 col, float alpha, float lineWidth)
 {
 	lineWidth /= 2;
-	fillRectangle(vec4_t(pos.x - lineWidth, pos.y - lineWidth, pos.z + lineWidth, pos.y + lineWidth), col, alpha); // TOP
-	fillRectangle(vec4_t(pos.x - lineWidth, pos.y, pos.x + lineWidth, pos.w), col, alpha); // LEFT
-	fillRectangle(vec4_t(pos.z - lineWidth, pos.y, pos.z + lineWidth, pos.w), col, alpha); // 
-	fillRectangle(vec4_t(pos.x - lineWidth, pos.w - lineWidth, pos.z + lineWidth, pos.w + lineWidth), col, alpha);
+	fillRectangle(Vector4(pos.x - lineWidth, pos.y - lineWidth, pos.z + lineWidth, pos.y + lineWidth), col, alpha); // TOP
+	fillRectangle(Vector4(pos.x - lineWidth, pos.y, pos.x + lineWidth, pos.w), col, alpha); // LEFT
+	fillRectangle(Vector4(pos.z - lineWidth, pos.y, pos.z + lineWidth, pos.w), col, alpha); // 
+	fillRectangle(Vector4(pos.x - lineWidth, pos.w - lineWidth, pos.z + lineWidth, pos.w + lineWidth), col, alpha);
 }
 
-vec3_t Subtract(vec3_t src, vec3_t dst)
+Vector3 Subtract(Vector3 src, Vector3 dst)
 {
-	vec3_t diff;
+	Vector3 diff;
 	diff.x = src.x - dst.x;
 	diff.y = src.y - dst.y;
 	diff.z = src.z - dst.z;
 	return diff;
 }
-float DotProduct(vec3_t src, vec3_t dst)
+float DotProduct(Vector3 src, Vector3 dst)
 {
 	return src.x * dst.x + src.y * dst.y + src.z * dst.z;
 }
-vec3_t* directionalVector(float yaw, float pitch)
+Vector3* directionalVector(float yaw, float pitch)
 {
-	vec3_t* vec3 = new vec3_t();
+	Vector3* vec3 = new Vector3();
 	vec3->x = (float)cos(yaw) * (float)cos(pitch);
 	vec3->y = (float)sin(pitch);
 	vec3->z = (float)sin(yaw) * (float)cos(pitch);
 	return vec3;
 }
 
-bool DirtyWorldToScreen(vec3_t src, vec3_t dst, vec2_t& screen, float fovx, float fovy, float windowWidth, float windowHeight, vec3_t left, vec3_t up, vec3_t forward)
+bool DirtyWorldToScreen(Vector3 src, Vector3 dst, vec2_t& screen, float fovx, float fovy, float windowWidth, float windowHeight, Vector3 left, Vector3 up, Vector3 forward)
 {
-	vec3_t transform;
+	Vector3 transform;
 	float xc, yc;
 	float px, py;
 	float z;
@@ -152,17 +152,39 @@ bool DirtyWorldToScreen(vec3_t src, vec3_t dst, vec2_t& screen, float fovx, floa
 	return true;
 }
 
-bool DrawUtils::WorldToScreen(vec3_t pos, vec2_t& screen)
+bool DrawUtils::WorldToScreen(Vector3 pos, vec2_t& screen)
 {
 	ClientInstance* ci = LunMem::getClientInstance();
 	LocalPlayer* lp = ci->LocalPlayer;
 	GuiData* gd = getGuiData();
 	LevelRenderer* lr = ci->LevelRenderer;
 	Vector3 origin = lr->Origin;
-	vec3_t origVec3t(origin.x, origin.y, origin.z);
-	vec3_t* forward = directionalVector(lp->LookingVec.y, lp->LookingVec.x);
-	vec3_t* left = directionalVector(lp->LookingVec.y+90, lp->LookingVec.x);
-	vec3_t* up = directionalVector(lp->LookingVec.y, lp->LookingVec.x+90);
+	Vector3 origVec3t(origin.x, origin.y, origin.z);
+	Vector3* forward = directionalVector(lp->LookingVec.y, lp->LookingVec.x);
+	Vector3* left = directionalVector(lp->LookingVec.y+90, lp->LookingVec.x);
+	Vector3* up = directionalVector(lp->LookingVec.y, lp->LookingVec.x+90);
 	return DirtyWorldToScreen(origVec3t, pos, screen, ci->fovX, ci->fovY, gd->Resolution.x, gd->Resolution.y, *left, *up, *forward);
 }
 
+Color DrawUtils::getRainbow(float progress)
+{
+	float div = (abs(progress / 1) * 6);
+	float ascending = div / 1;
+	float descending = 1.0f - ascending;
+
+	switch ((int)div)
+	{
+	case 0:
+		return Color(1, ascending, 0, 1);
+	case 1:
+		return Color(descending, 1, 0, 1);
+	case 2:
+		return Color(0, 1, ascending, 1);
+	case 3:
+		return Color(0, descending, 1, 1);
+	case 4:
+		return Color(ascending, 0, 1, 1);
+	default: // case 5:
+		return Color(1, 0, descending, 1);
+	}
+}
