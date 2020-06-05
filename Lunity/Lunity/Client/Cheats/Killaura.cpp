@@ -19,7 +19,7 @@ void Killaura::onGmTick(GameMode* gm) {
 	vector<Actor*>* ents = getEntities();
 	if (ents != NULL) {
 		if (strcmp(Raknet->ServerIp.getText(), "geo.hivebedrock.network") == 0) {
-			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(200)) {
+			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(500)) {
 				for (uint i = 0; i < ents->size(); i++) {
 					if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 12.0f) {
 						lookingAngles = LunMath::getRotationAnglesToEnt(*ents->at(i)->getPos(), *player->getPos());
