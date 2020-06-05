@@ -90,6 +90,20 @@ struct Rect : Vector4 {
 class LunMath {
 public:
 	static float distanceVec3(Vector3 posA, Vector3 posB) {
-		return 0;
+		float dX = posA.x - posB.x;
+		float dY = posA.y - posB.y;
+		float dZ = posA.z - posB.z;
+
+		return sqrt(dX * dX + dY * dY + dZ * dZ);
+	}
+	static Vector2 getRotationAnglesToEnt(Vector3 localPosition, Vector3 targetPosition) {
+		Vector2 anglesVector;
+		float dX = localPosition.x - targetPosition.x;
+		float dY = localPosition.y - targetPosition.y;
+		float dZ = localPosition.z - targetPosition.z;
+		double distance = sqrt(dX * dX + dY * dY + dZ * dZ);
+		anglesVector.x = -(float)(atan2(dY, distance) * 180.0f / 3.141592653589793);
+		anglesVector.y = (float)(atan2(dZ, dX) * 180.0f / 3.141592653589793) - 90.0f;
+		return anglesVector;
 	}
 };
