@@ -198,7 +198,7 @@
     <ClInclude Include="Client\Cheats\Jesus.h" />
     <ClInclude Include="Client\Cheats\Jetpack.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
-    <ClInclude Include="Client\Cheats\MineplexYesCheat.h" />
+    <ClInclude Include="Client\Cheats\MineplexBP.h" />
     <ClInclude Include="Client\Cheats\ModuleList.h" />
     <ClInclude Include="Client\Cheats\NoFall.h" />
     <ClInclude Include="Client\Cheats\NoPacket.h" />
@@ -279,7 +279,7 @@
     <ClCompile Include="Client\Cheats\Jesus.cpp" />
     <ClCompile Include="Client\Cheats\Jetpack.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
-    <ClCompile Include="Client\Cheats\MineplexYesCheat.cpp" />
+    <ClCompile Include="Client\Cheats\MineplexBP.cpp" />
     <ClCompile Include="Client\Cheats\ModuleList.cpp" />
     <ClCompile Include="Client\Cheats\NoFall.cpp" />
     <ClCompile Include="Client\Cheats\NoPacket.cpp" />

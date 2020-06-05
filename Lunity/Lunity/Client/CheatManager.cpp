@@ -69,7 +69,7 @@ void CheatManager::loadCheats()
 
 	/* Other */
 	cheats.push_back(new Uninject());
-	cheats.push_back(new MineplexYesCheat());
+	cheats.push_back(new MineplexBP());
 	cheats.push_back(new PacketLogger());
 	cheats.push_back(new NoPacket());
 	//cheats.push_back(new CCGodMode());

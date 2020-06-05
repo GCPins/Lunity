@@ -114,8 +114,13 @@ void ClickGui::onEnable() {
 	}
 }
 
+float rainbowProg = 0;
 void ClickGui::onPostRender()
 {
+	if (rainbowProg >= 1) {
+		rainbowProg = 0;
+	}
+	rainbowProg += 0.001;
 	if (enabled) {
 		for (int i = 0; i < windows.size(); i++) {
 			Frame* window = windows[i];
@@ -129,7 +134,7 @@ void ClickGui::onPostRender()
 			float expWid = DrawUtils::getTextWidth(expIco, 1);
 			DrawUtils::drawText(Vector2(titleRect.x + titleRect.width - expWid, titleRect.y), &expIco, nullptr, 1);
 			if (window->expanded) {
-				DrawUtils::fillRectangle(Rect(titleRect.x, titleRect.y + titleRect.height, titleRect.width, 1), Color(1, 0, 1, 1), 1);
+				DrawUtils::fillRectangle(Rect(titleRect.x, titleRect.y + titleRect.height, titleRect.width, 1), DrawUtils::getRainbow(rainbowProg), 1);
 				vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
 				for (int i = 0; i < cheatsInCat.size(); i++) {
 					Cheat* leCheat = cheatsInCat[i];

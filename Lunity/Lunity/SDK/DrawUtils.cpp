@@ -102,3 +102,26 @@ void DrawUtils::drawRectangle(Vector4 pos, Vector4 col, float alpha, float lineW
 	fillRectangle(Vector4(pos.z - lineWidth, pos.y, pos.z + lineWidth, pos.w), col, alpha); // 
 	fillRectangle(Vector4(pos.x - lineWidth, pos.w - lineWidth, pos.z + lineWidth, pos.w + lineWidth), col, alpha);
 }
+
+Color DrawUtils::getRainbow(float progress)
+{
+	float div = (abs(progress / 1) * 6);
+	float ascending = div / 1;
+	float descending = 1.0f - ascending;
+
+	switch ((int)div)
+	{
+	case 0:
+		return Color(1, ascending, 0, 1);
+	case 1:
+		return Color(descending, 1, 0, 1);
+	case 2:
+		return Color(0, 1, ascending, 1);
+	case 3:
+		return Color(0, descending, 1, 1);
+	case 4:
+		return Color(ascending, 0, 1, 1);
+	default: // case 5:
+		return Color(1, 0, descending, 1);
+	}
+}

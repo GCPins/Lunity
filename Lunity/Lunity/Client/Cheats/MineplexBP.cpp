@@ -1,19 +1,19 @@
 #include "pch.h"
-#include "MineplexYesCheat.h"
+#include "MineplexBP.h"
 
-MineplexYesCheat::MineplexYesCheat() : Cheat::Cheat("MineplexYesCheat", "Other")
+MineplexBP::MineplexBP() : Cheat::Cheat("MineplexBP", "Other")
 {
 }
 
-void MineplexYesCheat::onEnable() {
+void MineplexBP::onEnable() {
 	Cheat::onEnable();
 }
 
-void MineplexYesCheat::onDisable() {
+void MineplexBP::onDisable() {
 	Cheat::onDisable();
 }
 
-void MineplexYesCheat::onGmTick(GameMode* gm) {
+void MineplexBP::onGmTick(GameMode* gm) {
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			ClientInstance* clientInstance = LunMem::getClientInstance();
