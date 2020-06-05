@@ -291,6 +291,12 @@
     <ClInclude Include="Client\Cheats\HiveGlide.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\ClickGui.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\LunMath.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -429,6 +435,9 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\HiveGlide.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\ClickGui.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

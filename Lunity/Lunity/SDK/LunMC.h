@@ -1,11 +1,9 @@
 #pragma once
 #include "TextHolder.h"
+#include "LunMath.h"
 #include "LunMem.h"
 #include <functional>
 #define ulong uint64_t
-struct Vector3 { float x, y, z; };
-struct Vector2 { float x, y; };
-struct Vector3i { int x, y, z; };
 // Created with ReClass.NET 1.2 by KN4CK3R
 
 class GuiData

@@ -2,7 +2,9 @@
 #include "../Cheat.h"
 class ClickGui : public Cheat
 {
+public:
 	ClickGui();
-	void onRender();
+	void onEnable();
+	void onPostRender();
 };
 

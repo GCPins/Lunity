@@ -185,6 +185,7 @@
     <ClInclude Include="Client\Cheats\AutoWalk.h" />
     <ClInclude Include="Client\Cheats\BunnyHop.h" />
     <ClInclude Include="Client\Cheats\CCFly.h" />
+    <ClInclude Include="Client\Cheats\ClickGui.h" />
     <ClInclude Include="Client\Cheats\ClickTP.h" />
     <ClInclude Include="Client\Cheats\Coords.h" />
     <ClInclude Include="Client\Cheats\Gamemode.h" />
@@ -248,6 +249,7 @@
     <ClInclude Include="polyhook2\ZydisDisassembler.hpp" />
     <ClInclude Include="Client\Hooks\RenderHook.h" />
     <ClInclude Include="SDK\EntList.h" />
+    <ClInclude Include="SDK\LunMath.h" />
     <ClInclude Include="SDK\LunMC.h" />
     <ClInclude Include="SDK\LunMem.h" />
     <ClInclude Include="pch.h" />
@@ -264,6 +266,7 @@
     <ClCompile Include="Client\Cheats\AutoSprint.cpp" />
     <ClCompile Include="Client\Cheats\AutoWalk.cpp" />
     <ClCompile Include="Client\Cheats\BunnyHop.cpp" />
+    <ClCompile Include="Client\Cheats\ClickGui.cpp" />
     <ClCompile Include="Client\Cheats\ClickTP.cpp" />
     <ClCompile Include="Client\Cheats\Coords.cpp" />
     <ClCompile Include="Client\Cheats\Gamemode.cpp" />

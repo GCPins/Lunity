@@ -20,8 +20,8 @@ void Coords::onPostRender()
 				if (playerPos.x != 0 | playerPos.y != 0 | playerPos.z != 0) {
 					std::string CoordsStr = to_string((int)playerPos.x) + ", " + to_string((int)playerPos.y - 1) + ", " + to_string((int)playerPos.z);
 					float textSize = DrawUtils::getTextWidth(CoordsStr, 1);
-					DrawUtils::fillRectangle(vec4_t(ScreenRes.x - textSize, ScreenRes.y - 10, (ScreenRes.x - textSize) + (textSize * 2), ScreenRes.y + 10), MC_Color(0, 0, 0, 1), 0.2f);
-					DrawUtils::drawText(vec2_t(ScreenRes.x - textSize, ScreenRes.y - 10), &CoordsStr, nullptr, 1);
+					DrawUtils::fillRectangle(Vector4(ScreenRes.x - textSize, ScreenRes.y - 10, (ScreenRes.x - textSize) + (textSize * 2), ScreenRes.y + 10), Color(0, 0, 0, 1), 0.2f);
+					DrawUtils::drawText(Vector2(ScreenRes.x - textSize, ScreenRes.y - 10), &CoordsStr, nullptr, 1);
 				}
 			}
 		}
