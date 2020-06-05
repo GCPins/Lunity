@@ -15,5 +15,6 @@ public:
 	static void drawText(Vector2 pos, std::string* textStr, Color* color, float textSize);
 	static void fillRectangle(Vector4 pos, const Vector4 col, float alpha);
 	static void drawRectangle(Vector4 pos, Vector4 col, float alpha, float lineWidth);
+	static Color getRainbow(float progress);
 };
 

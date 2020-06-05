@@ -46,7 +46,7 @@
 /* Other */
 
 #include "Cheats/Uninject.h"
-#include "Cheats/MineplexYesCheat.h"
+#include "Cheats/MineplexBP.h"
 #include "Cheats/PacketLogger.h"
 #include "Cheats/NoPacket.h"
 #include "Cheats/CCGodMode.h"

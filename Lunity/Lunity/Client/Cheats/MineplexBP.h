@@ -3,10 +3,10 @@
 #include "../Cheat.h"
 #include "../Hooks/GamemodeHook.h"
 
-class MineplexYesCheat : public Cheat
+class MineplexBP : public Cheat
 {
 public:
-	MineplexYesCheat();
+	MineplexBP();
 	void onGmTick(GameMode* gm);
 	void onEnable();
 	void onDisable();
