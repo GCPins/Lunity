@@ -17,7 +17,20 @@ void Killaura::onGmTick(GameMode* gm) {
 	LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
 	vector<Actor*>* ents = getEntities();
 	if (ents != NULL) {
-		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(300)) {
+		RakNetInstance* Raknet = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
+		if (strcmp(Raknet->ServerIp.getText(), "mco.cubecraft.net") == 0) {
+			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(200)) {
+				for (uint i = 0; i < ents->size(); i++) {
+					if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 12.0f) {
+						lookingAngles = LunMath::getRotationAnglesToEnt(*ents->at(i)->getPos(), *player->getPos());
+						player->swing();
+						gm->attack(ents->at(i));
+					}
+				}
+				savedTime = std::chrono::high_resolution_clock::now();
+			}
+		}
+		else {
 			for (uint i = 0; i < ents->size(); i++) {
 				if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 12.0f) {
 					lookingAngles = LunMath::getRotationAnglesToEnt(*ents->at(i)->getPos(), *player->getPos());
@@ -25,7 +38,6 @@ void Killaura::onGmTick(GameMode* gm) {
 					gm->attack(ents->at(i));
 				}
 			}
-			savedTime = std::chrono::high_resolution_clock::now();
 		}
 	}
 }
