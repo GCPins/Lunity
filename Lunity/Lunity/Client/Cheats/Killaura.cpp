@@ -15,7 +15,6 @@ Vector2 lookingAngles;
 
 void Killaura::onGmTick(GameMode* gm) {
 	RakNetInstance* Raknet = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
-	Logger::log(Raknet->ServerIp.getText());
 	LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
 	vector<Actor*>* ents = getEntities();
 	if (ents != NULL) {
