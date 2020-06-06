@@ -189,6 +189,7 @@
     <ClInclude Include="Client\Cheats\ClickGui.h" />
     <ClInclude Include="Client\Cheats\ClickTP.h" />
     <ClInclude Include="Client\Cheats\Coords.h" />
+    <ClInclude Include="Client\Cheats\ForceM2P.h" />
     <ClInclude Include="Client\Cheats\Gamemode.h" />
     <ClInclude Include="Client\Cheats\Glide.h" />
     <ClInclude Include="Client\Cheats\GlideBoost.h" />
@@ -270,6 +271,7 @@
     <ClCompile Include="Client\Cheats\ClickGui.cpp" />
     <ClCompile Include="Client\Cheats\ClickTP.cpp" />
     <ClCompile Include="Client\Cheats\Coords.cpp" />
+    <ClCompile Include="Client\Cheats\ForceM2P.cpp" />
     <ClCompile Include="Client\Cheats\Gamemode.cpp" />
     <ClCompile Include="Client\Cheats\Glide.cpp" />
     <ClCompile Include="Client\Cheats\GlideBoost.cpp" />

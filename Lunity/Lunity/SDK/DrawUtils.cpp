@@ -103,58 +103,32 @@ void DrawUtils::drawRectangle(Vector4 pos, Vector4 col, float alpha, float lineW
 	fillRectangle(Vector4(pos.x - lineWidth, pos.w - lineWidth, pos.z + lineWidth, pos.w + lineWidth), col, alpha);
 }
 
-Vector3 Subtract(Vector3 src, Vector3 dst)
+bool DrawUtils::DirtyWorldToScreen(Vector3 pos, Vector2& screen, float matrix[16], int windowWidth, int windowHeight)
 {
-	Vector3 diff;
-	diff.x = src.x - dst.x;
-	diff.y = src.y - dst.y;
-	diff.z = src.z - dst.z;
-	return diff;
-}
-float DotProduct(Vector3 src, Vector3 dst)
-{
-	return src.x * dst.x + src.y * dst.y + src.z * dst.z;
-}
-Vector3* directionalVector(float yaw, float pitch)
-{
-	Vector3* vec3 = new Vector3();
-	vec3->x = (float)cos(yaw) * (float)cos(pitch);
-	vec3->y = (float)sin(pitch);
-	vec3->z = (float)sin(yaw) * (float)cos(pitch);
-	return vec3;
-}
+	//Matrix-vector Product, multiplying world(eye) coordinates by projection matrix = clipCoords
+	Vector4 clipCoords;
+	clipCoords.x = pos.x * matrix[0] + pos.y * matrix[1] + pos.z * matrix[2] + matrix[3];
+	clipCoords.y = pos.x * matrix[4] + pos.y * matrix[5] + pos.z * matrix[6] + matrix[7];
+	clipCoords.z = pos.x * matrix[8] + pos.y * matrix[9] + pos.z * matrix[10] + matrix[11];
+	clipCoords.w = pos.x * matrix[12] + pos.y * matrix[13] + pos.z * matrix[14] + matrix[15];
 
-bool DirtyWorldToScreen(Vector3 src, Vector3 dst, vec2_t& screen, float fovx, float fovy, float windowWidth, float windowHeight, Vector3 left, Vector3 up, Vector3 forward)
-{
-	Vector3 transform;
-	float xc, yc;
-	float px, py;
-	float z;
-
-	px = tan(fovx * PI / 360.0);
-	py = tan(fovy * PI / 360.0);
-
-	transform = Subtract(dst, src);
-
-	xc = windowWidth / 2.0;
-	yc = windowHeight / 2.0;
-
-	z = DotProduct(transform, left);
-
-	if (z <= 0.1)
-	{
+	if (clipCoords.w < 0.1f)
 		return false;
-	}
 
-	screen.x = xc - DotProduct(transform, up) * xc / (z * px);
-	screen.y = yc - DotProduct(transform, forward) * yc / (z * py);
+	//perspective division, dividing by clip.W = Normalized Device Coordinates
+	Vector3 NDC;
+	NDC.x = clipCoords.x / clipCoords.w;
+	NDC.y = clipCoords.y / clipCoords.w;
+	NDC.z = clipCoords.z / clipCoords.w;
 
+	screen.x = (windowWidth / 2 * NDC.x) + (NDC.x + windowWidth / 2);
+	screen.y = -(windowHeight / 2 * NDC.y) + (NDC.y + windowHeight / 2);
 	return true;
 }
 
-bool DrawUtils::WorldToScreen(Vector3 pos, vec2_t& screen)
+bool DrawUtils::WorldToScreen(Vector3 pos, Vector2& screen)
 {
-	ClientInstance* ci = LunMem::getClientInstance();
+	/*ClientInstance* ci = LunMem::getClientInstance();
 	LocalPlayer* lp = ci->LocalPlayer;
 	GuiData* gd = getGuiData();
 	LevelRenderer* lr = ci->LevelRenderer;
@@ -163,7 +137,8 @@ bool DrawUtils::WorldToScreen(Vector3 pos, vec2_t& screen)
 	Vector3* forward = directionalVector(lp->LookingVec.y, lp->LookingVec.x);
 	Vector3* left = directionalVector(lp->LookingVec.y+90, lp->LookingVec.x);
 	Vector3* up = directionalVector(lp->LookingVec.y, lp->LookingVec.x+90);
-	return DirtyWorldToScreen(origVec3t, pos, screen, ci->fovX, ci->fovY, gd->Resolution.x, gd->Resolution.y, *left, *up, *forward);
+	return DirtyWorldToScreen(origVec3t, pos, screen, ci->fovX, ci->fovY, gd->Resolution.x, gd->Resolution.y, *left, *up, *forward);*/
+	return false;
 }
 
 Color DrawUtils::getRainbow(float progress)

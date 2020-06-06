@@ -25,6 +25,26 @@ struct Vector3 {
 		};
 		float arr[3];
 	};
+	Vector3() { x = y = z = 0; }
+	Vector3(float x, float y, float z) {
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
+	Vector3 sub(Vector3 vec) {
+		Vector3 newVec;
+		newVec.x = this->x - vec.x;
+		newVec.y = this->y - vec.y;
+		newVec.z = this->z - vec.z;
+		return newVec;
+	}
+	Vector3 add(Vector3 vec) {
+		Vector3 newVec;
+		newVec.x = this->x + vec.x;
+		newVec.y = this->y + vec.y;
+		newVec.z = this->z + vec.z;
+		return newVec;
+	}
 };
 struct Vector3i {
 	union {
@@ -41,6 +61,7 @@ struct Vector4 {
 		};
 		float arr[4];
 	};
+	Vector4() { x = y = z = w = 0; }
 	Vector4(float x, float y, float z, float w) {
 		this->x = x;
 		this->y = y;
@@ -84,6 +105,54 @@ struct Rect : Vector4 {
 		this->y = pos.y;
 		this->z = pos.x + width;
 		this->w = pos.y + height;
+	}
+};
+struct Matrix {
+	union {
+		float v[16];
+		float v_n[4][4];
+	};
+	Matrix* correct() {
+		Matrix* newMat = new Matrix;
+
+		for (int i = 0; i < 4; i++) {
+			newMat->v[i * 4 + 0] = v[0 + i];
+			newMat->v[i * 4 + 1] = v[4 + i];
+			newMat->v[i * 4 + 2] = v[8 + i];
+			newMat->v[i * 4 + 3] = v[12 + i];
+		}
+		return newMat;
+	};
+	bool DirtyWorldToScreen(Vector3 origin, Vector3 pos, Vector2& screen, Vector2 fov, Vector2 displaySize)
+	{
+		pos = pos.sub(origin);
+
+		float x = transformx(pos);
+		float y = transformy(pos);
+		float z = transformz(pos);
+
+		if (z > 0)
+			return false;
+
+		float mX = (float)displaySize.x / 2.0F;
+		float mY = (float)displaySize.y / 2.0F;
+
+		screen.x = mX + (mX * x / -z * fov.x);
+		screen.y = mY - (mY * y / -z * fov.y);
+
+		return true;
+	}
+	float transformx(const Vector3& p) const
+	{
+		return p.x * v[0] + p.y * v[4] + p.z * v[8] + v[12];
+	}
+	float transformy(const Vector3& p) const
+	{
+		return p.x * v[1] + p.y * v[5] + p.z * v[9] + v[13];
+	}
+	float transformz(const Vector3& p) const
+	{
+		return p.x * v[2] + p.y * v[6] + p.z * v[10] + v[14];
 	}
 };
 

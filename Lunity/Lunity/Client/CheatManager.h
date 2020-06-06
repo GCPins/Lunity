@@ -50,6 +50,7 @@
 #include "Cheats/PacketLogger.h"
 #include "Cheats/NoPacket.h"
 #include "Cheats/CCGodMode.h"
+#include "Cheats/ForceM2P.h"
 
 #include "Hooks/NetworkHook.h"
 #include "Cheats/TestModule.h"

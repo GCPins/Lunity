@@ -72,6 +72,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new MineplexBP());
 	cheats.push_back(new PacketLogger());
 	cheats.push_back(new NoPacket());
+	cheats.push_back(new ForceM2P());
 	//cheats.push_back(new CCGodMode());
 
 	//cheats.push_back(new TestModule());
