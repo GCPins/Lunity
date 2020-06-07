@@ -24,6 +24,7 @@
 #include "Cheats/CCFly.h"
 #include "Cheats/WarpShift.h"
 #include "Cheats/HiveGlide.h"
+#include "Cheats/Longjump.h"
 
 /* Player */
 
