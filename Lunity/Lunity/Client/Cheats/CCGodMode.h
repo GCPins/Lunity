@@ -4,6 +4,7 @@ class CCGodMode : public Cheat
 {
 public:
 	CCGodMode();
+	void onTick();
 	void onPacket(void* Packet, PacketType type, bool* cancel);
 };
 
