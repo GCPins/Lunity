@@ -5,6 +5,7 @@
 #include "../../SDK/EntList.h"
 
 //float spyeet = 0.2f;
+float aaabbb = 8.0f;
 
 CCGodMode::CCGodMode() : Cheat::Cheat("CCGodMode", "Other")
 {
@@ -27,10 +28,11 @@ void CCGodMode::onPacket(void* Packet, PacketType type, bool* cancel)
 		LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
 		vector<Actor*>* ents = getEntities();
 		for (uint i = 0; i < ents->size(); i++) {
-				if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 3.5f) {
+				if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 3.7f) {
 					//do stuff
 					MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
-					pkt->Pos.y += 8;
+					pkt->Pos.y += aaabbb;
+					aaabbb -= 0.001f;
 				}
 			}
 		}

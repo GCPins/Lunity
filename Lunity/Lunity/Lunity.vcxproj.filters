@@ -306,6 +306,9 @@
     <ClInclude Include="Client\Cheats\LBfly.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\TestModule.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -456,6 +459,9 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\LBfly.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\TestModule.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

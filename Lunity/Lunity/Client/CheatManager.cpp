@@ -75,9 +75,9 @@ void CheatManager::loadCheats()
 	cheats.push_back(new MineplexBP());
 	cheats.push_back(new PacketLogger());
 	cheats.push_back(new NoPacket());
-	//cheats.push_back(new CCGodMode());
+	cheats.push_back(new CCGodMode());
 
-	//cheats.push_back(new TestModule());
+	cheats.push_back(new TestModule());
 
 	for (uint i = 0; i < cheats.size(); i++) {
 		if (find(categories.begin(), categories.end(), cheats[i]->category) == categories.end()) {
