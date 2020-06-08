@@ -6,7 +6,7 @@ ForceM2P::ForceM2P() : Cheat::Cheat("ForceM2P", "Other") {
 
 }
 
-int offset = 0x580;
+int offset = 0x2B0;
 int LROffset = 0x69C;
 void ForceM2P::onKey(ulong key) {
 	if (key == 'L') {
