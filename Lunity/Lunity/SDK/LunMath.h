@@ -142,6 +142,28 @@ struct Matrix {
 
 		return true;
 	}
+	bool DirtyWorldToScreenGH(Vector3 pos, Vector2& screen, int windowWidth, int windowHeight)
+	{
+		//Matrix-vector Product, multiplying world(eye) coordinates by projection matrix = clipCoords
+		Vector4 clipCoords;
+		clipCoords.x = pos.x * v[0] + pos.y * v[1] + pos.z * v[2] + v[3];
+		clipCoords.y = pos.x * v[4] + pos.y * v[5] + pos.z * v[6] + v[7];
+		clipCoords.z = pos.x * v[8] + pos.y * v[9] + pos.z * v[10] + v[11];
+		clipCoords.w = pos.x * v[12] + pos.y * v[13] + pos.z * v[14] + v[15];
+
+		if (clipCoords.w < 0.1f)
+			return false;
+
+		//perspective division, dividing by clip.W = Normalized Device Coordinates
+		Vector3 NDC;
+		NDC.x = clipCoords.x / clipCoords.w;
+		NDC.y = clipCoords.y / clipCoords.w;
+		NDC.z = clipCoords.z / clipCoords.w;
+
+		screen.x = (windowWidth / 2 * NDC.x) + (NDC.x + windowWidth / 2);
+		screen.y = -(windowHeight / 2 * NDC.y) + (NDC.y + windowHeight / 2);
+		return true;
+	}
 	float transformx(const Vector3& p) const
 	{
 		return p.x * v[0] + p.y * v[4] + p.z * v[8] + v[12];

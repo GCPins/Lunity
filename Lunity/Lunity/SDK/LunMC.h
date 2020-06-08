@@ -1563,11 +1563,14 @@ public:
 class LevelRenderer
 {
 public:
-	char pad_0008[760]; //0x0008
-	class GameRenderer* GameRenderer; //0x0300
-	char pad_0308[1368]; //0x0308
-	Vector3 Origin; //0x0860
-	char pad_086C[3608]; //0x086C
+	char pad_0000[1908]; //0x0000
+	Vector3 OriginA; //0x0774
+	Vector3 OriginB; //0x0780
+	char pad_078C[212]; //0x078C
+	Vector3 OriginC; //0x0860
+	char pad_086C[40]; //0x086C
+	Vector3 OriginD; //0x0894
+	char pad_08A0[24]; //0x08A0
 
 
 }; //Size: 0x0D1C
