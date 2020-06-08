@@ -52,6 +52,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new WarpShift());
 	cheats.push_back(new HiveGlide());
 	cheats.push_back(new Longjump());
+	cheats.push_back(new LBfly());
 
 	/* Player */
 	cheats.push_back(new Scaffold());

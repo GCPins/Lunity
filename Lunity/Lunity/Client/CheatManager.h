@@ -26,6 +26,7 @@
 #include "Cheats/WarpShift.h"
 #include "Cheats/HiveGlide.h"
 #include "Cheats/Longjump.h"
+#include "Cheats/LBfly.h"
 
 /* Player */
 

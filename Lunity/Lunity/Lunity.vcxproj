@@ -200,6 +200,7 @@
     <ClInclude Include="Client\Cheats\Jetpack.h" />
     <ClInclude Include="Client\Cheats\JumpCrits.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
+    <ClInclude Include="Client\Cheats\LBfly.h" />
     <ClInclude Include="Client\Cheats\Longjump.h" />
     <ClInclude Include="Client\Cheats\MineplexBP.h" />
     <ClInclude Include="Client\Cheats\ModuleList.h" />
@@ -283,6 +284,7 @@
     <ClCompile Include="Client\Cheats\Jetpack.cpp" />
     <ClCompile Include="Client\Cheats\JumpCrits.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
+    <ClCompile Include="Client\Cheats\LBfly.cpp" />
     <ClCompile Include="Client\Cheats\Longjump.cpp" />
     <ClCompile Include="Client\Cheats\MineplexBP.cpp" />
     <ClCompile Include="Client\Cheats\ModuleList.cpp" />

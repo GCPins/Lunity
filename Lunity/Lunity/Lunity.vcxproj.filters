@@ -303,6 +303,9 @@
     <ClInclude Include="Client\Cheats\JumpCrits.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\LBfly.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -450,6 +453,9 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\JumpCrits.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\LBfly.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
