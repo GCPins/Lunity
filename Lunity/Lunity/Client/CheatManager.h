@@ -6,6 +6,7 @@
 #include "Cheats/Killaura.h"
 #include "Cheats/Triggerbot.h"
 #include "Cheats/Hitbox.h"
+#include "Cheats/JumpCrits.h"
 
 /* Movement */
 

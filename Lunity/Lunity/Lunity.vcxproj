@@ -198,6 +198,7 @@
     <ClInclude Include="Client\Cheats\InventoryMove.h" />
     <ClInclude Include="Client\Cheats\Jesus.h" />
     <ClInclude Include="Client\Cheats\Jetpack.h" />
+    <ClInclude Include="Client\Cheats\JumpCrits.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
     <ClInclude Include="Client\Cheats\Longjump.h" />
     <ClInclude Include="Client\Cheats\MineplexBP.h" />
@@ -280,6 +281,7 @@
     <ClCompile Include="Client\Cheats\InventoryMove.cpp" />
     <ClCompile Include="Client\Cheats\Jesus.cpp" />
     <ClCompile Include="Client\Cheats\Jetpack.cpp" />
+    <ClCompile Include="Client\Cheats\JumpCrits.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
     <ClCompile Include="Client\Cheats\Longjump.cpp" />
     <ClCompile Include="Client\Cheats\MineplexBP.cpp" />
