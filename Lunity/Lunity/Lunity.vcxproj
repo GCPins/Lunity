@@ -189,6 +189,7 @@
     <ClInclude Include="Client\Cheats\ClickGui.h" />
     <ClInclude Include="Client\Cheats\ClickTP.h" />
     <ClInclude Include="Client\Cheats\Coords.h" />
+    <ClInclude Include="Client\Cheats\Criticals.h" />
     <ClInclude Include="Client\Cheats\Gamemode.h" />
     <ClInclude Include="Client\Cheats\Glide.h" />
     <ClInclude Include="Client\Cheats\GlideBoost.h" />
@@ -198,7 +199,6 @@
     <ClInclude Include="Client\Cheats\InventoryMove.h" />
     <ClInclude Include="Client\Cheats\Jesus.h" />
     <ClInclude Include="Client\Cheats\Jetpack.h" />
-    <ClInclude Include="Client\Cheats\JumpCrits.h" />
     <ClInclude Include="Client\Cheats\Killaura.h" />
     <ClInclude Include="Client\Cheats\LBfly.h" />
     <ClInclude Include="Client\Cheats\Longjump.h" />
@@ -274,6 +274,7 @@
     <ClCompile Include="Client\Cheats\ClickGui.cpp" />
     <ClCompile Include="Client\Cheats\ClickTP.cpp" />
     <ClCompile Include="Client\Cheats\Coords.cpp" />
+    <ClCompile Include="Client\Cheats\Criticals.cpp" />
     <ClCompile Include="Client\Cheats\Gamemode.cpp" />
     <ClCompile Include="Client\Cheats\Glide.cpp" />
     <ClCompile Include="Client\Cheats\GlideBoost.cpp" />
@@ -283,7 +284,6 @@
     <ClCompile Include="Client\Cheats\InventoryMove.cpp" />
     <ClCompile Include="Client\Cheats\Jesus.cpp" />
     <ClCompile Include="Client\Cheats\Jetpack.cpp" />
-    <ClCompile Include="Client\Cheats\JumpCrits.cpp" />
     <ClCompile Include="Client\Cheats\Killaura.cpp" />
     <ClCompile Include="Client\Cheats\LBfly.cpp" />
     <ClCompile Include="Client\Cheats\Longjump.cpp" />

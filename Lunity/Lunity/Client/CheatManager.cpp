@@ -33,7 +33,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Killaura());
 	cheats.push_back(new Triggerbot());
 	cheats.push_back(new Hitbox());
-	cheats.push_back(new JumpCrits());
+	cheats.push_back(new Criticals());
 
 	/* Movement */
 	cheats.push_back(new Jetpack());
