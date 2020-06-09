@@ -3,9 +3,12 @@
 #include "../Hooks/KeyHook.h"
 #include "../../SDK/EntList.h"
 #define PI 3.14159
+
 CCFly::CCFly() : Cheat::Cheat("CCFly", "Movement")
 {
+
 }
+
 float leCCFlySpeed = .3f;
 bool ccmoving = false;
 float addBy = 0;
@@ -22,9 +25,12 @@ float distance(Vector3* posA, Vector3* posB) {
 }
 
 void CCFly::onEnable() {
-	LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
-	lastPos = *Player->getPos();
-	//Player->getPos()->y += 5;
+	if (LunMem::getClientInstance() != NULL) {
+		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
+			LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
+			lastPos = *Player->getPos();
+		}
+	}
 }
 
 void CCFly::onGmTick(GameMode* gm)
@@ -81,20 +87,4 @@ void CCFly::onGmTick(GameMode* gm)
 			}
 		}
 	}
-}
-
-void CCFly::onPacket(void* Packet, PacketType type, bool* cancel)
-{
-	//if (enabled) {
-	//	if (type == PacketType::Movement || type == PacketType::PlayerAuthInput) {
-	//		LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
-	//		MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
-	//		pkt->onGround = true;
-	//		/*if (ticked % 3 == 0) {
-	//			addBy += 1.0f;
-	//		}
-	//		ticked++;*/
-	//		//Logger::log("Sent to CC");
-	//	}
-	//}
 }

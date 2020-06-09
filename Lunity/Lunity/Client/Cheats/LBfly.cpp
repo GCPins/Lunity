@@ -5,7 +5,7 @@
 float glidevar = 4.0f;
 //how high will the player be tped
 
-LBfly::LBfly() :Cheat::Cheat("LBfly", "Other")
+LBfly::LBfly() :Cheat::Cheat("LBfly", "Movement")
 {
 
 }
