@@ -9,7 +9,8 @@ CCFly::CCFly() : Cheat::Cheat("CCFly", "Movement")
 
 }
 
-float leCCFlySpeed = .3f;
+float gliderar = 1.0f;
+float leCCFlySpeed = .35f;
 bool ccmoving = false;
 float addBy = 0;
 int ticked = 0;
@@ -49,12 +50,13 @@ void CCFly::onGmTick(GameMode* gm)
 					//Player->animateHurt();
 					Player->swing();
 
-					MovePlayerPacket* pkt = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 1);
-					pkt->Pos.x += cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
-					pkt->Pos.y += (float)0;
-					pkt->Pos.z += sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
-					LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(pkt);
-					delete pkt;
+					//MovePlayerPacket* pkt = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 1);
+					//pkt->Pos.x += cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
+					//pkt->Pos.y += (float)0;
+					//pkt->Pos.z += sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
+					//LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(pkt);
+					//delete pkt;
+
 
 					Player->swing();
 
@@ -63,15 +65,12 @@ void CCFly::onGmTick(GameMode* gm)
 					Logger::log("Moving!");
 				}
 				if (ccmoving) {
+					Player->setSprinting(true);
 					//Move the player client
 					Player->VelocityXYZ.x = cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
-					Player->VelocityXYZ.y = (float)0;
+					Player->VelocityXYZ.y = 0.0f;
 					Player->VelocityXYZ.z = sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
-
-					if (ticked == 10) {
-						Player->VelocityXYZ.y += .5;
-					}
-
+						if (ticked == 15) { ticked = 0; }
 					ticked++;
 				}
 			}
@@ -83,6 +82,33 @@ void CCFly::onGmTick(GameMode* gm)
 					Player->VelocityXYZ.z = (float)0;
 					//Player->stopSwimming();
 					Logger::log("Stop Moving!");
+				}
+			}
+		}
+	}
+}
+
+void CCFly::onPacket(void* Packet, PacketType type, bool* cancel)
+{
+	if (enabled) {
+		if (ccmoving) {
+			if (type == PacketType::Movement) {
+				if (LunMem::getClientInstance() != NULL) {
+					LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
+					if (Player != NULL) {
+						RakNetInstance* Raknet = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
+						MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
+						pkt->Pos.y += gliderar;
+						if (ticked == 14)
+						{
+							pkt->Pos.y += 0.5f;
+						}
+						if (ticked == 15)
+						{
+							pkt->Pos.y -= 0.5f;
+						}
+						gliderar -= 0.001f;
+					}
 				}
 			}
 		}
