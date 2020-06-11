@@ -9,8 +9,8 @@ CCFly::CCFly() : Cheat::Cheat("CCFly", "Movement")
 
 }
 
-float gliderar = 2.0f;
-float leCCFlySpeed = .4f;
+float gliderar = 1.0f;
+float leCCFlySpeed = .35f;
 bool ccmoving = false;
 float addBy = 0;
 int ticked = 0;
@@ -65,20 +65,12 @@ void CCFly::onGmTick(GameMode* gm)
 					Logger::log("Moving!");
 				}
 				if (ccmoving) {
+					Player->setSprinting(true);
 					//Move the player client
 					Player->VelocityXYZ.x = cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
 					Player->VelocityXYZ.y = 0.0f;
 					Player->VelocityXYZ.z = sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
-
-						if (ticked == 15) { 
-						ticked = 0;						
-						Vector3 myPosition = *Player->getPos();
-						myPosition.y += 0.5f;
-						Player->setPos(&myPosition);
-						Player->VelocityXYZ.x = cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * 0.4f;
-						Player->VelocityXYZ.z = sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * 0.4f;
-						}
-
+						if (ticked == 15) { ticked = 0; }
 					ticked++;
 				}
 			}
@@ -107,9 +99,13 @@ void CCFly::onPacket(void* Packet, PacketType type, bool* cancel)
 						RakNetInstance* Raknet = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
 						MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
 						pkt->Pos.y += gliderar;
-						if (ticked == 15)
+						if (ticked == 14)
 						{
 							pkt->Pos.y += 0.5f;
+						}
+						if (ticked == 15)
+						{
+							pkt->Pos.y -= 0.5f;
 						}
 						gliderar -= 0.001f;
 					}
