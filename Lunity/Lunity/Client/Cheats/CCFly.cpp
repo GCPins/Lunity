@@ -63,6 +63,7 @@ void CCFly::onGmTick(GameMode* gm)
 					//Player->startSwimming();
 
 					Logger::log("Moving!");
+					ticked = 0;
 				}
 				if (ccmoving) {
 					Player->setSprinting(true);
@@ -70,7 +71,7 @@ void CCFly::onGmTick(GameMode* gm)
 					Player->VelocityXYZ.x = cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
 					Player->VelocityXYZ.y = 0.0f;
 					Player->VelocityXYZ.z = sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
-						if (ticked == 15) { ticked = 0; }
+						if (ticked == 20) { ticked = 0; }
 					ticked++;
 				}
 			}
@@ -99,11 +100,11 @@ void CCFly::onPacket(void* Packet, PacketType type, bool* cancel)
 						RakNetInstance* Raknet = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
 						MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
 						pkt->Pos.y += gliderar;
-						if (ticked == 14)
+						if (ticked < 10)
 						{
 							pkt->Pos.y += 0.5f;
 						}
-						if (ticked == 15)
+						if (ticked > 10)
 						{
 							pkt->Pos.y -= 0.5f;
 						}
