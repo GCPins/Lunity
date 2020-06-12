@@ -71,7 +71,16 @@ void ClickGui::onMouseButton(ulong button) {
 								leCheat->expandedInClickUi = !leCheat->expandedInClickUi;
 							}
 							if (leCheat->expandedInClickUi) {
-								cheatExpOff += 40;
+								vector<ToggleSetting*> toggleSettings = leCheat->toggleSettings;
+								for (int s = 0; s < toggleSettings.size(); s++) {
+									ToggleSetting* currentSetting = toggleSettings[s];
+									Color settingsRectColor = Color(.20, .20, .20, 1);
+									Rect settingRect = cheatRect.add(0, 10, 15, 0);
+									if (settingRect.contains(mx, my)) {
+										currentSetting->setValue(!currentSetting->getValue());
+									}
+									cheatExpOff += settingRect.height;
+								}
 							}
 						}
 					}
@@ -176,7 +185,24 @@ void ClickGui::onPostRender()
 					float settingsIcoWid = DrawUtils::getTextWidth(settingsIco, 1);
 					DrawUtils::drawText(Vector2(expRect.x + settingsIcoWid-1, expRect.y-2), &settingsIco, nullptr, 1);
 					if (leCheat->expandedInClickUi) {
-						cheatExpOff += 40;
+						vector<ToggleSetting*> toggleSettings = leCheat->toggleSettings;
+						for (int s = 0; s < toggleSettings.size(); s++) {
+							ToggleSetting* currentSetting = toggleSettings[s];
+							Color settingsRectColor = Color(.20, .20, .20, 1);
+							Rect settingRect = cheatRect.add(0, 10, 15, 0);
+							if (settingRect.contains(mx, my)) {
+								settingsRectColor.x += .2;
+								settingsRectColor.y += .2;
+								settingsRectColor.z += .2;
+							}
+							if (currentSetting->getValue()) {
+								settingsRectColor.z = 1;
+							}
+							string text = currentSetting->text;
+							DrawUtils::fillRectangle(settingRect, settingsRectColor, 1);
+							DrawUtils::drawText(Vector2(settingRect.x, settingRect.y), &text, nullptr, 1);
+							cheatExpOff += settingRect.height;
+						}
 					}
 				}
 			}
