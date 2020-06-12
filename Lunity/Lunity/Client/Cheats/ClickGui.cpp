@@ -17,7 +17,7 @@ vector<Frame*> windows;
 int frameWid = 90;
 ClickGui::ClickGui() : Cheat::Cheat("ClickGui", "Visuals")
 {
-	
+	keyBind = 0x2d;
 }
 
 short getMouseX()
@@ -48,38 +48,40 @@ void ClickGui::onMouseButton(ulong button) {
 				int y = getMouseY();
 				for (int i = 0; i < windows.size(); i++) {
 					Frame* window = windows[i];
-					Rect titleRect = window->titleRect;
-					if (titleRect.contains(Vector2(x, y))) {
-						dx = x - titleRect.x;
-						dy = y - titleRect.y;
-						beingDragged = window;
-					}
-					else {
-						int cheatExpOff = 0;
-						vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
-						for (int i = 0; i < cheatsInCat.size(); i++) {
-							Cheat* leCheat = cheatsInCat[i];
-							Rect cheatRect = Rect(titleRect.x, titleRect.y + titleRect.height + i * 10 + cheatExpOff, 75, 10);
-							int mx = getMouseX();
-							int my = getMouseY();
-							Color rectColor = Color(.15, .15, .15, 1);
-							if (cheatRect.contains(mx, my)) {
-								leCheat->enabled = !leCheat->enabled;
-							}
-							Rect expRect = Rect(titleRect.x + 75, titleRect.y + titleRect.height + (i == 0) + i * 10 + cheatExpOff, 15, 10);
-							if (expRect.contains(mx, my)) {
-								leCheat->expandedInClickUi = !leCheat->expandedInClickUi;
-							}
-							if (leCheat->expandedInClickUi) {
-								vector<ToggleSetting*> toggleSettings = leCheat->toggleSettings;
-								for (int s = 0; s < toggleSettings.size(); s++) {
-									ToggleSetting* currentSetting = toggleSettings[s];
-									Color settingsRectColor = Color(.20, .20, .20, 1);
-									Rect settingRect = cheatRect.add(0, 10, 15, 0);
-									if (settingRect.contains(mx, my)) {
-										currentSetting->setValue(!currentSetting->getValue());
+					if (window->expanded) {
+						Rect titleRect = window->titleRect;
+						if (titleRect.contains(Vector2(x, y))) {
+							dx = x - titleRect.x;
+							dy = y - titleRect.y;
+							beingDragged = window;
+						}
+						else {
+							int cheatExpOff = 0;
+							vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
+							for (int i = 0; i < cheatsInCat.size(); i++) {
+								Cheat* leCheat = cheatsInCat[i];
+								Rect cheatRect = Rect(titleRect.x, titleRect.y + titleRect.height + i * 10 + cheatExpOff, 75, 10);
+								int mx = getMouseX();
+								int my = getMouseY();
+								Color rectColor = Color(.15, .15, .15, 1);
+								if (cheatRect.contains(mx, my)) {
+									leCheat->enabled = !leCheat->enabled;
+								}
+								Rect expRect = Rect(titleRect.x + 75, titleRect.y + titleRect.height + (i == 0) + i * 10 + cheatExpOff, 15, 10);
+								if (expRect.contains(mx, my)) {
+									leCheat->expandedInClickUi = !leCheat->expandedInClickUi;
+								}
+								if (leCheat->expandedInClickUi) {
+									vector<ToggleSetting*> toggleSettings = leCheat->toggleSettings;
+									for (int s = 0; s < toggleSettings.size(); s++) {
+										ToggleSetting* currentSetting = toggleSettings[s];
+										Color settingsRectColor = Color(.20, .20, .20, 1);
+										Rect settingRect = cheatRect.add(0, 10, 15, 0);
+										if (settingRect.contains(mx, my)) {
+											currentSetting->setValue(!currentSetting->getValue());
+										}
+										cheatExpOff += settingRect.height;
 									}
-									cheatExpOff += settingRect.height;
 								}
 							}
 						}
@@ -118,17 +120,19 @@ void ClickGui::onMouseMove() {
 }
 
 void ClickGui::onEnable() {
-	if (windows.size() > 0) {
-		windows.clear();
+	if (windows.size() == 0) {
+		beingDragged == nullptr;
+		vector<string> categories = CheatManager::getCategories();
+		for (int i = 0; i < categories.size(); i++) {
+			windows.push_back(new Frame{
+				categories[i],
+				Rect(i * frameWid, 0, frameWid, 10)
+				});
+		}
 	}
-	beingDragged == nullptr;
-	vector<string> categories = CheatManager::getCategories();
-	for (int i = 0; i < categories.size(); i++) {
-		windows.push_back(new Frame{
-			categories[i],
-			Rect(i * frameWid, 0, frameWid, 10)
-		});
-	}
+}
+void ClickGui::onDisable() {
+
 }
 
 float rainbowProg = 0;
