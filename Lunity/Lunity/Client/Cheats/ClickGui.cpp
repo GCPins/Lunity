@@ -14,7 +14,7 @@ int dx;
 int dy;
 Frame* beingDragged = nullptr;
 vector<Frame*> windows;
-int frameWid = 75;
+int frameWid = 90;
 ClickGui::ClickGui() : Cheat::Cheat("ClickGui", "Visuals")
 {
 	
@@ -65,6 +65,10 @@ void ClickGui::onMouseButton(ulong button) {
 							Color rectColor = Color(.15, .15, .15, 1);
 							if (cheatRect.contains(mx, my)) {
 								leCheat->enabled = !leCheat->enabled;
+							}
+							Rect expRect = Rect(titleRect.x + 75, titleRect.y + titleRect.height + (i == 0) + i * 10 + cheatExpOff, 15, 10);
+							if (expRect.contains(mx, my)) {
+								leCheat->expandedInClickUi = !leCheat->expandedInClickUi;
 							}
 							if (leCheat->expandedInClickUi) {
 								cheatExpOff += 40;
@@ -138,6 +142,7 @@ void ClickGui::onPostRender()
 			float expWid = DrawUtils::getTextWidth(expIco, 1);
 			DrawUtils::drawText(Vector2(titleRect.x + titleRect.width - expWid, titleRect.y), &expIco, nullptr, 1);
 			int cheatExpOff = 0;
+			string settingsIco = string("...");
 			if (window->expanded) {
 				DrawUtils::fillRectangle(Rect(titleRect.x, titleRect.y + titleRect.height, titleRect.width, 1), DrawUtils::getRainbow(rainbowProg), 1);
 				vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
@@ -157,6 +162,19 @@ void ClickGui::onPostRender()
 					}
 					DrawUtils::fillRectangle(cheatRect, rectColor, 1);
 					DrawUtils::drawText(Vector2(cheatRect.x, cheatRect.y), &leCheat->name, nullptr, 1);
+					Rect expRect = Rect(titleRect.x+75, titleRect.y + titleRect.height + (i == 0) + i * 10 + cheatExpOff, 15, 10);
+					Color expColor = Color(.15, .15, .15, 1);
+					if (expRect.contains(mx, my)) {
+						expColor.x += .2;
+						expColor.y += .2;
+						expColor.z += .2;
+					}
+					if (leCheat->expandedInClickUi) {
+						expColor.z = 1;
+					}
+					DrawUtils::fillRectangle(expRect, expColor, 1);
+					float settingsIcoWid = DrawUtils::getTextWidth(settingsIco, 1);
+					DrawUtils::drawText(Vector2(expRect.x + settingsIcoWid-1, expRect.y-2), &settingsIco, nullptr, 1);
 					if (leCheat->expandedInClickUi) {
 						cheatExpOff += 40;
 					}
