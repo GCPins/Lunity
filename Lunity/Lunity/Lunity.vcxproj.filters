@@ -309,7 +309,10 @@
     <ClInclude Include="Client\Cheats\Criticals.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Setting.h">
+    <ClInclude Include="Client\SliderSetting.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\ToggleSetting.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
@@ -467,7 +470,10 @@
     <ClCompile Include="Client\Cheats\Criticals.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="Client\Setting.cpp">
+    <ClCompile Include="Client\SliderSetting.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\ToggleSetting.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

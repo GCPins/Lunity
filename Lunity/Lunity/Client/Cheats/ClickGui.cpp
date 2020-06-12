@@ -55,15 +55,19 @@ void ClickGui::onMouseButton(ulong button) {
 						beingDragged = window;
 					}
 					else {
+						int cheatExpOff = 0;
 						vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
 						for (int i = 0; i < cheatsInCat.size(); i++) {
 							Cheat* leCheat = cheatsInCat[i];
-							Rect cheatRect = Rect(titleRect.x, titleRect.y + titleRect.height + i * 10, 75, 10);
+							Rect cheatRect = Rect(titleRect.x, titleRect.y + titleRect.height + i * 10 + cheatExpOff, 75, 10);
 							int mx = getMouseX();
 							int my = getMouseY();
 							Color rectColor = Color(.15, .15, .15, 1);
 							if (cheatRect.contains(mx, my)) {
 								leCheat->enabled = !leCheat->enabled;
+							}
+							if (leCheat->expandedInClickUi) {
+								cheatExpOff += 40;
 							}
 						}
 					}
@@ -133,12 +137,13 @@ void ClickGui::onPostRender()
 			}
 			float expWid = DrawUtils::getTextWidth(expIco, 1);
 			DrawUtils::drawText(Vector2(titleRect.x + titleRect.width - expWid, titleRect.y), &expIco, nullptr, 1);
+			int cheatExpOff = 0;
 			if (window->expanded) {
 				DrawUtils::fillRectangle(Rect(titleRect.x, titleRect.y + titleRect.height, titleRect.width, 1), DrawUtils::getRainbow(rainbowProg), 1);
 				vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
 				for (int i = 0; i < cheatsInCat.size(); i++) {
 					Cheat* leCheat = cheatsInCat[i];
-					Rect cheatRect = Rect(titleRect.x, titleRect.y + titleRect.height + (i==0) + i * 10, 75, 10);
+					Rect cheatRect = Rect(titleRect.x, titleRect.y + titleRect.height + (i==0) + i * 10 + cheatExpOff, 75, 10);
 					int mx = getMouseX();
 					int my = getMouseY();
 					Color rectColor = Color(.15, .15, .15, 1);
@@ -152,6 +157,9 @@ void ClickGui::onPostRender()
 					}
 					DrawUtils::fillRectangle(cheatRect, rectColor, 1);
 					DrawUtils::drawText(Vector2(cheatRect.x, cheatRect.y), &leCheat->name, nullptr, 1);
+					if (leCheat->expandedInClickUi) {
+						cheatExpOff += 40;
+					}
 				}
 			}
 		}

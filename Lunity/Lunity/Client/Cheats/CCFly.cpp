@@ -10,7 +10,7 @@ CCFly::CCFly() : Cheat::Cheat("CCFly", "Movement")
 }
 
 float gliderar = 1.0f;
-float leCCFlySpeed = .35f;
+float leCCFlySpeed = 0.35f;
 bool ccmoving = false;
 float addBy = 0;
 int ticked = 0;
