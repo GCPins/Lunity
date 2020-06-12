@@ -8,7 +8,7 @@
 
 static std::chrono::time_point<std::chrono::steady_clock> savedTime;
 bool toggle = false;
-bool onlyPrintOnce = false;
+//bool onlyPrintOnce = false;
 
 HiveGlide::HiveGlide() :Cheat::Cheat("HiveGlide", "Movement")
 {
@@ -87,12 +87,13 @@ void HiveGlide::onPacket(void* Packet, PacketType type, bool* cancel) {
 
 void HiveGlide::onEnable()
 {
-	Cheat::onEnable();
+	/*Cheat::onEnable();
 	if (!onlyPrintOnce) {
 		Logger::log("Made by the help of R3coil");
 		onlyPrintOnce = true;
 	}
 	savedTime = std::chrono::high_resolution_clock::now();
+	*/
 }
 
 void HiveGlide::onDisable() {
