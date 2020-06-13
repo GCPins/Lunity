@@ -4,6 +4,7 @@
 #include "../Hooks/MouseHook.h"
 #include "../../SDK/DrawUtils.h"
 #include "../../SDK/LunMath.h"
+#include <iomanip>
 
 struct Frame {
 	string title;
@@ -36,6 +37,7 @@ short getMouseY()
 	if (my < 0 || my > gd->ScaledResolution.y) {
 		my = 0;
 	}
+	my += 1;
 	return my;
 }
 
@@ -48,14 +50,14 @@ void ClickGui::onMouseButton(ulong button) {
 				int y = getMouseY();
 				for (int i = 0; i < windows.size(); i++) {
 					Frame* window = windows[i];
-					if (window->expanded) {
-						Rect titleRect = window->titleRect;
-						if (titleRect.contains(Vector2(x, y))) {
-							dx = x - titleRect.x;
-							dy = y - titleRect.y;
-							beingDragged = window;
-						}
-						else {
+					Rect titleRect = window->titleRect;
+					if (titleRect.contains(Vector2(x, y))) {
+						dx = x - titleRect.x;
+						dy = y - titleRect.y;
+						beingDragged = window;
+					}
+					else {
+						if (window->expanded) {
 							int cheatExpOff = 0;
 							vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
 							for (int i = 0; i < cheatsInCat.size(); i++) {
@@ -135,6 +137,36 @@ void ClickGui::onDisable() {
 
 }
 
+void drawToggleSetting(ToggleSetting* currentSetting, Rect cheatRect, int* cheatExpOff, int mx, int my) {
+	Rect settingRect = cheatRect.add(0, *cheatExpOff + 10, 15, 0);
+	Color settingsRectColor = Color(.20, .20, .20, 1);
+	if (settingRect.contains(mx, my)) {
+		settingsRectColor.x += .2;
+		settingsRectColor.y += .2;
+		settingsRectColor.z += .2;
+	}
+	if (currentSetting->getValue()) {
+		settingsRectColor.z = 1;
+	}
+	string text = currentSetting->text;
+	DrawUtils::fillRectangle(settingRect, settingsRectColor, 1);
+	DrawUtils::drawText(Vector2(settingRect.x, settingRect.y), &text, nullptr, 1);
+	*cheatExpOff += settingRect.height;
+}
+void drawSliderSetting(SliderSetting* currentSetting, Rect cheatRect, int* cheatExpOff) {
+	Rect settingRect = cheatRect.add(0, *cheatExpOff + 10, 15, 10);
+	string text = currentSetting->text;
+	std::stringstream ss;
+	ss << fixed << setprecision(2) << currentSetting->getValue();
+	string valueText = ss.str();
+	float valWid = DrawUtils::getTextWidth(valueText, 1);
+	Color settingsRectColor = Color(.20, .20, .20, 1);
+	DrawUtils::fillRectangle(settingRect, settingsRectColor, 1);
+	DrawUtils::drawText(Vector2(settingRect.x, settingRect.y), &text, nullptr, 1);
+	DrawUtils::drawText(Vector2(settingRect.x + 90 - valWid, settingRect.y), &valueText, nullptr, 1);
+	*cheatExpOff += settingRect.height;
+}
+
 float rainbowProg = 0;
 void ClickGui::onPostRender()
 {
@@ -191,21 +223,11 @@ void ClickGui::onPostRender()
 					if (leCheat->expandedInClickUi) {
 						vector<ToggleSetting*> toggleSettings = leCheat->toggleSettings;
 						for (int s = 0; s < toggleSettings.size(); s++) {
-							ToggleSetting* currentSetting = toggleSettings[s];
-							Color settingsRectColor = Color(.20, .20, .20, 1);
-							Rect settingRect = cheatRect.add(0, 10, 15, 0);
-							if (settingRect.contains(mx, my)) {
-								settingsRectColor.x += .2;
-								settingsRectColor.y += .2;
-								settingsRectColor.z += .2;
-							}
-							if (currentSetting->getValue()) {
-								settingsRectColor.z = 1;
-							}
-							string text = currentSetting->text;
-							DrawUtils::fillRectangle(settingRect, settingsRectColor, 1);
-							DrawUtils::drawText(Vector2(settingRect.x, settingRect.y), &text, nullptr, 1);
-							cheatExpOff += settingRect.height;
+							drawToggleSetting(toggleSettings[s], cheatRect, &cheatExpOff, mx, my);
+						}
+						vector<SliderSetting*> sliderSettings = leCheat->sliderSettings;
+						for (int s = 0; s < sliderSettings.size(); s++) {
+							drawSliderSetting(sliderSettings[s], cheatRect, &cheatExpOff);
 						}
 					}
 				}
