@@ -21,7 +21,6 @@ void Instabreak::onGmTick(GameMode* gm) {
 				blockPos.y = lookingBlockY;
 				blockPos.z = lookingBlockZ;
 				gm->destroyBlock(&blockPos, 1);
-				Logger::log("Broke block");
 			}
 		}
 	}
