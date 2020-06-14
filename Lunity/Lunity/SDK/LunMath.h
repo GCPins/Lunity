@@ -1,4 +1,6 @@
 #pragma once
+#include <glm/glm.hpp>
+#define PI 3.1415927f
 
 struct Vector2 {
 	union {
@@ -44,6 +46,16 @@ struct Vector3 {
 		newVec.y = this->y + vec.y;
 		newVec.z = this->z + vec.z;
 		return newVec;
+	}
+	Vector3 abs() {
+		return Vector3(std::abs(x), std::abs(y), std::abs(z));
+	}
+	glm::vec3 toGlmVec() {
+		return glm::vec3(x, y, z);
+	}
+	float DotProduct(Vector3 dst)
+	{
+		return x * dst.x + y * dst.y + z * dst.z;
 	}
 };
 struct Vector3i {
