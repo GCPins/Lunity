@@ -189,6 +189,7 @@
     <ClInclude Include="Client\Cheats\ClickGui.h" />
     <ClInclude Include="Client\Cheats\ClickTP.h" />
     <ClInclude Include="Client\Cheats\Coords.h" />
+    <ClInclude Include="Client\Cheats\CPULimiter.h" />
     <ClInclude Include="Client\Cheats\Criticals.h" />
     <ClInclude Include="Client\Cheats\Freecam.h" />
     <ClInclude Include="Client\Cheats\Gamemode.h" />
@@ -275,6 +276,7 @@
     <ClCompile Include="Client\Cheats\ClickGui.cpp" />
     <ClCompile Include="Client\Cheats\ClickTP.cpp" />
     <ClCompile Include="Client\Cheats\Coords.cpp" />
+    <ClCompile Include="Client\Cheats\CPULimiter.cpp" />
     <ClCompile Include="Client\Cheats\Criticals.cpp" />
     <ClCompile Include="Client\Cheats\Freecam.cpp" />
     <ClCompile Include="Client\Cheats\Gamemode.cpp" />

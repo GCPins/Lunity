@@ -49,6 +49,7 @@
 /* Other */
 
 #include "Cheats/Uninject.h"
+#include "Cheats/CPULimiter.h"
 #include "Cheats/MineplexBP.h"
 #include "Cheats/PacketLogger.h"
 #include "Cheats/NoPacket.h"
@@ -58,8 +59,13 @@
 #include "Hooks/NetworkHook.h"
 #include "Cheats/TestModule.h"
 
+
+
+#include <chrono>
+
 class CheatManager {
 public:
+	static bool cpuLimiter;
 	static vector<Cheat*> getCheats();
 	static vector<Cheat*> getCheatsOfCategory(string category);
 	static vector<string> getCategories();

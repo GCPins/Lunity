@@ -3,6 +3,9 @@
 #include "../SDK/DrawUtils.h"
 #include "Hooks/NetworkHook.h"
 
+std::chrono::time_point<std::chrono::steady_clock> oldTime = std::chrono::high_resolution_clock::now();
+
+bool CheatManager::cpuLimiter = false;
 vector<Cheat*> cheats;
 vector<string> categories;
 vector<Cheat*> CheatManager::getCheats()
@@ -72,6 +75,7 @@ void CheatManager::loadCheats()
 
 	/* Other */
 	cheats.push_back(new Uninject());
+	cheats.push_back(new CPULimiter());
 	cheats.push_back(new MineplexBP());
 	cheats.push_back(new PacketLogger());
 	cheats.push_back(new NoPacket());
@@ -91,8 +95,19 @@ void CheatManager::loadCheats()
 void CheatManager::tickCheats()
 {
 	//logHex("Cheat vec size", getCheats().size());
-	for (uint i = 0; i < cheats.size(); i++) {
-		cheats[i]->onLoop();
+	if (CheatManager::cpuLimiter) {
+		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - oldTime) >= std::chrono::milliseconds{ 100 }) {
+			for (uint i = 0; i < cheats.size(); i++) {
+				cheats[i]->onLoop();
+			}
+
+			oldTime = std::chrono::high_resolution_clock::now();
+		}
+	}
+	else {
+		for (uint i = 0; i < cheats.size(); i++) {
+			cheats[i]->onLoop();
+		}
 	}
 }
 
