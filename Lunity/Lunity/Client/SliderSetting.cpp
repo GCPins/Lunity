@@ -28,6 +28,14 @@ SliderSetting::SliderSetting(string text, float* value, float min, float max)
 
 void SliderSetting::setValue(float value)
 {
+	if (value > max) {
+		*this->value = max;
+		return;
+	}
+	if (value < min) {
+		*this->value = min;
+		return;
+	}
 	*this->value = value;
 }
 

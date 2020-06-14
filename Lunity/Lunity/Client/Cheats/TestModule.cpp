@@ -3,7 +3,7 @@
 
 bool testToggle = false;
 
-float testSliderValue = 0.0f;
+float testSliderValue = -1.0f;
 
 TestModule::TestModule() :Cheat::Cheat("TestModule", "Other")
 {
