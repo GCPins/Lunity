@@ -165,6 +165,9 @@ void drawSliderSetting(SliderSetting* currentSetting, Rect cheatRect, int* cheat
 	DrawUtils::drawText(Vector2(settingRect.x, settingRect.y), &text, nullptr, 1);
 	DrawUtils::drawText(Vector2(settingRect.x + 90 - valWid, settingRect.y), &valueText, nullptr, 1);
 	*cheatExpOff += settingRect.height;
+	Rect sliderRect = settingRect.add(0, 10, -85, -10);
+	Color sliderRectColor = Color(.20, .20, 1, 1);
+	DrawUtils::fillRectangle(sliderRect, sliderRectColor, 1);
 }
 
 float rainbowProg = 0;
