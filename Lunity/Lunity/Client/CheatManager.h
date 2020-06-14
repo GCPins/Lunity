@@ -52,6 +52,7 @@
 #include "Cheats/MineplexBP.h"
 #include "Cheats/PacketLogger.h"
 #include "Cheats/NoPacket.h"
+#include "Cheats/Freecam.h"
 #include "Cheats/CCGodMode.h"
 
 #include "Hooks/NetworkHook.h"

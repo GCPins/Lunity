@@ -7,8 +7,7 @@ class WarpShift : public Cheat
 {
 public:
 	WarpShift();
-	void onTick();
 	void onEnable();
-	void onPacket(void* Packet, PacketType type, bool* cancel);
+	void onGmTick(GameMode* gm);
 };
 

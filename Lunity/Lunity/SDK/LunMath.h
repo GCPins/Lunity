@@ -29,9 +29,9 @@ struct Vector3 {
 struct Vector3i {
 	union {
 		struct {
-			float x, y, z;
+			int x, y, z;
 		};
-		float arr[3];
+		int arr[3];
 	};
 };
 struct Vector4 {
