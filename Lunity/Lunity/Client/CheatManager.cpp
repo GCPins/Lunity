@@ -96,7 +96,7 @@ void CheatManager::tickCheats()
 {
 	//logHex("Cheat vec size", getCheats().size());
 	if (CheatManager::cpuLimiter) {
-		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - oldTime) >= std::chrono::milliseconds{ 100 }) {
+		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - oldTime) >= std::chrono::milliseconds{ 130 }) {
 			for (uint i = 0; i < cheats.size(); i++) {
 				cheats[i]->onLoop();
 			}
