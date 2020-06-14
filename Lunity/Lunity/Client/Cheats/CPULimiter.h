@@ -5,5 +5,5 @@
 class CPULimiter : public Cheat {
 public:
 	CPULimiter();
-	void onLoop();
+	void onTick();
 };

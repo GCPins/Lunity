@@ -8,6 +8,7 @@ public:
 	float* value;
 	float min;
 	float max;
+	bool dragging;
 	SliderSetting(string text);
 	SliderSetting(string text, float* value);
 	SliderSetting(string text, float* value, float min, float max);
