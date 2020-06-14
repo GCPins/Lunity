@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 #include "Cheat.h"
 
@@ -71,4 +72,14 @@ void Cheat::onPostRender()
 
 void Cheat::onPacket(void* Packet, PacketType type, bool* cancel)
 {
+}
+
+void Cheat::registerToggleSetting(string text, bool* value)
+{
+	toggleSettings.push_back(new ToggleSetting(text, value));
+}
+
+void Cheat::registerSliderSetting(string text, float* value, float min, float max)
+{
+	sliderSettings.push_back(new SliderSetting(text, value, min, max));
 }

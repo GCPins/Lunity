@@ -11,6 +11,6 @@ public:
 	void onTick();
 	void onEnable();
 	void onDisable();
-	void onGamemodeTick(GameMode *GM);
+	void onGmTick(GameMode* GM);
 };
 

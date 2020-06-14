@@ -2,9 +2,10 @@
 #include "ClickTP.h"
 #include "../Hooks/MouseHook.h"
 
+bool useless = false;
 ClickTP::ClickTP() :Cheat::Cheat("ClickTP", "Player")
 {
-
+	registerToggleSetting("Test", &useless);
 }
 
 void ClickTP::onLoop()

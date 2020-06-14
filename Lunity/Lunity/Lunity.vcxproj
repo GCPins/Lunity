@@ -226,6 +226,8 @@
     <ClInclude Include="Client\Hooks\GamemodeHook.h" />
     <ClInclude Include="Client\Cheats\PacketLogger.h" />
     <ClInclude Include="Client\Hooks\MouseHook.h" />
+    <ClInclude Include="Client\SliderSetting.h" />
+    <ClInclude Include="Client\ToggleSetting.h" />
     <ClInclude Include="SDK\DrawUtils.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Client\Hooks\KeyHook.h" />
@@ -307,6 +309,8 @@
     <ClCompile Include="Client\Cheats\Velocity.cpp" />
     <ClCompile Include="Client\Cheats\WarpShift.cpp" />
     <ClCompile Include="Client\Hooks\NetworkHook.cpp" />
+    <ClCompile Include="Client\SliderSetting.cpp" />
+    <ClCompile Include="Client\ToggleSetting.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Client\Hooks\KeyHook.cpp" />
     <ClCompile Include="Client\Hooks\RenderHook.cpp" />

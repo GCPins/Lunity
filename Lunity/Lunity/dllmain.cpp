@@ -29,7 +29,6 @@ void ExecLunity(LPVOID lpParam) {
     NetworkHook::installHook();
     while (true) {
         CheatManager::tickCheats();
-        Sleep(1);
     }
 }
 

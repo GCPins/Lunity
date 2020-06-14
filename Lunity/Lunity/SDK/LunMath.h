@@ -85,6 +85,9 @@ struct Rect : Vector4 {
 		this->z = pos.x + width;
 		this->w = pos.y + height;
 	}
+	Rect add(float x, float y, float width, float height) {
+		return Rect(this->x + x, this->y + y, this->width + width, this->height + height);
+	}
 };
 
 class LunMath {

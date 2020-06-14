@@ -7,6 +7,7 @@ public:
 	void onMouseButton(ulong button);
 	void onMouseMove();
 	void onEnable();
+	void onDisable();
 	void onPostRender();
 };
 
