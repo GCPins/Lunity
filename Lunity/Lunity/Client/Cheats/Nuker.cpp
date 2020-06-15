@@ -4,9 +4,11 @@
 #include "../Hooks/KeyHook.h"
 #include "../Hooks/MouseHook.h"
 
+float radiusSizeF = 6;
+
 Nuker::Nuker() :Cheat::Cheat("Nuker", "Player")
 {
-
+	registerSliderSetting("Radius", &radiusSizeF, 1.0f, 20.0f);
 }
 
 void Nuker::onGmTick(GameMode* gm) {
@@ -25,9 +27,9 @@ void Nuker::onGmTick(GameMode* gm) {
 
 				gm->destroyBlock(&blockPos, 1);
 
-				Vector3i newBlockPos = blockPos;
+				int radiusSize = (int)radiusSizeF;
 
-				int radiusSize = 6;
+				Vector3i newBlockPos = blockPos;
 
 				for (int varX = blockPos.x; varX < blockPos.x + radiusSize; varX++) {
 					for (int varZ = blockPos.z; varZ < blockPos.z + radiusSize; varZ++) {
