@@ -3,9 +3,11 @@
 #include "../Hooks/KeyHook.h"
 
 float walkSpeed;
+bool supportAutoSprint = true;
 
 InventoryMove::InventoryMove() :Cheat::Cheat("InventoryMove", "Player")
 {
+	registerToggleSetting("Allow Sprinting", &supportAutoSprint);
 }
 
 void InventoryMove::onTick()
@@ -51,8 +53,13 @@ void InventoryMove::onTick()
 				}
 
 				if (KeyHook::KeyState(0x57) | KeyHook::KeyState(0x53) | KeyHook::KeyState(0x41) | KeyHook::KeyState(0x44)) {
-					if (Player->isSprinting()) {
-						walkSpeed = 0.35f;
+					if (supportAutoSprint) {
+						if (Player->isSprinting()) {
+							walkSpeed = 0.35f;
+						}
+						else {
+							walkSpeed = 0.235f;
+						}
 					}
 					else {
 						walkSpeed = 0.235f;
