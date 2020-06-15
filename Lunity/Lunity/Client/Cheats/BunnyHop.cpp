@@ -7,6 +7,7 @@ float bunnyHopSpeed = 0.42f;
 
 BunnyHop::BunnyHop() :Cheat::Cheat("BunnyHop", "Movement")
 {
+	registerSliderSetting("Speed", &bunnyHopSpeed, 0.1f, 2.f);
 }
 
 void BunnyHop::onGmTick(GameMode* gm)
