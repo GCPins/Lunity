@@ -10,11 +10,6 @@ LBfly::LBfly() :Cheat::Cheat("LBfly", "Movement")
 
 }
 
-void LBfly::onLoop()
-{
-	Cheat::onLoop();
-}
-
 void LBfly::onTick()
 {
 	Cheat::onTick();
@@ -29,20 +24,6 @@ void LBfly::onTick()
 			}
 		}
 	}
-}
-
-void LBfly::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void LBfly::onDisable()
-{
-	Cheat::onDisable();
-}
-
-void LBfly::onGamemodeTick(GameMode* GM) {
-	//
 }
 
 void LBfly::onPacket(void* Packet, PacketType type, bool* cancel)
