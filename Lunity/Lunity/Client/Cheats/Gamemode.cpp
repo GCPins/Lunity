@@ -17,9 +17,8 @@ void Gamemode::onEnable() {
 	}
 }
 
-void Gamemode::onTick()
+void Gamemode::onGmTick(GameMode* gm)
 {
-	Cheat::onTick();
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			LunMem::getClientInstance()->LocalPlayer->setPlayerGameType(1);
