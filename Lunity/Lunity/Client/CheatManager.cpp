@@ -66,6 +66,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Gamemode());
 	cheats.push_back(new InventoryMove());
 	cheats.push_back(new NoFall());
+	cheats.push_back(new Phase());
 
 	/* Visuals */
 	cheats.push_back(new TabGUI());
