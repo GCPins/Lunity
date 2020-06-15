@@ -727,7 +727,7 @@ public:
 	char pad_12C8[488]; //0x12C8
 	class PlayerUIContainer PlayerUIContainer; //0x14B0
 	char pad_15E0[2196]; //0x15E0
-	uint64_t currentGamemode; //0x1E74
+	int currentGamemode; //0x1E74
 
 	virtual void Function0();
 	virtual void Function1();

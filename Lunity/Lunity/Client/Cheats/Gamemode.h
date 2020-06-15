@@ -7,5 +7,6 @@ public:
 	Gamemode();
 	void onTick();
 	void onDisable();
+	void onEnable();
 };
 
