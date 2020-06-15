@@ -5,8 +5,6 @@ class Jesus : public Cheat
 {
 public:
 	Jesus();
-	void onEnable();
-	void onDisable();
 	void onTick();
 };
 

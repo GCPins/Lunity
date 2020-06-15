@@ -7,16 +7,6 @@ Scaffold::Scaffold() :Cheat::Cheat("Scaffold", "Player")
 
 }
 
-void Scaffold::onLoop()
-{
-	Cheat::onLoop();
-}
-
-void Scaffold::onTick()
-{
-	Cheat::onTick();
-}
-
 Vector3i* blockPos = new Vector3i;
 Vector3 currentPos;
 
@@ -103,18 +93,4 @@ void Scaffold::onGmTick(GameMode* gm) {
 			}
 		}
 	}
-}
-
-void Scaffold::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void Scaffold::onDisable()
-{
-	Cheat::onDisable();
-}
-
-void Scaffold::onKey(ulong key) {
-
 }

@@ -4,17 +4,7 @@
 
 Triggerbot::Triggerbot() :Cheat::Cheat("Triggerbot", "Combat")
 {
-	//keyBind = 0x4b;
-}
 
-void Triggerbot::onLoop()
-{
-	Cheat::onLoop();
-}
-
-void Triggerbot::onTick()
-{
-	Cheat::onTick();
 }
 
 void Triggerbot::onGmTick(GameMode* gm) {
@@ -29,17 +19,4 @@ void Triggerbot::onGmTick(GameMode* gm) {
 			}
 		}
 	}
-}
-
-void Triggerbot::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void Triggerbot::onDisable()
-{
-	Cheat::onDisable();
-}
-
-void Triggerbot::onKey(ulong key) {
 }

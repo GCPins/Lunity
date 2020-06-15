@@ -5,12 +5,7 @@
 
 Hitbox::Hitbox() :Cheat::Cheat("Hitbox", "Combat")
 {
-	//keyBind = 0x4b;
-}
 
-void Hitbox::onLoop()
-{
-	Cheat::onLoop();
 }
 
 void Hitbox::onTick()
@@ -41,7 +36,4 @@ void Hitbox::onDisable()
 			Entity->setSize((float)0.6, (float)1.8);
 		}
 	}
-}
-
-void Hitbox::onKey(ulong key) {
 }

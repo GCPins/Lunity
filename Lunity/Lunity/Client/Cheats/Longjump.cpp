@@ -23,13 +23,3 @@ void Longjump::onTick()
 		}
 	}
 }
-
-void Longjump::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void Longjump::onDisable()
-{
-	Cheat::onDisable();
-}

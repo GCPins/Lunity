@@ -6,10 +6,5 @@ class Instabreak : public Cheat
 public:
 	Instabreak();
 	void onGmTick(GameMode* gm);
-	void onLoop();
-	void onTick();
-	void onEnable();
-	void onDisable();
-	void onKey(ulong key);
 };
 

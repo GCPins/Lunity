@@ -25,27 +25,3 @@ void Instabreak::onGmTick(GameMode* gm) {
 		}
 	}
 }
-
-void Instabreak::onLoop()
-{
-	Cheat::onLoop();
-}
-
-void Instabreak::onTick()
-{
-	Cheat::onTick();
-}
-
-void Instabreak::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void Instabreak::onDisable()
-{
-	Cheat::onDisable();
-}
-
-void Instabreak::onKey(ulong key) {
-
-}

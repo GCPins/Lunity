@@ -9,11 +9,6 @@ Speed::Speed() :Cheat::Cheat("Speed", "Movement")
 {
 }
 
-void Speed::onLoop()
-{
-	Cheat::onLoop();
-}
-
 void Speed::onTick()
 {
 	Cheat::onTick();
@@ -61,18 +56,4 @@ void Speed::onTick()
 			}
 		}
 	}
-}
-
-void Speed::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void Speed::onDisable()
-{
-	Cheat::onDisable();
-}
-
-void Speed::onKey(ulong key) {
-
 }

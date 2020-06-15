@@ -8,7 +8,5 @@ class MineplexBP : public Cheat
 public:
 	MineplexBP();
 	void onGmTick(GameMode* gm);
-	void onEnable();
-	void onDisable();
 };
 

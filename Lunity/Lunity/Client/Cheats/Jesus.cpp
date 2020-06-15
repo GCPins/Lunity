@@ -6,16 +6,6 @@ Jesus::Jesus() :Cheat::Cheat("Jesus", "Movement")
 
 }
 
-void Jesus::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void Jesus::onDisable()
-{
-	Cheat::onDisable();
-}
-
 void Jesus::onTick()
 {
 	Cheat::onTick();

@@ -9,11 +9,6 @@ BunnyHop::BunnyHop() :Cheat::Cheat("BunnyHop", "Movement")
 {
 }
 
-void BunnyHop::onLoop()
-{
-	Cheat::onLoop();
-}
-
 void BunnyHop::onGmTick(GameMode* gm)
 {
 	if (LunMem::getClientInstance() != NULL) {
@@ -64,18 +59,4 @@ void BunnyHop::onGmTick(GameMode* gm)
 			}
 		}
 	}
-}
-
-void BunnyHop::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void BunnyHop::onDisable()
-{
-	Cheat::onDisable();
-}
-
-void BunnyHop::onKey(ulong key) {
-
 }

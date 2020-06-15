@@ -5,10 +5,8 @@ class Hitbox : public Cheat
 {
 public:
 	Hitbox();
-	void onLoop();
 	void onTick();
 	void onEnable();
 	void onDisable();
-	void onKey(ulong key);
 };
 

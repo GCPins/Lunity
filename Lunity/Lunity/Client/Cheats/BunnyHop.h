@@ -5,11 +5,6 @@ class BunnyHop : public Cheat
 {
 public:
 	BunnyHop();
-	void onLoop();
 	void onGmTick(GameMode* gm);
-	//void onTick();
-	void onEnable();
-	void onDisable();
-	void onKey(ulong key);
 };
 

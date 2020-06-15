@@ -47,7 +47,6 @@ void CheatManager::loadCheats()
 	cheats.push_back(new NoWeb());
 	cheats.push_back(new Speed());
 	cheats.push_back(new Jesus());
-	cheats.push_back(new GlideBoost());
 	cheats.push_back(new Glide());
 	cheats.push_back(new AutoWalk());
 	cheats.push_back(new NoWater());

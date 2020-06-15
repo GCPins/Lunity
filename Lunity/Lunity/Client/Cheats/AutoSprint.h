@@ -5,10 +5,6 @@ class AutoSprint : public Cheat
 {
 public:
 	AutoSprint();
-	void onLoop();
-	void onTick();
-	void onEnable();
-	void onDisable();
-	void onKey(ulong key);
+	void onGmTick(GameMode* gm);
 };
 

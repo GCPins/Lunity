@@ -9,16 +9,6 @@ Nuker::Nuker() :Cheat::Cheat("Nuker", "Player")
 
 }
 
-void Nuker::onLoop()
-{
-	Cheat::onLoop();
-}
-
-void Nuker::onTick()
-{
-	Cheat::onTick();
-}
-
 void Nuker::onGmTick(GameMode* gm) {
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
@@ -109,18 +99,4 @@ void Nuker::onGmTick(GameMode* gm) {
 			}
 		}
 	}
-}
-
-void Nuker ::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void Nuker::onDisable()
-{
-	Cheat::onDisable();
-}
-
-void Nuker::onKey(ulong key) {
-
 }

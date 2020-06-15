@@ -18,7 +18,6 @@
 #include "Cheats/NoWeb.h"
 #include "Cheats/Speed.h"
 #include "Cheats/Jesus.h"
-#include "Cheats/GlideBoost.h"
 #include "Cheats/Glide.h"
 #include "Cheats/AutoWalk.h"
 #include "Cheats/NoWater.h"

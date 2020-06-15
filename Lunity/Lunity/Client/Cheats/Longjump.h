@@ -8,7 +8,5 @@ class Longjump : public Cheat
 public:
 	Longjump();
 	void onTick();
-	void onEnable();
-	void onDisable();
 };
 

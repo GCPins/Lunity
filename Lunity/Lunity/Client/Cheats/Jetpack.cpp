@@ -11,11 +11,6 @@ Jetpack::Jetpack() :Cheat::Cheat("Jetpack", "Movement")
 	enabled = true;
 }
 
-void Jetpack::onLoop()
-{
-	Cheat::onLoop();
-}
-
 void Jetpack::onTick()
 {
 	Cheat::onTick();
@@ -30,17 +25,4 @@ void Jetpack::onTick()
 			}
 		}
 	}
-}
-
-void Jetpack::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void Jetpack::onDisable()
-{
-	Cheat::onDisable();
-}
-
-void Jetpack::onKey(ulong key) {
 }

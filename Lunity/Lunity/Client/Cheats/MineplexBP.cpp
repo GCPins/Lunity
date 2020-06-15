@@ -5,14 +5,6 @@ MineplexBP::MineplexBP() : Cheat::Cheat("MineplexBP", "Other")
 {
 }
 
-void MineplexBP::onEnable() {
-	Cheat::onEnable();
-}
-
-void MineplexBP::onDisable() {
-	Cheat::onDisable();
-}
-
 void MineplexBP::onGmTick(GameMode* gm) {
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {

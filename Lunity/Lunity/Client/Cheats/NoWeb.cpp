@@ -6,16 +6,6 @@ NoWeb::NoWeb() :Cheat::Cheat("NoWeb", "Movement")
 
 }
 
-void NoWeb::onLoop()
-{
-	Cheat::onLoop();
-}
-
-void NoWeb::onTick()
-{
-	Cheat::onTick();
-}
-
 void NoWeb::onEnable()
 {
 	Cheat::onEnable();
@@ -26,8 +16,4 @@ void NoWeb::onDisable()
 {
 	Cheat::onDisable();
 	LunMem::Patch((BYTE*)(LunMem::getBaseModule() + 0x1264065), (BYTE*)"\xF3\x0F\x11\x89\x10\x02\x00\x00", 8);
-}
-
-void NoWeb::onKey(ulong key) {
-
 }

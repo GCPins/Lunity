@@ -8,11 +8,6 @@ ClickTP::ClickTP() :Cheat::Cheat("ClickTP", "Player")
 	registerToggleSetting("Test", &useless);
 }
 
-void ClickTP::onLoop()
-{
-	Cheat::onLoop();
-}
-
 bool clickedOnce = false;
 
 void ClickTP::onTick()
@@ -41,17 +36,4 @@ void ClickTP::onTick()
 			}
 		}
 	}
-}
-
-void ClickTP::onEnable()
-{
-	Cheat::onEnable();
-}
-
-void ClickTP::onDisable()
-{
-	Cheat::onDisable();
-}
-
-void ClickTP::onKey(ulong key) {
 }

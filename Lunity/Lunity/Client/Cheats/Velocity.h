@@ -5,10 +5,7 @@ class Velocity : public Cheat
 {
 public:
 	Velocity();
-	void onLoop();
-	void onTick();
 	void onEnable();
 	void onDisable();
-	void onKey(ulong key);
 };
 
