@@ -5,7 +5,7 @@ class Gamemode: public Cheat
 {
 public:
 	Gamemode();
-	void onTick();
+	void onGmTick(GameMode* gm);
 	void onDisable();
 	void onEnable();
 };
