@@ -692,7 +692,9 @@ public:
 	bool OnGround; //0x0178
 	char pad_0179[27]; //0x0179
 	float FallingIncrementer; //0x0194
-	char pad_0198[360]; //0x0198
+	char pad_0198[96]; //0x0198
+	float stepHeight; //0x01F8
+	char pad_01FC[260]; //0x01FC
 	int N000006AB; //0x0300
 	float Speed; //0x0304
 	int MoveTick; //0x0308

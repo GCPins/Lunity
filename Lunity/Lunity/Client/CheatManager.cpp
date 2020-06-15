@@ -48,6 +48,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Speed());
 	cheats.push_back(new Jesus());
 	cheats.push_back(new Glide());
+	cheats.push_back(new Step());
 	cheats.push_back(new AutoWalk());
 	cheats.push_back(new NoWater());
 	cheats.push_back(new CCFly());

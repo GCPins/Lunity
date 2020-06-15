@@ -19,6 +19,7 @@
 #include "Cheats/Speed.h"
 #include "Cheats/Jesus.h"
 #include "Cheats/Glide.h"
+#include "Cheats/Step.h"
 #include "Cheats/AutoWalk.h"
 #include "Cheats/NoWater.h"
 #include "Cheats/CCFly.h"
