@@ -28,10 +28,12 @@ void Freecam::onDisable() {
 }
 
 void Freecam::onPacket(void* Packet, PacketType type, bool* cancel) {
-	if (type == PacketType::Movement) {
-		if (LunMem::getClientInstance() != NULL) {
-			if (LunMem::getClientInstance()->LocalPlayer != NULL) {
-				*cancel = true;
+	if (enabled) {
+		if (type == PacketType::Movement) {
+			if (LunMem::getClientInstance() != NULL) {
+				if (LunMem::getClientInstance()->LocalPlayer != NULL) {
+					*cancel = true;
+				}
 			}
 		}
 	}

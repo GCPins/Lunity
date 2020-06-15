@@ -213,6 +213,7 @@
     <ClInclude Include="Client\Cheats\NoWeb.h" />
     <ClInclude Include="Client\Cheats\Nuker.h" />
     <ClInclude Include="Client\Cheats\pch.h" />
+    <ClInclude Include="Client\Cheats\Profiler.h" />
     <ClInclude Include="Client\Cheats\Scaffold.h" />
     <ClInclude Include="Client\Cheats\Speed.h" />
     <ClInclude Include="Client\Cheats\TestModule.h" />
@@ -301,6 +302,7 @@
     <ClCompile Include="Client\Cheats\NoWater.cpp" />
     <ClCompile Include="Client\Cheats\NoWeb.cpp" />
     <ClCompile Include="Client\Cheats\Nuker.cpp" />
+    <ClCompile Include="Client\Cheats\Profiler.cpp" />
     <ClCompile Include="Client\Cheats\Scaffold.cpp" />
     <ClCompile Include="Client\Cheats\Speed.cpp" />
     <ClCompile Include="Client\Cheats\TestModule.cpp" />

@@ -81,6 +81,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new NoPacket());
 	cheats.push_back(new Freecam());
 	cheats.push_back(new CCGodMode());
+	cheats.push_back(new Profiler());
 
 	cheats.push_back(new TestModule());
 

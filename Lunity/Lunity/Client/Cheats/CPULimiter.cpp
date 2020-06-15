@@ -5,7 +5,7 @@ float tickDelay = 1;
 CPULimiter::CPULimiter() :Cheat::Cheat("CPULimiter", "Other")
 {
 	enabled = true;
-	registerSliderSetting("Lun Tick Delay", &tickDelay, 0, 15);
+	registerSliderSetting("Lun TDelay", &tickDelay, 0, 15);
 }
 
 void CPULimiter::onTick() {

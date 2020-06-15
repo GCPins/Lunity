@@ -237,7 +237,7 @@ void ClickGui::onPostRender()
 			int cheatExpOff = 0;
 			string settingsIco = string("...");
 			if (window->expanded) {
-				DrawUtils::fillRectangle(Rect(titleRect.x, titleRect.y + titleRect.height, titleRect.width, 1), DrawUtils::getRainbow(rainbowProg), 1);
+				DrawUtils::fillRectangle(Rect(titleRect.x, titleRect.y + titleRect.height, titleRect.width, 1), Color(.5, .5, .5, 1), 1);
 				vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
 				for (int i = 0; i < cheatsInCat.size(); i++) {
 					Cheat* leCheat = cheatsInCat[i];

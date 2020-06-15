@@ -55,9 +55,10 @@
 #include "Cheats/NoPacket.h"
 #include "Cheats/Freecam.h"
 #include "Cheats/CCGodMode.h"
+#include "Cheats/Profiler.h"
 
-#include "Hooks/NetworkHook.h"
 #include "Cheats/TestModule.h"
+#include "Hooks/NetworkHook.h"
 
 
 
