@@ -1,11 +1,6 @@
 #include "pch.h"
 #include "HiveGlide.h"
 
-/*
-0x900617
-(BYTE*)"\xFF\x50\x08"
-*/
-
 static std::chrono::time_point<std::chrono::steady_clock> savedTime;
 bool toggle = false;
 
@@ -79,7 +74,23 @@ void HiveGlide::onTick()
 void HiveGlide::onPacket(void* Packet, PacketType type, bool* cancel) {
 	if (enabled) {
 		if (type == PacketType::Movement) {
-			if (toggle) *cancel = true;
+			if (toggle) {
+				*cancel = true;
+			}
+			else {
+				MovePlayerPacket* currentPacket = (MovePlayerPacket*)Packet;
+				if (KeyHook::KeyState(0x57) | KeyHook::KeyState(0x53) | KeyHook::KeyState(0x41) | KeyHook::KeyState(0x44)) {
+					currentPacket->onGround = 0x1;
+					
+					Vector3 clientPosition = *LunMem::getClientInstance()->LocalPlayer->getPos();
+					if (LunMath::distanceVec3(clientPosition, currentPacket->Pos) <= (float)2) {
+						currentPacket->Pos.y -= (float)0.3f;
+					}
+					else {
+						currentPacket->Pos.y = clientPosition.y;
+					}
+				}
+			}
 		}
 	}
 }
