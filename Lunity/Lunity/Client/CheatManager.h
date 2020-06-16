@@ -27,6 +27,7 @@
 #include "Cheats/HiveGlide.h"
 #include "Cheats/Longjump.h"
 #include "Cheats/LBfly.h"
+#include "Cheats/AirAcceleration.h"
 
 /* Player */
 
