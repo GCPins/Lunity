@@ -8,7 +8,6 @@ AutoWalk::AutoWalk() :Cheat::Cheat("AutoWalk", "Movement")
 
 void AutoWalk::onGmTick(GameMode* gm)
 {
-	Cheat::onTick();
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;
