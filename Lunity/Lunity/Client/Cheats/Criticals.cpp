@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "Criticals.h"
 
+bool modifyPackets = true;
+
 Criticals::Criticals() :Cheat::Cheat("Criticals", "Combat")
 {
-	
+	registerToggleSetting("Modify Packets", &modifyPackets);
 }
 
 void Criticals::onEnable() {
@@ -17,12 +19,17 @@ void Criticals::onDisable() {
 }
 
 void Criticals::onPacket(void* Packet, PacketType type, bool* cancel) {
-	if (enabled) {
+	if (enabled && modifyPackets) {
 		if (type == PacketType::Movement) {
 			MovePlayerPacket* currentPacket = (MovePlayerPacket*)Packet;
 			if (currentPacket->onGround == 0x1) {
 				currentPacket->onGround = 0x0;
 			}
+		}
+		else if (type == PacketType::PlayerAuthInput) {
+			PlayerAuthInputPacket* currentPacket = (PlayerAuthInputPacket*)Packet;
+			Vector3 currentPosition = *LunMem::getClientInstance()->LocalPlayer->getPos();
+			if (currentPacket->Pos.y == currentPosition.y) currentPacket->Pos.y += (float)1.f;
 		}
 	}
 }

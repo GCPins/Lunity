@@ -718,8 +718,10 @@ public:
 	char pad_04A0[216]; //0x04A0
 	class SimpleContainer SimpleContainer; //0x0578
 	class SimpleContainer SimpleContainer2; //0x0688
-	char pad_0798[2096]; //0x0798
-	class CraftingContainerManagerModel* CraftingContainerManagerModel; //0x0FC8
+	char pad_0798[308]; //0x0798
+	float airAcceleration; //0x08CC
+	char pad_08D0[1776]; //0x08D0
+	class CraftingContainerManagerModel* CraftingContainerManagerModel; //0x0FC0
 	char pad_0FD0[8]; //0x0FD0
 	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0FD8
 	char pad_0FE0[456]; //0x0FE0
@@ -1548,7 +1550,7 @@ public:
 	virtual void continueBuildBlock(Vector3i*, UCHAR);
 	virtual void stopBuildBlock(void);
 	virtual void tick(void);
-	virtual void getPickRange();
+	virtual float getPickRange();
 	virtual void useItem();
 	virtual void useItemOn();
 	virtual void interact();
