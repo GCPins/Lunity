@@ -1550,7 +1550,7 @@ public:
 	virtual void continueBuildBlock(Vector3i*, UCHAR);
 	virtual void stopBuildBlock(void);
 	virtual void tick(void);
-	virtual void getPickRange();
+	virtual float getPickRange();
 	virtual void useItem();
 	virtual void useItemOn();
 	virtual void interact();
