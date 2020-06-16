@@ -6,6 +6,6 @@ class AutoWalk : public Cheat
 {
 public:
 	AutoWalk();
-	void onTick();
+	void onGmTick(GameMode* gm);
 };
 
