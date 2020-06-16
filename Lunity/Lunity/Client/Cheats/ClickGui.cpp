@@ -75,6 +75,14 @@ void ClickGui::onMouseButton(ulong button) {
 									leCheat->expandedInClickUi = !leCheat->expandedInClickUi;
 								}
 								if (leCheat->expandedInClickUi) {
+									//For keybinds
+									Rect settingRect = cheatRect.add(0, settingOff + 10, 15, 0);
+									if (settingRect.contains(mx, my)) {
+										leCheat->reassigningKey = !leCheat->reassigningKey;
+									}
+									settingOff += 10;
+									cheatExpOff += 10;
+
 									vector<ToggleSetting*> toggleSettings = leCheat->toggleSettings;
 									for (int s = 0; s < toggleSettings.size(); s++) {
 										ToggleSetting* currentSetting = toggleSettings[s];
@@ -141,6 +149,44 @@ void ClickGui::onEnable() {
 	}
 }
 void ClickGui::onDisable() {
+
+}
+
+
+void ClickGui::onKey(ulong key) {
+	vector<Cheat*> cheats = CheatManager::getCheats();
+	for (int i = 0; i < cheats.size(); i++) {
+		Cheat* current = cheats[i];
+		if (current->reassigningKey) {
+			current->keyBind = key;
+			current->reassigningKey = false;
+		}
+	}
+}
+
+
+string tKeybind = "KeyBind:";
+void drawKeybindSetting(Cheat* cheat, Rect cheatRect, int* cheatExpOff, int* settingOff, int mx, int my) {
+	Rect settingRect = cheatRect.add(0, *settingOff + 10, 15, 0);
+	Color settingsRectColor = Color(.20, .20, .20, 1);
+	if (settingRect.contains(mx, my)) {
+		settingsRectColor.x += .2;
+		settingsRectColor.y += .2;
+		settingsRectColor.z += .2;
+	}
+	DrawUtils::fillRectangle(settingRect, settingsRectColor, 1);
+	DrawUtils::drawText(Vector2(settingRect.x, settingRect.y), &tKeybind, nullptr, 1);
+
+	string keyTxt;
+	if (cheat->reassigningKey)
+		keyTxt = "...";
+	else
+		keyTxt = string((char*)&cheat->keyBind);
+	float valWid = DrawUtils::getTextWidth(keyTxt, 1);
+	DrawUtils::drawText(Vector2(settingRect.x + 90 - valWid, settingRect.y), &keyTxt, nullptr, 1);
+
+	*settingOff += 10;
+	*cheatExpOff += 10;
 
 }
 
@@ -270,6 +316,7 @@ void ClickGui::onPostRender()
 					DrawUtils::drawText(Vector2(expRect.x + settingsIcoWid-1, expRect.y-2), &settingsIco, nullptr, 1);
 					if (leCheat->expandedInClickUi) {
 						int settingOff = 0;
+						drawKeybindSetting(leCheat, cheatRect, &cheatExpOff, &settingOff, mx, my);
 						vector<ToggleSetting*> toggleSettings = leCheat->toggleSettings;
 						for (int s = 0; s < toggleSettings.size(); s++) {
 							drawToggleSetting(toggleSettings[s], cheatRect, &cheatExpOff, &settingOff, mx, my);

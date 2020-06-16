@@ -8,7 +8,7 @@ float testSliderValue = -1.0f;
 TestModule::TestModule() :Cheat::Cheat("TestModule", "Other")
 {
 	registerToggleSetting("TestToggle", &testToggle);
-	registerSliderSetting("TestSlider", &testSliderValue, -1.0f, 1.0f);
+	registerSliderSetting("TestSlider", &testSliderValue, 2.0f, 10.0f);
 }
 
 void TestModule::onLoop()

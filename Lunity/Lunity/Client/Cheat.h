@@ -15,6 +15,7 @@ public:
 	vector<ToggleSetting*> toggleSettings;
 	vector<SliderSetting*> sliderSettings;
 	bool expandedInClickUi;
+	bool reassigningKey;
 	Cheat(string name, string category);
 	virtual void onLoop();
 	virtual void onTick();
