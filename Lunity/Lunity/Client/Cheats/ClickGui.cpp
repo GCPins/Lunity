@@ -79,7 +79,7 @@ void ClickGui::onMouseButton(ulong button) {
 									for (int s = 0; s < toggleSettings.size(); s++) {
 										ToggleSetting* currentSetting = toggleSettings[s];
 										Color settingsRectColor = Color(.20, .20, .20, 1);
-										Rect settingRect = cheatRect.add(0, 10, 15, 0);
+										Rect settingRect = cheatRect.add(0, settingOff + 10, 15, 0);
 										if (settingRect.contains(mx, my)) {
 											currentSetting->setValue(!currentSetting->getValue());
 										}
