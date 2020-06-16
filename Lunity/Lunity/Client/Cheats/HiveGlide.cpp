@@ -56,7 +56,7 @@ void HiveGlide::onTick()
 				Player->VelocityXYZ.z = sin((calcYaw) * (3.14159 / 180.0f)) * 0.3f;
 			}
 
-			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(150)) {
+			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(230)) {
 
 				if (toggle) {
 					toggle = false;
