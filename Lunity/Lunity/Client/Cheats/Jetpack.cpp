@@ -9,7 +9,7 @@ float jetpackSpeed = 1.0f;
 Jetpack::Jetpack() :Cheat::Cheat("Jetpack", "Movement")
 {
 	enabled = true;
-	registerSliderSetting("Speed", &jetpackSpeed, 1.0f, 10.0f);
+	registerSliderSetting("Speed", &jetpackSpeed, 0.f, 10.0f);
 }
 
 void Jetpack::onTick()
