@@ -5,6 +5,6 @@ class Glide : public Cheat
 {
 public:
 	Glide();
-	void onTick();
+	void onGmTick(GameMode* gm);
 };
 
