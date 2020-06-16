@@ -5,10 +5,15 @@
 #include "../../SDK/LunMath.h"
 
 static std::chrono::time_point<std::chrono::steady_clock> savedTime;
+float killauraDelayF = 0.f;
+bool multiEnts = true;
+bool changeCamera = true;
 
 Killaura::Killaura() :Cheat::Cheat("Killaura", "Combat")
 {
-
+	registerSliderSetting("Delay (MS)", &killauraDelayF, 0.f, 1000.f);
+	registerToggleSetting("Multiple Entities", &multiEnts);
+	registerToggleSetting("Face Entity", &changeCamera);
 }
 
 Vector2 lookingAngles;
@@ -17,9 +22,10 @@ void Killaura::onGmTick(GameMode* gm) {
 	RakNetInstance* Raknet = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
 	LocalPlayer* player = LunMem::getClientInstance()->LocalPlayer;
 	vector<Actor*>* ents = getEntities();
+	vector<double> rangesArr;
 	if (ents != NULL) {
-		if (strcmp(Raknet->ServerIp.getText(), "geo.hivebedrock.network") == 0) {
-			if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds(500)) {
+		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds((int)killauraDelayF)) {
+			if (multiEnts) {
 				for (uint i = 0; i < ents->size(); i++) {
 					if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 12.0f) {
 						lookingAngles = LunMath::getRotationAnglesToEnt(*ents->at(i)->getPos(), *player->getPos());
@@ -27,23 +33,35 @@ void Killaura::onGmTick(GameMode* gm) {
 						gm->attack(ents->at(i));
 					}
 				}
-				savedTime = std::chrono::high_resolution_clock::now();
 			}
-		}
-		else {
-			for (uint i = 0; i < ents->size(); i++) {
-				if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 12.0f) {
-					lookingAngles = LunMath::getRotationAnglesToEnt(*ents->at(i)->getPos(), *player->getPos());
-					player->swing();
-					gm->attack(ents->at(i));
+			else {
+				for (uint i = 0; i < ents->size(); i++) {
+					float distance = LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos());
+					if (distance <= 12.0f) {
+						rangesArr.push_back(distance);
+					}
+				}
+
+				if (rangesArr.size() > 0) {
+					std::sort(rangesArr.begin(), rangesArr.end());
+
+					for (uint I = 0; I < ents->size(); I++) {
+						if (LunMath::distanceVec3(*ents->at(I)->getPos(), *player->getPos()) == rangesArr[0]) {
+							player->swing();
+							gm->attack(ents->at(I));
+							break;
+						}
+					}
 				}
 			}
+
+			savedTime = std::chrono::high_resolution_clock::now();
 		}
 	}
 }
 
 void Killaura::onPacket(void* Packet, PacketType type, bool* cancel) {
-	if (enabled) {
+	if (enabled && changeCamera) {
 		if (lookingAngles.x != (float)0.f && lookingAngles.y != (float)0.f) {
 			if (type == PacketType::Movement) {
 				MovePlayerPacket* currentPacket = (MovePlayerPacket*)Packet;

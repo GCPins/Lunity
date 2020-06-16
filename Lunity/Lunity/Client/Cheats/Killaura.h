@@ -2,6 +2,7 @@
 #include "../../BigHead.h"
 #include "../Cheat.h"
 #include <chrono>
+#include <algorithm>
 
 class Killaura : public Cheat
 {
