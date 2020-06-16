@@ -6,7 +6,7 @@ AutoWalk::AutoWalk() :Cheat::Cheat("AutoWalk", "Movement")
 
 }
 
-void AutoWalk::onTick()
+void AutoWalk::onGmTick(GameMode* gm)
 {
 	Cheat::onTick();
 	if (LunMem::getClientInstance() != NULL) {
