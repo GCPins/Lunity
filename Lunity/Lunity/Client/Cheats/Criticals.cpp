@@ -28,7 +28,8 @@ void Criticals::onPacket(void* Packet, PacketType type, bool* cancel) {
 		}
 		else if (type == PacketType::PlayerAuthInput) {
 			PlayerAuthInputPacket* currentPacket = (PlayerAuthInputPacket*)Packet;
-			if (currentPacket->Pos.y == LunMem::getClientInstance()->LocalPlayer->getPos.y) currentPacket->Pos.y += (float)1.f;
+			Vector3 currentPosition = *LunMem::getClientInstance()->LocalPlayer->getPos();
+			if (currentPacket->Pos.y == currentPosition.y) currentPacket->Pos.y += (float)1.f;
 		}
 	}
 }
