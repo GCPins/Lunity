@@ -7,8 +7,7 @@ Glide::Glide() :Cheat::Cheat("Glide", "Movement")
 
 }
 
-void Glide::onTick() {
-	Cheat::onTick();
+void Glide::onGmTick(GameMode* gm) {
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			bool holdingLeftShift = KeyHook::KeyState(0x10);
