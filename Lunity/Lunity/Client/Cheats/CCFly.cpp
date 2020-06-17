@@ -4,13 +4,14 @@
 #include "../../SDK/EntList.h"
 #define PI 3.14159
 
+float leCCFlySpeed = 0.25f;
+
 CCFly::CCFly() : Cheat::Cheat("CCFly", "Movement")
 {
-
+	registerSliderSetting("Speeeeet", &leCCFlySpeed, 0.0f, 1.0f);
 }
 
 float gliderar = 1.5f;
-float leCCFlySpeed = .2f; //0.4 bypasses XD
 bool ccmoving = false;
 float addBy = 0;
 int ticked = 0;
