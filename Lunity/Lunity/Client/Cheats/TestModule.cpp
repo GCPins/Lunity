@@ -24,6 +24,7 @@ void TestModule::onTick()
 void TestModule::onEnable()
 {
 	Cheat::onEnable();
+	Logger::logHex("The return", LunMem::getClientInstance()->Function49());
 }
 
 void TestModule::onDisable()

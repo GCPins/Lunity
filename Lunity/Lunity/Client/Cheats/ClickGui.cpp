@@ -244,6 +244,12 @@ void drawSliderSetting(SliderSetting* currentSetting, Rect cheatRect, int* cheat
 			currentSetting->setValue(newVal);
 		}
 	}
+	else if (MouseHook::ButtonState(2)) {
+		Rect sliderRegion = settingRect.add(0, 10, 0, -10);
+		if (sliderRegion.contains(mx, my)) {
+			currentSetting->setValue(currentSetting->getDefault());
+		}
+	}
 	else {
 		currentSetting->dragging = false;
 	}
