@@ -720,7 +720,9 @@ public:
 	class SimpleContainer SimpleContainer2; //0x0688
 	char pad_0798[308]; //0x0798
 	float airAcceleration; //0x08CC
-	char pad_08D0[1776]; //0x08D0
+	char pad_08D0[488]; //0x08D0
+	bool isFlying; //0x0AB8
+	char pad_0AB9[1287]; //0x0AB9
 	class CraftingContainerManagerModel* CraftingContainerManagerModel; //0x0FC0
 	char pad_0FD0[8]; //0x0FD0
 	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0FD8
