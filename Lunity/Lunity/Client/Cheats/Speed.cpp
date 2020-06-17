@@ -9,9 +9,8 @@ Speed::Speed() :Cheat::Cheat("Speed", "Movement")
 {
 }
 
-void Speed::onTick()
+void Speed::onGmTick(GameMode* gm)
 {
-	Cheat::onTick();
 	if (LunMem::getClientInstance() != NULL) {
 		if (LunMem::getClientInstance()->LocalPlayer != NULL) {
 			LocalPlayer* Player = LunMem::getClientInstance()->LocalPlayer;

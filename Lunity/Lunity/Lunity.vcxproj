@@ -177,6 +177,7 @@
     <ClInclude Include="capstone\tms320c64x.h" />
     <ClInclude Include="capstone\x86.h" />
     <ClInclude Include="capstone\xcore.h" />
+    <ClInclude Include="Client\Cheats\AirAcceleration.h" />
     <ClInclude Include="Client\Cheats\CCGodMode.h" />
     <ClInclude Include="Client\Cheats\AirJump.h" />
     <ClInclude Include="BigHead.h" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Client\Cheats\Coords.h" />
     <ClInclude Include="Client\Cheats\CPULimiter.h" />
     <ClInclude Include="Client\Cheats\Criticals.h" />
+    <ClInclude Include="Client\Cheats\Flight.h" />
     <ClInclude Include="Client\Cheats\Freecam.h" />
     <ClInclude Include="Client\Cheats\Gamemode.h" />
     <ClInclude Include="Client\Cheats\Glide.h" />
@@ -269,6 +271,7 @@
     <ClInclude Include="Client\Cheats\TabGUI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Client\Cheats\AirAcceleration.cpp" />
     <ClCompile Include="Client\Cheats\CCGodMode.cpp" />
     <ClCompile Include="Client\Cheats\CCFly.cpp" />
     <ClCompile Include="Client\Cheat.cpp" />
@@ -282,6 +285,7 @@
     <ClCompile Include="Client\Cheats\Coords.cpp" />
     <ClCompile Include="Client\Cheats\CPULimiter.cpp" />
     <ClCompile Include="Client\Cheats\Criticals.cpp" />
+    <ClCompile Include="Client\Cheats\Flight.cpp" />
     <ClCompile Include="Client\Cheats\Freecam.cpp" />
     <ClCompile Include="Client\Cheats\Gamemode.cpp" />
     <ClCompile Include="Client\Cheats\Glide.cpp" />

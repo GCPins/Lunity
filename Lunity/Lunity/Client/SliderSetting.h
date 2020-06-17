@@ -6,6 +6,7 @@ class SliderSetting
 public:
 	string text;
 	float* value;
+	float defaultVal;
 	float min;
 	float max;
 	bool dragging;
@@ -16,4 +17,5 @@ public:
 	virtual float getValue();
 	virtual float getMin();
 	virtual float getMax();
+	virtual float getDefault();
 };

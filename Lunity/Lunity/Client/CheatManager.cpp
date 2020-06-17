@@ -56,6 +56,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new HiveGlide());
 	cheats.push_back(new Longjump());
 	cheats.push_back(new LBfly());
+	cheats.push_back(new AirAcceleration());
 
 	/* Player */
 	cheats.push_back(new Scaffold());
@@ -67,6 +68,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new InventoryMove());
 	cheats.push_back(new NoFall());
 	cheats.push_back(new Phase());
+	cheats.push_back(new Flight());
 
 	/* Visuals */
 	cheats.push_back(new TabGUI());

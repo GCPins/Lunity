@@ -1,10 +1,8 @@
 #pragma once
-#include "../../BigHead.h"
 #include "../Cheat.h"
-class Glide : public Cheat
-{
+
+class AirAcceleration : public Cheat {
 public:
-	Glide();
+	AirAcceleration();
 	void onGmTick(GameMode* gm);
 };
-

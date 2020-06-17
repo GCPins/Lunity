@@ -5,6 +5,6 @@ class Speed : public Cheat
 {
 public:
 	Speed();
-	void onTick();
+	void onGmTick(GameMode* gm);
 };
 

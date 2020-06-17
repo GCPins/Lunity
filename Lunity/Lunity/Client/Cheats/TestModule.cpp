@@ -8,7 +8,7 @@ float testSliderValue = -1.0f;
 TestModule::TestModule() :Cheat::Cheat("TestModule", "Other")
 {
 	registerToggleSetting("TestToggle", &testToggle);
-	registerSliderSetting("TestSlider", &testSliderValue, -1.0f, 1.0f);
+	registerSliderSetting("TestSlider", &testSliderValue, 2.0f, 10.0f);
 }
 
 void TestModule::onLoop()
@@ -24,6 +24,7 @@ void TestModule::onTick()
 void TestModule::onEnable()
 {
 	Cheat::onEnable();
+	Logger::logHex("The return", LunMem::getClientInstance()->Function49());
 }
 
 void TestModule::onDisable()

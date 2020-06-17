@@ -6,4 +6,5 @@ class CPULimiter : public Cheat {
 public:
 	CPULimiter();
 	void onTick();
+	void onPreRender();
 };

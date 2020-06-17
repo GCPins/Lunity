@@ -327,6 +327,12 @@
     <ClInclude Include="Client\Cheats\Phase.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\AirAcceleration.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\Flight.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -498,6 +504,12 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\Phase.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\AirAcceleration.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Flight.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

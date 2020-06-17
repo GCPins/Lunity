@@ -27,6 +27,7 @@
 #include "Cheats/HiveGlide.h"
 #include "Cheats/Longjump.h"
 #include "Cheats/LBfly.h"
+#include "Cheats/AirAcceleration.h"
 
 /* Player */
 
@@ -39,6 +40,7 @@
 #include "Cheats/InventoryMove.h"
 #include "Cheats/NoFall.h"
 #include "Cheats/Phase.h"
+#include "Cheats/Flight.h"
 
 /* Visuals */
 

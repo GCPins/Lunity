@@ -24,6 +24,7 @@ SliderSetting::SliderSetting(string text, float* value, float min, float max)
 	this->value = value;
 	this->min = min;
 	this->max = max;
+	this->defaultVal = *value;
 }
 
 void SliderSetting::setValue(float value)
@@ -52,4 +53,9 @@ float SliderSetting::getMin()
 float SliderSetting::getMax()
 {
 	return max;
+}
+
+float SliderSetting::getDefault()
+{
+	return defaultVal;
 }

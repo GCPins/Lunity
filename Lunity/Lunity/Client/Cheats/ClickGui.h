@@ -8,6 +8,7 @@ public:
 	void onMouseMove();
 	void onEnable();
 	void onDisable();
+	void onKey(ulong key);
 	void onPostRender();
 };
 
