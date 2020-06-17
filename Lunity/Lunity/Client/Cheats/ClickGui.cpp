@@ -107,13 +107,31 @@ void ClickGui::onMouseButton(ulong button) {
 			}
 		}
 		if (button == 2) {
-			int x = getMouseX();
-			int y = getMouseY();
+			int mx = getMouseX();
+			int my = getMouseY();
 			for (int i = 0; i < windows.size(); i++) {
 				Frame* window = windows[i];
 				Rect titleRect = window->titleRect;
-				if (titleRect.contains(Vector2(x, y))) {
+				if (titleRect.contains(Vector2(mx, my))) {
 					window->expanded = !window->expanded;
+				}
+				else {
+					if (window->expanded) {
+						int cheatExpOff = 0;
+						vector<Cheat*> cheatsInCat = CheatManager::getCheatsOfCategory(window->title);
+						for (int i = 0; i < cheatsInCat.size(); i++) {
+							int settingOff = 0;
+							Cheat* leCheat = cheatsInCat[i];
+							Rect cheatRect = Rect(titleRect.x, titleRect.y + titleRect.height + i * 10 + cheatExpOff, 75, 10);
+							if (leCheat->expandedInClickUi) {
+								Rect settingRect = cheatRect.add(0, settingOff + 10, 15, 0);
+								if (settingRect.contains(mx, my)) {
+									leCheat->reassigningKey = false;
+									leCheat->keyBind = 0;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
