@@ -11,6 +11,9 @@ CCGodMode::CCGodMode() : Cheat::Cheat("CCGodMode", "Other")
 {
 }
 
+float distancx;
+float distancz;
+
 Vector2 RunAngles;
 
 void CCGodMode::onPacket(void* Packet, PacketType type, bool* cancel)
@@ -35,14 +38,11 @@ void CCGodMode::onPacket(void* Packet, PacketType type, bool* cancel)
 					MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
 					pkt->Pos.y += aaabbb;
 					aaabbb -= 0.001f;
-					RunAngles = LunMath::getRotationAnglesToEnt(*ents->at(i)->getPos(), *player->getPos());
-					//Logger::log(to_string(RunAngles.x));
-					//Logger::log(to_string(RunAngles.y));
-					//player->VelocityXYZ.x = -0.3f * (cos((RunAngles.y + 90.0f) * (3.14 / 180.0f)));
-					//player->VelocityXYZ.z = -0.3f * (sin((RunAngles.y + 90.0f) * (3.14 / 180.0f)));
 
-					pkt->Pos.x += -2.0f * (cos((RunAngles.y + 90.0f) * (3.14 / 180.0f)));
-					pkt->Pos.z += -2.0f * (sin((RunAngles.y + 90.0f) * (3.14 / 180.0f)));
+					pkt->Pos.x = (ents->at(i)->getPos()->x);
+					
+					pkt->Pos.z = (ents->at(i)->getPos()->z);
+					
 				}
 				else
 				{
