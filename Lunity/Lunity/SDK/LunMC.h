@@ -519,7 +519,7 @@ public:
 	virtual void Function79();
 	virtual void Function80();
 	virtual void Function81();
-	virtual void isImmobile();
+	virtual bool isImmobile();
 	virtual void isSilent();
 	virtual void Function84();
 	virtual void Function85();
@@ -817,7 +817,7 @@ public:
 	virtual void Function79();
 	virtual void Function80();
 	virtual void Function81();
-	virtual void Function82();
+	virtual bool isImmobile();
 	virtual void Function83();
 	virtual void Function84();
 	virtual void Function85();
