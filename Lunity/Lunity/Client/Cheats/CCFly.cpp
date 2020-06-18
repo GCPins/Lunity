@@ -10,7 +10,7 @@ float yee = 1.5f;
 
 CCFly::CCFly():Cheat::Cheat("CCFly", "Movement")
 {
-	registerSliderSetting("Speeeeet", &leCCFlySpeed, 0.0f, 1.0f);
+	registerSliderSetting("Speeeeet", &leCCFlySpeed, 0.0f, 2.0f);
 	registerSliderSetting("yee", &yee, 0.0f, 8.0f);
 }
 
@@ -64,6 +64,10 @@ void CCFly::onGmTick(GameMode* gm)
 					Player->VelocityXYZ.z = sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * leCCFlySpeed;
 						if (ticked == 40) { ticked = 0; }
 					ticked++;
+					if (yee < 0.6f)
+					{
+						yee = 0.6;
+					}
 				}
 			}
 			else {
