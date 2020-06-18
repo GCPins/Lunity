@@ -6,12 +6,15 @@
 
 float leCCFlySpeed = 0.25f;
 
-CCFly::CCFly() : Cheat::Cheat("CCFly", "Movement")
+float yee = 1.5f;
+
+CCFly::CCFly():Cheat::Cheat("CCFly", "Movement")
 {
 	registerSliderSetting("Speeeeet", &leCCFlySpeed, 0.0f, 1.0f);
+	registerSliderSetting("yee", &yee, 0.0f, 8.0f);
 }
 
-float gliderar = 1.5f;
+float gliderar;
 bool ccmoving = false;
 float addBy = 0;
 int ticked = 0;
@@ -44,27 +47,14 @@ void CCFly::onGmTick(GameMode* gm)
 				if (!ccmoving) {
 					ccmoving = true;
 					addBy = 0;
-					//ticked = 0;
+
 					lastPos = *Player->getPos();
-					//Player->jumpFromGround();
-					//Player->actuallyHurt(1, (Actor*)Player, false);
-					//Player->animateHurt();
-					Player->swing();
-
-					//MovePlayerPacket* pkt = new MovePlayerPacket((Actor*)Player, Player->getPos(), &Player->LookingVec, 1);
-					//pkt->Pos.x += cos((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
-					//pkt->Pos.y += (float)0;
-					//pkt->Pos.z += sin((Player->LookingVec.y + 90) * (PI / 180.0f)) * 5;
-					//LunMem::getClientInstance()->LoopbackPacketSender->sendToServer(pkt);
-					//delete pkt;
-
 
 					Player->swing();
-
-					//Player->startSwimming();
 
 					Logger::log("Moving!");
 					ticked = 0;
+					gliderar = yee;
 				}
 				if (ccmoving) {
 					Player->setSprinting(true);
@@ -101,16 +91,27 @@ void CCFly::onPacket(void* Packet, PacketType type, bool* cancel)
 						RakNetInstance* Raknet = LunMem::getClientInstance()->LoopbackPacketSender->NetworkHandler->RakNetInstance;
 						MovePlayerPacket* pkt = (MovePlayerPacket*)Packet;
 						pkt->Pos.y += gliderar;
-						if (ticked >= 20)
-						{
-							pkt->Pos.y -= 0.5f;
-						}
-						else
+						if (ticked <= 15)
 						{
 							pkt->Pos.y += 0.5f;
 						}
+						else
+						{
+							if (ticked >= 25)
+							{
+								pkt->Pos.y -= 0.5f;
+							}
+							else
+							{
+								*cancel = true;
+							}
+						}
 						gliderar -= 0.001f;
-						if (gliderar < 0.5) { gliderar = 1.5f; }
+						if (gliderar <= 0.5) 
+						{ 
+							gliderar = (float)yee; 
+						}
+						//Logger::log(to_string(gliderar)); debug meh idk
 					}
 				}
 			}
