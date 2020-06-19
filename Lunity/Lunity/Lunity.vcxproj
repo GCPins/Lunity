@@ -178,6 +178,7 @@
     <ClInclude Include="capstone\x86.h" />
     <ClInclude Include="capstone\xcore.h" />
     <ClInclude Include="Client\Cheats\AirAcceleration.h" />
+    <ClInclude Include="Client\Cheats\Antivoid.h" />
     <ClInclude Include="Client\Cheats\CCGodMode.h" />
     <ClInclude Include="Client\Cheats\AirJump.h" />
     <ClInclude Include="BigHead.h" />
@@ -272,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client\Cheats\AirAcceleration.cpp" />
+    <ClCompile Include="Client\Cheats\Antivoid.cpp" />
     <ClCompile Include="Client\Cheats\CCGodMode.cpp" />
     <ClCompile Include="Client\Cheats\CCFly.cpp" />
     <ClCompile Include="Client\Cheat.cpp" />

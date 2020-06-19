@@ -28,6 +28,7 @@
 #include "Cheats/Longjump.h"
 #include "Cheats/LBfly.h"
 #include "Cheats/AirAcceleration.h"
+#include "Cheats/Antivoid.h"
 
 /* Player */
 
