@@ -7,6 +7,7 @@ float speedValue = 0.7f;
 
 Speed::Speed() :Cheat::Cheat("Speed", "Movement")
 {
+	registerSliderSetting("Speed", &speedValue, 0.0f, 2.0f);
 }
 
 void Speed::onGmTick(GameMode* gm)

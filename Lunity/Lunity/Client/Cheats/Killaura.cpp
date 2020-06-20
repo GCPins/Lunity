@@ -8,10 +8,12 @@ static std::chrono::time_point<std::chrono::steady_clock> savedTime;
 float killauraDelayF = 0.f;
 bool multiEnts = true;
 bool changeCamera = true;
+float rangeeee = 12.0f;
 
 Killaura::Killaura() :Cheat::Cheat("Killaura", "Combat")
 {
 	registerSliderSetting("Delay (MS)", &killauraDelayF, 0.f, 1000.f);
+	registerSliderSetting("Range", &rangeeee, 0.f, 50.f);
 	registerToggleSetting("Multiple Entities", &multiEnts);
 	registerToggleSetting("Face Entity", &changeCamera);
 }
@@ -27,7 +29,7 @@ void Killaura::onGmTick(GameMode* gm) {
 		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - savedTime) >= std::chrono::milliseconds((int)killauraDelayF)) {
 			if (multiEnts) {
 				for (uint i = 0; i < ents->size(); i++) {
-					if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= 12.0f) {
+					if (LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos()) <= rangeeee) {
 						lookingAngles = LunMath::getRotationAnglesToEnt(*ents->at(i)->getPos(), *player->getPos());
 						player->swing();
 						gm->attack(ents->at(i));
@@ -37,7 +39,7 @@ void Killaura::onGmTick(GameMode* gm) {
 			else {
 				for (uint i = 0; i < ents->size(); i++) {
 					float distance = LunMath::distanceVec3(*ents->at(i)->getPos(), *player->getPos());
-					if (distance <= 12.0f) {
+					if (distance <= rangeeee) {
 						rangesArr.push_back(distance);
 					}
 				}
