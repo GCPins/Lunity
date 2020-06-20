@@ -4,6 +4,8 @@ enum class PacketType {
 	Text,
 	PlayerAuthInput,
 	CraftingEvent,
+	Login,
+	ClientToServerHandshake,
 	Unknown
 };
 class NetworkHook
