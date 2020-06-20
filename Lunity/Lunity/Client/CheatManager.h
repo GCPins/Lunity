@@ -29,6 +29,7 @@
 #include "Cheats/LBfly.h"
 #include "Cheats/AirAcceleration.h"
 #include "Cheats/Antivoid.h"
+#include "Cheats/Fastfall.h"
 
 /* Player */
 

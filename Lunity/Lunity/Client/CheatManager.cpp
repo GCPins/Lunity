@@ -58,6 +58,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new LBfly());
 	cheats.push_back(new AirAcceleration());
 	cheats.push_back(new Antivoid());
+	cheats.push_back(new Fastfall());
 
 	/* Player */
 	cheats.push_back(new Scaffold());
