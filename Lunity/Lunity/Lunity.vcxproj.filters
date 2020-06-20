@@ -336,6 +336,12 @@
     <ClInclude Include="Client\Cheats\Antivoid.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\Fastfall.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Cheats\Misplace.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -518,8 +524,15 @@
     <ClCompile Include="Client\Cheats\Antivoid.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="Client\Cheats\Fastfall.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Misplace.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>
