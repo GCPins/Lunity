@@ -1657,3 +1657,8 @@ public:
 	TextHolder Language; //0x0058
 	char pad_0060[32]; //0x0060
 }; //Size: 0x0080
+class ClientToServerHandshakePacket
+{
+public:
+	char pad_0000[192]; //0x0000
+}; //Size: 0x00C0

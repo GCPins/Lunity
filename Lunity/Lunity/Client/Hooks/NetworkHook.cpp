@@ -25,6 +25,9 @@ void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B046C0) {
 		pt = PacketType::CraftingEvent;
 	}
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B03CF0) {
+		pt = PacketType::ClientToServerHandshake;
+	}
 	bool canceled = false;
 	CheatManager::onPacket(Packet, pt, &canceled);
 	if (!canceled)
