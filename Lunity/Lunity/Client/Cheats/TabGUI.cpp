@@ -8,8 +8,8 @@ TabGUI::TabGUI():Cheat::Cheat("TabGUI", "Visuals")
 	enabled = true;
 }
 
-uint highlightedCht = 0;
-uint highlightedCat = 0;
+int highlightedCht = 0;
+int highlightedCat = 0;
 bool catIsSel = false;
 void TabGUI::onPostRender()
 {
@@ -84,6 +84,10 @@ void TabGUI::onKey(ulong key)
 			}
 			if (key == 0x27) {
 				cheatsInThisCat[highlightedCht]->enabled = !cheatsInThisCat[highlightedCht]->enabled;
+			}
+			Logger::log("HCht: " + to_string(highlightedCht));
+			if (highlightedCht <= -1) {
+				highlightedCht = cheatsInThisCat.size() - 1;
 			}
 			if (highlightedCht >= cheatsInThisCat.size()) {
 				highlightedCht = 0;

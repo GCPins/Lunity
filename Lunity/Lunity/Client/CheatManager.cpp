@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 #include "CheatManager.h"
 #include "../SDK/DrawUtils.h"

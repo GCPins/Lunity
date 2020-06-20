@@ -193,6 +193,7 @@
     <ClInclude Include="Client\Cheats\Coords.h" />
     <ClInclude Include="Client\Cheats\CPULimiter.h" />
     <ClInclude Include="Client\Cheats\Criticals.h" />
+    <ClInclude Include="Client\Cheats\Fastfall.h" />
     <ClInclude Include="Client\Cheats\Flight.h" />
     <ClInclude Include="Client\Cheats\Freecam.h" />
     <ClInclude Include="Client\Cheats\Gamemode.h" />
@@ -287,6 +288,7 @@
     <ClCompile Include="Client\Cheats\Coords.cpp" />
     <ClCompile Include="Client\Cheats\CPULimiter.cpp" />
     <ClCompile Include="Client\Cheats\Criticals.cpp" />
+    <ClCompile Include="Client\Cheats\Fastfall.cpp" />
     <ClCompile Include="Client\Cheats\Flight.cpp" />
     <ClCompile Include="Client\Cheats\Freecam.cpp" />
     <ClCompile Include="Client\Cheats\Gamemode.cpp" />
