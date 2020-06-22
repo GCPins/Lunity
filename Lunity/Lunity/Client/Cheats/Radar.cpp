@@ -34,38 +34,40 @@ void drawEntityBoxes() {
 	LocalPlayer* lp = LunMem::getClientInstance()->LocalPlayer;
 	for (int i = 0; i < actors->size(); i++) {
 		Actor* currentActor = actors->at(i);
-		float entX = currentActor->getPos()->x;
-		float entZ = currentActor->getPos()->z;
+		if (currentActor != NULL) {
+			float entX = currentActor->getPos()->x;
+			float entZ = currentActor->getPos()->z;
 
-		float offX = lp->getPos()->x - entX;
-		float offZ = lp->getPos()->z - entZ;
+			float offX = lp->getPos()->x - entX;
+			float offZ = lp->getPos()->z - entZ;
 
-		DrawUtils::fillRectangle(Rect(x + offX + (winSize/2), y + offZ + (winSize / 2), 1, 1), Color(1, 0, 0, 1), 1);
+			DrawUtils::fillRectangle(Rect(x + offX + (winSize / 2), y + offZ + (winSize / 2), 1, 1), Color(1, 0, 0, 1), 1);
+		}
 	}
 }
 void Radar::onPostRender() {
 	if (enabled) {
 		if (LunMem::getClientInstance() != NULL) {
-			if (LunMem::getClientInstance()->LocalPlayer != NULL) {
-				GuiData* gd = LunMem::getClientInstance()->getGuiData();
-				int mx = gd->MouseX / gd->GuiScale;
-				int my = gd->MouseY / gd->GuiScale;
-				if (dragging) {
-					x = mx - diffx;
-					y = my - diffy;
-				}
-				if (!MouseHook::ButtonState(1)) {
-					dragging = false;
-				}
-				Rect winRect = Rect(x, y, winSize, winSize);
-				DrawUtils::fillRectangle(winRect, Color(.05, .05, .05, 1), 1);
-				DrawUtils::drawRectangle(winRect, Color(.2, .2, .2, 1), 1, 1);
-
-				drawEntityBoxes();
-
-				DrawUtils::drawRectangle(Rect(x + (winSize / 2), y, 0, winSize), Color(.2, .2, .2, 1), 1, 1);
-				DrawUtils::drawRectangle(Rect(x, y + (winSize / 2), winSize, 0), Color(.2, .2, .2, 1), 1, 1);
+			GuiData* gd = LunMem::getClientInstance()->getGuiData();
+			int mx = gd->MouseX / gd->GuiScale;
+			int my = gd->MouseY / gd->GuiScale;
+			if (dragging) {
+				x = mx - diffx;
+				y = my - diffy;
 			}
+			if (!MouseHook::ButtonState(1)) {
+				dragging = false;
+			}
+			Rect winRect = Rect(x, y, winSize, winSize);
+			DrawUtils::fillRectangle(winRect, Color(.05, .05, .05, 1), 1);
+			DrawUtils::drawRectangle(winRect, Color(.2, .2, .2, 1), 1, 1);
+
+			if (LunMem::getClientInstance()->LocalPlayer != NULL) {
+				drawEntityBoxes();
+			}
+
+			DrawUtils::drawRectangle(Rect(x + (winSize / 2), y, 0, winSize), Color(.2, .2, .2, 1), 1, 1);
+			DrawUtils::drawRectangle(Rect(x, y + (winSize / 2), winSize, 0), Color(.2, .2, .2, 1), 1, 1);
 		}
 	}
 }
