@@ -7,6 +7,7 @@
 #include "Cheats/Triggerbot.h"
 #include "Cheats/Hitbox.h"
 #include "Cheats/Criticals.h"
+#include "Cheats/Misplace.h"
 
 /* Movement */
 

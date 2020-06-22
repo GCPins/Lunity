@@ -18,7 +18,6 @@ int Eeeeeee = 1;
 
 float boithesevariablesrbest = 0.001;
 
-bool glide = true;
 
 //bool bump = false;
 
@@ -28,7 +27,6 @@ CCFly::CCFly() :Cheat::Cheat("CCFly", "Movement")
 {
 	registerSliderSetting("Speed", &leCCFlySpeed, 0.0f, 2.0f);//speed
 	registerSliderSetting("yee", &yee, 0.0f, 8.0f);//how high will it tp u
-	registerToggleSetting("Glide", &glide);//glide
 	registerSliderSetting("Glide", &boithesevariablesrbest, 0.001f, 0.5f);//"glide speed"
 	//registerToggleSetting("Bump", &bump);//more like airjump
 	//registerSliderSetting("Bump", &aaaaaaaaaaaaaaaaa, 0.0f, 2.0f);//bump valocity
@@ -113,10 +111,7 @@ void CCFly::onGmTick(GameMode* gm)
 					{
 						yee = 0.6;
 					}
-					if (glide) //& !bump)
-					{
 						Player->VelocityXYZ.y = 0.0f;
-					}
 					/*if (!glide & bump)
 					{
 						if (Eeeeeee == 1)

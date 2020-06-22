@@ -38,6 +38,7 @@ void CheatManager::loadCheats()
 	cheats.push_back(new Triggerbot());
 	cheats.push_back(new Hitbox());
 	cheats.push_back(new Criticals());
+	cheats.push_back(new Misplace());
 
 	/* Movement */
 	cheats.push_back(new Jetpack());

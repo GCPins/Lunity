@@ -208,6 +208,7 @@
     <ClInclude Include="Client\Cheats\LBfly.h" />
     <ClInclude Include="Client\Cheats\Longjump.h" />
     <ClInclude Include="Client\Cheats\MineplexBP.h" />
+    <ClInclude Include="Client\Cheats\Misplace.h" />
     <ClInclude Include="Client\Cheats\ModuleList.h" />
     <ClInclude Include="Client\Cheats\NoFall.h" />
     <ClInclude Include="Client\Cheats\NoPacket.h" />
@@ -304,6 +305,7 @@
     <ClCompile Include="Client\Cheats\LBfly.cpp" />
     <ClCompile Include="Client\Cheats\Longjump.cpp" />
     <ClCompile Include="Client\Cheats\MineplexBP.cpp" />
+    <ClCompile Include="Client\Cheats\Misplace.cpp" />
     <ClCompile Include="Client\Cheats\ModuleList.cpp" />
     <ClCompile Include="Client\Cheats\NoFall.cpp" />
     <ClCompile Include="Client\Cheats\NoPacket.cpp" />
@@ -343,6 +345,7 @@
     <ClCompile Include="Client\Cheats\TabGUI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
