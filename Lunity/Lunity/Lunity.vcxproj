@@ -218,6 +218,7 @@
     <ClInclude Include="Client\Cheats\pch.h" />
     <ClInclude Include="Client\Cheats\Phase.h" />
     <ClInclude Include="Client\Cheats\Profiler.h" />
+    <ClInclude Include="Client\Cheats\Radar.h" />
     <ClInclude Include="Client\Cheats\Scaffold.h" />
     <ClInclude Include="Client\Cheats\Speed.h" />
     <ClInclude Include="Client\Cheats\Step.h" />
@@ -312,6 +313,7 @@
     <ClCompile Include="Client\Cheats\Nuker.cpp" />
     <ClCompile Include="Client\Cheats\Phase.cpp" />
     <ClCompile Include="Client\Cheats\Profiler.cpp" />
+    <ClCompile Include="Client\Cheats\Radar.cpp" />
     <ClCompile Include="Client\Cheats\Scaffold.cpp" />
     <ClCompile Include="Client\Cheats\Speed.cpp" />
     <ClCompile Include="Client\Cheats\Step.cpp" />

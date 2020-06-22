@@ -85,7 +85,7 @@ void TabGUI::onKey(ulong key)
 			if (key == 0x27) {
 				cheatsInThisCat[highlightedCht]->enabled = !cheatsInThisCat[highlightedCht]->enabled;
 			}
-			Logger::log("HCht: " + to_string(highlightedCht));
+			//Logger::log("HCht: " + to_string(highlightedCht));
 			if (highlightedCht <= -1) {
 				highlightedCht = cheatsInThisCat.size() - 1;
 			}

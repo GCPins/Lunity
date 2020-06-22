@@ -339,6 +339,9 @@
     <ClInclude Include="Client\Cheats\Fastfall.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Cheats\Radar.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -522,6 +525,9 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Client\Cheats\Fastfall.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Cheats\Radar.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

@@ -50,6 +50,7 @@
 #include "Cheats/ModuleList.h"
 #include "Cheats/Coords.h"
 #include "Cheats/ClickGui.h"
+#include "Cheats/Radar.h"
 
 /* Other */
 
