@@ -18,7 +18,6 @@ int Eeeeeee = 1;
 
 float boithesevariablesrbest = 0.001;
 
-
 //bool bump = false;
 
 //float aaaaaaaaaaaaaaaaa = 0.0f;
