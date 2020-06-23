@@ -22,13 +22,13 @@ void ExecLunity(LPVOID lpParam) {
     {
         Logger::log("Minhook init");
     }
-    KeyHook::installHook();
+    //KeyHook::installHook();
     RenderHook::installHook();
-    GamemodeHook::installHook();
-    MouseHook::installHook();
-    NetworkHook::installHook();
+    //GamemodeHook::installHook();
+    //MouseHook::installHook();
+    //NetworkHook::installHook();
     while (true) {
-        CheatManager::tickCheats();
+        //CheatManager::tickCheats();
     }
 }
 

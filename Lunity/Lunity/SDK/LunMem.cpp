@@ -8,7 +8,7 @@ ulong LunMem::getBaseModule()
 
 ClientInstance* LunMem::getClientInstance()
 {
-	ulong baseOffset = 0x03860C80;
+	ulong baseOffset = 0x0389A940;
 	return (ClientInstance*)*(ulong*)((*(ulong*)(getBaseModule() + baseOffset))+0x38);
 }
 
