@@ -8,21 +8,25 @@
 #include <MinHook.h>
 #pragma comment(lib, "libMinHook.lib")
 
-typedef int (__stdcall* RenderText)(__int64 a1, __int64 a2, MinecraftUIRenderContext* renderCtx);
+typedef int (__stdcall* RenderText)(__int64 a1, MinecraftUIRenderContext* renderCtx);
 RenderText original;
 
 float entireW = 0;
-int hookCallback(__int64 a1, __int64 a2, MinecraftUIRenderContext* renderCtx) {
+int hookCallback(__int64 a1, MinecraftUIRenderContext* renderCtx) {
 	DrawUtils::setCtx(renderCtx, LunMem::getClientInstance()->getGuiData());
 
-	CheatManager::onPreRender();
+	//CheatManager::onPreRender();
 
-	DrawUtils::flush();
-	int ret = original(a1, a2, renderCtx);
+	//DrawUtils::flush();
+	int ret = original(a1, renderCtx);
 
-	CheatManager::onPostRender();
+	//CheatManager::onPostRender();
 
-	DrawUtils::flush();
+	Logger::logHex("Context", (ulong)renderCtx);
+
+	//DrawUtils::drawText(Vector2(0, 0), new string("Test"), new Color(1, 1, 1, 1), 1);
+
+	//DrawUtils::flush();
 	return ret;
 }
 
