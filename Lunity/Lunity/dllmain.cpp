@@ -8,6 +8,7 @@
 #include "Client/Hooks/GamemodeHook.h"
 #include "Client/Hooks/MouseHook.h"
 #include "Client/Hooks/NetworkHook.h"
+#include "Client/Hooks/TestHook.h"
 
 #include <MinHook.h>
 #pragma comment(lib, "libMinHook.lib")
@@ -22,8 +23,9 @@ void ExecLunity(LPVOID lpParam) {
     {
         Logger::log("Minhook init");
     }
+    TestHook::installHook();
     //KeyHook::installHook();
-    RenderHook::installHook();
+    //RenderHook::installHook();
     //GamemodeHook::installHook();
     //MouseHook::installHook();
     //NetworkHook::installHook();

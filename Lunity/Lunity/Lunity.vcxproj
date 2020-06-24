@@ -230,6 +230,7 @@
     <ClInclude Include="Client\Cheats\WarpShift.h" />
     <ClInclude Include="Client\Hooks\NetworkHook.h" />
     <ClInclude Include="Client\Hooks\pch.h" />
+    <ClInclude Include="Client\Hooks\TestHook.h" />
     <ClInclude Include="Client\pch.h" />
     <ClInclude Include="Client\Hooks\GamemodeHook.h" />
     <ClInclude Include="Client\Cheats\PacketLogger.h" />
@@ -325,6 +326,7 @@
     <ClCompile Include="Client\Cheats\Velocity.cpp" />
     <ClCompile Include="Client\Cheats\WarpShift.cpp" />
     <ClCompile Include="Client\Hooks\NetworkHook.cpp" />
+    <ClCompile Include="Client\Hooks\TestHook.cpp" />
     <ClCompile Include="Client\SliderSetting.cpp" />
     <ClCompile Include="Client\ToggleSetting.cpp" />
     <ClCompile Include="dllmain.cpp" />

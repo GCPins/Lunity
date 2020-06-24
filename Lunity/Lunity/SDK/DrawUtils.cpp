@@ -47,13 +47,10 @@ void DrawUtils::drawText(Vector2 pos, std::string* textStr, Color* color, float 
 		color = WHITE_COLOR;
 	TextHolder* text = new TextHolder(*textStr);
 	BitmapFont* fontPtr = getFont();
-	static uintptr_t caretMeasureData = 0xFFFFFFFF;
 
-	float* posF = new float[4]; // Vector4(startX, startY, endX, endY);
-	posF[0] = pos.x;
-	posF[1] = pos.x + 1000;
-	posF[2] = pos.y;
-	posF[3] = pos.y + 1000;
+	static int max = 0xFFFFFFFF;
+
+	Vector4* posF = new Vector4(pos.x, pos.x + 1000, pos.y + 0, pos.y + 1000);
 
 	static float size = 1;
 	size = textSize;
@@ -63,8 +60,7 @@ void DrawUtils::drawText(Vector2 pos, std::string* textStr, Color* color, float 
 				if (color != NULL) {
 					if (color->toArr() != NULL) {
 						if (size != NULL) {
-							if (caretMeasureData != NULL)
-								renderctx->drawText(fontPtr, posF, text, color->toArr(), 1, 0, &size, &caretMeasureData);
+							renderctx->drawText(fontPtr, posF, text, color, 1.0f, 0, &size, &max);
 						}
 					}
 				}

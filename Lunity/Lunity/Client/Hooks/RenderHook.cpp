@@ -22,9 +22,9 @@ int hookCallback(__int64 a1, MinecraftUIRenderContext* renderCtx) {
 
 	//CheatManager::onPostRender();
 
-	Logger::logHex("Context", (ulong)renderCtx);
+	//Logger::logHex("Context", (ulong)renderCtx);
 
-	//DrawUtils::drawText(Vector2(0, 0), new string("Test"), new Color(1, 1, 1, 1), 1);
+	DrawUtils::drawText(Vector2(0, 0), new string("Test"), new Color(1, 1, 1, 1), 1);
 
 	//DrawUtils::flush();
 	return ret;
