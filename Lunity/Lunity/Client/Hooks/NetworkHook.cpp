@@ -16,7 +16,7 @@ void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x31656B0) {
 		pt = PacketType::Movement;
 	}
-	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B05DB8) {
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x3166940) {
 		pt = PacketType::Text;
 	}
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x31658B0) {
