@@ -13,19 +13,19 @@ SendToServer original;
 
 void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
 	PacketType pt = PacketType::Unknown;
-	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04E68) {
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x31656B0) {
 		pt = PacketType::Movement;
 	}
 	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B05DB8) {
 		pt = PacketType::Text;
 	}
-	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B04FF0) {
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x31658B0) {
 		pt = PacketType::PlayerAuthInput;
 	}
-	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B046C0) {
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x3164960) {
 		pt = PacketType::CraftingEvent;
 	}
-	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x2B03CF0) {
+	if (*(ulong*)Packet == (ulong)GetModuleHandle(NULL) + 0x3164018) {
 		pt = PacketType::ClientToServerHandshake;
 	}
 	bool canceled = false;
