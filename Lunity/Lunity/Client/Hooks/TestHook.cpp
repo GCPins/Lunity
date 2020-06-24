@@ -26,12 +26,12 @@ int __fastcall hookCallback(MinecraftUIRenderContext* renderCtx, BitmapFont* fon
 	Logger::logHex("textMeasureData", (ulong)*textMeasureData);
 	Logger::logHex("caretMeasureData", (ulong)caretMeasureData);
 
-	static float size = 1;
+	//static float size = 1;
 
-	int max = 0xFFFFFFFF;
+	//int max = 0xFFFFFFFF;
 
 	//original(renderCtx, font, new Vector4(0,1000,0,1000), new TextHolder("GG"), new Color(1,1,1,1), 1.0f, 0, &size, &max);
-	original(renderCtx, font, new Vector4(0, 1000, 0, 1000), new TextHolder("LunityXXXXXXXXXXXX"), new Color(1, 1, 1, 1), 1.0f, 0, &size, &max);
+	//original(renderCtx, font, new Vector4(0, 1000, 0, 1000), new TextHolder("LunityXXXXXXXXXXXX"), new Color(1, 1, 1, 1), 1.0f, 0, &size, &max);
 
 	return original(renderCtx, font, pos, text, color, alpha, textAlignment, textMeasureData, caretMeasureData);
 }

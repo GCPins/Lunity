@@ -83,24 +83,25 @@ public:
 class ClientInstance
 {
 public:
-	char pad_0008[80]; //0x0008
-	class MinecraftGame* MinecraftGame; //0x0058
-	class MinecraftGame* MinecraftGame2; //0x0060
-	class Minecraft* Minecraft; //0x0068
-	char pad_0070[24]; //0x0070
-	class LoopbackPacketSender* LoopbackPacketSender; //0x0088
-	class HolographicPlatform* HolographicPlatform; //0x0090
-	class VoiceSystem* VoiceSystem; //0x0098
-	class VanillaMoveInputHandler* VanillaMoveInputHandler; //0x00A0
-	char pad_00A8[8]; //0x00A8
-	class MinecraftKeyboardManager* MinecraftKeyboardManager; //0x00B0
-	class HitDetectSystem* HitDetectSystem; //0x00B8
-	class PrivateKeyManager* PrivateKeyManager; //0x00C0
-	class UserAuthentication* UserAuthentication; //0x00C8
-	class SceneFactory* SceneFactory; //0x00D0
-	char pad_00D8[24]; //0x00D8
-	class LocalPlayer* LocalPlayer; //0x00F0
-	char pad_00F8[248]; //0x00F8
+	char pad_0008[160]; //0x0008
+	class MinecraftGame* MinecraftGame; //0x00A8
+	class MinecraftGame* MinecraftGame2; //0x00B0
+	class Minecraft* Minecraft; //0x00B8
+	char pad_00C0[8]; //0x00C0
+	class LevelRenderer* LevelRenderer; //0x00C8
+	char pad_00D0[8]; //0x00D0
+	class LoopbackPacketSender* LoopbackPacketSender; //0x00D8
+	class HolographicPlatform* HolographicPlatform; //0x00E0
+	class VoiceSystem* VoiceSystem; //0x00E8
+	class VanillaMoveInputHandler* VanillaMoveInputHandler; //0x00F0
+	char pad_00F8[8]; //0x00F8
+	class MinecraftKeyboardManager* MinecraftKeyboardManager; //0x0100
+	class HitDetectSystem* HitDetectSystem; //0x0108
+	class UserAuthentication* UserAuthentication; //0x0110
+	class SceneFactory* SceneFactory; //0x0118
+	char pad_0120[32]; //0x0120
+	class LocalPlayer* LocalPlayer; //0x0140
+	char pad_0148[256]; //0x0148
 
 	virtual void destructorClientInstance();
 	virtual void onInitMinecraftGame();
@@ -685,16 +686,16 @@ class LocalPlayer
 public:
 	char pad_0008[208]; //0x0008
 	uint64_t ActorId; //0x00D8
-	char pad_00E0[16]; //0x00E0
-	Vector2 LookingVec; //0x00F0
-	Vector2 LookingVec2; //0x00F8
-	char pad_0100[120]; //0x0100
-	bool OnGround; //0x0178
-	char pad_0179[27]; //0x0179
-	float FallingIncrementer; //0x0194
-	char pad_0198[96]; //0x0198
-	float stepHeight; //0x01F8
-	char pad_01FC[260]; //0x01FC
+	char pad_00E0[32]; //0x00E0
+	Vector2 LookingVec; //0x0100
+	Vector2 LookingVec2; //0x0108
+	char pad_0110[144]; //0x0110
+	bool OnGround; //0x01A0
+	char pad_01A1[27]; //0x01A1
+	float FallingIncrementer; //0x01BC
+	char pad_01C0[96]; //0x01C0
+	float stepHeight; //0x0220
+	char pad_0224[220]; //0x0224
 	int N000006AB; //0x0300
 	float Speed; //0x0304
 	int MoveTick; //0x0308
@@ -724,16 +725,16 @@ public:
 	bool isFlying; //0x0AB8
 	char pad_0AB9[1287]; //0x0AB9
 	class CraftingContainerManagerModel* CraftingContainerManagerModel; //0x0FC0
-	char pad_0FD0[8]; //0x0FD0
-	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0FD8
-	char pad_0FE0[456]; //0x0FE0
-	class ItemStack* ItemStacks; //0x11A8
-	char pad_11B0[272]; //0x11B0
-	uint64_t InventoryUiState; //0x12C0
-	char pad_12C8[488]; //0x12C8
-	class PlayerUIContainer PlayerUIContainer; //0x14B0
-	char pad_15E0[2196]; //0x15E0
-	int currentGamemode; //0x1E74
+	char pad_0FC8[8]; //0x0FC8
+	class PlayerInventoryProxy* PlayerInventoryProxy; //0x0FD0
+	char pad_0FD8[456]; //0x0FD8
+	class ItemStack* ItemStacks; //0x11A0
+	char pad_11A8[272]; //0x11A8
+	uint64_t InventoryUiState; //0x12B8
+	char pad_12C0[488]; //0x12C0
+	class PlayerUIContainer PlayerUIContainer; //0x14A8
+	char pad_15D8[2196]; //0x15D8
+	int currentGamemode; //0x1E6C
 
 	virtual void Function0();
 	virtual void Function1();
@@ -1288,19 +1289,19 @@ class MinecraftGame
 {
 public:
 	char pad_0008[48]; //0x0008
-	class MinecraftGraphics* MinecraftGraphics; //0x0030
-	class MinecraftGraphics* MinecraftGraphics2; //0x0038
-	class NullFrameBuilder* NullFrameBuilder; //0x0040
-	class GameArguments* GameArguments; //0x0048
-	class GameRenderer* GameRenderer; //0x0050
-	char pad_0058[24]; //0x0058
-	class TextureGroup* TextureGroup; //0x0070
-	class TextureGroup* TextureGroup2; //0x0078
-	class FontRepository* FontRepository; //0x0080
-	class FontRepository* FontRepository2; //0x0088
-	class BitmapFont* leBetterFont; //0x0090
-	class BitmapFont* theBetterFont; //0x0098
-	char pad_00A0[1904]; //0x00A0
+	class MinecraftGraphics* MinecraftGraphics; //0x0038
+	class MinecraftGraphics* MinecraftGraphics2; //0x0040
+	class NullFrameBuilder* NullFrameBuilder; //0x0048
+	class GameArguments* GameArguments; //0x0050
+	class GameRenderer* GameRenderer; //0x0058
+	char pad_0060[56]; //0x0060
+	class TextureGroup* TextureGroup; //0x0098
+	class TextureGroup* TextureGroup2; //0x00A0
+	class FontRepository* FontRepository; //0x00A8
+	class FontRepository* FontRepository2; //0x00B0
+	class BitmapFont* leBetterFont; //0x00B8
+	class BitmapFont* theBetterFont; //0x00C0
+	char pad_00C8[1904]; //0x00C8
 
 	virtual void Function0();
 	virtual void Function1();
