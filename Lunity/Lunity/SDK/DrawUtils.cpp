@@ -27,7 +27,7 @@ void DrawUtils::cacheCaretMeasure(int* data)
 
 BitmapFont* DrawUtils::getFont()
 {
-	return LunMem::getClientInstance()->MinecraftGame->theBetterFont;
+	return LunMem::getClientInstance()->MinecraftGame->fifthFontIdk;
 }
 
 float DrawUtils::getTextWidth(std::string textStr, float size)
@@ -56,7 +56,7 @@ void DrawUtils::drawText(Vector2 pos, std::string* textStr, Color* color, float 
 	static Color* WHITE_COLOR = new Color(1, 1, 1, 1, false);
 	if (color == nullptr)
 		color = WHITE_COLOR;
-	TextHolder* text = new TextHolder(*textStr);
+	TextHolder* text = new TextHolder(textStr->c_str());
 	BitmapFont* fontPtr = getFont();
 	static uintptr_t caretMeasureData = 0xFFFFFFFF;
 
@@ -72,11 +72,8 @@ void DrawUtils::drawText(Vector2 pos, std::string* textStr, Color* color, float 
 		if (posF != NULL) {
 			if (text != NULL) {
 				if (color != NULL) {
-					if (color->toArr() != NULL) {
-						if (size != NULL) {
-							if (cachedData != NULL)
-								renderctx->drawText(fontPtr, posF, text, color, 1, 0, &size, &caretMeasureData);
-						}
+					if (size != NULL) {
+						renderctx->drawText(fontPtr, posF, text, color, 1.0f, 0, &size, &caretMeasureData);
 					}
 				}
 			}

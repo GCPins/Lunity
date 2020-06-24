@@ -1301,7 +1301,15 @@ public:
 	class FontRepository* FontRepository2; //0x00B0
 	class BitmapFont* leBetterFont; //0x00B8
 	class BitmapFont* theBetterFont; //0x00C0
-	char pad_00C8[1904]; //0x00C8
+	char pad_00C8[40]; //0x00C8
+	class BitmapFont* anotherFont; //0x00F0
+	char pad_00F8[40]; //0x00F8
+	class BitmapFont* fourthFont; //0x0120
+	char pad_0128[40]; //0x0128
+	class BitmapFont* fifthFontIdk; //0x0150
+	char pad_0158[40]; //0x0158
+	class BitmapFont* sixthFontOk; //0x0180
+	char pad_0188[1712]; //0x0188
 
 	virtual void Function0();
 	virtual void Function1();
