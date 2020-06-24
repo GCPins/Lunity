@@ -14,9 +14,20 @@ GuiData* DrawUtils::getGuiData() {
 	return guiData;
 }
 
+BitmapFont* cachedFont;
+void DrawUtils::cacheFont(BitmapFont* font) {
+	cachedFont = font;
+}
+
+int* cachedData;
+void DrawUtils::cacheCaretMeasure(int* data)
+{
+	cachedData = data;
+}
+
 BitmapFont* DrawUtils::getFont()
 {
-	return LunMem::getClientInstance()->MinecraftGame->leBetterFont;
+	return LunMem::getClientInstance()->MinecraftGame->theBetterFont;
 }
 
 float DrawUtils::getTextWidth(std::string textStr, float size)
@@ -33,34 +44,39 @@ void DrawUtils::flush()
 	renderctx->flushText(0);
 }
 
-void DrawUtils::drawCoolText(Vector2 pos, std::string textStr, float textSize)
+void DrawUtils::drawCoolText(Vector2 pos, std::string* textStr, float textSize)
 {
 	drawText(pos.add(Vector2(-2, -2)), textStr, new Color(0, 0, 0, 1), textSize);
 	drawText(pos.add(Vector2(1, 1)), textStr, new Color(0, 0, 0, 1), textSize);
 	drawText(pos, textStr, new Color(1, 1, 1, 1), textSize);
 }
 
-void DrawUtils::drawText(Vector2 pos, std::string textStr, Color* color, float textSize)
+void DrawUtils::drawText(Vector2 pos, std::string* textStr, Color* color, float textSize)
 {
 	static Color* WHITE_COLOR = new Color(1, 1, 1, 1, false);
 	if (color == nullptr)
 		color = WHITE_COLOR;
-	TextHolder* text = new TextHolder(textStr);
+	TextHolder* text = new TextHolder(*textStr);
 	BitmapFont* fontPtr = getFont();
+	static uintptr_t caretMeasureData = 0xFFFFFFFF;
 
-	static int max = 0xFFFFFFFF;
-
-	Vector4* posF = new Vector4(pos.x, pos.x + 1000, pos.y + 0, pos.y + 1000);
+	float* posF = new float[4]; // Vector4(startX, startY, endX, endY);
+	posF[0] = pos.x;
+	posF[1] = pos.x + 1000;
+	posF[2] = pos.y;
+	posF[3] = pos.y + 1000;
 
 	static float size = 1;
 	size = textSize;
-
 	if (fontPtr != NULL) {
 		if (posF != NULL) {
 			if (text != NULL) {
 				if (color != NULL) {
-					if (size != NULL) {
-						renderctx->drawText(fontPtr, posF, text, color, 1.0f, 0, &size, &max);
+					if (color->toArr() != NULL) {
+						if (size != NULL) {
+							if (cachedData != NULL)
+								renderctx->drawText(fontPtr, posF, text, color, 1, 0, &size, &caretMeasureData);
+						}
 					}
 				}
 			}
@@ -73,7 +89,7 @@ void DrawUtils::drawText(Vector2 pos, std::string textStr, Color* color, float t
 	delete text;
 }
 
-void DrawUtils::fillRectangle(Vector4 pos, const Vector4 col, float alpha)
+void DrawUtils::fillRectangle(Vector4 pos, const Color col, float alpha)
 {
 	float* posF = new float[4]; // Vector4(startX, startY, endX, endY);
 	posF[0] = pos.x;
@@ -89,7 +105,7 @@ void DrawUtils::fillRectangle(Vector4 pos, const Vector4 col, float alpha)
 	delete[] posF;
 }
 
-void DrawUtils::drawRectangle(Vector4 pos, Vector4 col, float alpha, float lineWidth)
+void DrawUtils::drawRectangle(Vector4 pos, Color col, float alpha, float lineWidth)
 {
 	lineWidth /= 2;
 	fillRectangle(Vector4(pos.x - lineWidth, pos.y - lineWidth, pos.z + lineWidth, pos.y + lineWidth), col, alpha); // TOP

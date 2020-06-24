@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "../../SDK/DrawUtils.h"
 #include "../../SDK/LunMem.h"
 #include "../../SDK/LunMC.h"
 #include "../../Logger.h"
@@ -15,8 +16,10 @@ int __fastcall hookCallback(MinecraftUIRenderContext* renderCtx, BitmapFont* fon
 	Vector4* pos, TextHolder* text, Color* color, float alpha,
 	long textAlignment, float* textMeasureData, int* caretMeasureData) {
 
+	/*DrawUtils::cacheFont(font);
+	DrawUtils::cacheCaretMeasure(caretMeasureData);*/
 
-	Logger::logHex("Context", (ulong)renderCtx);
+	/*Logger::logHex("Context", (ulong)renderCtx);
 	Logger::logHex("font", (ulong)font);
 	Logger::logHex("pos", (ulong)pos);
 	Logger::logHex("text", (ulong)text);
@@ -24,7 +27,8 @@ int __fastcall hookCallback(MinecraftUIRenderContext* renderCtx, BitmapFont* fon
 	Logger::logHex("alpha", (ulong)alpha);
 	Logger::logHex("textAlignment", (ulong)textAlignment);
 	Logger::logHex("textMeasureData", (ulong)*textMeasureData);
-	Logger::logHex("caretMeasureData", (ulong)caretMeasureData);
+	Logger::logHex("caretMeasureData", (ulong)caretMeasureData);*/
+
 
 	//static float size = 1;
 

@@ -24,7 +24,8 @@ int hookCallback(__int64 a1, MinecraftUIRenderContext* renderCtx) {
 
 	//Logger::logHex("Context", (ulong)renderCtx);
 
-	DrawUtils::drawText(Vector2(0, 0), string("Test"), new Color(1, 1, 1, 1), 1);
+	//DrawUtils::fillRectangle(Vector4(0, 0, 100, 100), Color(1, 1, 1, 1), 1);
+	DrawUtils::drawText(Vector2(0, 0), new string("Test"), new Color(1, 1, 1, 1), 1);
 
 	//DrawUtils::flush();
 	return ret;

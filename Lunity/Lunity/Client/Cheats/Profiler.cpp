@@ -59,22 +59,22 @@ void Profiler::onPostRender() {
 		string frameTimeStrUs = to_string(time) + string(" us/frame");
 		float textSize = DrawUtils::getTextWidth(frameTimeStrUs, 1);
 		DrawUtils::fillRectangle(Vector4(0, ScreenRes.y - 10, textSize, ScreenRes.y), Color(0, 0, 0, 1), 0.2f);
-		DrawUtils::drawText(Vector2(0, ScreenRes.y - 10), frameTimeStrUs, nullptr, 1);
+		DrawUtils::drawText(Vector2(0, ScreenRes.y - 10), &frameTimeStrUs, nullptr, 1);
 
 		string frameTimeStrMs = to_string(time / 1000) + string(" ms/frame");
 		textSize = DrawUtils::getTextWidth(frameTimeStrMs, 1);
 		DrawUtils::fillRectangle(Vector4(0, ScreenRes.y - 20, textSize, ScreenRes.y-10), Color(0, 0, 0, 1), 0.2f);
-		DrawUtils::drawText(Vector2(0, ScreenRes.y - 20), frameTimeStrMs, nullptr, 1);
+		DrawUtils::drawText(Vector2(0, ScreenRes.y - 20), &frameTimeStrMs, nullptr, 1);
 
 		string longestTimeStrUs = to_string(longestFrame) + string(" longest frame (us)");
 		textSize = DrawUtils::getTextWidth(longestTimeStrUs, 1);
 		DrawUtils::fillRectangle(Vector4(0, ScreenRes.y - 30, textSize, ScreenRes.y - 20), Color(0, 0, 0, 1), 0.2f);
-		DrawUtils::drawText(Vector2(0, ScreenRes.y - 30), longestTimeStrUs, nullptr, 1);
+		DrawUtils::drawText(Vector2(0, ScreenRes.y - 30), &longestTimeStrUs, nullptr, 1);
 
 		string shortestFrameStrUs = to_string(shortestFrame) + string(" shortest frame (us)");
 		textSize = DrawUtils::getTextWidth(shortestFrameStrUs, 1);
 		DrawUtils::fillRectangle(Vector4(0, ScreenRes.y - 40, textSize, ScreenRes.y - 30), Color(0, 0, 0, 1), 0.2f);
-		DrawUtils::drawText(Vector2(0, ScreenRes.y - 40), shortestFrameStrUs, nullptr, 1);
+		DrawUtils::drawText(Vector2(0, ScreenRes.y - 40), &shortestFrameStrUs, nullptr, 1);
 
 		long timeMs = (time / 1000);
 		string fpsStr;
@@ -86,17 +86,17 @@ void Profiler::onPostRender() {
 		}
 		textSize = DrawUtils::getTextWidth(fpsStr, 1);
 		DrawUtils::fillRectangle(Vector4(0, ScreenRes.y - 50, textSize, ScreenRes.y - 40), Color(0, 0, 0, 1), 0.2f);
-		DrawUtils::drawText(Vector2(0, ScreenRes.y - 50), fpsStr, nullptr, 1);
+		DrawUtils::drawText(Vector2(0, ScreenRes.y - 50), &fpsStr, nullptr, 1);
 
 		string actualFpsStr = to_string(actualFps) + string(" actual fps");
 		textSize = DrawUtils::getTextWidth(actualFpsStr, 1);
 		DrawUtils::fillRectangle(Vector4(0, ScreenRes.y - 60, textSize, ScreenRes.y - 50), Color(0, 0, 0, 1), 0.2f);
-		DrawUtils::drawText(Vector2(0, ScreenRes.y - 60), actualFpsStr, nullptr, 1);
+		DrawUtils::drawText(Vector2(0, ScreenRes.y - 60), &actualFpsStr, nullptr, 1);
 
 		string frameCountStr = to_string(frameCount) + string(" frames");
 		textSize = DrawUtils::getTextWidth(frameCountStr, 1);
 		DrawUtils::fillRectangle(Vector4(0, ScreenRes.y - 70, textSize, ScreenRes.y - 60), Color(0, 0, 0, 1), 0.2f);
-		DrawUtils::drawText(Vector2(0, ScreenRes.y - 70), frameCountStr, nullptr, 1);
+		DrawUtils::drawText(Vector2(0, ScreenRes.y - 70), &frameCountStr, nullptr, 1);
 
 		frameCount++;
 
