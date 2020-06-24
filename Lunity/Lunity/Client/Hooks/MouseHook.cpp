@@ -41,7 +41,7 @@ int __fastcall MouseHookCallback(ulong param_1, char action, ulong param_3, ulon
 		}
 	}
 	/*Logger::logHex("param_1", param_1);
-	Logger::logHex("param_2", param_2);
+	Logger::logHex("action", action);
 	Logger::logHex("param_3", param_3);
 	Logger::logHex("param_4", param_4);
 	Logger::logHex("param_5", param_5);
@@ -55,7 +55,7 @@ int __fastcall MouseHookCallback(ulong param_1, char action, ulong param_3, ulon
 void MouseHook::installHook()
 {
 	Logger::log("installing mouse hook...");
-	void* toHook = (void*)(LunMem::getBaseModule() + 0x195FA10);
+	void* toHook = (void*)(LunMem::getBaseModule() + 0x1AB5FC0);
 	Logger::logHex("ToHook", (ulong)toHook);
 	bool installSuccess = false;
 	if (MH_CreateHook(toHook, &MouseHookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
@@ -72,6 +72,6 @@ void MouseHook::installHook()
 
 void MouseHook::uninstallHook()
 {
-	void* toHook = (void*)(LunMem::getBaseModule() + 0x195FA10);
+	void* toHook = (void*)(LunMem::getBaseModule() + 0x1AB5FC0);
 	MH_DisableHook(toHook);
 }

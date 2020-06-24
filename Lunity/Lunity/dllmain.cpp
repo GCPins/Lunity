@@ -18,19 +18,20 @@ void ExecLunity(LPVOID lpParam) {
     Logger::logHex("Client Instance", (ulong)LunMem::getClientInstance());
     Logger::logHex("LocalPlayer Address", (ulong)LunMem::getClientInstance()->LocalPlayer);
 
+
     CheatManager::loadCheats();
     if (MH_Initialize() == MH_OK)
     {
         Logger::log("Minhook init");
     }
-    TestHook::installHook();
-    //KeyHook::installHook();
+    //TestHook::installHook();
+    KeyHook::installHook();
     RenderHook::installHook();
     //GamemodeHook::installHook();
-    //MouseHook::installHook();
+    MouseHook::installHook();
     //NetworkHook::installHook();
     while (true) {
-        //CheatManager::tickCheats();
+        CheatManager::tickCheats();
     }
 }
 

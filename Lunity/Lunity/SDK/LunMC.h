@@ -291,11 +291,11 @@ public:
 	virtual void* Function185();
 	virtual void* Function186();
 	virtual void* Function187();
-	virtual GuiData* getGuiData();
+	virtual void* Function188();
 	virtual void* Function189();
 	virtual void* Function190();
 	virtual void* Function191();
-	virtual void* Function192();
+	virtual GuiData* getGuiData();
 	virtual void* Function193();
 	virtual void* Function194();
 	virtual void* Function195();

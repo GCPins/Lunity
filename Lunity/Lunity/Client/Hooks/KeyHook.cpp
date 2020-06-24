@@ -11,7 +11,7 @@ KeyPressed original;
 
 void KeyHook::installHook() {
 	Logger::log("installing hook...");
-	void* toHook = (void*)(LunMem::getBaseModule() + 0xD549F0);
+	void* toHook = (void*)(LunMem::getBaseModule() + 0xE28090);
 	Logger::logHex("ToHook", (ulong)toHook);
 	bool installSuccess = false;
 	if (MH_CreateHook(toHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
@@ -28,7 +28,7 @@ void KeyHook::installHook() {
 
 void KeyHook::uninstallHook()
 {
-	void* toHook = (void*)(LunMem::getBaseModule() + 0xD549F0);
+	void* toHook = (void*)(LunMem::getBaseModule() + 0xE28090);
 	MH_DisableHook(toHook);
 }
 
