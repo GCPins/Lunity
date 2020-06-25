@@ -1274,15 +1274,20 @@ public:
 	char pad_0000[64]; //0x0000
 	void* playerListBegin; //0x0040
 	void* playerListEnd; //0x0048
-	char pad_0050[2048]; //0x0050
-	int N000008BE; //0x0850
-	int LookingBlockSide; //0x0854
-	int LookingBlockX; //0x0858
-	int LookingBlockY; //0x085C
-	int LookingBlockZ; //0x0860
-	char pad_0864[12]; //0x0864
-	class Actor* LookingActor; //0x0870
-	char pad_0878[1944]; //0x0878
+	char pad_0050[8]; //0x0050
+	void* playerListBegin2; //0x0058
+	void* playerListEnd2; //0x0060
+	char pad_0068[344]; //0x0068
+	long EntityCount; //0x01C0
+	char pad_01C8[1816]; //0x01C8
+	int N000008BE; //0x08E0
+	int LookingBlockSide; //0x08E4
+	int LookingBlockX; //0x08E8
+	int LookingBlockY; //0x08EC
+	int LookingBlockZ; //0x08F0
+	char pad_08F4[12]; //0x08F4
+	class Actor* LookingActor; //0x0900
+	char pad_0908[120]; //0x0908
 }; //Size: 0x1010
 
 class MinecraftGame
