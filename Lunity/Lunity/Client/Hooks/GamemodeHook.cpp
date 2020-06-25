@@ -34,7 +34,7 @@ GameMode* GamemodeHook::getLastGm()
 void GamemodeHook::installHook()
 {
 	Logger::log("installing gamemode hook...");
-	void* toGmHook = (void*)(LunMem::getBaseModule() + 0x15D6570);
+	void* toGmHook = (void*)(LunMem::getBaseModule() + 0x31CD428);
 	Logger::logHex("ToHook", (ulong)toGmHook);
 	bool installSuccess = false;
 	if (MH_CreateHook(toGmHook, &gmHookCallback, reinterpret_cast<LPVOID*>(&gmOriginal)) == MH_OK) {
@@ -49,7 +49,7 @@ void GamemodeHook::installHook()
 	}
 	
 	Logger::log("installing survivalmode hook...");
-	void* toSmHook = (void*)(LunMem::getBaseModule() + 0x8B8A70);
+	void* toSmHook = (void*)(LunMem::getBaseModule() + 0x31CD4C8);
 	Logger::logHex("ToHook", (ulong)toSmHook);
 	bool smInstallSuccess = false;
 	if (MH_CreateHook(toSmHook, &smHookCallback, reinterpret_cast<LPVOID*>(&smOriginal)) == MH_OK) {
@@ -66,8 +66,8 @@ void GamemodeHook::installHook()
 
 void GamemodeHook::uninstallHook()
 {
-	void* toGmHook = (void*)(LunMem::getBaseModule() + 0x15D6570);
+	void* toGmHook = (void*)(LunMem::getBaseModule() + 0x31CD428);
 	MH_DisableHook(toGmHook);
-	void* toSmHook = (void*)(LunMem::getBaseModule() + 0x8B8A70);
+	void* toSmHook = (void*)(LunMem::getBaseModule() + 0x31CD4C8);
 	MH_DisableHook(toSmHook);
 }
