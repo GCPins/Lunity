@@ -27,9 +27,9 @@ void ExecLunity(LPVOID lpParam) {
     //TestHook::installHook();
     KeyHook::installHook();
     RenderHook::installHook();
-    //GamemodeHook::installHook();
+    GamemodeHook::installHook();
     MouseHook::installHook();
-    //NetworkHook::installHook();
+    NetworkHook::installHook();
     while (true) {
         CheatManager::tickCheats();
     }

@@ -36,7 +36,7 @@ void __fastcall hookCallback(LoopbackPacketSender* packetSender, void* Packet) {
 
 void NetworkHook::installHook() {
 	Logger::log("installing network hook...");
-	void* toHook = (void*)(LunMem::getBaseModule() + 0xFF0BE0);
+	void* toHook = (void*)(LunMem::getBaseModule() + 0x10C7450);
 	Logger::logHex("ToHook", (ulong)toHook);
 	bool installSuccess = false;
 	if (MH_CreateHook(toHook, &hookCallback, reinterpret_cast<LPVOID*>(&original)) == MH_OK) {
@@ -53,6 +53,6 @@ void NetworkHook::installHook() {
 
 void NetworkHook::uninstallHook()
 {
-	void* toHook = (void*)(LunMem::getBaseModule() + 0xFF0BE0);
+	void* toHook = (void*)(LunMem::getBaseModule() + 0x10C7450);
 	MH_DisableHook(toHook);
 }
