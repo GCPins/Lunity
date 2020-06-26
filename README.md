@@ -1,6 +1,8 @@
 # Lunity
 A Minecraft: Bedrock Edition internal C++ Utility Mod
 
+Discord Invite: https://discord.gg/qQZg4NC 
+
 # What you can and cant do
 ## What you CAN do
 - Make a neat feature and submit a pull request
