@@ -76,7 +76,7 @@ namespace Lunity_Injector
             if (!verifyLunity())
             {
                 Console.WriteLine("An error occoured during Lunity verification...");
-                Console.WriteLine("For help, join this server: https://discord.gg/gNdBNTT");
+                Console.WriteLine("For help, join this server: https://discord.gg/qQZg4NC");
                 Console.WriteLine("When asking for help, please supply the ENTIRE error above.");
                 Console.ReadLine();
                 return;
