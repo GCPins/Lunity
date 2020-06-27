@@ -10,6 +10,7 @@ public:
 	void onLoop();
 	void onTick();
 	void onEnable();
+	void onPostRender();
 	void onDisable();
 	void onGmTick(GameMode* GM);
 };

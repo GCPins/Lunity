@@ -28,6 +28,18 @@ void TestModule::onEnable()
 	//Logger::logHex("The return", LunMem::getClientInstance()->Function49());
 }
 
+void TestModule::onPostRender() {
+	if (enabled) {
+		ClientInstance* instance = LunMem::getClientInstance();
+		if (instance != NULL) {
+			LocalPlayer* player = instance->LocalPlayer;
+			if (player != NULL) {
+				player->shouldRender();
+			}
+		}
+	}
+}
+
 void TestModule::onDisable()
 {
 	Cheat::onDisable();

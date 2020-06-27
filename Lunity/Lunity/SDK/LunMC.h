@@ -945,7 +945,7 @@ public:
 	virtual void getDebugText();
 	virtual void getYHeadRot();
 	virtual void getRiderYRotation();
-	virtual void getYHeadRot();
+	virtual void getYHeadRot2();
 	virtual void isWorldBuilder();
 	virtual bool isCreative(void);
 	virtual bool isAdventure(void);
@@ -1064,7 +1064,7 @@ public:
 	virtual void setTransitioningSitting();
 	virtual void attackAnimation();
 	virtual void getCooldownTime();
-	virtual void getWalkTargetValue();
+	virtual void getWalkTargetValue2();
 	virtual void allowAscendingScaffoldingSTOP_PLEASE();
 	virtual void Function324();
 	virtual void ascendLadder();
